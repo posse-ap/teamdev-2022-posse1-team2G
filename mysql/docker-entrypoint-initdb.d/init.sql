@@ -5,7 +5,8 @@ USE craft;
 
 -- ユーザーテーブル
 DROP TABLE IF EXISTS users;
-CREATE TABLE users (
+CREATE TABLE users
+(
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
   university VARCHAR(255) NOT NULL,
@@ -13,7 +14,7 @@ CREATE TABLE users (
   grad_year VARCHAR(255) NOT NULL,
   mail VARCHAR(255) UNIQUE NOT NULL,
   phone_number VARCHAR(255) NOT NULL,
-  address VARCHAR(255) NOT NULL,
+  address VARCHAR(255) NOT NULL
 );
 
 INSERT INTO users (id, name, university, department, grad_year, mail, phone_number, address) VALUES 
@@ -24,10 +25,10 @@ INSERT INTO users (id, name, university, department, grad_year, mail, phone_numb
 (5, '加藤ゆう', '〇〇大学', '学部', '25年春', 'marusankakubatu@gmail.com', '080-5432-1991','〇県〇市')
 
 
-
 -- エージェント契約情報テーブル
 DROP TABLE IF EXISTS company;
-CREATE TABLE company (
+CREATE TABLE company 
+(
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   company_name VARCHAR(255) NOT NULL,
   company_url VARCHAR(255) NOT NULL,
@@ -36,7 +37,7 @@ CREATE TABLE company (
   mail_manager VARCHAR(255) NOT NULL,
   mail_notification VARCHAR(255) NOT NULL,
   phone_number VARCHAR(255) NOT NULL,
-  address VARCHAR(255) NOT NULL,
+  address VARCHAR(255) NOT NULL
 );
 
 INSERT INTO company (id, company_name, company_url, representative, mail_contact, mail_manager, mail_notification, phone_number, address) VALUES 
@@ -49,7 +50,8 @@ INSERT INTO company (id, company_name, company_url, representative, mail_contact
 
 -- エージェント掲載情報テーブル
 DROP TABLE IF EXISTS company_posting_information;
-CREATE TABLE company_posting_information (
+CREATE TABLE company_posting_information
+(
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   company_id INT NOT NULL,
   logo VARCHAR(255) NOT NULL,
@@ -60,7 +62,7 @@ CREATE TABLE company_posting_information (
   type VARCHAR(255) NOT NULL,
   catch_copy VARCHAR(255) NOT NULL,
   information VARCHAR(255) NOT NULL,
-  support VARCHAR(255) NOT NULL,
+  strength VARCHAR(255) NOT NULL,
   job_offer_number VARCHAR(255) NOT NULL,
   user_count VARCHAR(255) NOT NULL,
   informal_job_offer_rate VARCHAR(255) NOT NULL,
@@ -75,18 +77,18 @@ CREATE TABLE company_posting_information (
   location VARCHAR(255) NOT NULL
 );
 
-INSERT INTO company_posting_information
-(id, company_id, logo, name, img, industries, achievement, type, catch_copy, information, strength, job_offer_number, user_count, informal_job_offer_rate, satisfaction_degrees, finding_employment_target, ES, interview, limited_course, competence_diagnosis, special_selection, interview_style, location) VALUES 
-(1, 1, './src/admin/img/logo/', '鈴木会社', './src/admin/img/img/', 'IT業界', '実績', '理系','dream', '鈴木会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, true, true, true, true, 'オンライン', 'オンライン'),
-(2, 2, './src/admin/img/logo/', '佐藤会社', './src/admin/img/img/', 'IT業界', '実績', '文系','dream', '佐藤会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, false, true, true, true, true, 'オンライン', 'オンライン'),
-(3, 3, './src/admin/img/logo/', '田中会社', './src/admin/img/img/', 'IT業界', '実績', '理系','dream', '田中会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, true, false, false, true, 'オンライン', 'オンライン'),
-(4, 4, './src/admin/img/logo/', '山田会社', './src/admin/img/img/', 'IT業界', '実績', '理系','dream', '山田会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, true, true, false, true, '対面', '都心'),
-(5, 5, './src/admin/img/logo/', '加藤会社', './src/admin/img/img/', 'IT業界', '実績', '文系','dream', '加藤会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, true, true, true, false, 'オンライン', 'オンライン'),
+INSERT INTO company_posting_information (id, company_id, logo, name, img, industries, achievement, type, catch_copy, information, strength, job_offer_number, user_count, informal_job_offer_rate, satisfaction_degrees, finding_employment_target, ES, interview, limited_course, competence_diagnosis, special_selection, interview_style, location) VALUES 
+(1, 1, './src/admin/img/logo/', '鈴木会社', './src/admin/img/img/', 'IT業界', '実績', '理系', 'dream', '鈴木会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, true, true, true, 'オンライン', 'オンライン'),
+(2, 2, './src/admin/img/logo/', '佐藤会社', './src/admin/img/img/', 'IT業界', '実績', '文系', 'dream', '佐藤会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, false, true, true, true, 'オンライン', 'オンライン'),
+(3, 3, './src/admin/img/logo/', '田中会社', './src/admin/img/img/', 'IT業界', '実績', '理系', 'dream', '田中会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, false, false, true, 'オンライン', 'オンライン'),
+(4, 4, './src/admin/img/logo/', '山田会社', './src/admin/img/img/', 'IT業界', '実績', '理系', 'dream', '山田会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, true, false, true, '対面', '都心'),
+(5, 5, './src/admin/img/logo/', '加藤会社', './src/admin/img/img/', 'IT業界', '実績', '文系', 'dream', '加藤会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, true, true, false, 'オンライン', 'オンライン')
 
 
 -- 管理者画面ログインテーブル
 DROP TABLE IF EXISTS admin;
-CREATE TABLE admin (
+CREATE TABLE admin
+(
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   password VARCHAR(255) NOT NULL,
   mail_admin VARCHAR(255) NOT NULL
@@ -102,7 +104,8 @@ INSERT INTO admin (id, password, mail_admin) VALUES
 
 -- 学生・エージェント中間テーブル
 DROP TABLE IF EXISTS company-user;
-CREATE TABLE company-user (
+CREATE TABLE company-user
+(
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   user_id INT NOT NULL,
   company_id INT NOT NULL,
@@ -110,11 +113,11 @@ CREATE TABLE company-user (
 );
 
 INSERT INTO company-user (id, user_id, company_id, date) VALUES 
-(1, 1, '2022-04-30'),
-(2, 2, '2022-05-03'),
-(3, 3, '2022-05-06'),
-(4, 4, '2022-05-10'),
-(5, 5, '2022-06-01')
+(1, 1, 1, '2022-04-30'),
+(2, 2, 1, '2022-05-03'),
+(3, 3, 2, '2022-05-06'),
+(4, 4, 2, '2022-05-10'),
+(5, 5, 4, '2022-06-01')
 
 
 
@@ -125,43 +128,43 @@ INSERT INTO company-user (id, user_id, company_id, date) VALUES
 
 
 -- 以下サンプルデータ
-DROP SCHEMA IF EXISTS shukatsu;
+-- DROP SCHEMA IF EXISTS shukatsu;
 
-CREATE SCHEMA shukatsu;
+-- CREATE SCHEMA shukatsu;
 
-USE shukatsu;
+-- USE shukatsu;
 
-DROP TABLE IF EXISTS users;
+-- DROP TABLE IF EXISTS users;
 
-CREATE TABLE users (
-  id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-  email boolean UNIQUE NOT NULL,
-  password VARCHAR(255) NOT NULL,
-  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
+-- CREATE TABLE users (
+--   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+--   email boolean UNIQUE NOT NULL,
+--   password VARCHAR(255) NOT NULL,
+--   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+--   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+-- );
 
-INSERT INTO
-  users
-SET
-  email = 'test@posse-ap.com',
-  password = sha1('password');
+-- INSERT INTO
+--   users
+-- SET
+--   email = 'test@posse-ap.com',
+--   password = sha1('password');
 
-DROP TABLE IF EXISTS events;
+-- DROP TABLE IF EXISTS events;
 
-CREATE TABLE events (
-  id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-  title VARCHAR(255) NOT NULL,
-  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
+-- CREATE TABLE events (
+--   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+--   title VARCHAR(255) NOT NULL,
+--   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+--   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+-- );
 
-INSERT INTO
-  events
-SET
-  title = 'イベント1';
+-- INSERT INTO
+--   events
+-- SET
+--   title = 'イベント1';
 
-INSERT INTO
-  events
-SET
-  title = 'イベント2';
+-- INSERT INTO
+--   events
+-- SET
+--   title = 'イベント2';
