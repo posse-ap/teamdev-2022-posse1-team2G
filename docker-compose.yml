@@ -2,9 +2,9 @@ version: '3'
 services:
   web:
     platform: linux/amd64
-    image: nginx:1.21
+    image: nginx:latest
     ports:
-      - "80:80"
+      - "8080:80"
     depends_on:
       - app
     volumes:
@@ -17,12 +17,15 @@ services:
       - db
     volumes:
       - ./src:/var/www/html
-
   db:
     platform: linux/amd64
     image: mysql:8.0
     environment:
+      MYSQL_DATABASE: craft             # 作成するデータベース名
+      MYSQL_USER: mysql                 # 作業ユーザー名→上記データベースの捜査権限をもつ
+      MYSQL_PASSWORD: password          # 作業ユーザーのパスワード
       MYSQL_ROOT_PASSWORD: password
+      TZ: 'Asia/Tokyo'
     ports:
       - "3306:3306"
     volumes:
