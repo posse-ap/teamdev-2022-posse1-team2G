@@ -25,6 +25,7 @@ services:
       MYSQL_USER: mysql                 # 作業ユーザー名→上記データベースの捜査権限をもつ
       MYSQL_PASSWORD: password          # 作業ユーザーのパスワード
       MYSQL_ROOT_PASSWORD: password
+      TZ: 'Asia/Tokyo'
     ports:
       - "3306:3306"
     volumes:
