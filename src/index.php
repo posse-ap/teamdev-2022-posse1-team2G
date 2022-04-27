@@ -2,8 +2,8 @@
 session_start();
 require(dirname(__FILE__) . "/dbconnect.php");
 
-$stmt = $db->query('SELECT id, title FROM events');
-$events = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// $stmt = $db->query('SELECT id, title FROM events');
+// $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 <!-- ここまでPHP -->
@@ -21,14 +21,14 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <title>サンプル</title>
 </head>
 <!-- ここまでってところまで一応残しておいてね -->
-<ul>
+<!-- <ul>
     <?php foreach ($events as $key => $event) : ?>
         <li>
             <?= $event["id"]; ?>:<?= $event["title"]; ?>
         </li>
     <?php endforeach; ?>
     <a href="/admin/index.php">管理者ページ</a>
-</ul>
+</ul> -->
 <!-- ここまで -->
 
 <!-- ここから書いてね -->
