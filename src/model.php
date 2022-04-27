@@ -12,6 +12,7 @@ function getUserData($params)
   // 	exit;
   // }
 
+  
   //入力された検索条件からSQl文を生成
   $where = [];
   if (!empty($params['name'])) {
