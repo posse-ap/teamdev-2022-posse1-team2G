@@ -1,5 +1,5 @@
 <?php
-$dsn = 'mysql:host=db;dbname=shukatsu;charset=utf8;';
+$dsn = 'mysql:host=db;dbname=craft;charset=utf8;';
 $user = 'root';
 $password = 'password';
 
