@@ -4,7 +4,7 @@ $mode = 'input';
 $errormessage = array();
 // 何もしない
 if (isset($_POST['back']) && $_POST['back']) {
-  
+
   // 確認画面のエラーメッセージ
 } else if (isset($_POST['confirm']) && $_POST['confirm']) {
 
@@ -33,7 +33,10 @@ if (isset($_POST['back']) && $_POST['back']) {
   $_SESSION["department"] = htmlspecialchars($_POST["department"], ENT_QUOTES);
 
   // 卒業年
-
+  if (!$_POST["grad_year"]) {
+    $errormessage[] = "卒業年を入力して下さい";
+  } 
+  $_SESSION["grad_year"] = htmlspecialchars($_POST["grad_year"], ENT_QUOTES);
 
 
   // メールアドレス
