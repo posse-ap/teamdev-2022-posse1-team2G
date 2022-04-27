@@ -103,8 +103,8 @@ INSERT INTO admin (id, password, mail_admin) VALUES
 
 
 -- 学生・エージェント中間テーブル
-DROP TABLE IF EXISTS company-user;
-CREATE TABLE company-user
+DROP TABLE IF EXISTS company_user;
+CREATE TABLE company_user
 (
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   user_id INT NOT NULL,
@@ -112,7 +112,7 @@ CREATE TABLE company-user
   date DATE NOT NULL
 );
 
-INSERT INTO company-user (id, user_id, company_id, date) VALUES 
+INSERT INTO company_user (id, user_id, company_id, date) VALUES 
 (1, 1, 1, '2022-04-30'),
 (2, 2, 1, '2022-05-03'),
 (3, 3, 2, '2022-05-06'),
