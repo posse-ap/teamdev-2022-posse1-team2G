@@ -119,6 +119,28 @@ INSERT INTO company-user (id, user_id, company_id, date) VALUES
 (4, 4, 2, '2022-05-10'),
 (5, 5, 4, '2022-06-01');
 
+DROP TABLE IF EXISTS userss;
+CREATE TABLE userss
+(
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL COMMENT '名前',
+  `sex` INT UNSIGNED NOT NULL COMMENT '性別\n1:男\n2:女',
+  `age` INT UNSIGNED NOT NULL COMMENT '年齢',
+  `valid` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`)
+  );
+
+INSERT INTO userss (name, sex, age, valid) VALUES
+('田中太郎', '1', '26', '1'),
+('山田花子', '2', '16', '1'),
+('高橋正樹', '1', '18', '1'),
+('金子優子', '2', '31', '1'),
+('吉井佳子', '2', '21', '1'),
+('橘勇気', '1', '13', '1'),
+('小林隆', '1', '39', '1'),
+('影山夏生', '1', '11', '0'),
+('加藤裕太', '1', '23', '1'),
+('後藤由美', '2', '20', '1');
 
 
 
