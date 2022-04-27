@@ -31,6 +31,7 @@ function getUserData($params)
     $sql = 'select * from userss';
   }
 
+  
   //SQL文を実行する
   $UserDataSet = $dbh->prepare($sql);
   $UserDataSet->execute();
