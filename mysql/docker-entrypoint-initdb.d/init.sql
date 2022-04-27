@@ -148,11 +148,11 @@ INSERT INTO userss (name, sex, age, valid) VALUES
 
 
 -- 以下サンプルデータ
--- DROP SCHEMA IF EXISTS shukatsu;
+-- DROP SCHEMA IF EXISTS craft;
 
--- CREATE SCHEMA shukatsu;
+-- CREATE SCHEMA craft;
 
--- USE shukatsu;
+-- USE craft;
 
 -- DROP TABLE IF EXISTS users;
 
