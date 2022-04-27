@@ -2,10 +2,13 @@
 session_start();
 $mode = 'input';
 $errormessage = array();
+// 何もしない
 if (isset($_POST['back']) && $_POST['back']) {
-  // 何もしない
+  
+  // 確認画面のエラーメッセージ
 } else if (isset($_POST['confirm']) && $_POST['confirm']) {
-  // 確認画面
+
+  // 名前
   if (!$_POST["fullname"]) {
     $errormessage[] = "名前を入力して下さい";
   } else if (mb_strlen($_POST["fullname"]) > 20) {
@@ -13,6 +16,7 @@ if (isset($_POST['back']) && $_POST['back']) {
   }
   $_SESSION["fullname"] = htmlspecialchars($_POST["fullname"], ENT_QUOTES);
 
+  // 大学
   if (!$_POST["university"]) {
     $errormessage[] = "大学名を入力して下さい";
   } else if (mb_strlen($_POST["university"]) > 20) {
@@ -20,6 +24,7 @@ if (isset($_POST['back']) && $_POST['back']) {
   }
   $_SESSION["university"] = htmlspecialchars($_POST["university"], ENT_QUOTES);
 
+  // 学部学科
   if (!$_POST["department"]) {
     $errormessage[] = "学部を入力して下さい";
   } else if (mb_strlen($_POST["department"]) > 20) {
@@ -27,15 +32,21 @@ if (isset($_POST['back']) && $_POST['back']) {
   }
   $_SESSION["department"] = htmlspecialchars($_POST["department"], ENT_QUOTES);
 
+  // 卒業年
+
+
+
+  // メールアドレス
   if (!$_POST["mail"]) {
-    $errormessage[] = "メールを入力して下さい";
+    $errormessage[] = "メールアドレスを入力して下さい";
   } else if (mb_strlen($_POST["mail"]) > 200) {
-    $errormessage[] = "メールは200文字以内にして下さい";
+    $errormessage[] = "メールアドレスは200文字以内にして下さい";
   } else if (!filter_var($_POST["mail"], FILTER_VALIDATE_EMAIL)) {
     $errormessage[] = "メールアドレスが不正です";
   }
   $_SESSION["mail"] = htmlspecialchars($_POST["mail"], ENT_QUOTES);
 
+  // 電話番号
   if (!$_POST["phone_number"]) {
     $errormessage[] = "電話番号を入力して下さい";
   } else if (mb_strlen($_POST["phone_number"]) > 20) {
@@ -43,58 +54,27 @@ if (isset($_POST['back']) && $_POST['back']) {
   }
   $_SESSION["phone_number"] = htmlspecialchars($_POST["phone_number"], ENT_QUOTES);
 
+  // 住所
   if (!$_POST["address"]) {
     $errormessage[] = "住所を入力して下さい";
-  } else if (mb_strlen($_POST["address"]) > 20) {
-    $errormessage[] = "住所は20文字以内にして下さい";
+  } else if (mb_strlen($_POST["address"]) > 100) {
+    $errormessage[] = "住所は100文字以内にして下さい";
   }
   $_SESSION["address"] = htmlspecialchars($_POST["address"], ENT_QUOTES);
 
-  if (!$_POST["phone_number"]) {
-    $errormessage[] = "名前を入力して下さい";
-  } else if (mb_strlen($_POST["phone_number"]) > 20) {
-    $errormessage[] = "名前は20文字以内にして下さい";
-  }
-  $_SESSION["phone_number"] = htmlspecialchars($_POST["phone_number"], ENT_QUOTES);
-
-  // if (!$_POST["message"]) {
-  //   $errormessage[] = "お問い合わせ内容を入力して下さい";
-  // } else if (mb_strlen($_POST["message"]) > 500) {
-  //   $errormessage = "お問い合わせ内容は500文字以内にして下さい";
-  // }
+  // その他は任意なのでエラーメッセージは表示しない
   $_SESSION["message"] = htmlspecialchars($_POST["message"], ENT_QUOTES);
 
-
-  // if (!$_POST['fullname']) {
-  //   $errormessage[] = "名前を入力してください";
-  // } else if (mb_strlen($_POST['fullname']) > 100) {
-  //   $errormessage[] = "名前は100文字以内にしてください";
-  // }
-  // $_SESSION['fullname'] = htmlspecialchars($_POST['fullname'], ENT_QUOTES);
-
-  // if (!$_POST['mail']) {
-  //   $errormessage[] = "Eメールを入力してください";
-  // } else if (mb_strlen($_POST['mail']) > 200) {
-  //   $errormessage[] = "Eメールは200文字以内にしてください";
-  // } else if (!filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
-  //   $errormessage[] = "メールアドレスが不正です";
-  // }
-  // $_SESSION['mail']    = htmlspecialchars($_POST['mail'], ENT_QUOTES);
-
-  // if (!$_POST['message']) {
-  //   $errormessage[] = "お問い合わせ内容を入力してください";
-  // } else if (mb_strlen($_POST['message']) > 500) {
-  //   $errormessage[] = "お問い合わせ内容は500文字以内にしてください";
-  // }
-  // $_SESSION['message'] = htmlspecialchars($_POST['message'], ENT_QUOTES);
-
+  //　エラーが生じた場合→input(遷移しない)
+  // エラーが生じなかった場合→confirm(確認画面に遷移)
   if ($errormessage) {
     $mode = 'input';
   } else {
     $mode = 'confirm';
   }
-} else if (isset($_POST['send']) && $_POST['send']) {
-  // 送信ボタンを押したとき
+}
+// 送信ボタンを押したとき 
+else if (isset($_POST['send']) && $_POST['send']) {
   $message  = "お問い合わせを受け付けました \r\n"
     . "名前: " . $_SESSION['fullname'] . "\r\n"
     . "mail: " . $_SESSION['mail'] . "\r\n"
@@ -105,6 +85,7 @@ if (isset($_POST['back']) && $_POST['back']) {
   $_SESSION = array();
   $mode = 'send';
 } else {
+  // 送信後は値をクリアにする（保持しない）
   $_SESSION['fullname'] = "";
   $_SESSION['university'] = "";
   $_SESSION['department'] = "";
@@ -115,6 +96,13 @@ if (isset($_POST['back']) && $_POST['back']) {
   $_SESSION['message']  = "";
 }
 ?>
+
+
+
+
+
+
+<!-- ここからフロント側 -->
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -124,15 +112,20 @@ if (isset($_POST['back']) && $_POST['back']) {
 </head>
 
 <body>
+  <!-- 入力画面 -->
   <?php if ($mode == 'input') { ?>
-    <!-- 入力画面 -->
-    <?php
-    if ($errormessage) {
-      echo '<div style="color:red;">';
-      echo implode('<br>', $errormessage);
-      echo '</div>';
-    }
-    ?>
+    <!-- エラーメッセージの表示 -->
+    <?php if ($errormessage) { ?>
+      <ul>
+        <!-- $errorは連想配列なのでforeachで分解していく -->
+        <?php foreach ($errormessage as $value) { ?>
+          <li><?php echo $value; ?></li>
+        <?php } ?>
+        <!-- 分解したエラー文をlistの中に表示していく -->
+      </ul>
+    <?php } ?>
+
+    <!-- 入力画面のフロント -->
     <form action="./contactform.php" method="post">
       <div>
         <p>名前</p>
@@ -182,16 +175,9 @@ if (isset($_POST['back']) && $_POST['back']) {
       <input type="submit" name="confirm" value="確認" />
     </form>
 
-    <!-- <form action="./contactform.php" method="post">
-      名前 <input type="text" name="fullname" value="<?php echo $_SESSION['fullname'] ?>"><br>
-      Eメール <input type="mail" name="mail" value="<?php echo $_SESSION['mail'] ?>"><br>
-      お問い合わせ内容<br>
-      <textarea cols="40" rows="8" name="message"><?php echo $_SESSION['message'] ?></textarea><br>
-      <input type="submit" name="confirm" value="確認" />
-    </form> -->
+    
+    <!-- 確認画面のフロント -->
   <?php } else if ($mode == 'confirm') { ?>
-    <!-- 確認画面 -->
-    <!-- 確認画面 -->
     <!-- <?php var_dump($_POST['grad_year']); ?> -->
     <form action="./contactform.php" method="post">
       <div>
@@ -230,16 +216,8 @@ if (isset($_POST['back']) && $_POST['back']) {
       <input type="submit" name="send" value="送信" />
     </form>
 
-    <!-- <form action="./contactform.php" method="post">
-      名前 <?php echo $_SESSION['fullname'] ?><br>
-      Eメール <?php echo $_SESSION['mail'] ?><br>
-      お問い合わせ内容<br>
-      <?php echo nl2br($_SESSION['message']) ?><br>
-      <input type="submit" name="back" value="戻る" />
-      <input type="submit" name="send" value="送信" />
-    </form> -->
-  <?php } else { ?>
     <!-- 完了画面 -->
+  <?php } else { ?>
     送信しました。お問い合わせありがとうございました。<br>
   <?php } ?>
 </body>
