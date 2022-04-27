@@ -78,13 +78,49 @@ if (isset($_POST['back']) && $_POST['back']) {
 }
 // 送信ボタンを押したとき 
 else if (isset($_POST['send']) && $_POST['send']) {
-  $message  = "お問い合わせを受け付けました \r\n"
-    . "名前: " . $_SESSION['fullname'] . "\r\n"
-    . "mail: " . $_SESSION['mail'] . "\r\n"
-    . "お問い合わせ内容:\r\n"
-    . preg_replace("/\r\n|\r|\n/", "\r\n", $_SESSION['message']);
-  mail($_SESSION['mail'], 'お問い合わせありがとうございます', $message);
-  mail('fuga@hogehoge.com', 'お問い合わせありがとうございます', $message);
+  $honbun = '';
+  $honbun .= "メールフォームよりお問い合わせがありました。\n\n";
+  $honbun .= "【お名前】\n";
+  $honbun .= $_SESSION['fullname'] . "\n\n";
+  $honbun .= "【メールアドレス】\n";
+  $honbun .= $_SESSION['mail'] . "\n\n";
+  $honbun .= "【お問い合わせ内容】\n";
+  $honbun .= "申し込みいただきありがとうございます。
+    担当の者から連絡致しますので少々お待ちください。" . "\n\n";
+
+  //エンコード処理
+  mb_language("Japanese");
+  mb_internal_encoding("UTF-8");
+
+  //メールの作成
+  $mail_to  = "rr.hh0207@keio.jp";      //送信先メールアドレス
+  $mail_subject  = "craftのご利用";  //メールの件名
+  $mail_body  = $honbun;        //メールの本文
+  $mail_header  = "from:" . $_SESSION['mail'];      //送信元として表示されるメールアドレス
+
+  //メール送信処理
+  $mailsousin  = mb_send_mail($mail_to, $mail_subject, $mail_body, $mail_header);
+
+  //メール送信結果
+  if ($mailsousin == true) {
+    echo '<p>お問い合わせメールを送信しました。</p>';
+  } else {
+    echo '<p>メール送信でエラーが発生しました。</p>';
+  }
+
+
+  // $message  = "お問い合わせを受け付けました \r\n"
+  //   . "名前: " . $_SESSION['fullname'] . "\r\n"
+  //   . "mail: " . $_SESSION['mail'] . "\r\n"
+  //   . "お問い合わせ内容:\r\n"
+  //   . preg_replace("/\r\n|\r|\n/", "\r\n", $_SESSION['message']);
+  // $mail_send = mail($_SESSION['mail'], 'お問い合わせありがとうございます', $message);
+  // // mail('fuga@hogehoge.com', 'お問い合わせありがとうございます', $message);
+  // if ($mail_send == true) {
+  //   echo "メール送信成功です";
+  // } else {
+  //   echo "メール送信失敗です";
+  // }
   $_SESSION = array();
   $mode = 'send';
 } else {
@@ -116,6 +152,8 @@ else if (isset($_POST['send']) && $_POST['send']) {
 
 <body>
   <!-- 入力画面 -->
+  <h1>お問い合わせフォーム</h1>
+
   <?php if ($mode == 'input') { ?>
     <!-- エラーメッセージの表示 -->
     <?php if ($errormessage) { ?>
