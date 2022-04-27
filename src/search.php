@@ -2,7 +2,7 @@
 
 //①データ取得ロジックを呼び出す
 include_once('model.php');
-
+// え
 $userData = getUserData($_GET);
 
 ?>
