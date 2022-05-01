@@ -18,12 +18,12 @@ CREATE TABLE users
   delete_flg INT NOT NULL
 );
 
-INSERT INTO users (id, name, university, department, grad_year, mail, phone_number, address, delete_flg) VALUES 
-(1, '鈴木花子', '〇〇大学', '学部', '24年春', 'marumaru@gmail.com', '080-5432-1987','〇県△市', 0),
-(2, '佐藤太郎', '〇△大学', '学部', '24年春', 'marusankaku@gmail.com', '080-5432-1988','△県〇市', 0),
-(3, '田中一郎', '△〇大学', '学部', '24年秋', 'sankakumaru@gmail.com', '080-5432-1989','△県〇市', 0),
-(4, '山田かな', '△△大学', '学部', '25年春', 'sankakusankaku@gmail.com', '080-5432-1990','△県△市', 0),
-(5, '加藤ゆう', '〇〇大学', '学部', '25年春', 'marusankakubatu@gmail.com', '080-5432-1991','〇県〇市', 0);
+INSERT INTO users (name, university, department, grad_year, mail, phone_number, address, delete_flg) VALUES 
+('鈴木花子', '〇〇大学', '学部', '24年春', 'marumaru@gmail.com', '080-5432-1987','〇県△市', 0),
+('佐藤太郎', '〇△大学', '学部', '24年春', 'marusankaku@gmail.com', '080-5432-1988','△県〇市', 0),
+('田中一郎', '△〇大学', '学部', '24年秋', 'sankakumaru@gmail.com', '080-5432-1989','△県〇市', 0),
+('山田かな', '△△大学', '学部', '25年春', 'sankakusankaku@gmail.com', '080-5432-1990','△県△市', 0),
+('加藤ゆう', '〇〇大学', '学部', '25年春', 'marusankakubatu@gmail.com', '080-5432-1991','〇県〇市', 0);
 
 
 -- エージェント契約情報テーブル
@@ -42,12 +42,12 @@ CREATE TABLE company
   delete_flg INT NOT NULL
 );
 
-INSERT INTO company (id, company_name, company_url, representative, mail_contact, mail_manager, mail_notification, phone_number, address, delete_flg) VALUES 
-(1, '鈴木会社', 'marumaruurl.com', '赤井', 'aaaaiiiiuuuu@gmail.com', 'ssssmmmmllll@gmail.com', 'marumaru@gmail.com', '0120-3456-1987','〇県△市', 0),
-(2, '佐藤会社', 'marumaruurl.com', '工藤', 'aaaauuuuiiii@gmail.com', 'mmmmssssllll@gmail.com', 'marusankaku@gmail.com', '0120-3456-1988','△県〇市', 0),
-(3, '田中会社', 'marumaruurl.com', '羽柴', 'iiiiaaaauuuu@gmail.com', 'ssssllllmmmm@gmail.com', 'sankakumaru@gmail.com', '0120-3456-1989','△県〇市', 0),
-(4, '山田会社', 'marumaruurl.com', '毛利', 'iiiiuuuuaaaa@gmail.com', 'mmssssmmllll@gmail.com', 'sankakusankaku@gmail.com', '0120-3456-1990','△県△市', 0),
-(5, '加藤会社', 'marumaruurl.com', '安室', 'aaaauuuuuuuu@gmail.com', 'llllssssmmmm@gmail.com', 'marusankakubatu@gmail.com', '0120-3456-1991','〇県〇市', 0);
+INSERT INTO company (company_name, company_url, representative, mail_contact, mail_manager, mail_notification, phone_number, address, delete_flg) VALUES 
+('鈴木会社', 'marumaruurl.com', '赤井', 'aaaaiiiiuuuu@gmail.com', 'ssssmmmmllll@gmail.com', 'marumaru@gmail.com', '0120-3456-1987','〇県△市', 0),
+('佐藤会社', 'marumaruurl.com', '工藤', 'aaaauuuuiiii@gmail.com', 'mmmmssssllll@gmail.com', 'marusankaku@gmail.com', '0120-3456-1988','△県〇市', 0),
+('田中会社', 'marumaruurl.com', '羽柴', 'iiiiaaaauuuu@gmail.com', 'ssssllllmmmm@gmail.com', 'sankakumaru@gmail.com', '0120-3456-1989','△県〇市', 0),
+('山田会社', 'marumaruurl.com', '毛利', 'iiiiuuuuaaaa@gmail.com', 'mmssssmmllll@gmail.com', 'sankakusankaku@gmail.com', '0120-3456-1990','△県△市', 0),
+('加藤会社', 'marumaruurl.com', '安室', 'aaaauuuuuuuu@gmail.com', 'llllssssmmmm@gmail.com', 'marusankakubatu@gmail.com', '0120-3456-1991','〇県〇市', 0);
 
 
 -- エージェント掲載情報テーブル
@@ -80,12 +80,12 @@ CREATE TABLE company_posting_information
   delete_flg INT NOT NULL
 );
 
-INSERT INTO company_posting_information (id, company_id, logo, name, img, industries, achievement, type, catch_copy, information, strength, job_offer_number, user_count, informal_job_offer_rate, satisfaction_degrees, finding_employment_target, ES, interview, limited_course, competence_diagnosis, special_selection, interview_style, location) VALUES 
-(1, 1, './src/admin/img/logo/', '鈴木会社', './src/admin/img/img/', 'IT業界', '実績', '理系', 'dream', '鈴木会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, true, true, true, 'オンライン', 'オンライン', 0),
-(2, 2, './src/admin/img/logo/', '佐藤会社', './src/admin/img/img/', 'IT業界', '実績', '文系', 'dream', '佐藤会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, false, true, true, true, 'オンライン', 'オンライン', 0),
-(3, 3, './src/admin/img/logo/', '田中会社', './src/admin/img/img/', 'IT業界', '実績', '理系', 'dream', '田中会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, false, false, true, 'オンライン', 'オンライン', 0),
-(4, 4, './src/admin/img/logo/', '山田会社', './src/admin/img/img/', 'IT業界', '実績', '理系', 'dream', '山田会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, true, false, true, '対面', '都心', 0),
-(5, 5, './src/admin/img/logo/', '加藤会社', './src/admin/img/img/', 'IT業界', '実績', '文系', 'dream', '加藤会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, true, true, false, 'オンライン', 'オンライン', 0);
+INSERT INTO company_posting_information (company_id, logo, name, img, industries, achievement, type, catch_copy, information, strength, job_offer_number, user_count, informal_job_offer_rate, satisfaction_degrees, finding_employment_target, ES, interview, limited_course, competence_diagnosis, special_selection, interview_style, location, delete_flg) VALUES 
+(1, './src/admin/img/logo/', '鈴木会社', './src/admin/img/img/', 'IT業界', '実績', '理系', 'dream', '鈴木会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, true, true, true, 'オンライン', 'オンライン', 0),
+(2, './src/admin/img/logo/', '佐藤会社', './src/admin/img/img/', 'IT業界', '実績', '文系', 'dream', '佐藤会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, false, true, true, true, 'オンライン', 'オンライン', 0),
+(3, './src/admin/img/logo/', '田中会社', './src/admin/img/img/', 'IT業界', '実績', '理系', 'dream', '田中会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, false, false, true, 'オンライン', 'オンライン', 0),
+(4, './src/admin/img/logo/', '山田会社', './src/admin/img/img/', 'IT業界', '実績', '理系', 'dream', '山田会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, true, false, true, '対面', '都心', 0),
+(5, './src/admin/img/logo/', '加藤会社', './src/admin/img/img/', 'IT業界', '実績', '文系', 'dream', '加藤会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, true, true, false, 'オンライン', 'オンライン', 0);
 
 
 -- 管理者画面ログインテーブル
@@ -97,12 +97,12 @@ CREATE TABLE admin
   mail_admin VARCHAR(255) NOT NULL
 );
 
-INSERT INTO admin (id, password, mail_admin) VALUES 
-(1, 'aaaaaa', 'ssssmmmmllll@gmail.com'),
-(2, 'bbbbbb', 'mmmmssssllll@gmail.com'),
-(3, 'cccccc', 'ssssllllmmmm@gmail.com'),
-(4, 'dddddd', 'mmssssmmllll@gmail.com'),
-(5, 'eeeeee', 'llllssssmmmm@gmail.com');
+INSERT INTO admin (password, mail_admin) VALUES 
+('aaaaaa', 'ssssmmmmllll@gmail.com'),
+('bbbbbb', 'mmmmssssllll@gmail.com'),
+('cccccc', 'ssssllllmmmm@gmail.com'),
+('dddddd', 'mmssssmmllll@gmail.com'),
+('eeeeee', 'llllssssmmmm@gmail.com');
 
 
 -- 学生・エージェント中間テーブル
@@ -114,15 +114,15 @@ CREATE TABLE company_user
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   user_id INT NOT NULL,
   company_id INT NOT NULL,
-  date DATE NOT NULL
+  date DATETIME NOT NULL
 );
 
-INSERT INTO company_user (id, user_id, company_id, date) VALUES 
-(1, 1, 1, '2022-04-30'),
-(2, 2, 1, '2022-05-03'),
-(3, 3, 2, '2022-05-06'),
-(4, 4, 2, '2022-05-10'),
-(5, 5, 4, '2022-06-01');
+INSERT INTO company_user (user_id, company_id, date) VALUES 
+(1, 1, '2022-04-30'),
+(2, 1, '2022-05-03'),
+(3, 2, '2022-05-06'),
+(4, 2, '2022-05-10'),
+(5, 4, '2022-06-01');
 
 DROP TABLE IF EXISTS userss;
 CREATE TABLE userss
