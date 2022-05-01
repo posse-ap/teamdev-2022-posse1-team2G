@@ -106,23 +106,57 @@ INSERT INTO admin (password, mail_admin) VALUES
 
 
 -- 学生・エージェント中間テーブル
-  --user_id:ユーザーテーブル users の キー(id)
-  --company_id:エージェント契約情報テーブル company の キー(id)
-DROP TABLE IF EXISTS company_user;
-CREATE TABLE company_user
-(
-  id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-  user_id INT NOT NULL,
-  company_id INT NOT NULL,
-  date DATETIME NOT NULL
-);
+  --ユーザーテーブルの キー
+  --エージェント契約情報テーブルの キー
+-- DROP TABLE IF EXISTS company_user;
 
-INSERT INTO company_user (user_id, company_id, date) VALUES 
-(1, 1, '2022-04-30'),
-(2, 1, '2022-05-03'),
-(3, 2, '2022-05-06'),
-(4, 2, '2022-05-10'),
-(5, 4, '2022-06-01');
+-- CREATE TABLE company_user
+-- (
+--   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+--   user_id INT NOT NULL,
+--   company_id INT NOT NULL,
+--   contact_datetime DATETIME NOT NULL
+-- );
+
+-- INSERT INTO company_user (user_id, company_id, contact_datetime) VALUES 
+-- (1, 1, '2022-04-30'),
+-- (1, 2, '2022-05-03'),
+-- (2, 1, '2022-05-06'),
+-- (3, 4, '2022-05-06'),
+-- (4, 3, '2022-05-10'),
+-- (5, 5, '2022-06-01');
+
+-- datetimeを消して確認…それでも反映されず
+-- CREATE TABLE company_user
+-- (
+--   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+--   user_id INT NOT NULL,
+--   company_id INT NOT NULL,
+-- );
+
+-- INSERT INTO company_user (user_id, company_id) VALUES 
+-- (1, 1),
+-- (1, 2),
+-- (2, 1),
+-- (3, 4),
+-- (4, 3),
+-- (5, 5);
+
+-- テーブル名を変えただけのものも反映されず
+-- DROP TABLE IF EXISTS admin2;
+-- CREATE TABLE admin2
+-- (
+--   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+--   password VARCHAR(255) NOT NULL,
+--   mail_admin VARCHAR(255) NOT NULL
+-- );
+
+-- INSERT INTO admin2 (password, mail_admin) VALUES 
+-- ('aaaaaa', 'ssssmmmmllll@gmail.com'),
+-- ('bbbbbb', 'mmmmssssllll@gmail.com'),
+-- ('cccccc', 'ssssllllmmmm@gmail.com'),
+-- ('dddddd', 'mmssssmmllll@gmail.com'),
+-- ('eeeeee', 'llllssssmmmm@gmail.com');
 
 DROP TABLE IF EXISTS userss;
 CREATE TABLE userss
