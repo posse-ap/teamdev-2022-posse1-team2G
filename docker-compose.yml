@@ -17,6 +17,7 @@ services:
       - db
     volumes:
       - ./src:/var/www/html
+      - ./php/mail.ini:/etc/php.d/mail.ini:ro
   db:
     platform: linux/amd64
     image: mysql:8.0
@@ -32,3 +33,7 @@ services:
       - ./mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
       - ./mysql/etc/mysql/conf.d:/etc/mysql/conf.d
       - ./mysql/data:/var/lib/mysql
+  mailhog:
+        image: mailhog/mailhog
+        ports:
+            - 8025:8025
