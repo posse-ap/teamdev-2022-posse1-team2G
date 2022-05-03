@@ -31,11 +31,17 @@ $userData = getUserData($_GET);
       </div>
       <div class="form-group">
         <label for="InputSex">性別</label>
-        <select name="sex" class="form-control" id="InputSex">
+        <!-- <select name="sex" class="form-control" id="InputSex">
           <option value="0" <?php echo empty($_GET['sex']) ? 'selected' : '' ?>>選択しない</option>
           <option value="1" <?php echo isset($_GET['sex']) && $_GET['sex'] == '1' ? 'selected' : '' ?>>男性</option>
           <option value="2" <?php echo isset($_GET['sex']) && $_GET['sex'] == '2' ? 'selected' : '' ?>>女性</option>
-        </select>
+        </select> -->
+        <input type="radio" name="sex" value='male' id="">男性
+        <input type="radio" name="sex" value='female' id="">女性
+        <?php if(isset($_GET['sex'])){?>
+          <?php $sex = $_GET['sex'];?>
+          <?php echo $sex;?>
+          <?php }?>
       </div>
       <div class="form-group">
         <label for="InputAge">年齢</label>

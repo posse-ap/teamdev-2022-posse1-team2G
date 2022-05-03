@@ -81,11 +81,11 @@ CREATE TABLE company_posting_information
 );
 
 INSERT INTO company_posting_information (company_id, logo, name, img, industries, achievement, type, catch_copy, information, strength, job_offer_number, user_count, informal_job_offer_rate, satisfaction_degrees, finding_employment_target, ES, interview, limited_course, competence_diagnosis, special_selection, interview_style, location, delete_flg) VALUES 
-(1, './src/admin/img/logo/', '鈴木会社', './src/admin/img/img/', 'IT業界', '実績', '理系', 'dream', '鈴木会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, true, true, true, 'オンライン', 'オンライン', 0),
-(2, './src/admin/img/logo/', '佐藤会社', './src/admin/img/img/', 'IT業界', '実績', '文系', 'dream', '佐藤会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, false, true, true, true, 'オンライン', 'オンライン', 0),
-(3, './src/admin/img/logo/', '田中会社', './src/admin/img/img/', 'IT業界', '実績', '理系', 'dream', '田中会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, false, false, true, 'オンライン', 'オンライン', 0),
-(4, './src/admin/img/logo/', '山田会社', './src/admin/img/img/', 'IT業界', '実績', '理系', 'dream', '山田会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, true, false, true, '対面', '都心', 0),
-(5, './src/admin/img/logo/', '加藤会社', './src/admin/img/img/', 'IT業界', '実績', '文系', 'dream', '加藤会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, true, true, false, 'オンライン', 'オンライン', 0);
+(1, './src/admin/img/logo/', '鈴木会社', './src/admin/img/img/', 'IT', '実績', '理系', 'dream', '鈴木会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, true, true, true, 'オンライン', 'オンライン', 0),
+(2, './src/admin/img/logo/', '佐藤会社', './src/admin/img/img/', 'サービス', '実績', '文系', 'dream', '佐藤会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, false, true, true, true, 'オンライン', 'オンライン', 0),
+(3, './src/admin/img/logo/', '田中会社', './src/admin/img/img/', '商社', '実績', '理系', 'dream', '田中会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, false, false, true, 'オンライン', 'オンライン', 0),
+(4, './src/admin/img/logo/', '山田会社', './src/admin/img/img/', '小売', '実績', '理系', 'dream', '山田会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, true, false, true, '対面', '都心', 0),
+(5, './src/admin/img/logo/', '加藤会社', './src/admin/img/img/', '金融', '実績', '文系', 'dream', '加藤会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, true, true, false, 'オンライン', 'オンライン', 0);
 
 
 -- 管理者画面ログインテーブル
@@ -163,18 +163,18 @@ CREATE TABLE userss
 (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL COMMENT '名前',
-  `sex` INT UNSIGNED NOT NULL COMMENT '性別\n1:男\n2:女',
+  `sex` VARCHAR(45)  UNSIGNED NOT NULL COMMENT '性別\n1:男\n2:女',
   `age` INT UNSIGNED NOT NULL COMMENT '年齢',
   `valid` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`id`)
   );
 
 INSERT INTO userss (name, sex, age, valid) VALUES
-('田中太郎', '1', '26', '1'),
-('山田花子', '2', '16', '1'),
-('高橋正樹', '1', '18', '1'),
-('金子優子', '2', '31', '1'),
-('吉井佳子', '2', '21', '1'),
+('田中太郎', '男性', '26', '1'),
+('山田花子', '女性', '16', '1'),
+('高橋正樹', '男性', '18', '1'),
+('金子優子', '女性', '31', '1'),
+('吉井佳子', '女性', '21', '1'),
 ('橘勇気', '1', '13', '1'),
 ('小林隆', '1', '39', '1'),
 ('影山夏生', '1', '11', '0'),
