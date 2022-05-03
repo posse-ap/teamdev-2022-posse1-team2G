@@ -24,6 +24,11 @@ $userData = getUserData($_GET);
 
     <?php //②検索フォーム 
     ?>
+
+
+
+
+
     <form method="get">
       <div class="form-group">
         <label for="InputName">名前</label>
@@ -36,8 +41,8 @@ $userData = getUserData($_GET);
           <option value="1" <?php echo isset($_GET['sex']) && $_GET['sex'] == '1' ? 'selected' : '' ?>>男性</option>
           <option value="2" <?php echo isset($_GET['sex']) && $_GET['sex'] == '2' ? 'selected' : '' ?>>女性</option>
         </select> -->
-        <input type="radio" name="sex" value='male' id="">男性
-        <input type="radio" name="sex" value='female' id="">女性
+        <input type="radio" name="sex" value='1' id="">男性
+        <input type="radio" name="sex" value='2' id="">女性
         <?php if(isset($_GET['sex'])){?>
           <?php $sex = $_GET['sex'];?>
           <?php echo $sex;?>

@@ -22,7 +22,7 @@ function getUserData($params)
   //   $where[] = 'sex = ' . $params['sex'];
   // }
   if (!empty($params['sex'])) {
-    $where[] = $params['sex'];
+    $where[] = 'sex = ' . $params['sex'];
   }
   if (!empty($params['age'])) {
     $where[] = 'age <= ' . ((int)$params['age'] + 9) . ' AND age >= ' . (int)$params['age'];
