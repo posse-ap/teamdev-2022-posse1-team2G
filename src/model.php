@@ -15,18 +15,22 @@ function getUserData($params)
   // あああ
   //入力された検索条件からSQl文を生成
   $where = [];
-  if (!empty($params['name'])) {
-    $where[] = "name like '%{$params['name']}%'";
-  }
+  // if (!empty($params['name'])) {
+  //   $where[] = "name like '%{$params['name']}%'";
+  // }
+ 
   // if (!empty($params['sex'])) {
   //   $where[] = 'sex = ' . $params['sex'];
   // }
-  if (!empty($params['sex'])) {
-    $where[] = 'sex = ' . $params['sex'];
+  // if (!empty($params['sex'])) {
+  //   $where[] = 'sex = ' . $params['sex'];
+  // }
+  if (!empty($params['industries'])) {
+    $where[] = 'industries = ' . $params['industries'];
   }
-  if (!empty($params['age'])) {
-    $where[] = 'age <= ' . ((int)$params['age'] + 9) . ' AND age >= ' . (int)$params['age'];
-  }
+  // if (!empty($params['age'])) {
+  //   $where[] = 'age <= ' . ((int)$params['age'] + 9) . ' AND age >= ' . (int)$params['age'];
+  // }
 
   // $where = [];
   // if (!empty($params['industries'])) {
@@ -38,13 +42,14 @@ function getUserData($params)
     $whereSql = implode(' AND ', $where);
     print_r($whereSql);
     // name like '%平野隆二%' AND sex = 1 AND age <= 19 AND age >= 10
-    $sql = 'select * from userss where ' . $whereSql;
+    $sql = 'select * from company_posting_information where ' . "$whereSql";
   } else {
-    $sql = 'select * from userss';
+    $sql = 'select * from company_posting_information';
   }
 
   
   //SQL文を実行する
+  print_r($sql);
   $UserDataSet = $dbh->prepare($sql);
   $UserDataSet->execute();
   // print_r(($UserDataSet));
@@ -55,4 +60,5 @@ function getUserData($params)
   }
   // print_r($result);
   return $result;
+  // return $UserDataSet;
 }
