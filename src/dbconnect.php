@@ -1,6 +1,6 @@
 <?php
 $dsn = 'mysql:host=db;dbname=craft;charset=utf8;';
-$user = 'root';
+$user = 'craft';
 $password = 'password';
 
 
