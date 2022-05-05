@@ -93,13 +93,28 @@ else if (isset($_POST['send']) && $_POST['send']) {
   mb_language("Japanese");
   mb_internal_encoding("UTF-8");
 
-  //メールの作成 （to 学生）
-  $mail_to  = $_SESSION['mail'];      //送信先メールアドレス
-  $mail_subject  = "craftのご利用";  //メールの件名
-  $mail_body  = $honbun;        //メールの本文
-  $mail_header  = "from: ayaka1712pome@gmail.com\n";      //送信元として表示されるメールアドレス
-  $mail_header .= "Return-Path: ayaka1712pome@gmail.com\n";  //fromと同じメアド
+  /* メールの作成 （to 学生）
+   mail_to($宛先):	送信先のメールアドレス 各アドレスをカンマで区切ると、複数の宛先をtoに指定できる。このパラメータは、自動的にはエンコードされない。
+   mail_subject($件名):	メールの件名
+   mail_body($本文):  メールの本文
+   mail_header($ヘッダー):	ヘッダー
+      from:  送信元として表示されるメールアドレス
+      Return-Path:  fromと同じメアド
+      以下headerの文字化け防止
+        ・MIME-Version
+        ・Content-Transfer-Encoding
+        ・Content-Type
+  */
+  $mail_to  = $_SESSION['mail']; 
+  $mail_subject  = "craftのご利用";
+  $mail_body  = $honbun. "\n\n";
+  $mail_header = "from: ayaka1712pome@gmail.com\r\n"
+               . "Return-Path: ayaka1712pome@gmail.com\r\n"
+               . "MIME-Version: 1.0\r\n"
+               . "Content-Transfer-Encoding: BASE64\r\n"
+               . "Content-Type: text/plain; charset=UTF-8\r\n";
 
+  
   //( test )
   // $mail_to  = "rr.hh0207@keio.jp";      //送信先メールアドレス
   // $mail_subject  = "craftのご利用";  //メールの件名
