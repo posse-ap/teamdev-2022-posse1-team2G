@@ -36,13 +36,13 @@ function getUserData($params)
 
   $where = [];
   if (isset($params)) {
-    $where[] = 'industries = ' . "$params";
+    $where[] = "industries = '" . $params . "'";
   }
   // if (isset($params['industries'])) {
   //   $where[] = 'industries = ' . $params['industries'];
   // }
   // Array ( [0] => name like '%平野隆二%' [1] => sex = 1 [2] => age <= 19 AND age >= 10 ) 
-  print_r($where);
+  // print_r($where);
   if ($where) {
     $whereSql = implode(' AND ', $where);
     // print_r($whereSql);
