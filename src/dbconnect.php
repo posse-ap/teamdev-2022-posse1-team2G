@@ -5,8 +5,10 @@ $password = 'password';
 
 
 try {
-  $db = new PDO($dsn, $user, $password);
-  $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  $db = new PDO($dsn, $user, $password,[
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+  ]);
 } catch (PDOException $e) {
   echo '接続失敗: ' . $e->getMessage();
   exit();
