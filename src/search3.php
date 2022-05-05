@@ -1,8 +1,8 @@
 <?php
 
 //①データ取得ロジックを呼び出す
-include_once('model2.php');
-// え
+include_once('model3.php');
+
 $userData = getUserData($_GET);
 
 ?>
@@ -76,6 +76,7 @@ $userData = getUserData($_GET);
     <?php else : ?>
       <p class="alert alert-danger">検索対象は見つかりませんでした。</p>
     <?php endif; ?>
+
   </div>
 </body>
 

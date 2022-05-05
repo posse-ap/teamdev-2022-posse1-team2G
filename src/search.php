@@ -1,7 +1,7 @@
 <?php
 
 //①データ取得ロジックを呼び出す
-include_once('model.php');
+require('model.php');
 // え
 $userData = getUserData($_GET);
 
@@ -28,23 +28,41 @@ $userData = getUserData($_GET);
     <form action="" method='GET'>
       <div class="form-group">
         <label for="">業種</label>
-        <input type="radio" name="industries" value='service'>サービス
-        <input type="radio" name="industries" value='IT'>IT
-        <input type="radio" name="industries" value='retail'>小売り
-        <input type="radio" name="industries" value='trading_company'>商社
-        <input type="radio" name="industries" value='finance'>金融
-        <input type="radio" name="industries" value='communication'>通信
-        <input type="radio" name="industries" value='mass_communication'>マスコミ
-        <!-- <?php if (isset($_GET['industries'])) : ?>
-          <?php $industries = $_GET['industries']; ?>
-          <?php echo $industries; ?>
-        <?php else : ?>
-          <p class="alert alert-danger">検索対象は見つかりませんでした。</p>
-        <?php endif; ?> -->
+        <input type="radio" name="industries" value="service">サービス
+        <input type="radio" name="industries" value="IT">IT
+        <input type="radio" name="industries" value="retail">小売り
+        <input type="radio" name="industries" value="trading_company">商社
+        <input type="radio" name="industries" value="finance">金融
+        <input type="radio" name="industries" value="communication">通信
+        <input type="radio" name="industries" value="mass_communication">マスコミ
       </div>
       <button type="submit" class="btn btn-default" name="search">検索</button>
     </form>
 
+    <div class="col-xs-6 col-xs-offset-3">
+      <?php //③取得データを表示する 
+      ?>
+      <?php if (isset($userData) && count($userData)) : ?>
+        
+        <p class="alert alert-success"><?php echo count($userData) ?>件見つかりました。</p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>名前</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($userData as $row) : ?>
+              <tr>
+                <td><?php echo htmlspecialchars($row['industries']) ?></td>
+              </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+      <?php else : ?>
+        <p class="alert alert-danger">検索対象は見つかりませんでした。</p>
+      <?php endif; ?>
+    </div>
 
 
     <!-- 
@@ -82,14 +100,15 @@ $userData = getUserData($_GET);
   </div>
   <div class="col-xs-6 col-xs-offset-3">
     <?php //③取得データを表示する 
+    print_r($userData);
     ?>
-<?php if(isset($userData)): ?>
-<?php foreach($userData as $value):?>
-<?php echo $value;?>
-<?php ?>
-<?php ?>
-<?php endforeach;?>
-<?php endif;?>
+    <?php if (isset($userData)) : ?>
+      <?php foreach ($userData as $value) : ?>
+        <?php print_r($value); ?>
+        <?php ?>
+        <?php ?>
+      <?php endforeach; ?>
+    <?php endif; ?>
 
 
 
@@ -101,21 +120,21 @@ $userData = getUserData($_GET);
 
     <!-- <?php if (isset($userData) && count($userData)) : ?>
       <p class="alert alert-success"><?php echo count($userData) ?>件見つかりました。</p> -->
-      <!-- <table class="table"> -->
-        <!-- <thead>
+    <!-- <table class="table"> -->
+    <!-- <thead>
           <tr>
             <th>名前</th>
             <th>性別</th>
             <th>年齢</th>
           </tr>
         </thead> -->
-        <!-- <tbody>
+    <!-- <tbody>
           <?php foreach ($userData as $row) : ?>
             <?php echo htmlspecialchars($row['industries']) ?>
 
           <?php endforeach; ?>
         </tbody> -->
-      <!-- </table> -->
+    <!-- </table> -->
     <!-- <?php else : ?>
       <p class="alert alert-danger">検索対象は見つかりませんでした。</p>
     <?php endif; ?> -->

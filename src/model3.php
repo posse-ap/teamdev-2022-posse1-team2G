@@ -3,16 +3,11 @@
 function getUserData($params)
 {
   //DBの接続情報
-  include_once('dbconnect.php');
+  include_once('./dbconnect.php');
 
   //DBコネクタを生成
   $dbh = new PDO($dsn, $user, $password);
-  // if ($dbh->connect_error) {
-  // 	error_log($dbh->connect_error);
-  // 	exit;
-  // }
 
-  // あああ
   //入力された検索条件からSQl文を生成
   $where = [];
   if (!empty($params['name'])) {
@@ -30,21 +25,14 @@ function getUserData($params)
   } else {
     $sql = 'select * from userss';
   }
-  
-// print_r($where);
-// print_r($whereSql);
-
 
   //SQL文を実行する
-  $UserDataSet = $dbh->prepare($sql);
-  $UserDataSet->execute();
-  // print_r(($UserDataSet));
+  $UserDataSet = $dbh->query($sql);
+
   //扱いやすい形に変える
-  // $result = [];
-  // while ($row = $UserDataSet->fetch(PDO::FETCH_ASSOC)) {
-  //   $result[] = $row;
-  // }
-  $result = $UserDataSet->fetchAll(PDO::FETCH_ASSOC);
-  print_r($result);
+  $result = [];
+  while ($row = $UserDataSet->fetchAll()) {
+    $result[] = $row;
+  }
   return $result;
 }
