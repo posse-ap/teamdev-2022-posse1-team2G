@@ -68,7 +68,7 @@ if (isset($_POST['back']) && $_POST['back']) {
   // その他は任意なのでエラーメッセージは表示しない
   $_SESSION["message"] = htmlspecialchars($_POST["message"], ENT_QUOTES);
 
-  //　エラーが生じた場合→input(遷移しない)
+  // エラーが生じた場合→input(遷移しない)
   // エラーが生じなかった場合→confirm(確認画面に遷移)
   if ($errormessage) {
     $mode = 'input';
@@ -78,6 +78,7 @@ if (isset($_POST['back']) && $_POST['back']) {
 }
 // 送信ボタンを押したとき 
 else if (isset($_POST['send']) && $_POST['send']) {
+  //メール本文の用意
   $honbun = '';
   $honbun .= "メールフォームよりお問い合わせがありました。\n\n";
   $honbun .= "【お名前】\n";
@@ -92,11 +93,18 @@ else if (isset($_POST['send']) && $_POST['send']) {
   mb_language("Japanese");
   mb_internal_encoding("UTF-8");
 
-  //メールの作成
-  $mail_to  = "rr.hh0207@keio.jp";      //送信先メールアドレス
+  //メールの作成 （to 学生）
+  $mail_to  = $_SESSION['mail'];      //送信先メールアドレス
   $mail_subject  = "craftのご利用";  //メールの件名
   $mail_body  = $honbun;        //メールの本文
-  $mail_header  = "from:" . $_SESSION['mail'];      //送信元として表示されるメールアドレス
+  $mail_header  = "from: ayaka1712pome@gmail.com\n";      //送信元として表示されるメールアドレス
+  $mail_header .= "Return-Path: ayaka1712pome@gmail.com\n";  //fromと同じメアド
+
+  //( test )
+  // $mail_to  = "rr.hh0207@keio.jp";      //送信先メールアドレス
+  // $mail_subject  = "craftのご利用";  //メールの件名
+  // $mail_body  = $honbun;        //メールの本文
+  // $mail_header  = "from:" . $_SESSION['mail'];      //送信元として表示されるメールアドレス
 
   //メール送信処理
   $mailsousin  = mb_send_mail($mail_to, $mail_subject, $mail_body, $mail_header);
