@@ -28,13 +28,13 @@ $userData = getUserData($_GET);
     <form action="" method='GET'>
       <div class="form-group">
         <label for="">業種</label>
-        <input type="radio" name="industries" value="service">サービス
-        <input type="radio" name="industries" value="IT">IT
-        <input type="radio" name="industries" value="retail">小売り
-        <input type="radio" name="industries" value="trading_company">商社
-        <input type="radio" name="industries" value="finance">金融
-        <input type="radio" name="industries" value="communication">通信
-        <input type="radio" name="industries" value="mass_communication">マスコミ
+        <input type="checkbox" name="industries[]" value="service">サービス
+        <input type="checkbox" name="industries[]" value="IT">IT
+        <input type="checkbox" name="industries[]" value="retail">小売り
+        <input type="checkbox" name="industries[]" value="trading_company">商社
+        <input type="checkbox" name="industries[]" value="finance">金融
+        <input type="checkbox" name="industries[]" value="communication">通信
+        <input type="checkbox" name="industries[]" value="mass_communication">マスコミ
       </div>
       <button type="submit" class="btn btn-default" name="search">検索</button>
     </form>
@@ -43,7 +43,7 @@ $userData = getUserData($_GET);
       <?php //③取得データを表示する 
       ?>
       <?php if (isset($userData) && count($userData)) : ?>
-        
+
         <p class="alert alert-success"><?php echo count($userData) ?>件見つかりました。</p>
         <table class="table">
           <thead>
