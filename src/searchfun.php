@@ -33,7 +33,7 @@ function getUserData($params)
   // type = '文系'
 
 // ふたつの条件を結合する
-   $join = '('. $indSql . ')' .' AND ' . '(' . $typSql . ')';
+  $join = '('. $indSql . ')' .' AND ' . '(' . $typSql . ')';
   //  print_r($join);
   // (industries = 'サービス' or industries = 'IT') and (type = '文系')
   
@@ -47,7 +47,7 @@ function getUserData($params)
   } else {
     $sql = 'select * from company_posting_information';
   }
-// print_r($sql);
+print_r($sql);
   $stmt = $db->prepare($sql);
   $stmt->execute();
   $result = $stmt->fetchAll();
