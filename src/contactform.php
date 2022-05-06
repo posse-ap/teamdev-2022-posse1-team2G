@@ -86,8 +86,8 @@ else if (isset($_POST['send']) && $_POST['send']) {
   $honbun .= "【メールアドレス】\n";
   $honbun .= $_SESSION['mail'] . "\n\n";
   $honbun .= "【お問い合わせ内容】\n";
-  $honbun .= "申し込みいただきありがとうございます。
-    担当の者から連絡致しますので少々お待ちください。" . "\n\n";
+  $honbun .= "申し込みいただきありがとうございます。". "\n";
+  $honbun .= "担当の者から連絡致しますので少々お待ちください。" . "\n\n";
 
   //エンコード処理
   mb_language("Japanese");
