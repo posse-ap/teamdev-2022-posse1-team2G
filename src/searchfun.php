@@ -38,16 +38,16 @@ function getUserData($params)
   // (industries = 'サービス' or industries = 'IT') and (type = '文系')
   
 // 空の際の挙動
-  if (!empty($params['industries']) && !empty($params['types'])) {
+  if (isset($params['industries']) && isset($params['types'])) {
     $sql = 'select * from company_posting_information where  '. $join;
-  }else if(empty($params['industries'])){
-    $sql = 'select * from company_posting_information where  ' . $typSql;
-  } else if(empty($params['types'])){
+  }else if(isset($params['industries'])){
     $sql = 'select * from company_posting_information where  ' . $indSql;
+  } else if(isset($params['types'])){
+    $sql = 'select * from company_posting_information where  ' . $typSql;
   } else {
     $sql = 'select * from company_posting_information';
   }
-print_r($sql);
+// print_r($sql);
   $stmt = $db->prepare($sql);
   $stmt->execute();
   $result = $stmt->fetchAll();
