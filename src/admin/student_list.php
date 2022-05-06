@@ -29,7 +29,8 @@ require('../dbconnect.php');
 
 
   <?php
-  $sql = "SELECT * FROM users WHERE grad_year LIKE '%春%'";
+  $sql = "SELECT * FROM users";
+  // $sql = "SELECT * FROM users WHERE grad_year LIKE '%春%'";
   $stmt = $db->query($sql);
   $stmt->execute();
   $students = $stmt->fetchAll();
