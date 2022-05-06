@@ -20,13 +20,7 @@ services:
       - ./php/mail.ini:/etc/php.d/mail.ini:ro
   db:
     platform: linux/amd64
-    image: mysql:8.0
-    environment:
-      MYSQL_DATABASE: craft             # 作成するデータベース名
-      MYSQL_USER: mysql                 # 作業ユーザー名→上記データベースの捜査権限をもつ
-      MYSQL_PASSWORD: password          # 作業ユーザーのパスワード
-      MYSQL_ROOT_PASSWORD: password
-      TZ: 'Asia/Tokyo'
+    build: ./mysql
     ports:
       - "3306:3306"
     volumes:

@@ -81,11 +81,11 @@ CREATE TABLE company_posting_information
 );
 
 INSERT INTO company_posting_information (company_id, logo, name, img, industries, achievement, type, catch_copy, information, strength, job_offer_number, user_count, informal_job_offer_rate, satisfaction_degrees, finding_employment_target, ES, interview, limited_course, competence_diagnosis, special_selection, interview_style, location, delete_flg) VALUES 
-(1, './src/admin/img/logo/', '鈴木会社', './src/admin/img/img/', 'IT業界', '実績', '理系', 'dream', '鈴木会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, true, true, true, 'オンライン', 'オンライン', 0),
-(2, './src/admin/img/logo/', '佐藤会社', './src/admin/img/img/', 'IT業界', '実績', '文系', 'dream', '佐藤会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, false, true, true, true, 'オンライン', 'オンライン', 0),
-(3, './src/admin/img/logo/', '田中会社', './src/admin/img/img/', 'IT業界', '実績', '理系', 'dream', '田中会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, false, false, true, 'オンライン', 'オンライン', 0),
-(4, './src/admin/img/logo/', '山田会社', './src/admin/img/img/', 'IT業界', '実績', '理系', 'dream', '山田会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, true, false, true, '対面', '都心', 0),
-(5, './src/admin/img/logo/', '加藤会社', './src/admin/img/img/', 'IT業界', '実績', '文系', 'dream', '加藤会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, true, true, false, 'オンライン', 'オンライン', 0);
+(1, './src/admin/img/logo/', '鈴木会社', './src/admin/img/img/', 'IT', '実績', '理系', 'dream', '鈴木会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, true, true, true, 'オンライン', 'オンライン', 0),
+(2, './src/admin/img/logo/', '佐藤会社', './src/admin/img/img/', 'サービス', '実績', '文系', 'dream', '佐藤会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, false, true, true, true, 'オンライン', 'オンライン', 0),
+(3, './src/admin/img/logo/', '田中会社', './src/admin/img/img/', '商社', '実績', '理系', 'dream', '田中会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, false, false, true, 'オンライン', 'オンライン', 0),
+(4, './src/admin/img/logo/', '山田会社', './src/admin/img/img/', '小売り', '実績', '理系', 'dream', '山田会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, true, false, true, '対面', '都心', 0),
+(5, './src/admin/img/logo/', '加藤会社', './src/admin/img/img/', '金融', '実績', '文系', 'dream', '加藤会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, true, true, false, 'オンライン', 'オンライン', 0);
 
 
 -- 管理者画面ログインテーブル

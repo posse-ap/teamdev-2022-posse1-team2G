@@ -35,7 +35,7 @@ if (isset($_POST['back']) && $_POST['back']) {
   // 卒業年
   if (!$_POST["grad_year"]) {
     $errormessage[] = "卒業年を入力して下さい";
-  } 
+  }
   $_SESSION["grad_year"] = htmlspecialchars($_POST["grad_year"], ENT_QUOTES);
 
 
@@ -216,7 +216,7 @@ else if (isset($_POST['send']) && $_POST['send']) {
       <input type="submit" name="confirm" value="確認" />
     </form>
 
-    
+
     <!-- 確認画面のフロント -->
   <?php } else if ($mode == 'confirm') { ?>
     <!-- <?php var_dump($_POST['grad_year']); ?> -->
@@ -259,7 +259,9 @@ else if (isset($_POST['send']) && $_POST['send']) {
 
     <!-- 完了画面 -->
   <?php } else { ?>
-    送信しました。お問い合わせありがとうございました。<br>
+    <!-- 送信しました。お問い合わせありがとうございました。<br> -->
+    <?php require_once('thanks.php') ?>
+
   <?php } ?>
 </body>
 

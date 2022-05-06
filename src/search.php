@@ -1,7 +1,7 @@
 <?php
 
 //①データ取得ロジックを呼び出す
-include_once('model.php');
+require('searchfun.php');
 // え
 $userData = getUserData($_GET);
 
@@ -24,58 +24,71 @@ $userData = getUserData($_GET);
 
     <?php //②検索フォーム 
     ?>
-    <form method="get">
+<!-- 検索フォームのフロントを作る際、<form></form>はコピペして使って！-->
+    <form action="" method='GET'>
       <div class="form-group">
-        <label for="InputName">名前</label>
-        <input name="name" class="form-control" id="InputName" value="<?php echo isset($_GET['name']) ? htmlspecialchars($_GET['name']) : '' ?>">
+        <label for="">業種</label>
+        <input type="checkbox" name="industries[]" value="サービス">サービス
+        <input type="checkbox" name="industries[]" value="IT">IT
+        <input type="checkbox" name="industries[]" value="小売り">小売り
+        <input type="checkbox" name="industries[]" value="商社">商社
+        <input type="checkbox" name="industries[]" value="金融">金融
+        <input type="checkbox" name="industries[]" value="通信">通信
+        <input type="checkbox" name="industries[]" value="マスコミ">マスコミ
       </div>
+
       <div class="form-group">
-        <label for="InputSex">性別</label>
-        <select name="sex" class="form-control" id="InputSex">
-          <option value="0" <?php echo empty($_GET['sex']) ? 'selected' : '' ?>>選択しない</option>
-          <option value="1" <?php echo isset($_GET['sex']) && $_GET['sex'] == '1' ? 'selected' : '' ?>>男性</option>
-          <option value="2" <?php echo isset($_GET['sex']) && $_GET['sex'] == '2' ? 'selected' : '' ?>>女性</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="InputAge">年齢</label>
-        <select name="age" class="form-control" id="InputAge">
-          <option value="0" <?php echo empty($_GET['age']) ? 'selected' : '' ?>>選択しない</option>
-          <option value="10" <?php echo isset($_GET['age']) && $_GET['age'] == '10' ? 'selected' : '' ?>>10代</option>
-          <option value="20" <?php echo isset($_GET['age']) && $_GET['age'] == '20' ? 'selected' : '' ?>>20代</option>
-          <option value="30" <?php echo isset($_GET['age']) && $_GET['age'] == '30' ? 'selected' : '' ?>>30代</option>
-        </select>
+        <label for="">あなたのタイプ</label>
+        <input type="checkbox" name="types[]" value="文系">文系
+        <input type="checkbox" name="types[]" value="理系">理系
+        <input type="checkbox" name="types[]" value="留学">留学
+        <input type="checkbox" name="types[]" value="体育会">体育会
       </div>
       <button type="submit" class="btn btn-default" name="search">検索</button>
     </form>
 
-  </div>
-  <div class="col-xs-6 col-xs-offset-3">
-    <?php //③取得データを表示する 
-    ?>
-    <?php if (isset($userData) && count($userData)) : ?>
-      <p class="alert alert-success"><?php echo count($userData) ?>件見つかりました。</p>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>名前</th>
-            <th>性別</th>
-            <th>年齢</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php foreach ($userData as $row) : ?>
+    <div class="col-xs-6 col-xs-offset-3">
+      <?php 
+      ?>
+      <?php if (isset($userData) && count($userData)) : ?>
+
+        <p class="alert alert-success"><?php echo count($userData) ?>件見つかりました。</p>
+        <table class="table">
+          <thead>
             <tr>
-              <td><?php echo htmlspecialchars($row['name']) ?></td>
-              <td><?php echo htmlspecialchars($row['sex'] == 1 ? '男性' : '女性') ?></td>
-              <td><?php echo htmlspecialchars($row['age']) ?></td>
+              <th>名前</th>
             </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($userData as $row) : ?>
+              <tr>
+                <td><?php echo htmlspecialchars($row['industries']) ?></td>
+              </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+      <?php else : ?>
+        <p class="alert alert-danger">検索対象は見つかりませんでした。</p>
+      <?php endif; ?>
+    </div>
+
+
+ 
+
+
+    <!-- <?php if (isset($userData) && count($userData)) : ?>
+      <p class="alert alert-success"><?php echo count($userData) ?>件見つかりました。</p> -->
+    <!-- <table class="table"> -->
+    <!-- <tbody>
+          <?php foreach ($userData as $row) : ?>
+            <?php echo htmlspecialchars($row['industries']) ?>
+
           <?php endforeach; ?>
-        </tbody>
-      </table>
-    <?php else : ?>
-      <p class="alert alert-danger">検索対象は見つかりませんでした。</p>
-    <?php endif; ?>
+        </tbody> -->
+    <!-- </table> -->
+    <!-- <?php else : ?>
+
+    <?php endif; ?> -->
 
   </div>
 </body>
