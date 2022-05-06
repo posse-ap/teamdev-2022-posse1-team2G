@@ -29,11 +29,15 @@ require('../dbconnect.php');
 
 
   <?php
-  $sql = "SELECT * FROM users";
+  $sql = "SELECT * FROM users WHERE grad_year LIKE '%春%'";
   $stmt = $db->query($sql);
   $stmt->execute();
   $students = $stmt->fetchAll();
+
   ?>
+  <pre>
+  <?php print_r($students);?>
+  </pre>
   <table>
     <tr>
       <th>ID</th>
