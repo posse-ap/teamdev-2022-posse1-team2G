@@ -9,9 +9,9 @@ $companies = $stmt->fetchAll();
 $company = array_reduce($companies, 'array_merge', array());
 // $_REQUEST["company_id"]
 ?>
-<pre>
+<!-- <pre>
   <?Php print_r($company);?>
-</pre>
+</pre> -->
 
 <div class="company_box outline">
   <div class="company_box_logo">

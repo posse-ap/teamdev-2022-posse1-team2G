@@ -10,9 +10,9 @@ $companies = $stmt->fetchAll();
 
 
 ?>
-<pre>
+<!-- <pre>
   <?php print_r($companies); ?>
-</pre>
+</pre> -->
 
 <!DOCTYPE html>
 <html lang="ja">
