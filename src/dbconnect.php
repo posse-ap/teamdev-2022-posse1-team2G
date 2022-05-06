@@ -11,3 +11,5 @@ try {
   echo '接続失敗: ' . $e->getMessage();
   exit();
 }
+
+
