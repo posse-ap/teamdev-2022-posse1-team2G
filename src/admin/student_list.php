@@ -36,9 +36,9 @@ require('../dbconnect.php');
   $students = $stmt->fetchAll();
 
   ?>
-  <pre>
-  <?php print_r($students);?>
-  </pre>
+  <!-- <pre>
+  <?php print_r($students); ?>
+  </pre> -->
   <table>
     <tr>
       <th>ID</th>
@@ -55,6 +55,7 @@ require('../dbconnect.php');
         <td><?= $student['name']; ?></td>
         <td><?= $student['university']; ?></td>
         <td><?= $student['mail']; ?></td>
+        <td><a href="./profile.php?id=<?php echo $value['id']; ?>">詳細はこちらから</a></td>
       </tr>
     <?php endforeach; ?>
   </table>
