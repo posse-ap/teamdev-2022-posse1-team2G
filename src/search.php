@@ -44,7 +44,7 @@ $userData = getUserData($_GET);
         <input type="checkbox" name="types[]" value="留学">留学
         <input type="checkbox" name="types[]" value="体育会">体育会
       </div>
-      <button type="submit" class="btn btn-default" name="search">検索</button>
+      <button type="submit" class="btn btn-default">検索</button>
     </form>
 
     <div class="col-xs-6 col-xs-offset-3">
