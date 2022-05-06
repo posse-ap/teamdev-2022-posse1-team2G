@@ -68,7 +68,7 @@ if (isset($_POST['back']) && $_POST['back']) {
   // その他は任意なのでエラーメッセージは表示しない
   $_SESSION["message"] = htmlspecialchars($_POST["message"], ENT_QUOTES);
 
-  //　エラーが生じた場合→input(遷移しない)
+  // エラーが生じた場合→input(遷移しない)
   // エラーが生じなかった場合→confirm(確認画面に遷移)
   if ($errormessage) {
     $mode = 'input';
@@ -78,6 +78,7 @@ if (isset($_POST['back']) && $_POST['back']) {
 }
 // 送信ボタンを押したとき 
 else if (isset($_POST['send']) && $_POST['send']) {
+  //メール本文の用意
   $honbun = '';
   $honbun .= "メールフォームよりお問い合わせがありました。\n\n";
   $honbun .= "【お名前】\n";
@@ -85,18 +86,40 @@ else if (isset($_POST['send']) && $_POST['send']) {
   $honbun .= "【メールアドレス】\n";
   $honbun .= $_SESSION['mail'] . "\n\n";
   $honbun .= "【お問い合わせ内容】\n";
-  $honbun .= "申し込みいただきありがとうございます。
-    担当の者から連絡致しますので少々お待ちください。" . "\n\n";
+  $honbun .= "申し込みいただきありがとうございます。". "\n";
+  $honbun .= "担当の者から連絡致しますので少々お待ちください。" . "\n\n";
 
   //エンコード処理
   mb_language("Japanese");
   mb_internal_encoding("UTF-8");
 
-  //メールの作成
-  $mail_to  = "rr.hh0207@keio.jp";      //送信先メールアドレス
-  $mail_subject  = "craftのご利用";  //メールの件名
-  $mail_body  = $honbun;        //メールの本文
-  $mail_header  = "from:" . $_SESSION['mail'];      //送信元として表示されるメールアドレス
+  /* メールの作成 （to 学生）
+   mail_to($宛先):	送信先のメールアドレス 各アドレスをカンマで区切ると、複数の宛先をtoに指定できる。このパラメータは、自動的にはエンコードされない。
+   mail_subject($件名):	メールの件名
+   mail_body($本文):  メールの本文
+   mail_header($ヘッダー):	ヘッダー
+      from:  送信元として表示されるメールアドレス
+      Return-Path:  fromと同じメアド
+      以下headerの文字化け防止
+        ・MIME-Version
+        ・Content-Transfer-Encoding
+        ・Content-Type
+  */
+  $mail_to  = $_SESSION['mail']; 
+  $mail_subject  = "craftのご利用";
+  $mail_body  = $honbun. "\n\n";
+  $mail_header = "from: ayaka1712pome@gmail.com\r\n"
+               . "Return-Path: ayaka1712pome@gmail.com\r\n"
+               . "MIME-Version: 1.0\r\n"
+               . "Content-Transfer-Encoding: BASE64\r\n"
+               . "Content-Type: text/plain; charset=UTF-8\r\n";
+
+  
+  //( test )
+  // $mail_to  = "rr.hh0207@keio.jp";      //送信先メールアドレス
+  // $mail_subject  = "craftのご利用";  //メールの件名
+  // $mail_body  = $honbun;        //メールの本文
+  // $mail_header  = "from:" . $_SESSION['mail'];      //送信元として表示されるメールアドレス
 
   //メール送信処理
   $mailsousin  = mb_send_mail($mail_to, $mail_subject, $mail_body, $mail_header);
