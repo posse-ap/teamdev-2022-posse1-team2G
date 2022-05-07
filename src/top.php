@@ -1,7 +1,4 @@
 <?php
-session_start();
-
-
 require('./dbconnect.php');
 
 $sql = 'SELECT * FROM company_posting_information';
@@ -71,7 +68,7 @@ $companies = $stmt->fetchAll();
                 </div>
               </a>
             </div>
-            <?php endforeach; ?>
+          <?php endforeach; ?>
           <!-- ここまで -->
         </div>
       </div>
