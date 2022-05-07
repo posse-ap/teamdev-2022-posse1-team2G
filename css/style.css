@@ -1,0 +1,53 @@
+/* ヘッダーについて */
+header{
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  height: 65px;
+  background-color: #01bfbd;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.header_logo {
+  padding: 10px 20px;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+}
+.header_logo img{
+  width: 100px;
+  height: 60px;
+}
+
+.header_nav{
+  margin: 0 20px 0 auto;
+}
+.header_nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.header_nav a{
+  padding: 10px 15px 15px;
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.header_nav a:hover{
+  opacity: 0.7;
+}
+
+/* トップについて */
+.top{
+  height: 500px;
+}
+.top_wrapper{
+  background-image: url();
+}
