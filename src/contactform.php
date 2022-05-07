@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+
 $mode = 'input';
 $errormessage = array();
 // 何もしない
@@ -92,7 +94,7 @@ else if (isset($_POST['send']) && $_POST['send']) {
   $honbun .= "【メールアドレス】\n";
   $honbun .= $_SESSION['mail'] . "\n\n";
   $honbun .= "【お問い合わせ内容】\n";
-  $honbun .= "申し込みいただきありがとうございます。". "\n";
+  $honbun .= "申し込みいただきありがとうございます。" . "\n";
   $honbun .= "担当の者から連絡致しますので少々お待ちください。" . "\n\n";
   /* 
    mail_to($宛先):	送信先のメールアドレス 各アドレスをカンマで区切ると、複数の宛先をtoに指定できる。このパラメータは、自動的にはエンコードされない。
@@ -106,14 +108,14 @@ else if (isset($_POST['send']) && $_POST['send']) {
         ・Content-Transfer-Encoding
         ・Content-Type
   */
-  $mail_to  = $_SESSION['mail']; 
+  $mail_to  = $_SESSION['mail'];
   $mail_subject  = "craftのご利用";
-  $mail_body  = $honbun. "\n\n";
+  $mail_body  = $honbun . "\n\n";
   $mail_header = "from: ayaka1712pome@gmail.com\r\n"
-               . "Return-Path: ayaka1712pome@gmail.com\r\n"
-               . "MIME-Version: 1.0\r\n"
-               . "Content-Transfer-Encoding: BASE64\r\n"
-               . "Content-Type: text/plain; charset=UTF-8\r\n";
+    . "Return-Path: ayaka1712pome@gmail.com\r\n"
+    . "MIME-Version: 1.0\r\n"
+    . "Content-Transfer-Encoding: BASE64\r\n"
+    . "Content-Type: text/plain; charset=UTF-8\r\n";
 
   //メール送信処理
   $mailsousin  = mb_send_mail($mail_to, $mail_subject, $mail_body, $mail_header);
@@ -130,7 +132,7 @@ else if (isset($_POST['send']) && $_POST['send']) {
   //メール本文の用意
   $honbun_agent = '';
   $honbun_agent .= "いつもboozer社craftをご利用いただきありがとうございます。\n\n";
-  $honbun_agent .= "当サイトより学生ユーザーから貴社へのお問い合わせがあったので通知メールを送信いたしました。". "\n";
+  $honbun_agent .= "当サイトより学生ユーザーから貴社へのお問い合わせがあったので通知メールを送信いたしました。" . "\n";
   $honbun_agent .= "管理ページの申し込み一覧ページよりご確認ください。" . "\n\n";
   /* 
    mail_to_agent($宛先):	送信先のメールアドレス 各アドレスをカンマで区切ると、複数の宛先をtoに指定できる。このパラメータは、自動的にはエンコードされない。
@@ -144,14 +146,14 @@ else if (isset($_POST['send']) && $_POST['send']) {
         ・Content-Transfer-Encoding
         ・Content-Type
   */
-  $mail_to_agent  = $_SESSION['mail']; 
+  $mail_to_agent  = $_SESSION['mail'];
   $mail_subject_agent  = "craft: 貴社への学生情報追加の通知について";
-  $mail_body_agent  = $honbun_agent. "\n\n";
+  $mail_body_agent  = $honbun_agent . "\n\n";
   $mail_header_agent = "from: ayaka1712pome@gmail.com\r\n"
-               . "Return-Path: ayaka1712pome@gmail.com\r\n"
-               . "MIME-Version: 1.0\r\n"
-               . "Content-Transfer-Encoding: BASE64\r\n"
-               . "Content-Type: text/plain; charset=UTF-8\r\n";
+    . "Return-Path: ayaka1712pome@gmail.com\r\n"
+    . "MIME-Version: 1.0\r\n"
+    . "Content-Transfer-Encoding: BASE64\r\n"
+    . "Content-Type: text/plain; charset=UTF-8\r\n";
 
   //メール送信処理
   $mailsousin_agent  = mb_send_mail($mail_to_agent, $mail_subject_agent, $mail_body_agent, $mail_header_agent);
@@ -190,10 +192,24 @@ else if (isset($_POST['send']) && $_POST['send']) {
   $_SESSION['message']  = "";
 }
 ?>
+<?php
+// 問い合わせ会社を表示させるためのSQL用意
 
+require('dbconnect.php');
+// https://hirashimatakumi.com/blog/311.html
+// URLパラメーターから値を取得
+// http://localhost:8080/contactform.php?company_id=3
+// のようなパラメータで問い合わせフォームが表示されるのでこれの3の部分を取得するための挙動
+if (isset($_GET['company_id'])) {
+  $company_id = $_GET['company_id'];
+}
 
-
-
+$stmt = $db->prepare("SELECT * FROM company_posting_information WHERE id = :id");
+$id = $company_id;
+$stmt->bindValue(':id', $id, PDO::PARAM_STR);
+$stmt->execute();
+$info = $stmt->fetch();
+?>
 
 
 <!-- ここからフロント側 -->
@@ -207,6 +223,11 @@ else if (isset($_POST['send']) && $_POST['send']) {
 
 <body>
   <!-- 入力画面 -->
+  <!-- 会社情報 -->
+  <h2>お問い合わせ会社</h2>
+  <?= htmlspecialchars($info['name']) ?>
+
+  <!-- フォーム -->
   <h1>お問い合わせフォーム</h1>
 
   <?php if ($mode == 'input') { ?>
