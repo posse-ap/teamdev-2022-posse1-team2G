@@ -34,7 +34,7 @@ $companies = $stmt->fetchAll();
           <!-- 一つの会社ボックス -->
           <?php foreach ($companies as $company) : ?>
             <div class="company_box outline">
-              <a href="./detail.php?company_id='<?= $company['company_id'] ?>'">
+              <a href="./detail.php?company_id='<?= $company['company_id']; ?>'">
                 <div class="company_box_logo">
                   <img src="" alt="">
                 </div>

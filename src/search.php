@@ -2,7 +2,6 @@
 
 //①データ取得ロジックを呼び出す
 require('searchfun.php');
-// え
 $userData = getUserData($_GET);
 
 ?>
@@ -25,7 +24,7 @@ $userData = getUserData($_GET);
     <?php //②検索フォーム 
     ?>
 <!-- 検索フォームのフロントを作る際、<form></form>はコピペして使って！-->
-    <form action="" method='GET'>
+    <form action="./result.php" method='GET'>
       <div class="form-group">
         <label for="">業種</label>
         <input type="checkbox" name="industries[]" value="サービス">サービス
@@ -47,30 +46,6 @@ $userData = getUserData($_GET);
       <button type="submit" class="btn btn-default">検索</button>
     </form>
 
-    <div class="col-xs-6 col-xs-offset-3">
-      <?php 
-      ?>
-      <?php if (isset($userData) && count($userData)) : ?>
-
-        <p class="alert alert-success"><?php echo count($userData) ?>件見つかりました。</p>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>名前</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php foreach ($userData as $row) : ?>
-              <tr>
-                <td><?php echo htmlspecialchars($row['industries']) ?></td>
-              </tr>
-            <?php endforeach; ?>
-          </tbody>
-        </table>
-      <?php else : ?>
-        <p class="alert alert-danger">検索対象は見つかりませんでした。</p>
-      <?php endif; ?>
-    </div>
 
 
  

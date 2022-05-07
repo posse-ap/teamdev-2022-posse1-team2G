@@ -51,5 +51,7 @@ function getUserData($params)
   $stmt = $db->prepare($sql);
   $stmt->execute();
   $result = $stmt->fetchAll();
+  // print_r($result);
   return $result;
+
 }

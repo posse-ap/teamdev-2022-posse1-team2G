@@ -10,7 +10,7 @@ $company = array_reduce($companies, 'array_merge', array());
 // $_REQUEST["company_id"]
 ?>
 <!-- <pre>
-  <?Php print_r($company);?>
+  <?Php print_r($company); ?>
 </pre> -->
 
 <div class="company_box outline">
@@ -47,5 +47,8 @@ $company = array_reduce($companies, 'array_merge', array());
   </div>
   <div class="company_box_check">
     <label for="check"><input type="checkbox">選択する</label>
+  </div>
+  <div>
+    <button><a href="./top.php">戻る</a></button>
   </div>
 </div>
