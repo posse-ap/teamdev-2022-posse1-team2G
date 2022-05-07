@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+
 $mode = 'input';
 $errormessage = array();
 // 何もしない
@@ -190,10 +192,23 @@ else if (isset($_POST['send']) && $_POST['send']) {
   $_SESSION['message']  = "";
 }
 ?>
+<?php 
+// 問い合わせ会社を表示させるためのSQL用意
 
+require('dbconnect.php');
+  // https://hirashimatakumi.com/blog/311.html
+  // URLパラメーターから値を取得
+  // http://localhost:8080/contactform.php?company_id=3
+  // のようなパラメータで問い合わせフォームが表示されるのでこれの3の部分を取得するための挙動
+if(isset($_GET['company_id'])) {
+  $company_id = $_GET['company_id']; }
 
-
-
+$stmt = $db->prepare("SELECT * FROM company_posting_information WHERE id = :id");
+$id = $company_id;
+$stmt->bindValue(':id', $id, PDO::PARAM_STR);
+$stmt->execute();
+$info = $stmt->fetch();
+?>
 
 
 <!-- ここからフロント側 -->
@@ -207,6 +222,11 @@ else if (isset($_POST['send']) && $_POST['send']) {
 
 <body>
   <!-- 入力画面 -->
+  <!-- 会社情報 -->
+<h2>お問い合わせ会社</h2>
+<?= htmlspecialchars($info['name'])?>
+
+<!-- フォーム -->
   <h1>お問い合わせフォーム</h1>
 
   <?php if ($mode == 'input') { ?>

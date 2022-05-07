@@ -1,18 +1,15 @@
 <?php
+session_start();
+
+
 require('./dbconnect.php');
-
-
 
 $sql = 'SELECT * FROM company_posting_information';
 $stmt = $db->query($sql);
 $stmt->execute();
 $companies = $stmt->fetchAll();
 
-
 ?>
-<!-- <pre>
-  <?php print_r($companies); ?>
-</pre> -->
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -64,7 +61,7 @@ $companies = $stmt->fetchAll();
                 </div>
                 <div class="company_box_button">
                   <!-- <a href="" class="inquiry">お問い合わせはこちら</a> -->
-                  <!-- <input type="text" name="hidden" value='<?php echo htmlspecialchars($company['company_id']);?>'> -->
+                  <!-- <input type="text" name="hidden" value='<?php echo htmlspecialchars($company['company_id']); ?>'> -->
                   <a href="./contactform.php?company_id=<?= htmlspecialchars($company['company_id']); ?>">お問い合わせ</a>
 
                   <a href="" class="comparison">複数の会社を比較する</a>
@@ -74,7 +71,7 @@ $companies = $stmt->fetchAll();
                 </div>
               </a>
             </div>
-          <?php endforeach; ?>
+            <?php endforeach; ?>
           <!-- ここまで -->
         </div>
       </div>
