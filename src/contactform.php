@@ -1,9 +1,5 @@
 <?php
 session_start();
-
-require('./dbconnect.php');
-
-
 $mode = 'input';
 $errormessage = array();
 // 何もしない
