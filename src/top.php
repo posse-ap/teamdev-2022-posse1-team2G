@@ -63,7 +63,10 @@ $companies = $stmt->fetchAll();
                   <p>マイナビ新卒紹介は…</p>
                 </div>
                 <div class="company_box_button">
-                  <a href="" class="inquiry">お問い合わせはこちら</a>
+                  <!-- <a href="" class="inquiry">お問い合わせはこちら</a> -->
+                  <!-- <input type="text" name="hidden" value='<?php echo htmlspecialchars($company['company_id']);?>'> -->
+                  <a href="./contactform.php?company_id=<?= htmlspecialchars($company['company_id']); ?>">お問い合わせ</a>
+
                   <a href="" class="comparison">複数の会社を比較する</a>
                 </div>
                 <div class="company_box_check">
