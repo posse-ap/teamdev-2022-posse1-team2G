@@ -78,6 +78,12 @@ if (isset($_POST['back']) && $_POST['back']) {
 }
 // 送信ボタンを押したとき 
 else if (isset($_POST['send']) && $_POST['send']) {
+
+  //エンコード処理
+  mb_language("Japanese");
+  mb_internal_encoding("UTF-8");
+
+  /* メールの作成 （to 学生）*/
   //メール本文の用意
   $honbun = '';
   $honbun .= "メールフォームよりお問い合わせがありました。\n\n";
@@ -88,12 +94,7 @@ else if (isset($_POST['send']) && $_POST['send']) {
   $honbun .= "【お問い合わせ内容】\n";
   $honbun .= "申し込みいただきありがとうございます。". "\n";
   $honbun .= "担当の者から連絡致しますので少々お待ちください。" . "\n\n";
-
-  //エンコード処理
-  mb_language("Japanese");
-  mb_internal_encoding("UTF-8");
-
-  /* メールの作成 （to 学生）
+  /* 
    mail_to($宛先):	送信先のメールアドレス 各アドレスをカンマで区切ると、複数の宛先をtoに指定できる。このパラメータは、自動的にはエンコードされない。
    mail_subject($件名):	メールの件名
    mail_body($本文):  メールの本文
@@ -114,19 +115,50 @@ else if (isset($_POST['send']) && $_POST['send']) {
                . "Content-Transfer-Encoding: BASE64\r\n"
                . "Content-Type: text/plain; charset=UTF-8\r\n";
 
-  
-  //( test )
-  // $mail_to  = "rr.hh0207@keio.jp";      //送信先メールアドレス
-  // $mail_subject  = "craftのご利用";  //メールの件名
-  // $mail_body  = $honbun;        //メールの本文
-  // $mail_header  = "from:" . $_SESSION['mail'];      //送信元として表示されるメールアドレス
-
   //メール送信処理
   $mailsousin  = mb_send_mail($mail_to, $mail_subject, $mail_body, $mail_header);
 
   //メール送信結果
   if ($mailsousin == true) {
     echo '<p>お問い合わせメールを送信しました。</p>';
+  } else {
+    echo '<p>メール送信でエラーが発生しました。</p>';
+  }
+
+
+  /* メールの作成 （to エージェント）*/
+  //メール本文の用意
+  $honbun_agent = '';
+  $honbun_agent .= "いつもboozer社craftをご利用いただきありがとうございます。\n\n";
+  $honbun_agent .= "当サイトより学生ユーザーから貴社へのお問い合わせがあったので通知メールを送信いたしました。". "\n";
+  $honbun_agent .= "管理ページの申し込み一覧ページよりご確認ください。" . "\n\n";
+  /* 
+   mail_to_agent($宛先):	送信先のメールアドレス 各アドレスをカンマで区切ると、複数の宛先をtoに指定できる。このパラメータは、自動的にはエンコードされない。
+   mail_subject_agent($件名):	メールの件名
+   mail_body_agent($本文):  メールの本文
+   mail_header_agent($ヘッダー):	ヘッダー
+      from:  送信元として表示されるメールアドレス
+      Return-Path:  fromと同じメアド
+      以下headerの文字化け防止
+        ・MIME-Version
+        ・Content-Transfer-Encoding
+        ・Content-Type
+  */
+  $mail_to_agent  = $_SESSION['mail']; 
+  $mail_subject_agent  = "craft: 貴社への学生情報追加の通知について";
+  $mail_body_agent  = $honbun_agent. "\n\n";
+  $mail_header_agent = "from: ayaka1712pome@gmail.com\r\n"
+               . "Return-Path: ayaka1712pome@gmail.com\r\n"
+               . "MIME-Version: 1.0\r\n"
+               . "Content-Transfer-Encoding: BASE64\r\n"
+               . "Content-Type: text/plain; charset=UTF-8\r\n";
+
+  //メール送信処理
+  $mailsousin_agent  = mb_send_mail($mail_to_agent, $mail_subject_agent, $mail_body_agent, $mail_header_agent);
+
+  //メール送信結果
+  if ($mailsousin_agent == true) {
+    echo '<p>エージェントへ通知メールを送信しました。</p>';
   } else {
     echo '<p>メール送信でエラーが発生しました。</p>';
   }
