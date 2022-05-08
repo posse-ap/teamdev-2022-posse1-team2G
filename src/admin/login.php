@@ -1,49 +1,47 @@
 <?php
 session_start();
-require('../dbconnect.php');
 
-if (!empty($_POST)) {
-  $login = $db->prepare('SELECT * FROM users WHERE email=? AND password=?');
-  $login->execute(array(
-    $_POST['email'],
-    sha1($_POST['password'])
-  ));
-  $user = $login->fetch();
+require_once('loginform.php');
 
-  if ($user) {
-    $_SESSION = array();
-    $_SESSION['user_id'] = $user['id'];
-    $_SESSION['time'] = time();
-    header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/index.php');
-    exit();
-  } else {
-    $error = 'fail';
-  }
+// エラーメッセージ
+$err = [];
+
+// バリデーション
+if (!$email = filter_input(INPUT_POST, 'email')) {
+  $err['email'] = 'メールアドレスを記入してください。';
 }
-?>
+if (!$password = filter_input(INPUT_POST, 'password')) {
+  $err['password'] = 'パスワードを記入してください。';
+}
 
+if (count($err) > 0) {
+  // エラーがあった場合は戻す
+  $_SESSION = $err;
+  header('Location: login_form.php');
+  return;
+}
+// ログイン成功時の処理
+$result = UserLogic::login($email, $password);
+// ログイン失敗時の処理
+if (!$result) {
+  header('Location: login_form.php');
+  return;
+}
+
+?>
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./normalize.css">
-  <link rel="stylesheet" href="admin.css">
-  <title>管理者ログイン</title>
+  <title>ログイン完了</title>
 </head>
 
 <body>
-  <div>
-    <h1>管理者ログイン</h1>
-    <form action="/admin/login.php" method="POST">
-      <input type="email" name="email" required>
-      <input type="password" required name="password">
-      <input type="submit" value="ログイン">
-    </form>
-    <a href="/index.php">イベント一覧</a>
-  </div>
+  <h2>ログイン完了</h2>
+  <p>ログインしました！</p>
+  <a href="./mypage.php">マイページへ</a>
 </body>
 
 </html>
