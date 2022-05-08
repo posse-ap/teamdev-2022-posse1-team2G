@@ -93,18 +93,20 @@ DROP TABLE IF EXISTS admin;
 CREATE TABLE admin
 (
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-  company_id INT NOT NULL,
+  name VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL,
-  mail_admin VARCHAR(255) NOT NULL,
+  company_id INT NOT NULL,
+  mail_admin VARCHAR(255) NOT NULL UNIQUE,
   delete_flg INT NOT NULL
 );
 
-INSERT INTO admin (password, company_id, mail_admin, delete_flg) VALUES 
-('aaaaaa', 1, 'ssssmmmmllll@gmail.com', 0),
-('bbbbbb', 2, 'mmmmssssllll@gmail.com', 0),
-('cccccc', 3, 'ssssllllmmmm@gmail.com', 0),
-('dddddd', 4, 'mmssssmmllll@gmail.com', 0),
-('eeeeee', 5, 'llllssssmmmm@gmail.com', 0);
+INSERT INTO admin (name, password, company_id, mail_admin, delete_flg) VALUES 
+('佐藤', 'aaaaaa', 1, 'ssssmmmmllll@gmail.com', 0),
+('山中', 'bbbbbb', 2, 'mmmmssssllll@gmail.com', 0),
+('梢', 'cccccc', 3, 'ssssllllmmmm@gmail.com', 0),
+('北', 'ccacca', 3, 'kkkkllllmmmm@gmail.com', 0),
+('西', 'dddddd', 4, 'mmssssmmllll@gmail.com', 0),
+('本村', 'eeeeee', 5, 'llllssssmmmm@gmail.com', 0);
 
 
 -- 学生・エージェント中間テーブル
@@ -158,28 +160,6 @@ INSERT INTO company_user (user_id, company_id, contact_datetime) VALUES
 -- ('dddddd', 'mmssssmmllll@gmail.com'),
 -- ('eeeeee', 'llllssssmmmm@gmail.com');
 
-DROP TABLE IF EXISTS userss;
-CREATE TABLE userss
-(
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NOT NULL COMMENT '名前',
-  `sex` INT UNSIGNED NOT NULL COMMENT '性別\n1:男\n2:女',
-  `age` INT UNSIGNED NOT NULL COMMENT '年齢',
-  `valid` INT UNSIGNED NOT NULL,
-  PRIMARY KEY (`id`)
-  );
-
-INSERT INTO userss (name, sex, age, valid) VALUES
-('田中太郎', '1', '26', '1'),
-('山田花子', '2', '16', '1'),
-('高橋正樹', '1', '18', '1'),
-('金子優子', '2', '31', '1'),
-('吉井佳子', '2', '21', '1'),
-('橘勇気', '1', '13', '1'),
-('小林隆', '1', '39', '1'),
-('影山夏生', '1', '11', '0'),
-('加藤裕太', '1', '23', '1'),
-('後藤由美', '2', '20', '1');
 
 
 
