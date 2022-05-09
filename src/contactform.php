@@ -225,7 +225,7 @@ $info = $stmt->fetch();
   <!-- 入力画面 -->
   <!-- 会社情報 -->
   <h2>お問い合わせ会社</h2>
-  <?= htmlspecialchars($info['name']) ?>
+  <?= htmlspecialchars($info['industries']) ?>
 
   <!-- フォーム -->
   <h1>お問い合わせフォーム</h1>
