@@ -4,26 +4,26 @@ CREATE DATABASE craft;
 USE craft;
 
 -- ユーザーテーブル
-DROP TABLE IF EXISTS users;
-CREATE TABLE users
-(
-  id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-  name VARCHAR(255) NOT NULL,
-  university VARCHAR(255) NOT NULL,
-  department VARCHAR(255) NOT NULL,
-  grad_year VARCHAR(255) NOT NULL,
-  mail VARCHAR(255) NOT NULL,
-  phone_number VARCHAR(255) NOT NULL,
-  address VARCHAR(255) NOT NULL,
-  delete_flg INT NOT NULL
-);
+-- DROP TABLE IF EXISTS users;
+-- CREATE TABLE users
+-- (
+--   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+--   name VARCHAR(255) NOT NULL,
+--   university VARCHAR(255) NOT NULL,
+--   department VARCHAR(255) NOT NULL,
+--   grad_year VARCHAR(255) NOT NULL,
+--   mail VARCHAR(255) NOT NULL,
+--   phone_number VARCHAR(255) NOT NULL,
+--   address VARCHAR(255) NOT NULL,
+--   delete_flg INT NOT NULL
+-- );
 
-INSERT INTO users (name, university, department, grad_year, mail, phone_number, address, delete_flg) VALUES 
-('鈴木花子', '〇〇大学', '学部', '24年春', 'marumaru@gmail.com', '080-5432-1987','〇県△市', 0),
-('佐藤太郎', '〇△大学', '学部', '24年春', 'marusankaku@gmail.com', '080-5432-1988','△県〇市', 0),
-('田中一郎', '△〇大学', '学部', '24年秋', 'sankakumaru@gmail.com', '080-5432-1989','△県〇市', 0),
-('山田かな', '△△大学', '学部', '25年春', 'sankakusankaku@gmail.com', '080-5432-1990','△県△市', 0),
-('加藤ゆう', '〇〇大学', '学部', '25年春', 'marusankakubatu@gmail.com', '080-5432-1991','〇県〇市', 0);
+-- INSERT INTO users (name, university, department, grad_year, mail, phone_number, address, delete_flg) VALUES 
+-- ('鈴木花子', '〇〇大学', '学部', '24年春', 'marumaru@gmail.com', '080-5432-1987','〇県△市', 0),
+-- ('佐藤太郎', '〇△大学', '学部', '24年春', 'marusankaku@gmail.com', '080-5432-1988','△県〇市', 0),
+-- ('田中一郎', '△〇大学', '学部', '24年秋', 'sankakumaru@gmail.com', '080-5432-1989','△県〇市', 0),
+-- ('山田かな', '△△大学', '学部', '25年春', 'sankakusankaku@gmail.com', '080-5432-1990','△県△市', 0),
+-- ('加藤ゆう', '〇〇大学', '学部', '25年春', 'marusankakubatu@gmail.com', '080-5432-1991','〇県〇市', 0);
 
 
 -- エージェント契約情報テーブル
@@ -158,7 +158,7 @@ INSERT INTO company_user (user_id, company_id, contact_datetime) VALUES
 -- ('dddddd', 'mmssssmmllll@gmail.com'),
 -- ('eeeeee', 'llllssssmmmm@gmail.com');
 
-DROP TABLE IF EXISTS userss;
+DROP TABLE IF EXISTS admin;
 CREATE TABLE userss
 (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -193,18 +193,23 @@ INSERT INTO userss (name, sex, age, valid) VALUES
 
 -- USE craft;
 
--- DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS admin;
 
--- CREATE TABLE users (
---   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
---   email boolean UNIQUE NOT NULL,
---   password VARCHAR(255) NOT NULL,
---   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
---   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
--- );
+CREATE TABLE admin (
+  id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  email VARCHAR(255) UNIQUE NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+INSERT INTO admin (email, password) VALUES
+('test@posse-ap.com', 'password'),
+('a@a.com', 'a'),
+('b@b.com', 'b');
 
 -- INSERT INTO
---   users
+--   admin
 -- SET
 --   email = 'test@posse-ap.com',
 --   password = sha1('password');
