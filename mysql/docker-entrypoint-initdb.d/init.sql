@@ -158,7 +158,7 @@ INSERT INTO company_user (user_id, company_id, contact_datetime) VALUES
 -- ('dddddd', 'mmssssmmllll@gmail.com'),
 -- ('eeeeee', 'llllssssmmmm@gmail.com');
 
-DROP TABLE IF EXISTS admin;
+DROP TABLE IF EXISTS userss;
 CREATE TABLE userss
 (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -203,16 +203,16 @@ CREATE TABLE admin (
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-INSERT INTO admin (email, password) VALUES
-('test@posse-ap.com', 'password'),
-('a@a.com', 'a'),
-('b@b.com', 'b');
+-- INSERT INTO admin (email, password) VALUES
+-- ('test@posse-ap.com', 'password');
+-- -- ('a@a.com', 'a'),
+-- -- ('b@b.com', 'b');
 
--- INSERT INTO
---   admin
--- SET
---   email = 'test@posse-ap.com',
---   password = sha1('password');
+INSERT INTO
+  admin
+SET
+  email = 'test@posse-ap.com',
+  password = sha1('password');
 
 -- DROP TABLE IF EXISTS events;
 

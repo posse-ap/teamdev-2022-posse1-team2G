@@ -13,11 +13,12 @@ if (!empty($_POST)) {
   //   sha1($_POST['password'])
   // ));
   $login->execute();
+  // print_r($login);
   $user = $login->fetch();
 
-
-    // $_SESSION = array();
-    $_SESSION['id'] = $user['id'];
+  if ($user) {
+    $_SESSION = array();
+    $_SESSION['user_id'] = $user['id'];
     $_SESSION['time'] = time();
     // $_SERVER['HTTP_HOST']=  localhost:8080
     header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/index.php');
@@ -25,7 +26,7 @@ if (!empty($_POST)) {
   } else {
     $error = 'fail';
   }
-
+}
 ?>
 
 <!DOCTYPE html>
