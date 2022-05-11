@@ -126,37 +126,7 @@ INSERT INTO company_user (user_id, company_id, contact_datetime) VALUES
 (4, 3, '2022-05-10'),
 (5, 5, '2022-06-01');
 
--- datetimeを消して確認…それでも反映されず
--- CREATE TABLE company_user
--- (
---   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
---   user_id INT NOT NULL,
---   company_id INT NOT NULL,
--- );
 
--- INSERT INTO company_user (user_id, company_id) VALUES 
--- (1, 1),
--- (1, 2),
--- (2, 1),
--- (3, 4),
--- (4, 3),
--- (5, 5);
-
--- テーブル名を変えただけのものも反映されず
--- DROP TABLE IF EXISTS admin2;
--- CREATE TABLE admin2
--- (
---   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
---   password VARCHAR(255) NOT NULL,
---   mail_admin VARCHAR(255) NOT NULL
--- );
-
--- INSERT INTO admin2 (password, mail_admin) VALUES 
--- ('aaaaaa', 'ssssmmmmllll@gmail.com'),
--- ('bbbbbb', 'mmmmssssllll@gmail.com'),
--- ('cccccc', 'ssssllllmmmm@gmail.com'),
--- ('dddddd', 'mmssssmmllll@gmail.com'),
--- ('eeeeee', 'llllssssmmmm@gmail.com');
 
 DROP TABLE IF EXISTS userss;
 CREATE TABLE userss
@@ -183,47 +153,3 @@ INSERT INTO userss (name, sex, age, valid) VALUES
 
 
 
-
-
-
--- 以下サンプルデータ
--- DROP SCHEMA IF EXISTS craft;
-
--- CREATE SCHEMA craft;
-
--- USE craft;
-
--- DROP TABLE IF EXISTS users;
-
--- CREATE TABLE users (
---   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
---   email boolean UNIQUE NOT NULL,
---   password VARCHAR(255) NOT NULL,
---   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
---   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
--- );
-
--- INSERT INTO
---   users
--- SET
---   email = 'test@posse-ap.com',
---   password = sha1('password');
-
--- DROP TABLE IF EXISTS events;
-
--- CREATE TABLE events (
---   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
---   title VARCHAR(255) NOT NULL,
---   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
---   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
--- );
-
--- INSERT INTO
---   events
--- SET
---   title = 'イベント1';
-
--- INSERT INTO
---   events
--- SET
---   title = 'イベント2';

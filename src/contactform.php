@@ -166,18 +166,9 @@ else if (isset($_POST['send']) && $_POST['send']) {
   }
 
 
-  // $message  = "お問い合わせを受け付けました \r\n"
-  //   . "名前: " . $_SESSION['fullname'] . "\r\n"
-  //   . "mail: " . $_SESSION['mail'] . "\r\n"
-  //   . "お問い合わせ内容:\r\n"
-  //   . preg_replace("/\r\n|\r|\n/", "\r\n", $_SESSION['message']);
-  // $mail_send = mail($_SESSION['mail'], 'お問い合わせありがとうございます', $message);
-  // // mail('fuga@hogehoge.com', 'お問い合わせありがとうございます', $message);
-  // if ($mail_send == true) {
-  //   echo "メール送信成功です";
-  // } else {
-  //   echo "メール送信失敗です";
-  // }
+//   それから、お問い合わせページのPHPなんだけど、選択された会社の情報の受け渡しはできるようになっているから（company_posting_informationテーブルからselectしてる）、メール送信する場合は、二つのテーブル紐づけて、companyテーブルのmail_contactカラム？から送信先とってくれば送信できると思う。
+// 送られているかテストするなら、init.sqlのメールアドレス変えてやってみるといいと思う！ （
+ 
   $_SESSION = array();
   $mode = 'send';
 } else {
@@ -191,8 +182,8 @@ else if (isset($_POST['send']) && $_POST['send']) {
   $_SESSION['address'] = "";
   $_SESSION['message']  = "";
 }
-?>
-<?php
+
+
 // 問い合わせ会社を表示させるためのSQL用意
 
 require('dbconnect.php');
