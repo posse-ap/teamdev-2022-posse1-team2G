@@ -72,9 +72,9 @@ $companies = $stmt->fetchAll();
         </div>
         <div>
           <!-- 比較チェックボタンついた会社を一時表示するボックス -->
-          <div id="checked_company_box" class="selected_company_box">
+          <div class="selected_company_box">
             <p>比較するエージェント会社</p>
-
+            <div id="checked_company_box"></div>
           </div>
         </div>
       </div>
@@ -86,39 +86,43 @@ $companies = $stmt->fetchAll();
      比較チェックボタンついた会社を一時表示するボックスの関数
     */
 
-      function checked_counter(){
-        let compare_checked_buttons = document.getElementsByName("select_company_checkboxes");
-        let len = compare_checked_buttons.length;
-        for (let i = 0; i < len; i++){
-            if (compare_checked_buttons.item(i).checked){
-                console.log(compare_checked_buttons.item(i).value + ' is checked');
-                let box_contents = "";
-                box_contents = compare_checked_buttons.item(i).value;
-                document.getElementById('checked_company_box').insertAdjacentHTML('beforeend', box_contents);
-            }else{
-                console.log(compare_checked_buttons.item(i).value + ' is not checked');
-            }
-        }      
-      };
+    //各チェックボックスを取得
+    let compare_checked_buttons = document.getElementsByName("select_company_checkboxes");
+    //各チェックボックスが選択されたら呼び出される関数
+    function checked_counter(){
+      //選択された会社の情報を入れるための配列
+      let box_contents = []; 
+      //表示箇所を取得
+      let checked_company_box = document.getElementById("checked_company_box")
+      //チェックボックスごとに、選択されているかどうかで文字列用の配列に出し入れを行う
+      for(let i = 0; i < compare_checked_buttons.length; i++){
+        if(compare_checked_buttons[i].checked){
+          box_contents.push(compare_checked_buttons.item(i).value) 
+        } else {
+          // let removing_company = compare_checked_buttons[i].value.textContent
+          // box_contents = box_contents.filter(item => (item.match(/${removing_company}/)) == null);
+        }
+      } 
+      //表示箇所に選択されている会社を表示
+      checked_company_box.textContent = box_contents;
+    }
 
-    // window.addEventListener('DOMContentLoaded', function(){
-
-    //   // チェックボタンを取得
-    // let compare_checked_buttons = document.getElementsByName("select_company_checkboxes");
-
-      // compare_checked_buttons.addEventListener('change', checked_counter);
-    //   // イベント「change」を登録
-    //   compare_checked_buttons.addEventListener("change",function checked_counter(){
-    //     let len = compare_checked_buttons.length;
-    //     for (let i = 0; i < len; i++){
-    //         if (compare_checked_buttons.item(i).checked){
-    //             console.log(compare_checked_buttons.item(i).value + ' is checked');
-    //         }else{
-    //             console.log(compare_checked_buttons.item(i).value + ' is not checked');
-    //         }
-    //     }
-    //   });
-        // });
+      // function checked_counter(){
+      //   let len = compare_checked_buttons.length;
+      //   for (let i = 0; i < len; i++){
+      //       if (compare_checked_buttons.item(i).checked){
+      //           console.log(compare_checked_buttons.item(i).value + ' is checked'); 
+      //           box_contents.push(compare_checked_buttons.item(i).value);
+      //           // box_contents.filter(function (x, j, self) {
+      //           //   return self.indexOf(x) === j;
+      //           // });
+      //           new_box_contents = Array.from(new Set(box_contents));
+      //           document.getElementById('checked_company_box').insertAdjacentHTML('beforeend', new_box_contents);
+      //       }else{
+      //           console.log(compare_checked_buttons.item(i).value + ' is not checked');
+      //       }
+      //   }      
+      // };
 
 	</script>
 </body>
