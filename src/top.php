@@ -1,18 +1,13 @@
 <?php
 require('./dbconnect.php');
 
-
-
 $sql = 'SELECT * FROM company_posting_information';
 $stmt = $db->query($sql);
 $stmt->execute();
 $companies = $stmt->fetchAll();
 
-
 ?>
-<!-- <pre>
-  <?php print_r($companies); ?>
-</pre> -->
+
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -32,6 +27,7 @@ $companies = $stmt->fetchAll();
         <h2>企業一覧</h2>
         <div class="company_list">
           <!-- 一つの会社ボックス -->
+          <?php $x = 1;?>
           <?php foreach ($companies as $company) : ?>
             <div class="company_box outline">
               <a href="./detail.php?company_id='<?= $company['company_id']; ?>'">
@@ -67,16 +63,75 @@ $companies = $stmt->fetchAll();
                   <a href="" class="comparison">複数の会社を比較する</a>
                 </div>
                 <div class="company_box_check">
-                  <label for="check"><input type="checkbox">選択する</label>
+                  <!-- <label for="check"><input type="checkbox" id="select_company_id_'<?= $company['company_id']; ?>'">選択する</label> -->
+                  <!-- <label for="check"><input type="checkbox" name="select_company_checkboxes">選択する</label> -->
+                  <label for="check"><input type="checkbox" name="select_company_checkboxes" id="select_checkbox<?php $x++; ?>" onchange="checked_counter()">選択する</label>
                 </div>
               </a>
             </div>
+            <?php $x++; ?>
           <?php endforeach; ?>
           <!-- ここまで -->
+        </div>
+        <div>
+          <!-- 比較チェックボタンついた会社を一時表示するボックス -->
+          <div id="checked_company_box" class="selected_company_box">
+            <p>比較するエージェント会社</p>
+
+          </div>
         </div>
       </div>
     </section>
   </main>
+
+  <script>
+    /* 
+     比較チェックボタンついた会社を一時表示するボックスの関数
+    */
+
+      function checked_counter(){
+        let compare_checked_buttons = document.getElementsByName("select_company_checkboxes");
+        let len = compare_checked_buttons.length;
+        for (let i = 0; i < len; i++){
+            if (compare_checked_buttons.item(i).checked){
+                console.log(compare_checked_buttons.item(i).value + ' is checked');
+            }else{
+                console.log(compare_checked_buttons.item(i).value + ' is not checked');
+            }
+        }      };
+
+    // $(function(){
+    //     $('[name="select_company_checkboxes"]').change(function(){
+    //         var aryCmp = [];
+    //         $('[name="select_company_checkboxes"]:checked').each(function(index, element){
+    //             aryCmp.push($(element).val());
+    //         });
+    //         $('.selected_company_box').html(aryCmp.join(','));
+    //     });
+    // });
+
+
+
+    // window.addEventListener('DOMContentLoaded', function(){
+
+    //   // チェックボタンを取得
+    // let compare_checked_buttons = document.getElementsByName("select_company_checkboxes");
+
+      // compare_checked_buttons.addEventListener('change', checked_counter);
+    //   // イベント「change」を登録
+    //   compare_checked_buttons.addEventListener("change",function checked_counter(){
+    //     let len = compare_checked_buttons.length;
+    //     for (let i = 0; i < len; i++){
+    //         if (compare_checked_buttons.item(i).checked){
+    //             console.log(compare_checked_buttons.item(i).value + ' is checked');
+    //         }else{
+    //             console.log(compare_checked_buttons.item(i).value + ' is not checked');
+    //         }
+    //     }
+    //   });
+        // });
+
+	</script>
 </body>
 
 </html>
