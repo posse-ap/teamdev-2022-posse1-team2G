@@ -27,7 +27,6 @@ $companies = $stmt->fetchAll();
         <h2>企業一覧</h2>
         <div class="company_list">
           <!-- 一つの会社ボックス -->
-          <?php $x = 1;?>
           <?php foreach ($companies as $company) : ?>
             <div class="company_box outline">
               <a href="./detail.php?company_id='<?= $company['company_id']; ?>'">
@@ -63,13 +62,11 @@ $companies = $stmt->fetchAll();
                   <a href="" class="comparison">複数の会社を比較する</a>
                 </div>
                 <div class="company_box_check">
-                  <!-- <label for="check"><input type="checkbox" id="select_company_id_'<?= $company['company_id']; ?>'">選択する</label> -->
-                  <!-- <label for="check"><input type="checkbox" name="select_company_checkboxes">選択する</label> -->
-                  <label for="check"><input type="checkbox" name="select_company_checkboxes" id="select_checkbox<?php $x++; ?>" onchange="checked_counter()">選択する</label>
+                  <!-- valueにデータを追加していくことで、一時表示ボックスに反映できる -->
+                  <label for="check"><input type="checkbox" name="select_company_checkboxes" value="<?= $company['company_id'];?><?= $company['type'];?>" onchange="checked_counter()">選択する</label>
                 </div>
               </a>
             </div>
-            <?php $x++; ?>
           <?php endforeach; ?>
           <!-- ここまで -->
         </div>
@@ -95,22 +92,14 @@ $companies = $stmt->fetchAll();
         for (let i = 0; i < len; i++){
             if (compare_checked_buttons.item(i).checked){
                 console.log(compare_checked_buttons.item(i).value + ' is checked');
+                let box_contents = "";
+                box_contents = compare_checked_buttons.item(i).value;
+                document.getElementById('checked_company_box').insertAdjacentHTML('beforeend', box_contents);
             }else{
                 console.log(compare_checked_buttons.item(i).value + ' is not checked');
             }
-        }      };
-
-    // $(function(){
-    //     $('[name="select_company_checkboxes"]').change(function(){
-    //         var aryCmp = [];
-    //         $('[name="select_company_checkboxes"]:checked').each(function(index, element){
-    //             aryCmp.push($(element).val());
-    //         });
-    //         $('.selected_company_box').html(aryCmp.join(','));
-    //     });
-    // });
-
-
+        }      
+      };
 
     // window.addEventListener('DOMContentLoaded', function(){
 
