@@ -166,8 +166,10 @@ else if (isset($_POST['send']) && $_POST['send']) {
   }
 
 
-//   それから、お問い合わせページのPHPなんだけど、選択された会社の情報の受け渡しはできるようになっているから（company_posting_informationテーブルからselectしてる）、メール送信する場合は、二つのテーブル紐づけて、companyテーブルのmail_contactカラム？から送信先とってくれば送信できると思う。
-// 送られているかテストするなら、init.sqlのメールアドレス変えてやってみるといいと思う！ （
+// お問い合わせページのPHP、選択された会社の情報の受け渡しはできるようになっているから
+//（company_posting_informationテーブルからselectしてる）
+// メール送信する場合は、二つのテーブル紐づけて、companyテーブルのmail_contactカラム？から送信先とってくれば送信できると思う。
+// 送られているかテストするなら、init.sqlのメールアドレス変えてやってみるといいと思う！
  
   $_SESSION = array();
   $mode = 'send';
