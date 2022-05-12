@@ -8,6 +8,7 @@ $companies = $stmt->fetchAll();
 
 ?>
 
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -64,16 +65,26 @@ $companies = $stmt->fetchAll();
                   <a href="" class="comparison">複数の会社を比較する</a>
                 </div>
                 <div class="company_box_check">
-                  <label for="check"><input type="checkbox">選択する</label>
+                  <!-- valueにデータを追加していくことで、一時表示ボックスに反映できる -->
+                  <label for="check"><input type="checkbox" name="select_company_checkboxes" value="<?= $company['company_id'];?><?= $company['type'];?>" onchange="checked_counter()">選択する</label>
                 </div>
               </a>
             </div>
           <?php endforeach; ?>
           <!-- ここまで -->
         </div>
+        <div>
+          <!-- 比較チェックボタンついた会社を一時表示するボックス -->
+          <div class="selected_company_box">
+            <p>比較するエージェント会社</p>
+            <div id="checked_company_box"></div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
+
+  <script src="style.js"></script>
 </body>
 
 </html>
