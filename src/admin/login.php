@@ -1,6 +1,8 @@
 <?php
 session_start();
 require('../dbconnect.php');
+
+$errormessage = array();
 // print_r($_SERVER['PHP_SELF']);
 
 if (!empty($_POST)) {
@@ -13,8 +15,8 @@ if (!empty($_POST)) {
   //   sha1($_POST['password'])
   // ));
   $login->execute();
-  // print_r($login);
   $user = $login->fetch();
+  // print_r($login);
 
   if ($user) {
     $_SESSION = array();
@@ -24,7 +26,18 @@ if (!empty($_POST)) {
     header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/index.php');
     exit();
   } else {
-    $error = 'fail';
+    if (!$_POST["email"]) {
+      $errormessage[] = "メールアドレスを入力して下さい";
+    }
+    if (!$_POST["password"]) {
+      $errormessage[] = "パスワードを入力して下さい";
+    }
+    if (sha1($_POST['password']) !== ) {
+      $errormessage[] = "パスワードが違います";
+    }
+
+    // echo 'メールアドレスを入力してください';
+    // exit;
   }
 }
 ?>
@@ -44,9 +57,20 @@ if (!empty($_POST)) {
 <body>
   <div>
     <h1>管理者ログイン</h1>
+
+    <?php if ($errormessage) { ?>
+      <ul>
+        <!-- $errorは連想配列なのでforeachで分解していく -->
+        <?php foreach ($errormessage as $value) { ?>
+          <li><?php echo $value; ?></li>
+        <?php } ?>
+        <!-- 分解したエラー文をlistの中に表示していく -->
+      </ul>
+    <?php } ?>
+
     <form action="/admin/login.php" method="POST">
-      メールアドレス<input type="email" name="email" required>
-      パスワード<input type="password" required name="password">
+      メールアドレス<input type="email" name="email" >
+      パスワード<input type="password"name="password">
       <input type="submit" value="ログイン">
     </form>
     <!-- <a href="/index.php">イベント一覧</a> -->

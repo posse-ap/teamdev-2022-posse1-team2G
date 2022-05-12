@@ -203,16 +203,16 @@ CREATE TABLE admin (
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
--- INSERT INTO admin (email, password) VALUES
--- ('test@posse-ap.com', 'password');
--- -- ('a@a.com', 'a'),
--- -- ('b@b.com', 'b');
+INSERT INTO admin (email, password) VALUES
+('test@posse-ap.com', sha1('password')),
+('a@a.com', sha1('a')),
+('b@b.com', sha1('b'));
 
-INSERT INTO
-  admin
-SET
-  email = 'test@posse-ap.com',
-  password = sha1('password');
+-- INSERT INTO
+--   admin
+-- SET
+--   email = 'test@posse-ap.com',
+--   password = sha1('password');
 
 -- DROP TABLE IF EXISTS events;
 

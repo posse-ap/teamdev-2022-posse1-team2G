@@ -39,6 +39,8 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 10 > time()) {
             <input type="submit" value="登録する">
         </form>
         <a href="/index.php">イベント一覧</a>
+
+       <?php require('logout.php') ?>
     </div>
 </body>
 
