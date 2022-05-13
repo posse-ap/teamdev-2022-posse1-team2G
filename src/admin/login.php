@@ -6,7 +6,7 @@ $errormessage = array();
 // print_r($_SERVER['PHP_SELF']);
 
 if (!empty($_POST)) {
-  $login = $db->prepare('SELECT * FROM admin WHERE email = :email AND password = :password');
+  $login = $db->prepare('SELECT * FROM admin WHERE email = :email AND password = :password AND flag = 2');
   $login->bindValue('email', $_POST['email']);
   $login->bindValue('password', sha1($_POST['password']));
   $login->execute();
