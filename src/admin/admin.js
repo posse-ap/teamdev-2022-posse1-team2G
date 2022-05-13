@@ -4,7 +4,7 @@ $(document).ready(function () {
 
   getdata();
 
-// 第二回をコピペして第五回
+// 第五回　第二回をコピペしたもの
   // updateを押したときの挙動
   $('.student_update_ajax').click(function (e) {
     e.preventDefault();
@@ -73,7 +73,8 @@ $(document).ready(function () {
 
 
 
-  // 第四回　編集ボタン
+
+  // ----- 第四回　編集ボタン ------
   $(document).on("click", ".edit_btn", function () {
     // idを取得　trの中のstud_idというクラスのテキストを取得　一本目参照
     var stud_id = $(this).closest('tr').find('.stud_id').text();
@@ -90,14 +91,16 @@ $(document).ready(function () {
       // code.jsのif文のreturnの値がresponseに入る
       success: function (response) {
         // console.log(response);
-        $.each(response, function (key, studview) {
+        $.each(response, function (key, studedit) {
           // console.log(studview['fname']);
           // textではなくvalue
-          $('.id_edit').val(studview['id']);
-          $('#edit_fname').val(studview['fname']);
-          $('#edit_lname').val(studview['lname']);
-          $('#edit_class').val(studview['class']);
-          $('#edit_section').val(studview['section']);
+
+          // studeditに変更！
+          $('.id_edit').val(studedit['id']);
+          $('#edit_fname').val(studedit['fname']);
+          $('#edit_lname').val(studedit['lname']);
+          $('#edit_class').val(studedit['class']);
+          $('#edit_section').val(studedit['section']);
         });
         $('#StudentEditModal').modal('show');
       }
