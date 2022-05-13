@@ -96,7 +96,7 @@ $(document).ready(function () {
           // textではなくvalue
 
           // studeditに変更！
-          $('.id_edit').val(studedit['id']);
+          $('#id_edit').val(studedit['id']);
           $('#edit_fname').val(studedit['fname']);
           $('#edit_lname').val(studedit['lname']);
           $('#edit_class').val(studedit['class']);

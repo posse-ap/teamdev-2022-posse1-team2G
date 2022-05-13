@@ -117,7 +117,6 @@ if (isset($_POST['checking_edit'])) {
   }
 }
 
-
 // 五本目　update 　二本目の新規挿入と近い
 if (isset($_POST['checking_update'])) {
   $id = $_POST['stud_id'];
