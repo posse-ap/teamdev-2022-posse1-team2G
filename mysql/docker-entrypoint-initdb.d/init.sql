@@ -233,3 +233,18 @@ INSERT INTO admin (email, password, flag) VALUES
 --   events
 -- SET
 --   title = 'イベント2';
+
+DROP TABLE IF EXISTS students;
+CREATE TABLE students (
+    id int,
+    fname varchar(100),
+    lname varchar(100),
+    class varchar(100),
+    section varchar(100)
+);
+
+
+INSERT INTO students (id, fname, lname, class, section) VALUES
+(1, 'Ro', 'RYU', 'A', 'ONE'),
+(2, 'Ko', 'KYU', 'B', 'TWO'),
+(3, 'To', 'TYU', 'C', 'THREE');
