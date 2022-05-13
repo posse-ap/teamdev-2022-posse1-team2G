@@ -18,6 +18,7 @@ $(document).ready(function () {
         'checking_view': true,
         'stud_id': stud_id,
       },
+      // code.jsのif文のreturnの値がresponseに入る
       success: function (response) {
         // console.log(response);
         $.each(response, function (key, studview) {
@@ -108,7 +109,7 @@ $(document).ready(function () {
 
 
 
-一本目のJS
+// 一本目のJS
 $(document).ready(function () {
   getdata();
 });
