@@ -100,7 +100,9 @@
           <h4 class="lname_view"></h4>
           <h4 class="class_view"></h4>
           <h4 class="section_view"></h4>
+          <!-- <h4 class="適当に"></h4> -->
         </div>
+
 
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -125,15 +127,12 @@
           <div class="row">
             <!-- hiddenを最後に追加 -->
             <input type="hidden" id="id_edit">
-
             <div class="col-md-12">
-              <div class="error-message">
-
+              <div class="error-message-update">
               </div>
             </div>
             <!-- class名にそれぞれのタイトルを挿入していたのを消し、新たにidを追加 -->
             <div class="col-md-6">
-
               <label for="">First Name</label>
               <input type="text" class="form-control" id="edit_fname">
             </div>

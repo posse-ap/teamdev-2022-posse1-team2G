@@ -116,3 +116,26 @@ if (isset($_POST['checking_edit'])) {
     echo $return = "編集画面開けません!";
   }
 }
+
+
+// 五本目　update 　二本目の新規挿入と近い
+if (isset($_POST['checking_update'])) {
+  $id = $_POST['stud_id'];
+  $fname = $_POST['fname'];
+  $lname = $_POST['lname'];
+  $class = $_POST['class'];
+  $section = $_POST['section'];
+
+  $query = "UPDATE students SET fname='$fname',  lname='$lname', class='$class', section='$section' WHERE id='$id'";
+  // $query_run = mysqli_query($conn, $query);
+  $stmt = $db->prepare($query);
+  $stmt->execute();
+  $result = $stmt->fetchAll();
+  
+  if (isset($result)) {
+    echo $return  = "データを更新しました";
+    print_r($result);
+  } else {
+    echo $return  = "データを更新できませんでした";
+  }
+}

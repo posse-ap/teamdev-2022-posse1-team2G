@@ -4,6 +4,74 @@ $(document).ready(function () {
 
   getdata();
 
+// 第二回をコピペして第五回
+  // updateを押したときの挙動
+  $('.student_update_ajax').click(function (e) {
+    e.preventDefault();
+
+    // それぞれのinputに書かれた要素を変数に置く
+    // updateではidを追加 hiddenで追加されたid
+    // そして他の値も変更
+    var stud_id = $('#id_edit').val();
+    var fname = $('#edit_fname').val();
+    var lname = $('#edit_lname').val();
+    var stu_class = $('#edit_class').val();
+    var section = $('#edit_section').val();
+
+    // console.log(fname);
+
+    // すべて代入されていたら処理するよ
+    if (fname != '' & lname != '' & stu_class != '' & section != '') {
+      $.ajax({
+        type: "POST",
+        url: "./code.php",
+        data: {
+          // updateに変更、id追加
+          'checking_update': true,
+          'stud_id': stud_id,
+          'fname': fname,
+          'lname': lname,
+          'class': stu_class,
+          'section': section,
+        },
+        success: function (response) {
+          console.log(response);
+          // Add→Edit
+          $('#StudentEditModal').modal('hide');
+          $('.message-show').append('\
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">\
+                                    <strong>Heyy!</strong> '+ response + '.\
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">\
+                                        <span aria-hidden="true">&times;</span>\
+                                    </button>\
+                                </div>\
+                            ');
+          $('.studentdata').html("");
+          getdata();
+          // $('.fname').val("");
+          // $('.lname').val("");
+          // $('.class').val("");
+          // $('.section').val("");
+        }
+      });
+
+    }
+    // 入力に不備があった場合
+    else {
+      // console.log("Please enter all fileds.");
+      // デフォルトのエラーメッセージ
+      $('.error-message-update').append('\
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">\
+                            <strong>Hey!</strong> Please enter all fileds.\
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">\
+                                <span aria-hidden="true">&times;</span>\
+                            </button>\
+                        </div>\
+                    ');
+    }
+  });
+
+
 
   // 第四回　編集ボタン
   $(document).on("click", ".edit_btn", function () {
@@ -56,6 +124,7 @@ $(document).ready(function () {
         // console.log(response);
         $.each(response, function (key, studview) {
           // console.log(studview['fname']);
+          // TOP画面にはのっていない情報はここで記載（空の要素をindex.phpで用意してから）
           $('.id_view').text(studview['id']);
           $('.fname_view').text(studview['fname']);
           $('.lname_view').text(studview['lname']);
