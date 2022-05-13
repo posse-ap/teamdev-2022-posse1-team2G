@@ -236,7 +236,7 @@ INSERT INTO admin (email, password, flag) VALUES
 
 DROP TABLE IF EXISTS students;
 CREATE TABLE students (
-    id int,
+    id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     fname varchar(100),
     lname varchar(100),
     class varchar(100),
@@ -244,7 +244,7 @@ CREATE TABLE students (
 );
 
 
-INSERT INTO students (id, fname, lname, class, section) VALUES
-(1, 'Ro', 'RYU', 'A', 'ONE'),
-(2, 'Ko', 'KYU', 'B', 'TWO'),
-(3, 'To', 'TYU', 'C', 'THREE');
+INSERT INTO students (fname, lname, class, section) VALUES
+('Ro', 'RYU', 'A', 'ONE'),
+('Ko', 'KYU', 'B', 'TWO'),
+('To', 'TYU', 'C', 'THREE');
