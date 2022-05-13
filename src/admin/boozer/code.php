@@ -3,27 +3,23 @@ require('../../dbconnect.php');
 // $conn = mysqli_connect("localhost","root","","phpcrud");
 
 // trueだったら
-if(isset($_POST['checking_add']))
-{
-    $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
-    $class = $_POST['class'];
-    $section = $_POST['section'];
+if (isset($_POST['checking_add'])) {
+  $fname = $_POST['fname'];
+  $lname = $_POST['lname'];
+  $class = $_POST['class'];
+  $section = $_POST['section'];
 
-    $query = "INSERT INTO students (fname,lname,class,section) VALUES ('$fname','$lname','$class','$section')";
+  $query = "INSERT INTO students (fname,lname,class,section) VALUES ('$fname','$lname','$class','$section')";
   // $query_run = mysqli_query($conn, $query);
   $stmt = $db->prepare($query);
   $stmt->execute();
   $result = $stmt->fetchAll();
 
-    if(isset($result))
-    {
-        echo $return  = "データを挿入しました";
-    }
-    else
-    {
-        echo $return  = "Something Went Wrong.!";
-    }
+  if (isset($result)) {
+    echo $return  = "データを挿入しました";
+  } else {
+    echo $return  = "Something Went Wrong.!";
+  }
 }
 
 
@@ -106,7 +102,7 @@ if (isset($_POST['checking_edit'])) {
   // $query_run = mysqli_query($conn, $query);
   // print_r($result_detail);
 
-  if ($result_edit== true) {
+  if ($result_edit == true) {
     // foreach ($query_run as $row) {
     //   array_push($result_array, $row);
     // }
@@ -130,11 +126,27 @@ if (isset($_POST['checking_update'])) {
   $stmt = $db->prepare($query);
   $stmt->execute();
   $result = $stmt->fetchAll();
-  
+
   // 更新していなくてもボタンを押すと更新になってしまう
   if (isset($result)) {
     echo $return  = "データを更新しました";
   } else {
     echo $return  = "データを更新できませんでした";
   }
+}
+
+
+// 六本目　delete
+if (isset($_POST['checking_delete'])) {
+  $id = $_POST['stud_id'];
+  $query = "DELETE FROM students WHERE id = '$id' ";
+  $stmt = $db->prepare($query);
+  $stmt->execute();
+  $result = $stmt->fetchAll();
+  if (isset($result)) {
+    echo $return  = "データを削除しました";
+  } else {
+    echo $return  = "データを削除できませんでした";
+  }
+
 }

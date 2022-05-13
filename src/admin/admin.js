@@ -3,7 +3,111 @@
 $(document).ready(function () {
   getdata();
 
-// 第五回　第二回をコピペしたもの　updateを押したときの挙動
+  $('.student_delete_ajax').click(function (e) {
+    e.preventDefault();
+
+    var stud_id = $('#id_delete').val();
+    $.ajax({
+      type: "POST",
+      url: "./code.php",
+      data: {
+        // checking_viewからchecking_deleteに変更
+        'checking_delete': true,
+        'stud_id': stud_id,
+      },
+      // code.jsのif文のreturnの値がresponseに入る
+      success: function (response) {
+        // // console.log(response);
+        $('#StudentDeleteModal').modal('hide');
+        $('.message-show').append('\
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">\
+                                    <strong>Heyy!</strong> '+ response + '.\
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">\
+                                        <span aria-hidden="true">&times;</span>\
+                                    </button>\
+                                </div>\
+                            ');
+        $('.studentdata').html("");
+        getdata();
+      }
+    });
+  });
+
+  // 第六回　削除ボタン
+  $(document).on("click", ".delete_btn", function () {
+    // idを取得　trの中のstud_idというクラスのテキストを取得　一本目参照
+    var stud_id = $(this).closest('tr').find('.stud_id').text();
+    // 追加
+    $('#id_delete').val(stud_id)
+    $('#StudentDeleteModal').modal('show');
+
+    // $.ajax({
+    //   type: "POST",
+    //   url: "./code.php",
+    //   data: {
+    //     // checking_viewからchecking_deleteに変更
+    //     'checking_delete': true,
+    //     'stud_id': stud_id,
+    //   },
+    //   // code.jsのif文のreturnの値がresponseに入る
+    //   success: function (response) {
+    //     // // console.log(response);
+    //     // $('#StudentDeleteModal').modal('hide');
+    //     $('.message-show').append('\
+    //                             <div class="alert alert-success alert-dismissible fade show" role="alert">\
+    //                                 <strong>Heyy!</strong> '+ response + '.\
+    //                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">\
+    //                                     <span aria-hidden="true">&times;</span>\
+    //                                 </button>\
+    //                             </div>\
+    //                         ');
+    //     $('.studentdata').html("");
+    //     getdata();
+    //   }
+    // });
+
+    // $.ajax({
+    //   type: "POST",
+    //   url: "./code.php",
+    //   data: {
+    //     // checking_viewからchecking_deleteに変更
+    //     'checking_delete': true,
+    //     'stud_id': stud_id,
+    //   },
+    //   // code.jsのif文のreturnの値がresponseに入る
+    //   success: function (response) {
+    //     // // console.log(response);
+    //     $('.message-show').append('\
+    //                             <div class="alert alert-success alert-dismissible fade show" role="alert">\
+    //                                 <strong>Heyy!</strong> '+ response + '.\
+    //                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">\
+    //                                     <span aria-hidden="true">&times;</span>\
+    //                                 </button>\
+    //                             </div>\
+    //                         ');
+    //     $('.studentdata').html("");
+    //     getdata();
+
+
+    //     // $.each(response, function (key, studedit) {
+    //     //   // console.log(studview['fname']);
+    //     //   // textではなくvalue
+
+    //     //   // studeditに変更！
+    //     //   $('#id_edit').val(studedit['id']);
+    //     //   $('#edit_fname').val(studedit['fname']);
+    //     //   $('#edit_lname').val(studedit['lname']);
+    //     //   $('#edit_class').val(studedit['class']);
+    //     //   $('#edit_section').val(studedit['section']);
+    //     // });
+    //     // $('#StudentEditModal').modal('show');
+    //   }
+    // });
+
+  });
+
+
+  // 第五回　第二回をコピペしたもの　updateを押したときの挙動
   $('.student_update_ajax').click(function (e) {
     e.preventDefault();
 
@@ -235,7 +339,7 @@ function getdata() {
                                 <td>\
                                     <a href="#" class="badge btn-info view_btn">VIEW</a>\
                                     <a href="#" class="badge btn-primary edit_btn">EDIT</a>\
-                                    <a href="" class="badge btn-danger">Delete</a>\
+                                    <a href="#" class="badge btn-danger delete_btn">Delete</a>\
                                 </td>\
                             </tr>');
       });
