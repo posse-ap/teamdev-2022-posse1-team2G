@@ -109,10 +109,11 @@ $(document).ready(function () {
 
 
 
-// 一本目のJS
-$(document).ready(function () {
-  getdata();
-});
+// // 一本目のJS
+
+// $(document).ready(function () {
+//   getdata();
+// });
 
 // fetch.phpと連携してデータを持ってくる
 function getdata() {
