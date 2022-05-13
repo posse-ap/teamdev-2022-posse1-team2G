@@ -1,10 +1,33 @@
+/* 全体の要素について */
+body{
+  padding: 0;
+  font-family: "Noto Sans JP", sans-serif;
+  letter-spacing: 0.08em;
+}
+
+section{
+  padding: 15px 0 40px 0;
+}
+
+.title_box{
+  text-align: center;
+}
+.title_box p{
+  color: #949697;
+  letter-spacing: 0.1em;
+}
+
+.green{
+  background-color: rgba(1, 191, 189, 0.07);
+}
+
 /* ヘッダーについて */
 header{
   position: fixed;
   z-index: 999;
   top: 0;
   height: 65px;
-  background-color: #01bfbd;
+  background-color: rgba(1, 191, 189, 0.8);
   display: flex;
   align-items: center;
   width: 100%;
@@ -17,10 +40,10 @@ header{
   font-size: 30px;
   font-weight: bold;
 }
-.header_logo img{
+/* .header_logo img{
   width: 100px;
   height: 60px;
-}
+} */
 
 .header_nav{
   margin: 0 20px 0 auto;
@@ -46,8 +69,203 @@ header{
 
 /* トップについて */
 .top{
-  height: 500px;
+  height: 630px;
 }
 .top_wrapper{
-  background-image: url();
+  position: relative;
+  height: 100%;
+  background-image: url(../img/syuukatu.webp);
+  background-size: cover;
+}
+.top_sentence{
+  position: absolute;
+  top: 480px;
+  padding: 0 40px 0 50px;
+  font-size: 18px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-bottom: solid 10px #2ab9b9;
+  /* background: linear-gradient(transparent 60%, #01bebd 60%); */
+}
+.top_search{
+  position: absolute;
+  top: 90px;
+  left: 700px;
+  width: 680px;
+  height: 510px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);
+}
+
+/* Q&Aについて */
+#question .title_box{
+  padding-bottom: 20px;
+}
+
+.question_wrapper{
+  max-width: 1000px;
+  padding: 0 32px;
+  margin: 0 auto;
+}
+
+.question_list{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.question_list li{
+  border-radius: 8px;
+  background: #fff;
+  -webkit-box-shadow: 6px 10px 12px 0px rgb(40 47 60 / 5%);
+  box-shadow: 6px 10px 12px 0px rgb(40 47 60 / 5%);
+  cursor: pointer;
+  -webkit-transition: .4s ease;
+  transition: .4s ease;
+  margin-bottom: 22px;
+}
+
+.question_box{
+  display: flex;
+  cursor: pointer;
+  position: relative;
+  padding: 20px 40px 20px 24px;
+}
+.question_box:before{
+  position: absolute;
+  content: '';
+  display: block;
+  top: 50%;
+  right: 25px;
+  width: 16px;
+  height: 2px;
+  background: rgba(1, 191, 189, 1);
+  transform: rotate(90deg);
+  -webkit-transition: .4s ease;
+  transition: .4s ease;
+}
+.question_box:after{
+  position: absolute;
+  content: '';
+  display: block;
+  top: 50%;
+  right: 25px;
+  width: 16px;
+  height: 2px;
+  background: rgba(1, 191, 189, 1);
+  -webkit-transition: .4s ease;
+  transition: .4s ease;
+}
+.question_box.open:before{
+  transform: rotate(180deg);
+}
+.question_box.open:after{
+  opacity: 0;
+}
+
+.question_box_txt {
+  margin: 0;
+  display: flex;
+}
+.question_box_txt h3{
+  margin: auto 0;
+}
+
+.question_capital{
+  padding-right: 50px;
+  color: rgba(1, 191, 189, 1);
+  font-size: 28px;
+  font-weight: bold;
+}
+
+
+.answer_box{
+  display: none;
+  padding: 20px 40px 20px 24px;
+}
+.answer_box_txt{
+  display: flex;
+}
+.answer_box_txt p{
+  margin: 0;
+  line-height: 1.2;
+  font-size: 14px;
+}
+
+.answer_capital{
+  padding-right: 50px;
+  color: #ff8484;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* フッダーについて */
+footer{
+  position: relative;
+  width: 100%;
+  height: 300px;
+  background-color: #1E2022;
+}
+
+.footer_student{
+  position: absolute;
+  top: 50px;
+  left: 250px;
+}
+
+.footer_company{
+  position: absolute;
+  top: 50px;
+  left: 500px;
+}
+
+.footer_student p, .footer_company p{
+  color: #f0f0f0;
+  font-size: 16px;
+  line-height: 2;
+  margin-bottom: 8px;
+}
+
+.footer_list a{
+  padding: 10px 15px 15px;
+  color: #949697;
+  text-decoration: none;
+  font-size: 13px;
+  line-height: 2;
+}
+.footer_list a:hover{
+  color: #f8f8f8;
+}
+
+.footer_list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.footer_list li{
+  padding-left: 10px;
+}
+
+.footer_logo {
+  position: absolute;
+  top: 50px;
+  left: 950px;
+  margin-top: 15px;
+  color: white;
+  font-size: 50px;
+  font-weight: bold;
+}
+.footer_logo p{
+  margin: 0;
+}
+
+.footer_copyright{
+  position: absolute;
+  top: 115px;
+  left: 950px;
+  font-size: 11px;
+  color: #545658;
+  display: inline-block;
+  margin-top: 16px;
+  letter-spacing: 0.02em;
 }
