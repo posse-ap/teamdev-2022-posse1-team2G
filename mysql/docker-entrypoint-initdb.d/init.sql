@@ -199,14 +199,15 @@ CREATE TABLE admin (
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   email VARCHAR(255) UNIQUE NOT NULL,
   password VARCHAR(255) NOT NULL,
+  flag INT NOT NULL,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-INSERT INTO admin (email, password) VALUES
-('test@posse-ap.com', sha1('password')),
-('a@a.com', sha1('a')),
-('b@b.com', sha1('b'));
+INSERT INTO admin (email, password, flag) VALUES
+('test@posse-ap.com', sha1('password') ,1),
+('a@a.com', sha1('a'), 2),
+('b@b.com', sha1('b'), 2);
 
 -- INSERT INTO
 --   admin

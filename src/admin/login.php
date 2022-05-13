@@ -9,37 +9,47 @@ if (!empty($_POST)) {
   $login = $db->prepare('SELECT * FROM admin WHERE email = :email AND password = :password');
   $login->bindValue('email', $_POST['email']);
   $login->bindValue('password', sha1($_POST['password']));
-  // $login->execute(
-  //   array(
-  //   $_POST['email'],
-  //   sha1($_POST['password'])
-  // ));
   $login->execute();
-  $user = $login->fetch();
   // print_r($login);
+  $user = $login->fetch();
 
-  if ($user) {
+  $loginBoozer = $db->prepare('SELECT * FROM admin WHERE email = :email AND password = :password AND flag = 1');
+  $loginBoozer->bindValue('email', $_POST['email']);
+  $loginBoozer->bindValue('password', sha1($_POST['password']));
+  $loginBoozer->execute();
+  $boozer = $loginBoozer->fetch();
+
+  //  print_r($user);
+  //  print_r($boozer);
+
+  // !emptyではなく、issetとすると空の配列をfalseと判定する
+  // https://access-jp.co.jp/blogs/development/42
+  if (!empty($user)) {
     $_SESSION = array();
     $_SESSION['user_id'] = $user['id'];
     $_SESSION['time'] = time();
     // $_SERVER['HTTP_HOST']=  localhost:8080
     header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/index.php');
-    exit();
+    // exit();
+  } else if (empty($user) && !empty($boozer)) {
+    $_SESSION = array();
+    $_SESSION['user_id'] = $boozer['id'];
+    $_SESSION['time'] = time();
+    // $_SERVER['HTTP_HOST']=  localhost:8080
+    header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/reset.php');
+    // exit();
   } else {
-    if (!$_POST["email"]) {
-      $errormessage[] = "メールアドレスを入力して下さい";
-    }
-    if (!$_POST["password"]) {
-      $errormessage[] = "パスワードを入力して下さい";
-    }
-    if (sha1($_POST['password']) !== ) {
-      $errormessage[] = "パスワードが違います";
-    }
-
-    // echo 'メールアドレスを入力してください';
+    // if (!$_POST["email"]) {
+    //   $errormessage[] = "メールアドレスを入力して下さい";
+    // }
+    // if (!$_POST["password"]) {
+      //   $errormessage[] = "パスワードを入力して下さい";
+    // }
+    $errormessage[] = "パスワードもしくはメールアドレスが間違っています";
     // exit;
   }
 }
+// print_r($boozer);
 ?>
 
 <!DOCTYPE html>
