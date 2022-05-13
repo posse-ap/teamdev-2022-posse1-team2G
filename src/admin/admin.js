@@ -1,11 +1,9 @@
 
 // 二本目のJS
 $(document).ready(function () {
-
   getdata();
 
-// 第五回　第二回をコピペしたもの
-  // updateを押したときの挙動
+// 第五回　第二回をコピペしたもの　updateを押したときの挙動
   $('.student_update_ajax').click(function (e) {
     e.preventDefault();
 
@@ -17,8 +15,6 @@ $(document).ready(function () {
     var lname = $('#edit_lname').val();
     var stu_class = $('#edit_class').val();
     var section = $('#edit_section').val();
-
-    // console.log(fname);
 
     // すべて代入されていたら処理するよ
     if (fname != '' & lname != '' & stu_class != '' & section != '') {
@@ -54,7 +50,6 @@ $(document).ready(function () {
           // $('.section').val("");
         }
       });
-
     }
     // 入力に不備があった場合
     else {
@@ -70,7 +65,6 @@ $(document).ready(function () {
                     ');
     }
   });
-
 
 
 
@@ -107,6 +101,7 @@ $(document).ready(function () {
     });
 
   });
+
 
 
   // 三本目　詳細モーダル

@@ -131,9 +131,9 @@ if (isset($_POST['checking_update'])) {
   $stmt->execute();
   $result = $stmt->fetchAll();
   
+  // 更新していなくてもボタンを押すと更新になってしまう
   if (isset($result)) {
     echo $return  = "データを更新しました";
-    print_r($result);
   } else {
     echo $return  = "データを更新できませんでした";
   }
