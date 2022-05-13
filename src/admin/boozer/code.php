@@ -91,3 +91,28 @@ if (isset($_POST['checking_view'])) {
 //     echo $return = "No Record Found.!";
 //   }
 // }
+
+
+// 四本目　編集モーダル 三本目（詳細のほぼコピペ）
+// checking_editがセットされていたら　つまり編集が押されたら？
+if (isset($_POST['checking_edit'])) {
+  $stud_id = $_POST['stud_id'];
+  // $checkings = [];
+
+  $query_edit = "SELECT * FROM students WHERE id='$stud_id' ";
+  $stmt_edit = $db->prepare($query_edit);
+  $stmt_edit->execute();
+  $result_edit = $stmt_edit->fetchAll();
+  // $query_run = mysqli_query($conn, $query);
+  // print_r($result_detail);
+
+  if ($result_edit== true) {
+    // foreach ($query_run as $row) {
+    //   array_push($result_array, $row);
+    // }
+    header('Content-type: application/json');
+    echo json_encode($result_edit);
+  } else {
+    echo $return = "編集画面開けません!";
+  }
+}

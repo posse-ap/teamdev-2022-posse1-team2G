@@ -5,8 +5,41 @@ $(document).ready(function () {
   getdata();
 
 
+  // 第四回　編集ボタン
+  $(document).on("click", ".edit_btn", function () {
+    // idを取得　trの中のstud_idというクラスのテキストを取得　一本目参照
+    var stud_id = $(this).closest('tr').find('.stud_id').text();
+    // alert(stud_id);
+
+    $.ajax({
+      type: "POST",
+      url: "./code.php",
+      data: {
+        // checking_viewからchecking_editに変更
+        'checking_edit': true,
+        'stud_id': stud_id,
+      },
+      // code.jsのif文のreturnの値がresponseに入る
+      success: function (response) {
+        // console.log(response);
+        $.each(response, function (key, studview) {
+          // console.log(studview['fname']);
+          // textではなくvalue
+          $('.id_edit').val(studview['id']);
+          $('#edit_fname').val(studview['fname']);
+          $('#edit_lname').val(studview['lname']);
+          $('#edit_class').val(studview['class']);
+          $('#edit_section').val(studview['section']);
+        });
+        $('#StudentEditModal').modal('show');
+      }
+    });
+
+  });
+
+
   // 三本目　詳細モーダル
-  $(document).on("click", ".viewbtn", function () {
+  $(document).on("click", ".view_btn", function () {
     // idを取得　trの中のstud_idというクラスのテキストを取得　一本目参照
     var stud_id = $(this).closest('tr').find('.stud_id').text();
     // alert(stud_id);
@@ -39,7 +72,7 @@ $(document).ready(function () {
 
 
 
-// 二本目のJS　途中に三本目の詳細入り組んでいる
+  // 二本目のJS　途中に三本目の詳細入り組んでいる
   // modalでsaveしますよ
   $('.student_add_ajax').click(function (e) {
     e.preventDefault();
@@ -133,7 +166,7 @@ function getdata() {
                                 <td>' + value['class'] + '</td>\
                                 <td>' + value['section'] + '</td>\
                                 <td>\
-                                    <a href="#" class="badge btn-info viewbtn">VIEW</a>\
+                                    <a href="#" class="badge btn-info view_btn">VIEW</a>\
                                     <a href="#" class="badge btn-primary edit_btn">EDIT</a>\
                                     <a href="" class="badge btn-danger">Delete</a>\
                                 </td>\
