@@ -52,9 +52,8 @@
   margin-right: 65px;
 }
 .go_to_application_requirements{
-  background: -moz-linear-gradient(top, #FFF, #FFC778 30%, #F89174 60%, #748af8);
-  background: -webkit-linear-gradient(top, #FFF, #FFC778 30%, #F89174 60%, #748af8);
-  background: linear-gradient(to bottom, #FFF, #FFC778 30%, #F89174 60%, #748af8);
+  margin-top: 15px;
+  background: linear-gradient(to bottom, #FFF, #0ede1c 30%, #9beca0 60%, #cfedd4);
   height: 54px;
   margin-top: 25px;
 }
@@ -91,8 +90,8 @@
   table-layout: auto;
   border-collapse: separate;
   border-spacing: 0 8px;
-  margin-top: -8px;
-  margin-bottom: -8px;
+  margin-top: 25px;
+  margin-bottom: 40px;
   width: 100%;
   font-size: 13px;
   color: #34373a;
