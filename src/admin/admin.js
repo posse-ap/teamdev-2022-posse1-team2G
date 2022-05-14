@@ -1,28 +1,40 @@
+// // 検索ボックス作成
+// $(document).ready(function () {
+
+//   $('#search').click(function () {
+
+//     var input = $('#live_search').val();
+//     // alert(input);
+//     if (input !== '') {
 // 検索ボックス作成
-$(document).ready(function () {
 
-  $('#search').click(function () {
 
-    var input = $('#live_search').val();
-    // alert(input);
-    if (input !== '') {
-      $.ajax({
 
-        method: 'POST',
-        url: './live_search.php',
-        data: { input: input },
+  $(function () {
+    // $(document).ready(function () {
 
-        // success: function (data) {
-        //   $('.studentdata').html(data);
-        // }
+    $('#search').click(function () {
 
-        success: function (response) {
-          // console.log(response);
-          $.each(response, function (key, value) {
-            // console.log(value['fname']);
-            $('.studentdata').append('<tr>' +
-              // valueの値はキー
-              '<td class="stud_id">' + value['id'] + '</td>\
+      var input = $('#live_search').val();
+      // alert(input);
+      if (input !== '') {
+        $.ajax({
+
+          method: 'POST',
+          url: './live_search.php',
+          data: { input: input },
+
+          // success: function (data) {
+          //   $('.studentdata').html(data);
+          // }
+
+          success: function (response) {
+            // console.log(response);
+            $.each(response, function (key, value) {
+              // console.log(value['fname']);
+              $('.studentdata').append('<tr>' +
+                // valueの値はキー
+                '<td class="stud_id">' + value['id'] + '</td>\
                                 <td>' + value['fname'] + '</td>\
                                 <td>' + value['lname'] + '</td>\
                                 <td>' + value['class'] + '</td>\
@@ -33,18 +45,18 @@ $(document).ready(function () {
                                     <a href="#" class="badge btn-danger delete_btn">Delete</a>\
                                 </td>\
                             </tr>');
-          });
-        }
+            });
+          }
 
 
 
-      })
-    // } else {
-    //   $('.studentdata').css('display','none');
-    }
+        })
+        // } else {
+        //   $('.studentdata').css('display','none');
+      }
 
+    });
   });
-});
 
 
 
@@ -371,6 +383,8 @@ $(document).ready(function () {
 
 // fetch.phpと連携してデータを持ってくる
 function getdata() {
+
+  
   $.ajax({
     type: "GET",
     // fetch.phpからデータを持ってくる
