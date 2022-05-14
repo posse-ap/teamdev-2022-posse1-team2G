@@ -143,10 +143,10 @@ if (isset($_POST['checking_delete'])) {
   $stmt = $db->prepare($query);
   $stmt->execute();
   $result = $stmt->fetchAll();
+
   if (isset($result)) {
     echo $return  = "データを削除しました";
   } else {
     echo $return  = "データを削除できませんでした";
   }
-
 }

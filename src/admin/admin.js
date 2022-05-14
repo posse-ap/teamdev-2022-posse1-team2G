@@ -17,7 +17,7 @@ $(document).ready(function () {
       },
       // code.jsのif文のreturnの値がresponseに入る
       success: function (response) {
-        // // console.log(response);
+        // console.log(response);
         $('#StudentDeleteModal').modal('hide');
         $('.message-show').append('\
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">\
