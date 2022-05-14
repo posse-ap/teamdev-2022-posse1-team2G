@@ -4,26 +4,26 @@ CREATE DATABASE craft;
 USE craft;
 
 -- ユーザーテーブル
--- DROP TABLE IF EXISTS users;
--- CREATE TABLE users
--- (
---   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
---   name VARCHAR(255) NOT NULL,
---   university VARCHAR(255) NOT NULL,
---   department VARCHAR(255) NOT NULL,
---   grad_year VARCHAR(255) NOT NULL,
---   mail VARCHAR(255) NOT NULL,
---   phone_number VARCHAR(255) NOT NULL,
---   address VARCHAR(255) NOT NULL,
---   delete_flg INT NOT NULL
--- );
+DROP TABLE IF EXISTS users;
+CREATE TABLE users
+(
+  id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  university VARCHAR(255) NOT NULL,
+  department VARCHAR(255) NOT NULL,
+  grad_year VARCHAR(255) NOT NULL,
+  mail VARCHAR(255) NOT NULL,
+  phone_number VARCHAR(255) NOT NULL,
+  address VARCHAR(255) NOT NULL,
+  delete_flg INT NOT NULL
+);
 
--- INSERT INTO users (name, university, department, grad_year, mail, phone_number, address, delete_flg) VALUES 
--- ('鈴木花子', '〇〇大学', '学部', '24年春', 'marumaru@gmail.com', '080-5432-1987','〇県△市', 0),
--- ('佐藤太郎', '〇△大学', '学部', '24年春', 'marusankaku@gmail.com', '080-5432-1988','△県〇市', 0),
--- ('田中一郎', '△〇大学', '学部', '24年秋', 'sankakumaru@gmail.com', '080-5432-1989','△県〇市', 0),
--- ('山田かな', '△△大学', '学部', '25年春', 'sankakusankaku@gmail.com', '080-5432-1990','△県△市', 0),
--- ('加藤ゆう', '〇〇大学', '学部', '25年春', 'marusankakubatu@gmail.com', '080-5432-1991','〇県〇市', 0);
+INSERT INTO users (name, university, department, grad_year, mail, phone_number, address, delete_flg) VALUES 
+('鈴木花子', '〇〇大学', '学部', '24年春', 'marumaru@gmail.com', '080-5432-1987','〇県△市', 0),
+('佐藤太郎', '〇△大学', '学部', '24年春', 'marusankaku@gmail.com', '080-5432-1988','△県〇市', 0),
+('田中一郎', '△〇大学', '学部', '24年秋', 'sankakumaru@gmail.com', '080-5432-1989','△県〇市', 0),
+('山田かな', '△△大学', '学部', '25年春', 'sankakusankaku@gmail.com', '080-5432-1990','△県△市', 0),
+('加藤ゆう', '〇〇大学', '学部', '25年春', 'marusankakubatu@gmail.com', '080-5432-1991','〇県〇市', 0);
 
 
 -- エージェント契約情報テーブル
@@ -158,28 +158,28 @@ INSERT INTO company_user (user_id, company_id, contact_datetime) VALUES
 -- ('dddddd', 'mmssssmmllll@gmail.com'),
 -- ('eeeeee', 'llllssssmmmm@gmail.com');
 
-DROP TABLE IF EXISTS userss;
-CREATE TABLE userss
-(
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NOT NULL COMMENT '名前',
-  `sex` INT UNSIGNED NOT NULL COMMENT '性別\n1:男\n2:女',
-  `age` INT UNSIGNED NOT NULL COMMENT '年齢',
-  `valid` INT UNSIGNED NOT NULL,
-  PRIMARY KEY (`id`)
-  );
+-- DROP TABLE IF EXISTS userss;
+-- CREATE TABLE userss
+-- (
+--   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+--   `name` VARCHAR(45) NOT NULL COMMENT '名前',
+--   `sex` INT UNSIGNED NOT NULL COMMENT '性別\n1:男\n2:女',
+--   `age` INT UNSIGNED NOT NULL COMMENT '年齢',
+--   `valid` INT UNSIGNED NOT NULL,
+--   PRIMARY KEY (`id`)
+--   );
 
-INSERT INTO userss (name, sex, age, valid) VALUES
-('田中太郎', '1', '26', '1'),
-('山田花子', '2', '16', '1'),
-('高橋正樹', '1', '18', '1'),
-('金子優子', '2', '31', '1'),
-('吉井佳子', '2', '21', '1'),
-('橘勇気', '1', '13', '1'),
-('小林隆', '1', '39', '1'),
-('影山夏生', '1', '11', '0'),
-('加藤裕太', '1', '23', '1'),
-('後藤由美', '2', '20', '1');
+-- INSERT INTO userss (name, sex, age, valid) VALUES
+-- ('田中太郎', '1', '26', '1'),
+-- ('山田花子', '2', '16', '1'),
+-- ('高橋正樹', '1', '18', '1'),
+-- ('金子優子', '2', '31', '1'),
+-- ('吉井佳子', '2', '21', '1'),
+-- ('橘勇気', '1', '13', '1'),
+-- ('小林隆', '1', '39', '1'),
+-- ('影山夏生', '1', '11', '0'),
+-- ('加藤裕太', '1', '23', '1'),
+-- ('後藤由美', '2', '20', '1');
 
 
 
