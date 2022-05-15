@@ -129,12 +129,53 @@ else if (isset($_POST['send']) && $_POST['send']) {
 
 
   /* メールの作成 （to エージェント）*/
+
+  // お問い合わせページのPHP、選択された会社の情報の受け渡しはできる
+    //（company_posting_informationテーブルからselectしてる）
+  // メール送信する場合は、二つのテーブル紐づけて、
+  // companyテーブルのmail_contactカラムから送信先とってくれば送信できる
+    // 送られているかテストするなら、init.sqlのメールアドレス変えてやってみるといいと思う！
+
+  //選択された会社のメールアドレス取得
+  // $stmt = $db->prepare("SELECT * FROM company_posting_information WHERE id = :id");
+  // $id = $company_id;
+  // $stmt->bindValue(':id', $id, PDO::PARAM_STR);
+  // $stmt->execute();
+  // $info = $stmt->fetch();
+
+  // SELECT文を変数に格納
+  $sql = "SELECT
+              company_posting_information.company_id AS company_id,
+              company_posting_information.name AS company_name,
+              company.mail_contact AS mail_contact
+              FROM company_posting_information
+              INNER JOIN company
+              ON  company_posting_information.company_id = company.id
+              WHERE company_posting_information.id = :id ";
+  $stmt = $db->prepare($sql); 
+  $stmt->bindValue(':id', $id, PDO::PARAM_STR);
+  $stmt->execute();
+  $contact_mail_info = $stmt->fetch();
+  // $contact_mail_info = array();
+  // while($contact_mail_info_raw = $stmt->fetch()) {
+  // $contact_mail_info[]=array(
+  // 'company_id' =>$contact_mail_info_raw['company_id'],
+  // 'company_name' =>$contact_mail_info_raw['company_name'],
+  // 'mail_contact' =>$contact_mail_info_raw['mail_contact']
+  // );
+  // }
+  echo "<pre>";
+  echo print_r($contact_mail_info);
+  echo "</pre>";
+  
+  
   //メール本文の用意
   $honbun_agent = '';
   $honbun_agent .= "いつもboozer社craftをご利用いただきありがとうございます。\n\n";
   $honbun_agent .= "当サイトより学生ユーザーから貴社へのお問い合わせがあったので通知メールを送信いたしました。" . "\n";
   $honbun_agent .= "管理ページの申し込み一覧ページよりご確認ください。" . "\n\n";
   /* 
+  変数用意
    mail_to_agent($宛先):	送信先のメールアドレス 各アドレスをカンマで区切ると、複数の宛先をtoに指定できる。このパラメータは、自動的にはエンコードされない。
    mail_subject_agent($件名):	メールの件名
    mail_body_agent($本文):  メールの本文
@@ -166,11 +207,6 @@ else if (isset($_POST['send']) && $_POST['send']) {
   }
 
 
-// お問い合わせページのPHP、選択された会社の情報の受け渡しはできるようになっているから
-//（company_posting_informationテーブルからselectしてる）
-// メール送信する場合は、二つのテーブル紐づけて、companyテーブルのmail_contactカラム？から送信先とってくれば送信できると思う。
-// 送られているかテストするなら、init.sqlのメールアドレス変えてやってみるといいと思う！
- 
   $_SESSION = array();
   $mode = 'send';
 } else {
@@ -215,6 +251,9 @@ $info = $stmt->fetch();
 </head>
 
 <body>
+<!-- ↑ヘッダー関数 -->
+
+
   <!-- 入力画面 -->
   <!-- 会社情報 -->
   <h2>お問い合わせ会社</h2>
@@ -332,6 +371,9 @@ $info = $stmt->fetch();
     <?php require_once('thanks.php') ?>
 
   <?php } ?>
+
+  <!-- フッター関数↓ -->
 </body>
+
 
 </html>
