@@ -235,7 +235,7 @@
           </div>
           <div class="card-body">
             <div>
-              <input type="text" class='form-control' id='live_search' autocomplete="off" placeholder="検索..">
+              <input type="text" class='form-control' id='live_search' name='input' autocomplete="off" placeholder="検索..">
               <input type="submit" id="search">
             </div>
             <div class="message-show">

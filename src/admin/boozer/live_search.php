@@ -3,7 +3,7 @@
 require('../../dbconnect.php');
 if (isset($_POST['input'])) {
   $input = $_POST['input'];
-  $sql = "SELECT * FROM students WHERE fname LIKE '%{$input}%'";
+  $sql = "SELECT * FROM students WHERE fname LIKE '%{$input}%' OR lname LIKE '%{$input}%'";
   $stmt = $db->prepare($sql);
   $stmt->execute();
   $result = $stmt->fetchAll();

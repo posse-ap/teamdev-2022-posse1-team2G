@@ -8,55 +8,74 @@
 //     if (input !== '') {
 // 検索ボックス作成
 
+// $(document).ready(function () {
+//   if ($('#search').click) {
+    
+//       var input = $('#live_search').val();
+//       // alert(input);
+    
+//   }
+// })
 
 
-  $(function () {
-    // $(document).ready(function () {
-
-    $('#search').click(function () {
-
-      var input = $('#live_search').val();
-      // alert(input);
-      if (input !== '') {
-        $.ajax({
-
-          method: 'POST',
-          url: './live_search.php',
-          data: { input: input },
-
-          // success: function (data) {
-          //   $('.studentdata').html(data);
-          // }
-
-          success: function (response) {
-            // console.log(response);
-            $.each(response, function (key, value) {
-              // console.log(value['fname']);
-              $('.studentdata').append('<tr>' +
-                // valueの値はキー
-                '<td class="stud_id">' + value['id'] + '</td>\
-                                <td>' + value['fname'] + '</td>\
-                                <td>' + value['lname'] + '</td>\
-                                <td>' + value['class'] + '</td>\
-                                <td>' + value['section'] + '</td>\
-                                <td>\
-                                    <a href="#" class="badge btn-info view_btn">VIEW</a>\
-                                    <a href="#" class="badge btn-primary edit_btn">EDIT</a>\
-                                    <a href="#" class="badge btn-danger delete_btn">Delete</a>\
-                                </td>\
-                            </tr>');
-            });
-          }
+// $(document).ready(function () {
+//   $('#search').click(function () {
+//     var input = $('#live_search').val();
+//     alert(input);
+//   })
+// })
 
 
 
-        })
-        // } else {
-        //   $('.studentdata').css('display','none');
-      }
 
-    });
-  });
+// 検索が押されたときの挙動
+  // $(function () {
+  //   $(document).ready(function () {
+
+  //   $('#search').click(function () {
+
+  //     var input = $('#live_search').val();
+  //     // alert(input);
+  //     if (input !== '') {
+  //       $.ajax({
+
+  //         method: 'POST',
+  //         url: './live_search.php',
+  //         data: { input: input },
+
+  //         // success: function (data) {
+  //         //   $('.studentdata').html(data);
+  //         // }
+
+  //         success: function (response) {
+  //           // console.log(response);
+  //           $.each(response, function (key, value) {
+  //             // console.log(value['fname']);
+  //             $('.studentdata').append('<tr>' +
+  //               // valueの値はキー
+  //               '<td class="stud_id">' + value['id'] + '</td>\
+  //                               <td>' + value['fname'] + '</td>\
+  //                               <td>' + value['lname'] + '</td>\
+  //                               <td>' + value['class'] + '</td>\
+  //                               <td>' + value['section'] + '</td>\
+  //                               <td>\
+  //                                   <a href="#" class="badge btn-info view_btn">VIEW</a>\
+  //                                   <a href="#" class="badge btn-primary edit_btn">EDIT</a>\
+  //                                   <a href="#" class="badge btn-danger delete_btn">Delete</a>\
+  //                               </td>\
+  //                           </tr>');
+  //           });
+  //         }
+
+
+
+  //       })
+  //       // } else {
+  //       //   $('.studentdata').css('display','none');
+  //     }
+
+  //   });
+  // });
 
 
 
@@ -382,20 +401,27 @@ $(document).ready(function () {
 // });
 
 // fetch.phpと連携してデータを持ってくる
-function getdata() {
-
+function getdata(input) {
   
-  $.ajax({
-    type: "GET",
-    // fetch.phpからデータを持ってくる
-    url: "./fetch.php",
-    success: function (response) {
-      // console.log(response);
-      $.each(response, function (key, value) {
-        // console.log(value['fname']);
-        $('.studentdata').append('<tr>' +
-          // valueの値はキー
-          '<td class="stud_id">' + value['id'] + '</td>\
+    $.ajax({
+      type: "GET",
+      // fetch.phpからデータを持ってくる
+      url: "./fetch.php",
+      data: { input: input },
+      // data: {
+      //   'input': input,
+      //   'id':id,
+      //   'fname': fname,
+      //   'lname': lname,
+      //   'class': stu_class,
+      //   'section': section,
+      // },
+      success: function (response) {
+        $('.studentdata').html(response);
+        $.each(response, function (key, value) {
+          $('.studentdata').append('<tr>' +
+            // valueの値はキー
+            '<td class="stud_id">' + value['id'] + '</td>\
                                 <td>' + value['fname'] + '</td>\
                                 <td>' + value['lname'] + '</td>\
                                 <td>' + value['class'] + '</td>\
@@ -406,7 +432,125 @@ function getdata() {
                                     <a href="#" class="badge btn-danger delete_btn">Delete</a>\
                                 </td>\
                             </tr>');
-      });
+        });
+      }
+    });
+  
+  $('#search').click(function () {
+
+    var input = $('#live_search').val();
+    if (input != '') {
+      getdata(input);
     }
+    else {
+      getdata();
+    }
+
   });
+  
+  // 引数を変えて試す番
+    // $.ajax({
+    //   type: "GET",
+    //   // fetch.phpからデータを持ってくる
+    //   url: "./fetch.php",
+    //   success: function (response) {
+    //     // console.log(response);
+    //     $.each(response, function (key, value) {
+    //       // console.log(value['fname']);
+    //       $('.studentdata').append('<tr>' +
+    //         // valueの値はキー
+    //         '<td class="stud_id">' + value['id'] + '</td>\
+    //                             <td>' + value['fname'] + '</td>\
+    //                             <td>' + value['lname'] + '</td>\
+    //                             <td>' + value['class'] + '</td>\
+    //                             <td>' + value['section'] + '</td>\
+    //                             <td>\
+    //                                 <a href="#" class="badge btn-info view_btn">VIEW</a>\
+    //                                 <a href="#" class="badge btn-primary edit_btn">EDIT</a>\
+    //                                 <a href="#" class="badge btn-danger delete_btn">Delete</a>\
+    //                             </td>\
+    //                         </tr>');
+    //     });
+    //   }
+    // });
+
+
 }
+
+
+
+// 引数を変える参考
+// $(document).ready(function () {
+
+//     load_data();
+
+//     //
+//     function load_data(query) {
+//       $.ajax({
+//         url: "<?php echo base_url(); ?>ajaxsearch/fetch",
+//         method: "POST",
+//         data: { query: query },
+//         success: function (data) {
+//           $('#result').html(data);
+//         }
+//       })
+//     }
+
+//     //  getdataに引数を持たせてkeyupした場合は実行する
+//     $('#search_text').keyup(function () {
+//       var search = $(this).val();
+//       if (search != '') {
+//         load_data(search);
+//       }
+//       else {
+//         load_data();
+//       }
+//     });
+//   });
+
+
+ // if ($('#search').clicked) {
+  
+    // $('#search').click(function () {
+    //   var input = $('#live_search').val();
+    //   // alert(input);
+    //   if (input !== '') {
+    //     $.ajax({
+
+    //       method: 'POST',
+    //       url: './live_search.php',
+    //       data: { input: input },
+
+    //       // success: function (data) {
+    //       //   $('.studentdata').html(data);
+    //       // }
+
+    //       success: function (response) {
+    //         // console.log(response);
+    //         $.each(response, function (key, value) {
+    //           // console.log(value['fname']);
+    //           $('.studentdata').append('<tr>' +
+    //             // valueの値はキー
+    //             '<td class="stud_id">' + value['id'] + '</td>\
+    //                             <td>' + value['fname'] + '</td>\
+    //                             <td>' + value['lname'] + '</td>\
+    //                             <td>' + value['class'] + '</td>\
+    //                             <td>' + value['section'] + '</td>\
+    //                             <td>\
+    //                                 <a href="#" class="badge btn-info view_btn">VIEW</a>\
+    //                                 <a href="#" class="badge btn-primary edit_btn">EDIT</a>\
+    //                                 <a href="#" class="badge btn-danger delete_btn">Delete</a>\
+    //                             </td>\
+    //                         </tr>');
+    //         });
+    //       }
+
+
+
+        // })
+        // } else {
+        //   $('.studentdata').css('display','none');
+    //   };
+    // });
+  
+  // } else {
