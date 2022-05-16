@@ -89,8 +89,8 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Student Detail View</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <!-- <span aria-hidden="true">&times;</span> -->
           </button>
         </div>
         <!-- 要素分だけクラスを追加 -->
@@ -105,7 +105,7 @@
 
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
@@ -118,8 +118,8 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Edit Student Data</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <!-- <span aria-hidden="true">&times;</span> -->
           </button>
         </div>
 
@@ -152,7 +152,7 @@
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <!-- クラス名追加　student_add_ajax-->
           <!-- updateに変更　第四回 -->
           <button type="button" class="btn btn-primary student_update_ajax">Update</button>
@@ -170,8 +170,8 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Delete Student Data</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <!-- <span aria-hidden="true">&times;</span> -->
           </button>
         </div>
 
@@ -205,7 +205,7 @@
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <!-- クラス名追加　student_add_ajax-->
           <!-- updateに変更　第四回 -->
           <button type="button" class="btn btn-danger student_delete_ajax">Yes Delete</button>

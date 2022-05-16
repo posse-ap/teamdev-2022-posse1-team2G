@@ -103,7 +103,7 @@ $(document).ready(function () {
         $('.message-show').append('\
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">\
                                     <strong>Heyy!</strong> '+ response + '.\
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">\
+                                    <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">\
                                         <span aria-hidden="true">&times;</span>\
                                     </button>\
                                 </div>\
@@ -137,7 +137,7 @@ $(document).ready(function () {
     //     $('.message-show').append('\
     //                             <div class="alert alert-success alert-dismissible fade show" role="alert">\
     //                                 <strong>Heyy!</strong> '+ response + '.\
-    //                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">\
+    //                                 <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">\
     //                                     <span aria-hidden="true">&times;</span>\
     //                                 </button>\
     //                             </div>\
@@ -161,7 +161,7 @@ $(document).ready(function () {
     //     $('.message-show').append('\
     //                             <div class="alert alert-success alert-dismissible fade show" role="alert">\
     //                                 <strong>Heyy!</strong> '+ response + '.\
-    //                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">\
+    //                                 <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">\
     //                                     <span aria-hidden="true">&times;</span>\
     //                                 </button>\
     //                             </div>\
@@ -222,7 +222,7 @@ $(document).ready(function () {
           $('.message-show').append('\
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">\
                                     <strong>Heyy!</strong> '+ response + '.\
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">\
+                                    <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">\
                                         <span aria-hidden="true">&times;</span>\
                                     </button>\
                                 </div>\
@@ -243,7 +243,7 @@ $(document).ready(function () {
       $('.error-message-update').append('\
                         <div class="alert alert-warning alert-dismissible fade show" role="alert">\
                             <strong>Hey!</strong> Please enter all fileds.\
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">\
+                            <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">\
                                 <span aria-hidden="true">&times;</span>\
                             </button>\
                         </div>\
@@ -355,7 +355,7 @@ $(document).ready(function () {
           $('.message-show').append('\
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">\
                                     <strong>Heyy!</strong> '+ response + '.\
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">\
+                                    <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">\
                                         <span aria-hidden="true">&times;</span>\
                                     </button>\
                                 </div>\
@@ -377,7 +377,7 @@ $(document).ready(function () {
       $('.error-message').append('\
                         <div class="alert alert-warning alert-dismissible fade show" role="alert">\
                             <strong>Hey!</strong> Please enter all fileds.\
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">\
+                            <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">\
                                 <span aria-hidden="true">&times;</span>\
                             </button>\
                         </div>\
