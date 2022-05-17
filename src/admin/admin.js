@@ -181,7 +181,7 @@ $(document).ready(function () {
     //     //   $('#edit_class').val(studedit['class']);
     //     //   $('#edit_section').val(studedit['section']);
     //     // });
-    //     // $('#StudentEditModal').modal('show');
+    //     // $('#companyEditModal').modal('show');
     //   }
     // });
 
@@ -218,7 +218,7 @@ $(document).ready(function () {
         success: function (response) {
           console.log(response);
           // Add→Edit
-          $('#StudentEditModal').modal('hide');
+          $('#companyEditModal').modal('hide');
           $('.message-show').append('\
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">\
                                     <strong>Heyy!</strong> '+ response + '.\
@@ -281,7 +281,7 @@ $(document).ready(function () {
           $('#edit_class').val(studedit['class']);
           $('#edit_section').val(studedit['section']);
         });
-        $('#StudentEditModal').modal('show');
+        $('#companyEditModal').modal('show');
       }
     });
 

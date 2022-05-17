@@ -63,6 +63,111 @@ $('.student_add_ajax').click(function (e) {
   }
 })
 
+
+$('.student_update_ajax').click(function (e) {
+  e.preventDefault();
+
+  // それぞれのinputに書かれた要素を変数に置く
+  // updateではidを追加 hiddenで追加されたid
+  // そして他の値も変更
+  var stud_id = $('#id_edit').val();
+  var company_name = $('#company_name_edit').val();
+  var phone_number = $('#phone_number_edit').val();
+  var mail_contact = $('#mail_contact_edit').val();
+  var mail_manager = $('#mail_manager_edit').val();
+  var mail_notification = $('#mail_notification_edit').val();
+  var representative = $('#representative_edit').val();
+  var address = $('#address_edit').val();
+  var company_url = $('#company_url_edit').val();
+
+  // すべて代入されていたら処理するよ
+  if (company_name != '' & phone_number != '' & mail_contact != '' & mail_manager != '' & mail_notification != '' & representative != '' & address != '' & company_url != '') {
+    $.ajax({
+      type: "POST",
+      url: "./crud.php",
+      data: {
+        // updateに変更、id追加
+        'checking_update': true,
+        'stud_id': stud_id,
+        'company_name': company_name,
+        'phone_number': phone_number,
+        'mail_contact': mail_contact,
+        'mail_manager': mail_manager,
+        'mail_notification': mail_notification,
+        'representative': representative,
+        'address': address,
+        'company_url': company_url,
+      },
+      success: function (response) {
+        console.log(response);
+        // Add→Edit
+        $('#companyEditModal').modal('hide');
+        $('.message-show').append('\
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">\
+                                    <strong>Hey!</strong> '+ response + '.\
+                                    <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">\
+                                        <span aria-hidden="true">&times;</span>\
+                                    </button>\
+                                </div>\
+                            ');
+        $('.studentdata').html("");
+        getdata();
+      }
+    });
+  }
+  // 入力に不備があった場合
+  else {
+    // console.log("Please enter all fileds.");
+    // デフォルトのエラーメッセージ
+    $('.error-message-update').append('\
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">\
+                            <strong>Hey!</strong> Please enter all fileds.\
+                            <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">\
+                                <span aria-hidden="true">&times;</span>\
+                            </button>\
+                        </div>\
+                    ');
+  }
+});
+
+
+
+// edit modal
+// view modalから持ってきた
+$(document).on("click", ".edit_btn", function () {
+
+  var stud_id = $(this).closest('tr').find('.stud_id').text();
+  $.ajax({
+    type: "POST",
+    url: "./crud.php",
+    data: {
+      'checking_edit': true,
+      'stud_id': stud_id,
+    },
+    success: function (response) {
+      $.each(response, function (key, compedit) {
+        $('#id_edit').val(compedit['id']);
+        $('#company_name_edit').val(compedit['company_name']);
+        $('#phone_number_edit').val(compedit['phone_number']);
+        $('#mail_contact_edit').val(compedit['mail_contact']);
+        $('#mail_manager_edit').val(compedit['mail_manager']);
+        $('#mail_notification_edit').val(compedit['mail_notification']);
+        $('#representative_edit').val(compedit['representative']);
+        $('#address_edit').val(compedit['address']);
+        $('#company_url_edit').val(compedit['company_url']);
+        // $('#id_edit').val(compedit['id']);
+        // $('#edit_fname').val(compedit['fname']);
+        // $('#edit_lname').val(compedit['lname']);
+        // $('#edit_class').val(compedit['class']);
+        // $('#edit_section').val(compedit['section']);
+      });
+      $('#companyEditModal').modal('show');
+    }
+  });
+
+});
+
+
 //view modal 
 $(document).on("click", ".viewbtn", function () {
 

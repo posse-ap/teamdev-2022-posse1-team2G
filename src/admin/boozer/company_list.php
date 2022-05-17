@@ -141,6 +141,88 @@
   </div>
 
 
+  <!-- Edit Modal -->
+  <!-- add modal から変更 -->
+  <div class="modal fade" id="companyEditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">変更する</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <input type="hidden" id="id_edit">
+
+            <div class="col-md-12">
+              <div class="error-message">
+
+              </div>
+            </div>
+            <!-- add modalからもってきてクラス名をIDに変更 -->
+            <div class="col-md-6">
+              <label for="">会社名</label>
+              <input type="text" class="form-control" id="company_name_edit">
+            </div>
+            <div class="col-md-6">
+              <label for="">電話番号</label>
+              <input type="text" class="form-control" id="phone_number_edit">
+            </div>
+            <div class="col-md-6">
+              <label for="">メールアドレス（contact）</label>
+              <input type="text" class="form-control" id="mail_contact_edit">
+            </div>
+            <div class="col-md-6">
+              <label for="">メールアドレス（manager）</label>
+              <input type="text" class="form-control" id="mail_manager_edit">
+            </div>
+            <div class="col-md-6">
+              <label for="">メールアドレス（notification）</label>
+              <input type="text" class="form-control" id="mail_notification_edit">
+            </div>
+            <div class="col-md-6">
+              <label for="">代表者</label>
+              <input type="text" class="form-control" id="representative_edit">
+            </div>
+            <div class="col-md-6">
+              <label for="">住所</label>
+              <input type="text" class="form-control" id="address_edit">
+            </div>
+            <div class="col-md-6">
+              <label for="">URL</label>
+              <input type="text" class="form-control" id="company_url_edit">
+            </div>
+
+
+
+            <!-- <div class="col-md-6">
+              <label for="">First Name</label>
+              <input type="text" id="edit_fname" class="form-control">
+            </div>
+            <div class="col-md-6">
+              <label for="">Last Name</label>
+              <input type="text" id="edit_lname" class="form-control">
+            </div>
+            <div class="col-md-6">
+              <label for="">Class</label>
+              <input type="text" id="edit_class" class="form-control">
+            </div>
+            <div class="col-md-6">
+              <label for="">Section</label>
+              <input type="text" id="edit_section" class="form-control">
+            </div> -->
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary student_update_ajax">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 
   <div class="container mt-5">
@@ -165,7 +247,7 @@
                   <th>ID</th>
                   <th>会社名</th>
                   <th>電話番号</th>
-                  <th>メールアドレス （連絡用）</th>
+                  <th>メールアドレス</th>
                   <th>今月の金額</th>
                   <th>機能</th>
                 </tr>
