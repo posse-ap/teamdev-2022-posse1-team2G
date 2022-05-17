@@ -84,10 +84,14 @@ $('.student_add_ajax').click(function (e) {
                             ');
         $('.studentdata').html("");
         getdata();
-        $('.fname').val("");
-        $('.lname').val("");
-        $('.class').val("");
-        $('.section').val("");
+        $('.company_name').val("");
+        $('.phone_number').val("");
+        $('.mail_contact').val("");
+        $('.mail_manager').val("");
+        $('.mail_notification').val("");
+        $('.representative').val("");
+        $('.address').val("");
+        $('.company_url').val("");
       }
     });
 
