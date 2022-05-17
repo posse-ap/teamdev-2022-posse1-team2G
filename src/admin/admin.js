@@ -304,7 +304,7 @@ $(document).ready(function () {
       },
       // code.jsのif文のreturnの値がresponseに入る
       success: function (response) {
-        // console.log(response);
+        // alert(response);
         $.each(response, function (key, studview) {
           // console.log(studview['fname']);
           // TOP画面にはのっていない情報はここで記載（空の要素をindex.phpで用意してから）
@@ -314,7 +314,7 @@ $(document).ready(function () {
           $('.class_view').text(studview['class']);
           $('.section_view').text(studview['section']);
         });
-        $('#StudentViewModal').modal('show');
+        $('#companyViewModal').modal('show');
       }
     });
 
@@ -351,7 +351,7 @@ $(document).ready(function () {
         },
         success: function (response) {
           console.log(response);
-          $('#Student_AddModal').modal('hide');
+          $('#companyAddModal').modal('hide');
           $('.message-show').append('\
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">\
                                     <strong>Heyy!</strong> '+ response + '.\

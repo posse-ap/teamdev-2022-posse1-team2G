@@ -36,7 +36,7 @@
   <!-- 二本目の動画 基本的にmodal機能のコピペ-->
   <!-- Add Modal -->
   <!-- id変更 -->
-  <div class="modal fade" id="Student_AddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="companyAddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -84,7 +84,7 @@
 
   <!-- 三本目の動画 -->
   <!-- View Modal -->
-  <div class="modal fade" id="StudentViewModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="companyViewModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -228,7 +228,7 @@
             <h4>
               PHP - AJAX - CRUD | Data without page reload using jquery ajax in php.
               <!-- bootstrapに内蔵されているmodal機能追加 -->
-              <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#Student_AddModal">
+              <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#companyAddModal">
                 Add
               </button>
             </h4>

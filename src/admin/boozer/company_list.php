@@ -15,7 +15,7 @@
 <body>
 
   <!-- Add Modal -->
-  <div class="modal fade" id="Student_AddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="companyAddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -75,6 +75,72 @@
   </div>
 
 
+  <!-- View Modal -->
+  <div class="modal fade" id="companyViewModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLabel">会社詳細</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div>
+            <div class="col-md-6 pb-2">
+              <h5>ID</h5>
+              <p class="id_view"></p>
+            </div>
+            <div class="col-md-6 pb-2">
+              <h5>会社名</h5>
+              <p class="company_name_view"></p>
+            </div>
+            <div class="col-md-6 pb-2">
+              <h5>電話番号</h5>
+              <p class="phone_number_view"></p>
+            </div>
+            <div class="col-md-6 pb-2">
+              <h5>メールアドレス（contact）</h5>
+              <p class="mail_contact_view"></p>
+            </div>
+            <div class="col-md-6 pb-2">
+              <h5>メールアドレス（manager）</h5>
+              <p class="mail_manager_view"></p>
+            </div>
+            <div class="col-md-6  pb-2">
+              <h5>メールアドレス（notification）</h5>
+              <p class="mail_notification_view"></p>
+            </div>
+            <div class="col-md-6 pb-2">
+              <h5>代表者</h5>
+              <p class="representative_view"></p>
+            </div>
+            <div class="col-md-6 pb-2">
+              <h5>住所</h5>
+              <p class="address_view"></p>
+            </div>
+            <div class="col-md-6 pb-2">
+              <h5>URL</h5>
+              <p class="company_url_view"></p>
+            </div>
+            <!-- <h4 class="phone_number_view"></h4>
+            <h4 class="mail_contact_view"></h4>
+            <h4 class="mail_manager_view"></h4>
+            <h4 class="mail_notification_view"></h4>
+            <h4 class="representative_view"></h4>
+            <h4 class="address_view"></h4>
+            <h4 class="company_url_view"></h4> -->
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 
 
   <div class="container mt-5">
@@ -84,7 +150,7 @@
           <div class="card-header">
             <h4>
               会社一覧
-              <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#Student_AddModal">
+              <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#companyAddModal">
                 Add
               </button>
             </h4>

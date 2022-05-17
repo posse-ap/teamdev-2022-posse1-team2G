@@ -49,7 +49,7 @@ if (isset($_POST['checking_add'])) {
 // checking_viewがセットされていたら　つまり詳細が押されたら？
 if (isset($_POST['checking_view'])) {
   $stud_id = $_POST['stud_id'];
-  // $checkings = [];
+  // echo $return = $stud_id;
 
   $query_detail = "SELECT * FROM students WHERE id='$stud_id' ";
   $stmt_detail = $db->prepare($query_detail);

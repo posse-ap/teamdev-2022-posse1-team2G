@@ -31,7 +31,7 @@ $('.student_add_ajax').click(function (e) {
       },
       success: function (response) {
         // console.log(response);
-        $('#Student_AddModal').modal('hide');
+        $('#companyAddModal').modal('hide');
         $('.message-show').append('\
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">\
                                     <strong>Hey!</strong> '+ response + '.\
@@ -62,6 +62,38 @@ $('.student_add_ajax').click(function (e) {
                     ');
   }
 })
+
+//view modal 
+$(document).on("click", ".viewbtn", function () {
+
+  var stud_id = $(this).closest('tr').find('.stud_id').text();
+
+  $.ajax({
+    type: "POST",
+    url: "./crud.php",
+    data: {
+      'checking_view': true,
+      'stud_id': stud_id,
+    },
+    success: function (response) {
+      // console.log(response);
+      $.each(response, function (key, compview) {
+        // console.log(compview['fname']);
+        $('.id_view').text(compview['id']);
+        $('.company_name_view').text(compview['company_name']);
+        $('.phone_number_view').text(compview['phone_number']);
+        $('.mail_contact_view').text(compview['mail_contact']);
+        $('.mail_manager_view').text(compview['mail_manager']);
+        $('.mail_notification_view').text(compview['mail_notification']);
+        $('.representative_view').text(compview['representative']);
+        $('.address_view').text(compview['address']);
+        $('.company_url_view').text(compview['company_url']);
+      });
+      $('#companyViewModal').modal('show');
+    }
+  });
+
+});
 
 
 

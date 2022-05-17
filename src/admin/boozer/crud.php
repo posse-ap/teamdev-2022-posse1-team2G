@@ -1,9 +1,8 @@
 <?php
 require('../../dbconnect.php');
 
-
-if(isset($_POST['checking_add']))
-{
+// 新規追加
+if (isset($_POST['checking_add'])) {
   $company_name = $_POST['company_name'];
   $phone_number = $_POST['phone_number'];
   $mail_contact = $_POST['mail_contact'];
@@ -13,7 +12,7 @@ if(isset($_POST['checking_add']))
   $address = $_POST['address'];
   $company_url = $_POST['company_url'];
 
-    $query = "INSERT INTO 
+  $query = "INSERT INTO 
     company 
     (company_name,phone_number,mail_contact,mail_manager,mail_notification,representative,address,company_url) 
     VALUES 
@@ -27,4 +26,24 @@ if(isset($_POST['checking_add']))
   } else {
     echo $return  = "Something Went Wrong.!";
   }
+}
+
+// view modal
+if (isset($_POST['checking_view'])) {
+  $stud_id = $_POST['stud_id'];
+  $result = [];
+
+  $query = "SELECT * FROM company WHERE id='$stud_id' ";
+  $stmt = $db->prepare($query);
+  $stmt->execute();
+  $result = $stmt->fetchAll();
+
+  if ($result == true) {
+ 
+    header('Content-type: application/json');
+    echo json_encode($result);
+  } else {
+    echo $return = "詳細画面開けません!";
+  }
+
 }
