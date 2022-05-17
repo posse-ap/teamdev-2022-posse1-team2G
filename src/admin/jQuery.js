@@ -1,6 +1,47 @@
 $(document).ready(function () {
   getdata();
+
+
+$('.company_delete_ajax').click(function (e) {
+  e.preventDefault();
+
+  var stud_id = $('#id_delete').val();
+  $.ajax({
+    type: "POST",
+    url: "./crud.php",
+    data: {
+      // checking_viewからchecking_deleteに変更
+      'checking_delete': true,
+      'stud_id': stud_id,
+    },
+    // code.jsのif文のreturnの値がresponseに入る
+    success: function (response) {
+      // console.log(response);
+      $('#companyDeleteModal').modal('hide');
+      $('.message-show').append('\
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">\
+                                    <strong>Heyy!</strong> '+ response + '.\
+                                    <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">\
+                                        <span aria-hidden="true">&times;</span>\
+                                    </button>\
+                                </div>\
+                            ');
+      $('.studentdata').html("");
+      getdata();
+    }
+  });
 });
+
+$(document).on("click", ".delete_btn", function () {
+  // idを取得　trの中のstud_idというクラスのテキストを取得　一本目参照
+  var stud_id = $(this).closest('tr').find('.stud_id').text();
+  // 追加
+  $('#id_delete').val(stud_id)
+  $('#companyDeleteModal').modal('show');
+
+});
+
+
 
 $('.student_add_ajax').click(function (e) {
   e.preventDefault();
@@ -217,7 +258,7 @@ function getdata() {
                                 <td>\
                                     <a href="#" class="badge btn-info viewbtn">VIEW</a>\
                                     <a href="#" class="badge btn-primary edit_btn">EDIT</a>\
-                                    <a href="" class="badge btn-danger">Delete</a>\
+                                    <a href="#" class="badge btn-danger delete_btn">Delete</a>\
                                 </td>\
                             </tr>');
       });
@@ -225,3 +266,4 @@ function getdata() {
   });
 }
 
+});

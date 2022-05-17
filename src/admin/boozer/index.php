@@ -165,7 +165,7 @@
 
   <!-- ６本目の動画 （ADD→EDITのほとんどコピペ）-->
   <!-- delete Modal -->
-  <div class="modal fade" id="StudentDeleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="companyDeleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -208,7 +208,7 @@
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <!-- クラス名追加　student_add_ajax-->
           <!-- updateに変更　第四回 -->
-          <button type="button" class="btn btn-danger student_delete_ajax">Yes Delete</button>
+          <button type="button" class="btn btn-danger company_delete_ajax">Yes Delete</button>
         </div>
       </div>
     </div>

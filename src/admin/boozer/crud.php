@@ -89,3 +89,18 @@ if (isset($_POST['checking_update'])) {
     echo $return  = "データを更新できませんでした";
   }
 }
+
+// delete modal
+if (isset($_POST['checking_delete'])) {
+  $id = $_POST['stud_id'];
+  $query = "DELETE FROM company WHERE id = '$id' ";
+  $stmt = $db->prepare($query);
+  $stmt->execute();
+  $result = $stmt->fetchAll();
+
+  if (isset($result)) {
+    echo $return  = "データを削除しました";
+  } else {
+    echo $return  = "データを削除できませんでした";
+  }
+}

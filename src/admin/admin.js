@@ -84,7 +84,7 @@
 $(document).ready(function () {
   getdata();
 
-  $('.student_delete_ajax').click(function (e) {
+  $('.company_delete_ajax').click(function (e) {
     e.preventDefault();
 
     var stud_id = $('#id_delete').val();
@@ -99,7 +99,7 @@ $(document).ready(function () {
       // code.jsのif文のreturnの値がresponseに入る
       success: function (response) {
         // console.log(response);
-        $('#StudentDeleteModal').modal('hide');
+        $('#companyDeleteModal').modal('hide');
         $('.message-show').append('\
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">\
                                     <strong>Heyy!</strong> '+ response + '.\
@@ -120,7 +120,7 @@ $(document).ready(function () {
     var stud_id = $(this).closest('tr').find('.stud_id').text();
     // 追加
     $('#id_delete').val(stud_id)
-    $('#StudentDeleteModal').modal('show');
+    $('#companyDeleteModal').modal('show');
 
     // $.ajax({
     //   type: "POST",
@@ -133,7 +133,7 @@ $(document).ready(function () {
     //   // code.jsのif文のreturnの値がresponseに入る
     //   success: function (response) {
     //     // // console.log(response);
-    //     // $('#StudentDeleteModal').modal('hide');
+    //     // $('#companyDeleteModal').modal('hide');
     //     $('.message-show').append('\
     //                             <div class="alert alert-success alert-dismissible fade show" role="alert">\
     //                                 <strong>Heyy!</strong> '+ response + '.\
