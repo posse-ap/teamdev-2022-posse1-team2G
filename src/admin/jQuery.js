@@ -43,6 +43,72 @@ $(document).on("click", ".delete_btn", function () {
 });
 
 
+  $('.student_update_ajax').click(function (e) {
+    e.preventDefault();
+
+    // それぞれのinputに書かれた要素を変数に置く
+    // updateではidを追加 hiddenで追加されたid
+    // そして他の値も変更
+    var stud_id = $('#id_edit').val();
+    var company_name = $('#company_name_edit').val();
+    var phone_number = $('#phone_number_edit').val();
+    var mail_contact = $('#mail_contact_edit').val();
+    var mail_manager = $('#mail_manager_edit').val();
+    var mail_notification = $('#mail_notification_edit').val();
+    var representative = $('#representative_edit').val();
+    var address = $('#address_edit').val();
+    var company_url = $('#company_url_edit').val();
+
+    // すべて代入されていたら処理するよ
+    if (company_name != '' & phone_number != '' & mail_contact != '' & mail_manager != '' & mail_notification != '' & representative != '' & address != '' & company_url != '') {
+      $.ajax({
+        type: "POST",
+        url: "./crud.php",
+        data: {
+          // updateに変更、id追加
+          'checking_update': true,
+          'stud_id': stud_id,
+          'company_name': company_name,
+          'phone_number': phone_number,
+          'mail_contact': mail_contact,
+          'mail_manager': mail_manager,
+          'mail_notification': mail_notification,
+          'representative': representative,
+          'address': address,
+          'company_url': company_url,
+        },
+        success: function (response) {
+          console.log(response);
+          // Add→Edit
+          $('#companyEditModal').modal('hide');
+          $('.message-show').append('\
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">\
+                                    <strong>Hey!</strong> '+ response + '.\
+                                    <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">\
+                                        <span aria-hidden="true">&times;</span>\
+                                    </button>\
+                                </div>\
+                            ');
+          $('.studentdata').html("");
+          getdata();
+        }
+      });
+    }
+    // 入力に不備があった場合
+    else {
+      // console.log("Please enter all fileds.");
+      // デフォルトのエラーメッセージ
+      $('.error-message-update').append('\
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">\
+                            <strong>Hey!</strong> Please enter all fileds.\
+                            <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">\
+                                <span aria-hidden="true">&times;</span>\
+                            </button>\
+                        </div>\
+                    ');
+    }
+  });
+  
 
 $('.student_add_ajax').click(function (e) {
   e.preventDefault();
@@ -110,71 +176,7 @@ $('.student_add_ajax').click(function (e) {
 })
 
 
-$('.student_update_ajax').click(function (e) {
-  e.preventDefault();
 
-  // それぞれのinputに書かれた要素を変数に置く
-  // updateではidを追加 hiddenで追加されたid
-  // そして他の値も変更
-  var stud_id = $('#id_edit').val();
-  var company_name = $('#company_name_edit').val();
-  var phone_number = $('#phone_number_edit').val();
-  var mail_contact = $('#mail_contact_edit').val();
-  var mail_manager = $('#mail_manager_edit').val();
-  var mail_notification = $('#mail_notification_edit').val();
-  var representative = $('#representative_edit').val();
-  var address = $('#address_edit').val();
-  var company_url = $('#company_url_edit').val();
-
-  // すべて代入されていたら処理するよ
-  if (company_name != '' & phone_number != '' & mail_contact != '' & mail_manager != '' & mail_notification != '' & representative != '' & address != '' & company_url != '') {
-    $.ajax({
-      type: "POST",
-      url: "./crud.php",
-      data: {
-        // updateに変更、id追加
-        'checking_update': true,
-        'stud_id': stud_id,
-        'company_name': company_name,
-        'phone_number': phone_number,
-        'mail_contact': mail_contact,
-        'mail_manager': mail_manager,
-        'mail_notification': mail_notification,
-        'representative': representative,
-        'address': address,
-        'company_url': company_url,
-      },
-      success: function (response) {
-        console.log(response);
-        // Add→Edit
-        $('#companyEditModal').modal('hide');
-        $('.message-show').append('\
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">\
-                                    <strong>Hey!</strong> '+ response + '.\
-                                    <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">\
-                                        <span aria-hidden="true">&times;</span>\
-                                    </button>\
-                                </div>\
-                            ');
-        $('.studentdata').html("");
-        getdata();
-      }
-    });
-  }
-  // 入力に不備があった場合
-  else {
-    // console.log("Please enter all fileds.");
-    // デフォルトのエラーメッセージ
-    $('.error-message-update').append('\
-                        <div class="alert alert-warning alert-dismissible fade show" role="alert">\
-                            <strong>Hey!</strong> Please enter all fileds.\
-                            <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">\
-                                <span aria-hidden="true">&times;</span>\
-                            </button>\
-                        </div>\
-                    ');
-  }
-});
 
 
 

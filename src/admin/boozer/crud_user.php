@@ -90,7 +90,7 @@ if (isset($_POST['checking_update'])) {
 // delete modal
 if (isset($_POST['checking_delete'])) {
   $id = $_POST['stud_id'];
-  $query = "DELETE FROM company WHERE id = '$id' ";
+  $query = "DELETE FROM users WHERE id = '$id' ";
   $stmt = $db->prepare($query);
   $stmt->execute();
   $result = $stmt->fetchAll();

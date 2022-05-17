@@ -2,25 +2,60 @@ $(document).ready(function () {
   getdata();
 
 
-  $('.company_delete_ajax').click(function (e) {
-    e.preventDefault();
+  // $('.company_delete_ajax').click(function (e) {
+  //   e.preventDefault();
 
-    var stud_id = $('#id_delete').val();
+  //   var stud_id = $('#id_delete').val();
+  //   $.ajax({
+  //     type: "POST",
+  //     url: "./crud.php",
+  //     data: {
+  //       // checking_viewからchecking_deleteに変更
+  //       'checking_delete': true,
+  //       'stud_id': stud_id,
+  //     },
+  //     // code.jsのif文のreturnの値がresponseに入る
+  //     success: function (response) {
+  //       // console.log(response);
+  //       $('#companyDeleteModal').modal('hide');
+  //       $('.message-show').append('\
+  //                               <div class="alert alert-success alert-dismissible fade show" role="alert">\
+  //                                   <strong>Heyy!</strong> '+ response + '.\
+  //                                   <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">\
+  //                                       <span aria-hidden="true">&times;</span>\
+  //                                   </button>\
+  //                               </div>\
+  //                           ');
+  //       $('.studentdata').html("");
+  //       getdata();
+  //     }
+  //   });
+  // });
+
+  // $(document).on("click", ".delete_btn", function () {
+  //   // idを取得　trの中のstud_idというクラスのテキストを取得　一本目参照
+  //   var stud_id = $(this).closest('tr').find('.stud_id').text();
+  //   // 追加
+  //   $('#id_delete').val(stud_id)
+  //   $('#companyDeleteModal').modal('show');
+
+  // });
+
+
+  $(document).on("click", ".delete_btn", function () {
+
+    var stud_id = $(this).closest('tr').find('.stud_id').text();
     $.ajax({
       type: "POST",
-      url: "./crud.php",
+      url: "./crud_user.php",
       data: {
-        // checking_viewからchecking_deleteに変更
         'checking_delete': true,
         'stud_id': stud_id,
       },
-      // code.jsのif文のreturnの値がresponseに入る
       success: function (response) {
-        // console.log(response);
-        $('#companyDeleteModal').modal('hide');
         $('.message-show').append('\
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">\
-                                    <strong>Heyy!</strong> '+ response + '.\
+                                    <strong>Hey!</strong> '+ response + '.\
                                     <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">\
                                         <span aria-hidden="true">&times;</span>\
                                     </button>\
@@ -30,80 +65,9 @@ $(document).ready(function () {
         getdata();
       }
     });
-  });
-
-  $(document).on("click", ".delete_btn", function () {
-    // idを取得　trの中のstud_idというクラスのテキストを取得　一本目参照
-    var stud_id = $(this).closest('tr').find('.stud_id').text();
-    // 追加
-    $('#id_delete').val(stud_id)
-    $('#companyDeleteModal').modal('show');
 
   });
-
-
-
-  $('.user_add_ajax').click(function (e) {
-    e.preventDefault();
-
-    var name = $('.name').val();
-    var university = $('.university').val();
-    var department = $('.department').val();
-    var grad_year = $('.grad_year').val();
-    var mail = $('.mail').val();
-    var phone_number = $('.phone_number').val();
-    var address = $('.address').val();
-
-    if (name != '' & university != '' & department != '' & grad_year != '' & mail != '' & phone_number != '' & address != '') {
-      $.ajax({
-        type: "POST",
-        url: "./crud_user.php",
-        data: {
-          'checking_add': true,
-          'name': name,
-          'university': university,
-          'department': department,
-          'grad_year': grad_year,
-          'mail': mail,
-          'phone_number': phone_number,
-          'address': address,
-        },
-        success: function (response) {
-          // console.log(response);
-          $('#userAddModal').modal('hide');
-          $('.message-show').append('\
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">\
-                                    <strong>Hey!</strong> '+ response + '.\
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">\
-                                        <span aria-hidden="true">&times;</span>\
-                                    </button>\
-                                </div>\
-                            ');
-          $('.studentdata').html("");
-          getdata();
-          $('.name').val("");
-          $('.university').val("");
-          $('.department').val("");
-          $('.grad_year').val("");
-          $('.mail').val("");
-          $('.phone_number').val("");
-          $('.address').val("");
-        }
-      });
-
-    }
-    else {
-      // console.log("Please enter all fileds.");
-      $('.error-message').append('\
-                        <div class="alert alert-warning alert-dismissible fade show" role="alert">\
-                            <strong>Hey!</strong> Please enter all fileds.\
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">\
-                                <span aria-hidden="true">&times;</span>\
-                            </button>\
-                        </div>\
-                    ');
-    }
-  })
+ 
 
 
   $('.user_update_ajax').click(function (e) {
@@ -228,15 +192,15 @@ $(document).ready(function () {
         'stud_id': stud_id,
       },
       success: function (response) {
-        $.each(response, function (key, studview) {
-          $('.id_view').text(studview['id']);
-          $('.name_view').text(studview['name']);
-          $('.university_view').text(studview['university']);
-          $('.department_view').text(studview['department']);
-          $('.grad_year_view').text(studview['grad_year']);
-          $('.mail_view').text(studview['mail']);
-          $('.phone_number_view').text(studview['phone_number']);
-          $('.address_view').text(studview['address']);
+        $.each(response, function (key, userview) {
+          $('.id_view').text(userview['id']);
+          $('.name_view').text(userview['name']);
+          $('.university_view').text(userview['university']);
+          $('.department_view').text(userview['department']);
+          $('.grad_year_view').text(userview['grad_year']);
+          $('.mail_view').text(userview['mail']);
+          $('.phone_number_view').text(userview['phone_number']);
+          $('.address_view').text(userview['address']);
         });
         $('#userViewModal').modal('show');
       }
@@ -245,7 +209,67 @@ $(document).ready(function () {
   });
 
 
+  $('.user_add_ajax').click(function (e) {
+    e.preventDefault();
 
+    var name = $('.name').val();
+    var university = $('.university').val();
+    var department = $('.department').val();
+    var grad_year = $('.grad_year').val();
+    var mail = $('.mail').val();
+    var phone_number = $('.phone_number').val();
+    var address = $('.address').val();
+
+    if (name != '' & university != '' & department != '' & grad_year != '' & mail != '' & phone_number != '' & address != '') {
+      $.ajax({
+        type: "POST",
+        url: "./crud_user.php",
+        data: {
+          'checking_add': true,
+          'name': name,
+          'university': university,
+          'department': department,
+          'grad_year': grad_year,
+          'mail': mail,
+          'phone_number': phone_number,
+          'address': address,
+        },
+        success: function (response) {
+          // console.log(response);
+          $('#userAddModal').modal('hide');
+          $('.message-show').append('\
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">\
+                                    <strong>Hey!</strong> '+ response + '.\
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">\
+                                        <span aria-hidden="true">&times;</span>\
+                                    </button>\
+                                </div>\
+                            ');
+          $('.studentdata').html("");
+          getdata();
+          $('.name').val("");
+          $('.university').val("");
+          $('.department').val("");
+          $('.grad_year').val("");
+          $('.mail').val("");
+          $('.phone_number').val("");
+          $('.address').val("");
+        }
+      });
+
+    }
+    else {
+      // console.log("Please enter all fileds.");
+      $('.error-message').append('\
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">\
+                            <strong>Hey!</strong> Please enter all fileds.\
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">\
+                                <span aria-hidden="true">&times;</span>\
+                            </button>\
+                        </div>\
+                    ');
+    }
+  })
 
 
 
@@ -266,7 +290,7 @@ function getdata() {
                                 <td>\
                                     <a href="#" class="badge btn-info viewbtn">VIEW</a>\
                                     <a href="#" class="badge btn-primary edit_btn">EDIT</a>\
-                                    <a href="" class="badge btn-danger">Delete</a>\
+                                    <a href="" class="badge btn-danger delete_btn">Delete</a>\
                                 </td>\
                             </tr>');
       });
