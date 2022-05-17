@@ -2,6 +2,7 @@ $(document).ready(function () {
   getdata();
 
 
+
 $('.company_delete_ajax').click(function (e) {
   e.preventDefault();
 
@@ -265,5 +266,37 @@ function getdata() {
     }
   });
 }
+
+
+  $(function () {
+    $("#myTable").DataTable({
+      "ajax": {
+        "url": "./fetch_company.php",
+        "type": "GET",
+      },
+      columns:
+        // { data: data }
+        [
+        { data: 'id' },
+        { data: 'company_name' },
+        { data: 'phone_number' },
+        { data: 'mail_contact' },
+        { data: 'representative' },
+        // data: data,
+      ]
+    });
+  })
+  
+  
+  
+
+  // $(function () {
+  //   $("#myTable").DataTable({
+  //     "language": {
+  //       "url": "//cdn.datatables.net/plug-ins/1.10.22/i18n/Japanese.json"
+  //     }
+  //   });
+  // });
+
 
 });
