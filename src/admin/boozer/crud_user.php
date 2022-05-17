@@ -32,7 +32,7 @@ if (isset($_POST['checking_view'])) {
   $stud_id = $_POST['stud_id'];
   $result = [];
 
-  $query = "SELECT * FROM company WHERE id='$stud_id' ";
+  $query = "SELECT * FROM users WHERE id='$stud_id' ";
   $stmt = $db->prepare($query);
   $stmt->execute();
   $result = $stmt->fetchAll();

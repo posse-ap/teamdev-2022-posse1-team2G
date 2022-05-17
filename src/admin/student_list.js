@@ -217,26 +217,23 @@ $(document).ready(function () {
 
     $.ajax({
       type: "POST",
-      url: "./crud.php",
+      url: "./crud_user.php",
       data: {
         'checking_view': true,
         'stud_id': stud_id,
       },
       success: function (response) {
-        // console.log(response);
-        $.each(response, function (key, compview) {
-          // console.log(compview['fname']);
-          $('.id_view').text(compview['id']);
-          $('.company_name_view').text(compview['company_name']);
-          $('.phone_number_view').text(compview['phone_number']);
-          $('.mail_contact_view').text(compview['mail_contact']);
-          $('.mail_manager_view').text(compview['mail_manager']);
-          $('.mail_notification_view').text(compview['mail_notification']);
-          $('.representative_view').text(compview['representative']);
-          $('.address_view').text(compview['address']);
-          $('.company_url_view').text(compview['company_url']);
+        $.each(response, function (key, studview) {
+          $('.id_view').text(studview['id']);
+          $('.name_view').text(studview['name']);
+          $('.university_view').text(studview['university']);
+          $('.department_view').text(studview['department']);
+          $('.grad_year_view').text(studview['grad_year']);
+          $('.mail_view').text(studview['mail']);
+          $('.phone_number_view').text(studview['phone_number']);
+          $('.address_view').text(studview['address']);
         });
-        $('#companyViewModal').modal('show');
+        $('#userViewModal').modal('show');
       }
     });
 

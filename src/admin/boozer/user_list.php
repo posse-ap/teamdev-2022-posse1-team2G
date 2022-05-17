@@ -73,7 +73,7 @@
 
 
   <!-- View Modal -->
-  <div class="modal fade" id="companyViewModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="userViewModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -89,36 +89,32 @@
               <p class="id_view"></p>
             </div>
             <div class="col-md-6 pb-2">
-              <h5>会社名</h5>
-              <p class="company_name_view"></p>
+              <h5>名前</h5>
+              <p class="name_view"></p>
+            </div>
+            <div class="col-md-6 pb-2">
+              <h5>大学名</h5>
+              <p class="university_view"></p>
+            </div>
+            <div class="col-md-6 pb-2">
+              <h5>学部</h5>
+              <p class="department_view"></p>
+            </div>
+            <div class="col-md-6 pb-2">
+              <h5>卒業年</h5>
+              <p class="grad_year_view"></p>
+            </div>
+            <div class="col-md-6  pb-2">
+              <h5>メールアドレス</h5>
+              <p class="mail_view"></p>
             </div>
             <div class="col-md-6 pb-2">
               <h5>電話番号</h5>
               <p class="phone_number_view"></p>
             </div>
             <div class="col-md-6 pb-2">
-              <h5>メールアドレス（contact）</h5>
-              <p class="mail_contact_view"></p>
-            </div>
-            <div class="col-md-6 pb-2">
-              <h5>メールアドレス（manager）</h5>
-              <p class="mail_manager_view"></p>
-            </div>
-            <div class="col-md-6  pb-2">
-              <h5>メールアドレス（notification）</h5>
-              <p class="mail_notification_view"></p>
-            </div>
-            <div class="col-md-6 pb-2">
-              <h5>代表者</h5>
-              <p class="representative_view"></p>
-            </div>
-            <div class="col-md-6 pb-2">
               <h5>住所</h5>
               <p class="address_view"></p>
-            </div>
-            <div class="col-md-6 pb-2">
-              <h5>URL</h5>
-              <p class="company_url_view"></p>
             </div>
             <!-- <h4 class="phone_number_view"></h4>
             <h4 class="mail_contact_view"></h4>
