@@ -15,15 +15,15 @@ CREATE TABLE users
   mail VARCHAR(255) NOT NULL,
   phone_number VARCHAR(255) NOT NULL,
   address VARCHAR(255) NOT NULL,
-  delete_flg INT NOT NULL DEFAULT 0
+  delete_flg INT NOT NULL
 );
 
-INSERT INTO users (name, university, department, grad_year, mail, phone_number, address) VALUES 
-('鈴木花子', '〇〇大学', '学部', '24年春', 'marumaru@gmail.com', '080-5432-1987','〇県△市'),
-('佐藤太郎', '〇△大学', '学部', '24年春', 'marusankaku@gmail.com', '080-5432-1988','△県〇市'),
-('田中一郎', '△〇大学', '学部', '24年秋', 'sankakumaru@gmail.com', '080-5432-1989','△県〇市'),
-('山田かな', '△△大学', '学部', '25年春', 'sankakusankaku@gmail.com', '080-5432-1990','△県△市'),
-('加藤ゆう', '〇〇大学', '学部', '25年春', 'marusankakubatu@gmail.com', '080-5432-1991','〇県〇市');
+INSERT INTO users (name, university, department, grad_year, mail, phone_number, address, delete_flg) VALUES 
+('鈴木花子', '〇〇大学', '学部', '24年春', 'marumaru@gmail.com', '080-5432-1987','〇県△市', 0),
+('佐藤太郎', '〇△大学', '学部', '24年春', 'marusankaku@gmail.com', '080-5432-1988','△県〇市', 0),
+('田中一郎', '△〇大学', '学部', '24年秋', 'sankakumaru@gmail.com', '080-5432-1989','△県〇市', 0),
+('山田かな', '△△大学', '学部', '25年春', 'sankakusankaku@gmail.com', '080-5432-1990','△県△市', 0),
+('加藤ゆう', '〇〇大学', '学部', '25年春', 'marusankakubatu@gmail.com', '080-5432-1991','〇県〇市', 0);
 
 
 -- エージェント契約情報テーブル
@@ -32,22 +32,22 @@ CREATE TABLE company
 (
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   company_name VARCHAR(255) NOT NULL,
-  company_url VARCHAR(255) NOT NULL,
-  representative VARCHAR(255) NOT NULL,
+  phone_number VARCHAR(255) NOT NULL,
   mail_contact VARCHAR(255) NOT NULL,
   mail_manager VARCHAR(255) NOT NULL,
   mail_notification VARCHAR(255) NOT NULL,
-  phone_number VARCHAR(255) NOT NULL,
+  representative VARCHAR(255) NOT NULL,
   address VARCHAR(255) NOT NULL,
-  delete_flg INT NOT NULL
+  company_url VARCHAR(255) NOT NULL,
+  delete_flg INT NOT NULL DEFAULT 0
 );
 
-INSERT INTO company (company_name, company_url, representative, mail_contact, mail_manager, mail_notification, phone_number, address, delete_flg) VALUES 
-('鈴木会社', 'marumaruurl.com', '赤井', 'aaaaiiiiuuuu@gmail.com', 'ssssmmmmllll@gmail.com', 'marumaru@gmail.com', '0120-3456-1987','〇県△市', 0),
-('佐藤会社', 'marumaruurl.com', '工藤', 'aaaauuuuiiii@gmail.com', 'mmmmssssllll@gmail.com', 'marusankaku@gmail.com', '0120-3456-1988','△県〇市', 0),
-('田中会社', 'marumaruurl.com', '羽柴', 'iiiiaaaauuuu@gmail.com', 'ssssllllmmmm@gmail.com', 'sankakumaru@gmail.com', '0120-3456-1989','△県〇市', 0),
-('山田会社', 'marumaruurl.com', '毛利', 'iiiiuuuuaaaa@gmail.com', 'mmssssmmllll@gmail.com', 'sankakusankaku@gmail.com', '0120-3456-1990','△県△市', 0),
-('加藤会社', 'marumaruurl.com', '安室', 'aaaauuuuuuuu@gmail.com', 'llllssssmmmm@gmail.com', 'marusankakubatu@gmail.com', '0120-3456-1991','〇県〇市', 0);
+INSERT INTO company (company_name, phone_number, mail_contact, mail_manager, mail_notification, representative, address, company_url) VALUES 
+('鈴木会社', '0120-3456-1987', 'aaaaiiiiuuuu@gmail.com', 'ssssmmmmllll@gmail.com', 'maruaaaamaruaaaa@gmail.com', '赤井', '〇県△市','marumaruurl.com'),
+('佐藤会社', '0120-3456-1988', 'aaaauuuuiiii@gmail.com', 'mmmmssssllll@gmail.com', 'maruaaaaasankaku@gmail.com', '世良', '△県〇市','marumaruurl.com'),
+('田中会社', '0120-3456-1989', 'iiiiaaaauuuu@gmail.com', 'ssssllllmmmm@gmail.com', 'sankakumaaaaaaru@gmail.com', '毛利', '△県〇市','marumaruurl.com'),
+('山田会社', '0120-3456-1990', 'iiiiuuuuaaaa@gmail.com', 'mmssssmmllll@gmail.com', 'sankakusankaaaku@gmail.com', '安室', '△県△市', 'marumruurl.com'),
+('加藤会社', '0120-3456-1991', 'aaaauuuuuduu@gmail.com', 'llllssssmmmm@gmail.com', 'marusankakudbatu@gmail.com', '諸星', '〇県〇市','marumaruurl.com');
 
 
 -- エージェント掲載情報テーブル
