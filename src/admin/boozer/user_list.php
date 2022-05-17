@@ -136,7 +136,7 @@
 
   <!-- Edit Modal -->
   <!-- add modal から変更 -->
-  <div class="modal fade" id="companyEditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="userEditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -156,36 +156,32 @@
             </div>
             <!-- add modalからもってきてクラス名をIDに変更 -->
             <div class="col-md-6">
-              <label for="">会社名</label>
-              <input type="text" class="form-control" id="company_name_edit">
+              <label for="">名前</label>
+              <input type="text" class="form-control" id="name_edit">
+            </div>
+            <div class="col-md-6">
+              <label for="">大学名</label>
+              <input type="text" class="form-control" id="university_edit">
+            </div>
+            <div class="col-md-6">
+              <label for="">学部</label>
+              <input type="text" class="form-control" id="department_edit">
+            </div>
+            <div class="col-md-6">
+              <label for="">卒業年</label>
+              <input type="text" class="form-control" id="grad_year_edit">
+            </div>
+            <div class="col-md-6">
+              <label for="">メールアドレス</label>
+              <input type="text" class="form-control" id="mail_edit">
             </div>
             <div class="col-md-6">
               <label for="">電話番号</label>
               <input type="text" class="form-control" id="phone_number_edit">
             </div>
             <div class="col-md-6">
-              <label for="">メールアドレス（contact）</label>
-              <input type="text" class="form-control" id="mail_contact_edit">
-            </div>
-            <div class="col-md-6">
-              <label for="">メールアドレス（manager）</label>
-              <input type="text" class="form-control" id="mail_manager_edit">
-            </div>
-            <div class="col-md-6">
-              <label for="">メールアドレス（notification）</label>
-              <input type="text" class="form-control" id="mail_notification_edit">
-            </div>
-            <div class="col-md-6">
-              <label for="">代表者</label>
-              <input type="text" class="form-control" id="representative_edit">
-            </div>
-            <div class="col-md-6">
               <label for="">住所</label>
               <input type="text" class="form-control" id="address_edit">
-            </div>
-            <div class="col-md-6">
-              <label for="">URL</label>
-              <input type="text" class="form-control" id="company_url_edit">
             </div>
 
 
@@ -210,7 +206,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary student_update_ajax">Update</button>
+          <button type="button" class="btn btn-primary user_update_ajax">Update</button>
         </div>
       </div>
     </div>

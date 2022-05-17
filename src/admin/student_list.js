@@ -70,7 +70,7 @@ $(document).ready(function () {
         },
         success: function (response) {
           // console.log(response);
-          $('#companyAddModal').modal('hide');
+          $('#userAddModal').modal('hide');
           $('.message-show').append('\
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">\
                                     <strong>Hey!</strong> '+ response + '.\
@@ -106,44 +106,50 @@ $(document).ready(function () {
   })
 
 
-  $('.student_update_ajax').click(function (e) {
+  $('.user_update_ajax').click(function (e) {
     e.preventDefault();
 
     // それぞれのinputに書かれた要素を変数に置く
     // updateではidを追加 hiddenで追加されたid
     // そして他の値も変更
     var stud_id = $('#id_edit').val();
-    var company_name = $('#company_name_edit').val();
+    var name = $('#name_edit').val();
+    var university = $('#university_edit').val();
+    var department = $('#department_edit').val();
+    var grad_year = $('#grad_year_edit').val();
+    var mail = $('#mail_edit').val();
     var phone_number = $('#phone_number_edit').val();
-    var mail_contact = $('#mail_contact_edit').val();
-    var mail_manager = $('#mail_manager_edit').val();
-    var mail_notification = $('#mail_notification_edit').val();
-    var representative = $('#representative_edit').val();
     var address = $('#address_edit').val();
-    var company_url = $('#company_url_edit').val();
 
     // すべて代入されていたら処理するよ
-    if (company_name != '' & phone_number != '' & mail_contact != '' & mail_manager != '' & mail_notification != '' & representative != '' & address != '' & company_url != '') {
+    if (name != '' & university != '' & department != '' & grad_year != '' & mail != '' & phone_number != '' & address != '') {
       $.ajax({
         type: "POST",
-        url: "./crud.php",
+        url: "./crud_user.php",
         data: {
           // updateに変更、id追加
           'checking_update': true,
           'stud_id': stud_id,
-          'company_name': company_name,
+          'name': name,
+          'university': university,
+          'department': department,
+          'grad_year': grad_year,
+          'mail': mail,
           'phone_number': phone_number,
-          'mail_contact': mail_contact,
-          'mail_manager': mail_manager,
-          'mail_notification': mail_notification,
-          'representative': representative,
           'address': address,
-          'company_url': company_url,
+          // 'name': name,
+          // 'phone_number': phone_number,
+          // 'mail_contact': mail_contact,
+          // 'mail_manager': mail_manager,
+          // 'mail_notification': mail_notification,
+          // 'representative': representative,
+          // 'address': address,
+          // 'company_url': company_url,
         },
         success: function (response) {
           console.log(response);
           // Add→Edit
-          $('#companyEditModal').modal('hide');
+          $('#userEditModal').modal('hide');
           $('.message-show').append('\
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">\
                                     <strong>Hey!</strong> '+ response + '.\
@@ -181,29 +187,28 @@ $(document).ready(function () {
     var stud_id = $(this).closest('tr').find('.stud_id').text();
     $.ajax({
       type: "POST",
-      url: "./crud.php",
+      url: "./crud_user.php",
       data: {
         'checking_edit': true,
         'stud_id': stud_id,
       },
       success: function (response) {
-        $.each(response, function (key, compedit) {
-          $('#id_edit').val(compedit['id']);
-          $('#company_name_edit').val(compedit['company_name']);
-          $('#phone_number_edit').val(compedit['phone_number']);
-          $('#mail_contact_edit').val(compedit['mail_contact']);
-          $('#mail_manager_edit').val(compedit['mail_manager']);
-          $('#mail_notification_edit').val(compedit['mail_notification']);
-          $('#representative_edit').val(compedit['representative']);
-          $('#address_edit').val(compedit['address']);
-          $('#company_url_edit').val(compedit['company_url']);
-          // $('#id_edit').val(compedit['id']);
-          // $('#edit_fname').val(compedit['fname']);
-          // $('#edit_lname').val(compedit['lname']);
-          // $('#edit_class').val(compedit['class']);
-          // $('#edit_section').val(compedit['section']);
+        $.each(response, function (key, useredit) {
+          $('#id_edit').val(useredit['id']);
+          $('#name_edit').val(useredit['name']);
+          $('#university_edit').val(useredit['university']);
+          $('#department_edit').val(useredit['department']);
+          $('#grad_year_edit').val(useredit['grad_year']);
+          $('#mail_edit').val(useredit['mail']);
+          $('#phone_number_edit').val(useredit['phone_number']);
+          $('#address_edit').val(useredit['address']);
+          // $('#id_edit').val(useredit['id']);
+          // $('#edit_fname').val(useredit['fname']);
+          // $('#edit_lname').val(useredit['lname']);
+          // $('#edit_class').val(useredit['class']);
+          // $('#edit_section').val(useredit['section']);
         });
-        $('#companyEditModal').modal('show');
+        $('#userEditModal').modal('show');
       }
     });
 
