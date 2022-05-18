@@ -307,7 +307,7 @@ $(document).ready(function () {
         // alert(response);
         $.each(response, function (key, studview) {
           // console.log(studview['fname']);
-          // TOP画面にはのっていない情報はここで記載（空の要素をindex.phpで用意してから）
+          // TOP画面にはのっていない情報はここで記載（空の要素をreference_ajax.phpで用意してから）
           $('.id_view').text(studview['id']);
           $('.fname_view').text(studview['fname']);
           $('.lname_view').text(studview['lname']);
@@ -400,13 +400,13 @@ $(document).ready(function () {
 //   getdata();
 // });
 
-// fetch.phpと連携してデータを持ってくる
+// fetch_reference_ajax.phpと連携してデータを持ってくる
 function getdata(input) {
   
     $.ajax({
       type: "GET",
-      // fetch.phpからデータを持ってくる
-      url: "./fetch.php",
+      // fetch_reference_ajax.phpからデータを持ってくる
+      url: "./fetch_reference_ajax.php",
       data: { input: input },
       // data: {
       //   'input': input,
@@ -451,8 +451,8 @@ function getdata(input) {
   // 引数を変えて試す番
     // $.ajax({
     //   type: "GET",
-    //   // fetch.phpからデータを持ってくる
-    //   url: "./fetch.php",
+    //   // fetch_reference_ajax.phpからデータを持ってくる
+    //   url: "./fetch_reference_ajax.php",
     //   success: function (response) {
     //     // console.log(response);
     //     $.each(response, function (key, value) {
