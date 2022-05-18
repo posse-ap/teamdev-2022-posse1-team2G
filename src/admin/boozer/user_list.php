@@ -20,7 +20,7 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">新規会社追加
+          <h5 class="modal-title" id="exampleModalLabel">新規学生追加
           </h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -142,7 +142,7 @@
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">変更する</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-            <!-- <span aria-hidden="true">&times;</span> -->
+            <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
@@ -183,25 +183,6 @@
               <label for="">住所</label>
               <input type="text" class="form-control" id="address_edit">
             </div>
-
-
-
-            <!-- <div class="col-md-6">
-              <label for="">First Name</label>
-              <input type="text" id="edit_fname" class="form-control">
-            </div>
-            <div class="col-md-6">
-              <label for="">Last Name</label>
-              <input type="text" id="edit_lname" class="form-control">
-            </div>
-            <div class="col-md-6">
-              <label for="">Class</label>
-              <input type="text" id="edit_class" class="form-control">
-            </div>
-            <div class="col-md-6">
-              <label for="">Section</label>
-              <input type="text" id="edit_section" class="form-control">
-            </div> -->
           </div>
         </div>
         <div class="modal-footer">
@@ -221,7 +202,7 @@
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">削除する</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-            <!-- <span aria-hidden="true">&times;</span> -->
+            <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
@@ -256,6 +237,10 @@
             </h4>
           </div>
           <div class="card-body">
+            <div>
+              <input type="text" class='form-control' id='live_search' name='input' autocomplete="off" placeholder="フリーワードを入力してください..">
+              <input type="submit" id="search" value='検索'>
+            </div>
             <div class="message-show">
 
             </div>
