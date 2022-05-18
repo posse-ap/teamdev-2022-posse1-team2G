@@ -15,15 +15,15 @@ CREATE TABLE users
   mail VARCHAR(255) NOT NULL,
   phone_number VARCHAR(255) NOT NULL,
   address VARCHAR(255) NOT NULL,
-  delete_flg INT NOT NULL
+  delete_flg INT NOT NULL DEFAULT 0
 );
 
-INSERT INTO users (name, university, department, grad_year, mail, phone_number, address, delete_flg) VALUES 
-('鈴木花子', '〇〇大学', '学部', '24年春', 'marumaru@gmail.com', '080-5432-1987','〇県△市', 0),
-('佐藤太郎', '〇△大学', '学部', '24年春', 'marusankaku@gmail.com', '080-5432-1988','△県〇市', 0),
-('田中一郎', '△〇大学', '学部', '24年秋', 'sankakumaru@gmail.com', '080-5432-1989','△県〇市', 0),
-('山田かな', '△△大学', '学部', '25年春', 'sankakusankaku@gmail.com', '080-5432-1990','△県△市', 0),
-('加藤ゆう', '〇〇大学', '学部', '25年春', 'marusankakubatu@gmail.com', '080-5432-1991','〇県〇市', 0);
+INSERT INTO users (name, university, department, grad_year, mail, phone_number, address) VALUES 
+('鈴木花子', '〇〇大学', '学部', '24年春', 'marumaru@gmail.com', '080-5432-1987','〇県△市'),
+('佐藤太郎', '〇△大学', '学部', '24年春', 'marusankaku@gmail.com', '080-5432-1988','△県〇市'),
+('田中一郎', '△〇大学', '学部', '24年秋', 'sankakumaru@gmail.com', '080-5432-1989','△県〇市'),
+('山田かな', '△△大学', '学部', '25年春', 'sankakusankaku@gmail.com', '080-5432-1990','△県△市'),
+('加藤ゆう', '〇〇大学', '学部', '25年春', 'marusankakubatu@gmail.com', '080-5432-1991','〇県〇市');
 
 
 -- エージェント契約情報テーブル
@@ -32,22 +32,22 @@ CREATE TABLE company
 (
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   company_name VARCHAR(255) NOT NULL,
-  company_url VARCHAR(255) NOT NULL,
-  representative VARCHAR(255) NOT NULL,
+  phone_number VARCHAR(255) NOT NULL,
   mail_contact VARCHAR(255) NOT NULL,
   mail_manager VARCHAR(255) NOT NULL,
   mail_notification VARCHAR(255) NOT NULL,
-  phone_number VARCHAR(255) NOT NULL,
+  representative VARCHAR(255) NOT NULL,
   address VARCHAR(255) NOT NULL,
-  delete_flg INT NOT NULL
+  company_url VARCHAR(255) NOT NULL,
+  delete_flg INT NOT NULL DEFAULT 0
 );
 
-INSERT INTO company (company_name, company_url, representative, mail_contact, mail_manager, mail_notification, phone_number, address, delete_flg) VALUES 
-('鈴木会社', 'marumaruurl.com', '赤井', 'aaaaiiiiuuuu@gmail.com', 'ssssmmmmllll@gmail.com', 'marumaru@gmail.com', '0120-3456-1987','〇県△市', 0),
-('佐藤会社', 'marumaruurl.com', '工藤', 'aaaauuuuiiii@gmail.com', 'mmmmssssllll@gmail.com', 'marusankaku@gmail.com', '0120-3456-1988','△県〇市', 0),
-('田中会社', 'marumaruurl.com', '羽柴', 'iiiiaaaauuuu@gmail.com', 'ssssllllmmmm@gmail.com', 'sankakumaru@gmail.com', '0120-3456-1989','△県〇市', 0),
-('山田会社', 'marumaruurl.com', '毛利', 'iiiiuuuuaaaa@gmail.com', 'mmssssmmllll@gmail.com', 'sankakusankaku@gmail.com', '0120-3456-1990','△県△市', 0),
-('加藤会社', 'marumaruurl.com', '安室', 'aaaauuuuuuuu@gmail.com', 'llllssssmmmm@gmail.com', 'marusankakubatu@gmail.com', '0120-3456-1991','〇県〇市', 0);
+INSERT INTO company (company_name, phone_number, mail_contact, mail_manager, mail_notification, representative, address, company_url) VALUES 
+('鈴木会社', '0120-3456-1987', 'aaaaiiiiuuuu@gmail.com', 'ssssmmmmllll@gmail.com', 'maruaaaamaruaaaa@gmail.com', '赤井', '〇県△市','marumaruurl.com'),
+('佐藤会社', '0120-3456-1988', 'aaaauuuuiiii@gmail.com', 'mmmmssssllll@gmail.com', 'maruaaaaasankaku@gmail.com', '世良', '△県〇市','marumaruurl.com'),
+('田中会社', '0120-3456-1989', 'iiiiaaaauuuu@gmail.com', 'ssssllllmmmm@gmail.com', 'sankakumaaaaaaru@gmail.com', '毛利', '△県〇市','marumaruurl.com'),
+('山田会社', '0120-3456-1990', 'iiiiuuuuaaaa@gmail.com', 'mmssssmmllll@gmail.com', 'sankakusankaaaku@gmail.com', '安室', '△県△市', 'marumruurl.com'),
+('加藤会社', '0120-3456-1991', 'aaaauuuuuduu@gmail.com', 'llllssssmmmm@gmail.com', 'marusankakudbatu@gmail.com', '諸星', '〇県〇市','marumaruurl.com');
 
 
 -- エージェント掲載情報テーブル
@@ -158,28 +158,28 @@ INSERT INTO company_user (user_id, company_id, contact_datetime) VALUES
 -- ('dddddd', 'mmssssmmllll@gmail.com'),
 -- ('eeeeee', 'llllssssmmmm@gmail.com');
 
-DROP TABLE IF EXISTS userss;
-CREATE TABLE userss
-(
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NOT NULL COMMENT '名前',
-  `sex` INT UNSIGNED NOT NULL COMMENT '性別\n1:男\n2:女',
-  `age` INT UNSIGNED NOT NULL COMMENT '年齢',
-  `valid` INT UNSIGNED NOT NULL,
-  PRIMARY KEY (`id`)
-  );
+-- DROP TABLE IF EXISTS userss;
+-- CREATE TABLE userss
+-- (
+--   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+--   `name` VARCHAR(45) NOT NULL COMMENT '名前',
+--   `sex` INT UNSIGNED NOT NULL COMMENT '性別\n1:男\n2:女',
+--   `age` INT UNSIGNED NOT NULL COMMENT '年齢',
+--   `valid` INT UNSIGNED NOT NULL,
+--   PRIMARY KEY (`id`)
+--   );
 
-INSERT INTO userss (name, sex, age, valid) VALUES
-('田中太郎', '1', '26', '1'),
-('山田花子', '2', '16', '1'),
-('高橋正樹', '1', '18', '1'),
-('金子優子', '2', '31', '1'),
-('吉井佳子', '2', '21', '1'),
-('橘勇気', '1', '13', '1'),
-('小林隆', '1', '39', '1'),
-('影山夏生', '1', '11', '0'),
-('加藤裕太', '1', '23', '1'),
-('後藤由美', '2', '20', '1');
+-- INSERT INTO userss (name, sex, age, valid) VALUES
+-- ('田中太郎', '1', '26', '1'),
+-- ('山田花子', '2', '16', '1'),
+-- ('高橋正樹', '1', '18', '1'),
+-- ('金子優子', '2', '31', '1'),
+-- ('吉井佳子', '2', '21', '1'),
+-- ('橘勇気', '1', '13', '1'),
+-- ('小林隆', '1', '39', '1'),
+-- ('影山夏生', '1', '11', '0'),
+-- ('加藤裕太', '1', '23', '1'),
+-- ('後藤由美', '2', '20', '1');
 
 
 
@@ -193,18 +193,24 @@ INSERT INTO userss (name, sex, age, valid) VALUES
 
 -- USE craft;
 
--- DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS admin;
 
--- CREATE TABLE users (
---   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
---   email boolean UNIQUE NOT NULL,
---   password VARCHAR(255) NOT NULL,
---   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
---   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
--- );
+CREATE TABLE admin (
+  id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  email VARCHAR(255) UNIQUE NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  flag INT NOT NULL,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+INSERT INTO admin (email, password, flag) VALUES
+('test@posse-ap.com', sha1('password') ,1),
+('a@a.com', sha1('a'), 2),
+('b@b.com', sha1('b'), 2);
 
 -- INSERT INTO
---   users
+--   admin
 -- SET
 --   email = 'test@posse-ap.com',
 --   password = sha1('password');
@@ -227,3 +233,18 @@ INSERT INTO userss (name, sex, age, valid) VALUES
 --   events
 -- SET
 --   title = 'イベント2';
+
+DROP TABLE IF EXISTS students;
+CREATE TABLE students (
+    id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    fname varchar(100),
+    lname varchar(100),
+    class varchar(100),
+    section varchar(100)
+);
+
+
+INSERT INTO students (fname, lname, class, section) VALUES
+('Ro', 'RYU', 'A', 'ONE'),
+('Ko', 'KYU', 'B', 'TWO'),
+('To', 'TYU', 'C', 'THREE');
