@@ -144,6 +144,11 @@ else if (isset($_POST['send']) && $_POST['send']) {
   // $info = $stmt->fetch();
 
   // SELECT文を変数に格納
+  require('dbconnect.php');
+  if (isset($_GET['company_id'])) {
+    $company_id = $_GET['company_id'];
+  }
+  $id = $company_id;
   $sql = "SELECT
               company_posting_information.company_id AS company_id,
               company_posting_information.name AS company_name,
@@ -187,7 +192,7 @@ else if (isset($_POST['send']) && $_POST['send']) {
         ・Content-Transfer-Encoding
         ・Content-Type
   */
-  $mail_to_agent  = $_SESSION['mail'];
+  $mail_to_agent  = $contact_mail_info['mail_contact'];
   $mail_subject_agent  = "craft: 貴社への学生情報追加の通知について";
   $mail_body_agent  = $honbun_agent . "\n\n";
   $mail_header_agent = "from: ayaka1712pome@gmail.com\r\n"
@@ -275,7 +280,7 @@ $info = $stmt->fetch();
     <?php } ?>
 
     <!-- 入力画面のフロント -->
-    <form action="./contactform.php" method="post">
+    <form action="./contact/contactform.php" method="post">
       <div>
         <p>名前</p>
         <input type="text" name="fullname" value="<?php echo $_SESSION['fullname'] ?>">
@@ -328,7 +333,7 @@ $info = $stmt->fetch();
     <!-- 確認画面のフロント -->
   <?php } else if ($mode == 'confirm') { ?>
     <!-- <?php var_dump($_POST['grad_year']); ?> -->
-    <form action="./contactform.php" method="post">
+    <form action="./contact/contactform.php" method="post">
       <div>
         <p>名前</p>
         <p><?php echo $_SESSION['fullname'] ?></p>
