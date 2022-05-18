@@ -94,6 +94,7 @@ if (isset($_POST['checking_delete'])) {
   $stmt = $db->prepare($query);
   $stmt->execute();
   $result = $stmt->fetchAll();
+  print_r($result);
 
   if (isset($result)) {
     echo $return  = "データを削除しました";
