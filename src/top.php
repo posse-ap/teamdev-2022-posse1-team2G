@@ -1,18 +1,13 @@
 <?php
 require('./dbconnect.php');
 
-
-
 $sql = 'SELECT * FROM company_posting_information';
 $stmt = $db->query($sql);
 $stmt->execute();
 $companies = $stmt->fetchAll();
 
-
 ?>
-<!-- <pre>
-  <?php print_r($companies); ?>
-</pre> -->
+
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -63,20 +58,33 @@ $companies = $stmt->fetchAll();
                   <p>マイナビ新卒紹介は…</p>
                 </div>
                 <div class="company_box_button">
-                  <a href="" class="inquiry">お問い合わせはこちら</a>
+                  <!-- <a href="" class="inquiry">お問い合わせはこちら</a> -->
+                  <!-- <input type="text" name="hidden" value='<?php echo htmlspecialchars($company['company_id']); ?>'> -->
+                  <a href="./contactform.php?company_id=<?= htmlspecialchars($company['company_id']); ?>">お問い合わせ</a>
+
                   <a href="" class="comparison">複数の会社を比較する</a>
                 </div>
                 <div class="company_box_check">
-                  <label for="check"><input type="checkbox">選択する</label>
+                  <!-- valueにデータを追加していくことで、一時表示ボックスに反映できる -->
+                  <label for="check"><input type="checkbox" name="select_company_checkboxes" value="<?= $company['company_id'];?><?= $company['type'];?>" onchange="checked_counter()">選択する</label>
                 </div>
               </a>
             </div>
           <?php endforeach; ?>
           <!-- ここまで -->
         </div>
+        <div>
+          <!-- 比較チェックボタンついた会社を一時表示するボックス -->
+          <div class="selected_company_box">
+            <p>比較するエージェント会社</p>
+            <div id="checked_company_box"></div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
+
+  <script src="style.js"></script>
 </body>
 
 </html>
