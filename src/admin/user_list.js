@@ -4,26 +4,28 @@ $(document).ready(function () {
   $(document).on("click", ".delete_btn", function () {
 
     var stud_id = $(this).closest('tr').find('.stud_id').text();
-    $.ajax({
-      type: "POST",
-      url: "./crud_user.php",
-      data: {
-        'checking_delete': true,
-        'stud_id': stud_id,
-      },
-      success: function (response) {
-        $('.message-show').append('\
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">\
-                                    <strong>Hey!</strong> '+ response + '.\
-                                    <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">\
-                                        <span aria-hidden="true">&times;</span>\
-                                    </button>\
-                                </div>\
-                            ');
-        $('.studentdata').html("");
-        getdata();
-      }
-    });
+    $('#id_delete').val(stud_id)
+    $('#userDeleteModal').modal('show');
+    // $.ajax({
+    //   type: "POST",
+    //   url: "./crud_user.php",
+    //   data: {
+    //     'checking_delete': true,
+    //     'stud_id': stud_id,
+    //   },
+    //   success: function (response) {
+    //     $('.message-show').append('\
+    //                             <div class="alert alert-success alert-dismissible fade show" role="alert">\
+    //                                 <strong>Hey!</strong> '+ response + '.\
+    //                                 <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">\
+    //                                     <span aria-hidden="true">&times;</span>\
+    //                                 </button>\
+    //                             </div>\
+    //                         ');
+    //     $('.studentdata').html("");
+    //     getdata();
+    //   }
+    // });
 
   });
 

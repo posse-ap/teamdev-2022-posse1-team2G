@@ -214,6 +214,33 @@
 
 
 
+  <!-- Delete Modal -->
+  <div class="modal fade" id="userDeleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">削除する</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <!-- <span aria-hidden="true">&times;</span> -->
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <input type="hidden" id="id_delete">
+            <div class="col-md-12">
+              <h3>本当に削除しますか？</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+        <button type="button" class="btn btn-danger user_delete_ajax">削除</button>
+      </div>
+    </div>
+  </div>
+  </div>
+
 
 
   <div class="container mt-5">
@@ -269,7 +296,7 @@
 
   <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.js"></script>
 
-  <script src="../student_list.js"></script>
+  <script src="../user_list.js"></script>
 
 
 </body>
