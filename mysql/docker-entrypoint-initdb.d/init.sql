@@ -15,7 +15,7 @@ CREATE TABLE users
   mail VARCHAR(255) NOT NULL,
   phone_number VARCHAR(255) NOT NULL,
   address VARCHAR(255) NOT NULL,
-  rep VARCHAR(255) DEFAULT NULL,
+  rep VARCHAR(255) DEFAULT '未設定',
   delete_flg INT NOT NULL DEFAULT 0
 );
 

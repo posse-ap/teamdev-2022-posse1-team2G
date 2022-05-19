@@ -116,6 +116,10 @@
               <h5>住所</h5>
               <p class="address_view"></p>
             </div>
+            <div class="col-md-6 pb-2">
+              <h5>担当者</h5>
+              <p class="rep_view"></p>
+            </div>
             <!-- <h4 class="phone_number_view"></h4>
             <h4 class="mail_contact_view"></h4>
             <h4 class="mail_manager_view"></h4>

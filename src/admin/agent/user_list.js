@@ -59,7 +59,7 @@ $(document).ready(function () {
 
     // すべて代入されていたら処理するよ
     // if (name != '' & university != '' & department != '' & grad_year != '' & mail != '' & phone_number != '' & address != '') {
-    if (rep != '' ) {
+    if (rep != '') {
       $.ajax({
         type: "POST",
         url: "./crud_user.php",
@@ -67,6 +67,7 @@ $(document).ready(function () {
           // updateに変更、id追加
           'checking_update': true,
           'stud_id': stud_id,
+          'rep': rep,
           // 'name': name,
           // 'university': university,
           // 'department': department,
@@ -74,7 +75,6 @@ $(document).ready(function () {
           // 'mail': mail,
           // 'phone_number': phone_number,
           // 'address': address,
-          'rep': rep,
 
           // 'name': name,
           // 'phone_number': phone_number,
@@ -133,8 +133,26 @@ $(document).ready(function () {
       },
       success: function (response) {
         $.each(response, function (key, useredit) {
+          // console.log(response);
           // #id_editなどinput属性に値（value）を設定
-          $('#id_edit').text(useredit['id']);
+          // #id_editなどpタグに(useredit['id'])を設定
+
+
+
+
+
+
+// valとtextで間違えていた
+          $('#id_edit').val(useredit['id']);
+
+
+
+
+
+
+
+
+
           $('#name_edit').text(useredit['name']);
           $('#university_edit').text(useredit['university']);
           $('#department_edit').text(useredit['department']);
@@ -178,6 +196,7 @@ $(document).ready(function () {
           $('.mail_view').text(userview['mail']);
           $('.phone_number_view').text(userview['phone_number']);
           $('.address_view').text(userview['address']);
+          $('.rep_view').text(userview['rep']);
         });
         $('#userViewModal').modal('show');
       }
@@ -265,7 +284,7 @@ $(document).ready(function () {
                                 <td>' + value['name'] + '</td>\
                                 <td>' + value['phone_number'] + '</td>\
                                 <td>' + value['mail'] + '</td>\
-                                <td>' + value['address'] + '</td>\
+                                <td>' + value['rep'] + '</td>\
                                 <td>\
                                     <a href="#" class="badge btn-info viewbtn">VIEW</a>\
                                     <a href="#" class="badge btn-primary edit_btn">EDIT</a>\

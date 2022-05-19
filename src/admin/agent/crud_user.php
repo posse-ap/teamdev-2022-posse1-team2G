@@ -53,6 +53,7 @@ if (isset($_POST['checking_edit'])) {
   $query_edit = "SELECT * FROM users WHERE id='$stud_id' ";
   $stmt_edit = $db->prepare($query_edit);
   $stmt_edit->execute();
+  // print_r($stmt_edit);
   $result_edit = $stmt_edit->fetchAll();
   if ($result_edit == true) {
     header('Content-type: application/json');
@@ -65,18 +66,19 @@ if (isset($_POST['checking_edit'])) {
 // 五本目　update 　二本目の新規挿入と近い
 if (isset($_POST['checking_update'])) {
   $id = $_POST['stud_id'];
-  $name = $_POST['name'];
-  $university = $_POST['university'];
-  $department = $_POST['department'];
-  $grad_year = $_POST['grad_year'];
-  $mail = $_POST['mail'];
-  $phone_number = $_POST['phone_number'];
-  $address = $_POST['address'];
-  // $company_url = $_POST['company_url'];
+  $rep = $_POST['rep'];
+  // $name = $_POST['name'];
+  // $university = $_POST['university'];
+  // $department = $_POST['department'];
+  // $grad_year = $_POST['grad_year'];
+  // $mail = $_POST['mail'];
+  // $phone_number = $_POST['phone_number'];
+  // $address = $_POST['address'];
 
-  $query = "UPDATE users SET name='$name', university='$university', department='$department', grad_year='$grad_year', mail='$mail', phone_number='$phone_number', address='$address' WHERE id='$id'";
+  $query = "UPDATE users SET rep = '$rep' WHERE id = '$id'";
   $stmt = $db->prepare($query);
   $stmt->execute();
+  // print_r($stmt);
   $result = $stmt->fetchAll();
 
   // 更新していなくてもボタンを押すと更新になってしまう
