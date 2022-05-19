@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ja">
+<link rel="stylesheet" href="./contactform.css">
+
+<head>
+  <meta charset="utf-8">
+  <title>お問い合わせフォーム</title>
+</head>
+
+<body class="contactform_body">
+  <!-- 入力画面 -->
+  <h1 class="">お問い合わせフォーム</h1>
+
+  <?php if ($mode == 'input') { ?>
+  <!-- エラーメッセージの表示 -->
+  <?php if ($errormessage) { ?>
+  <ul>
+    <!-- $errorは連想配列なのでforeachで分解していく -->
+    <?php foreach ($errormessage as $value) { ?>
+    <li>
+      <?php echo $value; ?>
+    </li>
+    <?php } ?>
+    <!-- 分解したエラー文をlistの中に表示していく -->
+  </ul>
+  <?php } ?>
+
+  <!-- 入力画面のフロント -->
+  <form action="./contactform.php" method="post" class="form">
+    <table class="contactform_input_screens">
+      <tbody>
+        <tr>
+          <th>名前
+            <span>必須</span>
+          </th>
+          <td>
+            <input class="most_right" type="text" name="fullname" value="<?php echo $_SESSION['fullname'] ?>">
+          </td>
+        </tr>
+
+        <tr>
+          <th>大学
+            <span>必須</span>
+          </th>
+          <td>
+            <input type="text" name="university" value="<?php echo $_SESSION['university'] ?>">
+          </td>
+        </tr>
+        <tr>
+          <th>学部学科
+            <span>必須</span>
+          </th>
+          <td>
+            <input type="text" name="department" value="<?php echo $_SESSION['department'] ?>">
+          </td>
+        </tr>
+        <tr>
+          <th>卒業年<span>必須</span></th>
+          <td>
+          <div class="graduation_year">
+            <span>
+            <input type="radio" name="grad_year" value="23年春">23年春
+            </span>
+      
+            <input type="radio" name="grad_year" value="23年秋">23年秋
+        
+            <input type="radio" name="grad_year" value="24年春">24年春
+          
+            <input type="radio" name="grad_year" value="24年秋">24年秋
+          </div>
+          </td>
+        </tr>
+        <tr>
+          <th>メールアドレス
+            <span>必須</span>
+          </th>
+          <td>
+            <input type="mail" name="mail" value="<?php echo $_SESSION['mail'] ?>">
+          </td>
+        </tr>
+        <tr>
+          <th>電話番号
+            <span>必須</span>
+          </th>
+          <td>
+            <input type="tel" name="phone_number" value="<?php echo $_SESSION['phone_number'] ?>">
+          </td>
+        </tr>
+        <tr>
+          <th>住所<span>
+              必須
+            </span></th>
+          <td>
+            <input type="text" name="address" value="<?php echo $_SESSION['address'] ?>">
+          </td>
+        </tr>
+        <tr>
+          <th>その他
+            <span>任意</span>
+          </th>
+          <td>
+            <textarea cols="40" rows="8" name="message"><?php echo $_SESSION['message'] ?></textarea><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+
+    <input type="submit" name="confirm" value="確認" />
+  </form>
+
+
+  <!-- 確認画面のフロント -->
+  <?php } else if ($mode == 'confirm') { ?>
+  <!-- <?php var_dump($_POST['grad_year']); ?> -->
+  <!-- <form action="./contactform.php" method="post">
+    <div>
+      <p>名前</p>
+      <p>
+        <?php echo $_SESSION['fullname'] ?>
+      </p>
+    </div>
+    <div>
+      <p>大学</p>
+      <p>
+        <?php echo $_SESSION['university'] ?>
+      </p>
+    </div>
+    <div>
+      <p>学部学科</p>
+      <p>
+        <?php echo $_SESSION['department'] ?>
+      </p>
+    </div>
+    <div>
+      <p>卒業年</p>
+      <p>
+        <?php echo $_SESSION['grad_year'] ?>
+      </p>
+    </div>
+    <div>
+      <p>メールアドレス</p>
+      <p>
+        <?php echo $_SESSION['mail'] ?>
+      </p>
+    </div>
+    <div>
+      <p>電話番号</p>
+      <p>
+        <?php echo $_SESSION['phone_number'] ?>
+      </p>
+    </div>
+    <div>
+      <p>住所</p>
+      <p>
+        <?php echo $_SESSION['address'] ?>
+      </p>
+    </div>
+    <div>
+      <p>その他</p>
+      <p>
+        <?php echo nl2br($_SESSION['message']) ?>
+      </p>
+    </div>
+    <input type="submit" name="back" value="戻る" />
+    <input type="submit" name="send" value="送信" />
+  </form> -->
+
+  <!-- 完了画面 -->
+  <?php } else { ?>
+  <!-- 送信しました。お問い合わせありがとうございました。<br> -->
+  <?php require_once('thanks.php') ?>
+
+  <?php } ?>
+</body>
+
+</html>
