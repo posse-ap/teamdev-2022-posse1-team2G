@@ -77,7 +77,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title" id="exampleModalLabel">会社詳細</h4>
+          <h4 class="modal-title" id="exampleModalLabel">学生詳細情報</h4>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -91,6 +91,10 @@
             <div class="col-md-6 pb-2">
               <h5>名前</h5>
               <p class="name_view"></p>
+            </div>
+            <div class="col-md-6 pb-2">
+              <h5>担当者</h5>
+              <p class="rep_view"></p>
             </div>
             <div class="col-md-6 pb-2">
               <h5>大学名</h5>
@@ -115,10 +119,6 @@
             <div class="col-md-6 pb-2">
               <h5>住所</h5>
               <p class="address_view"></p>
-            </div>
-            <div class="col-md-6 pb-2">
-              <h5>担当者</h5>
-              <p class="rep_view"></p>
             </div>
             <!-- <h4 class="phone_number_view"></h4>
             <h4 class="mail_contact_view"></h4>
@@ -164,6 +164,10 @@
               <p class="form-control" id="name_edit"></p>
               <!-- <input type="text" class="form-control" > -->
             </div>
+            <div class="col-md-6 mb-3">
+              <label for="">担当者</label>
+              <input type="text" class="form-control" id="rep_edit">
+            </div>
             <div class="col-md-6">
               <label for="">大学名</label>
               <p class="form-control" id="university_edit"></p>
@@ -193,10 +197,6 @@
               <label for="">住所</label>
               <p class="form-control" id="address_edit"></p>
               <!-- <input type="text" class="form-control" id="address_edit"> -->
-            </div>
-            <div class="col-md-6">
-              <label for="">担当者</label>
-              <input type="text" class="form-control" id="rep_edit">
             </div>
           </div>
         </div>
