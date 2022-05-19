@@ -93,24 +93,41 @@ if ( count( $error ) > 0 ) {
   header( 'location: ' . $url );
   exit;
 }
+
+// 問い合わせ会社を表示させるためのSQL用意
+require('dbconnect.php');
+if (isset($_GET['company_id'])) {
+  $company_id = $_GET['company_id'];
+}
+$stmt = $db->prepare("SELECT * FROM company_posting_information WHERE id = :id");
+$id = $company_id;
+$stmt->bindValue(':id', $id, PDO::PARAM_STR);
+$stmt->execute();
+$info = $stmt->fetch();
 ?>
+
+<!-- ここからフロント側 -->
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>コンタクトフォーム（確認）</title>
-<link href="../bootstrap.min.css" rel="stylesheet">
-<link href="../style.css" rel="stylesheet">
-</head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>お問い合わせフォーム（確認）</title>
 </head>
 <body>
+  <!-- ↑ヘッダー関数 -->
+
 <div class="container">
-  <h2>お問い合わせ確認画面</h2>
-  <p>以下の内容でよろしければ「送信する」をクリックしてください。<br>
+  <h1>お問い合わせ確認画面</h1>
+  <p>以下の内容でよろしければ「送信」をクリックしてください。<br>
     内容を変更する場合は「戻る」をクリックして入力画面にお戻りください。</p>
   <div class="table-responsive confirm_table">
+    <!-- 会社情報 -->
+    <h2>お問い合わせ会社</h2>
+    <?= htmlspecialchars($info['industries']) ?>
+
+    <!-- フォーム内容 -->
     <table class="table table-bordered">
       <caption>ご入力内容</caption>
       <tr>
@@ -118,7 +135,19 @@ if ( count( $error ) > 0 ) {
         <td><?php echo h($name); ?></td>
       </tr>
       <tr>
-        <th>Email</th>
+        <th>大学</th>
+        <td><?php echo h($university); ?></td>
+      </tr>
+      <tr>
+        <th>学部学科</th>
+        <td><?php echo h($department); ?></td>
+      </tr>
+      <tr>
+        <th>卒業年</th>
+        <td><?php echo h($grad_year); ?></td>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
         <td><?php echo h($email); ?></td>
       </tr>
       <tr>
@@ -126,22 +155,22 @@ if ( count( $error ) > 0 ) {
         <td><?php echo h($tel); ?></td>
       </tr>
       <tr>
-        <th>件名</th>
-        <td><?php echo h($subject); ?></td>
+        <th>住所</th>
+        <td><?php echo h($address); ?></td>
       </tr>
       <tr>
-        <th>お問い合わせ内容</th>
-        <td><?php echo nl2br(h($body)); ?></td>
+        <th>その他</th>
+        <td><?php echo nl2br(h($message)); ?></td>
       </tr>
     </table>
   </div>
-  <form action="contact.php" method="post" class="confirm">
+  <form action="./contactform.php" method="post" class="confirm">
     <button type="submit" class="btn btn-secondary">戻る</button>
   </form>
-  <form action="complete.php" method="post" class="confirm">
+  <form action="./thanks.php" method="post" class="confirm">
     <!-- 完了ページへ渡すトークンの隠しフィールド -->
     <input type="hidden" name="ticket" value="<?php echo h($ticket); ?>">
-    <button type="submit" class="btn btn-success">送信する</button>
+    <button type="submit" class="btn btn-success">送信</button>
   </form>
 </div>
 </body>

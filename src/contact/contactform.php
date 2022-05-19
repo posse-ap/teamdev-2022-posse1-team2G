@@ -491,7 +491,7 @@ $info = $stmt->fetch();
     <input type="hidden" name="ticket" value="<?php echo h($ticket); ?>">
     <button name="submitted" type="submit" class="btn btn-primary">確認画面へ</button>
   </form> -->
-  <form id="form" class="validationForm" action="./contact/contactform.php" method="post" novalidate>
+  <form id="form" class="validationForm" action="./confirm.php" method="post" novalidate>
       <div>
         <p>名前</p>
         <input type="text" class="required maxlength form-control" data-maxlength="30" id="name" name="name" 
