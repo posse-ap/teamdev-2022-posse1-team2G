@@ -23,11 +23,12 @@ if ( isset( $_POST[ 'ticket' ], $_SESSION[ 'ticket' ] ) ) {
 $name = trim( filter_input(INPUT_POST, 'name') );
 $university  = trim( filter_input(INPUT_POST, 'university') );
 $department = trim( filter_input(INPUT_POST, 'department') );
-$grad_year = trim( filter_input(INPUT_POST, 'grad_year') );
+$grad_year = trim( (string) filter_input(INPUT_POST, 'grad_year') );
 $email = trim( (string) filter_input(INPUT_POST, 'email') );
 $phone_number = trim( filter_input(INPUT_POST, 'phone_number') );
 $address = trim( filter_input(INPUT_POST, 'address') );
 $message = trim( filter_input(INPUT_POST, 'message')); 
+$privacy = trim( (string) filter_input(INPUT_POST, 'privacy') );
 
 //エラーメッセージを保存する配列の初期化
 $error = array();
@@ -70,6 +71,9 @@ if ( $address === '' ) {
 } else if ( preg_match( '/\A[[:^cntrl:]]{1,100}\z/u', $address ) === 0 ) {
   $error[ 'address' ] = '*住所は100文字以内でお願いします。';
 }
+if ( $privacy === '' ) {
+  $error[ 'privacy' ] = '*プライバシーポリシーの同意は必須です。';
+} 
 
 //POSTされたデータとエラーの配列をセッション変数に保存
 $_SESSION[ 'name' ] = $name;
@@ -80,6 +84,7 @@ $_SESSION[ 'email' ] = $email;
 $_SESSION[ 'phone_number' ] = $phone_number;
 $_SESSION[ 'address' ] = $address;
 $_SESSION[ 'message' ] = $message;
+$_SESSION[ 'privacy' ] = $message;
 $_SESSION[ 'error' ] = $error;
 //チェックの結果にエラーがある場合は入力フォームに戻す
 if ( count( $error ) > 0 ) {
@@ -164,6 +169,10 @@ $info = $stmt->fetch();
       <tr>
         <th>その他</th>
         <td><?php echo nl2br(h($message)); ?></td>
+      </tr>
+      <tr>
+        <th>プライバシーポリシー</th>
+        <td><?php echo h($privacy); ?></td>
       </tr>
     </table>
   </div>

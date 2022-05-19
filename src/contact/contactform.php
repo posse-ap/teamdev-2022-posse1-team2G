@@ -17,6 +17,7 @@ $email = $_SESSION[ 'email' ] ?? NULL;
 $phone_number = $_SESSION[ 'phone_number' ] ??  NULL;
 $address = $_SESSION[ 'address' ] ?? NULL;
 $message = $_SESSION[ 'message' ] ?? NULL;
+$privacy = $_SESSION[ 'privacy' ] ?? NULL;
 $error = $_SESSION[ 'error' ] ?? NULL;
  
 //個々のエラーを NULL で初期化
@@ -28,7 +29,7 @@ $error_email = $error[ 'email' ] ?? NULL;
 $error_phone_number = $error[ 'phone_number' ] ?? NULL;
 $error_address = $error[ 'address' ] ?? NULL;
 $error_message = $error[ 'message' ] ?? NULL;
-
+$error_privacy = $error[ 'privacy' ] ?? NULL;
  
 //CSRF対策のトークンを生成
 if ( !isset( $_SESSION[ 'ticket' ] ) ) {
@@ -55,7 +56,6 @@ $stmt->bindValue(':id', $id, PDO::PARAM_STR);
 $stmt->execute();
 $info = $stmt->fetch();
 ?>
-<!-- <pre><? echo $company_id;?></pre> -->
 
 <!-- ここからフロント側 -->
 <!DOCTYPE html>
@@ -84,35 +84,32 @@ $info = $stmt->fetch();
       <div>
         <p>名前</p>
         <input type="text" class="required maxlength form-control" data-maxlength="30" id="name" name="name"
-       data-error-required="お名前は必須です。" 
-      value="<?php echo $name; ?>">
+       data-error-required="お名前は必須です。" value="<?php echo $name; ?>">
       </div>
       <div>
         <p>大学</p>
         <input type="text" class="required maxlength form-control" data-maxlength="30" id="university" name="university" 
-       data-error-required="大学名は必須です。" 
-      value="<?php echo $university; ?>">
+       data-error-required="大学名は必須です。" value="<?php echo $university; ?>">
       </div>
       </div>
       <div>
         <p>学部学科</p>
         <input type="text" class="required maxlength form-control" data-maxlength="30" id="department" name="department" 
-       data-error-required="学部学科は必須です。" 
-      value="<?php echo $department; ?>">
+       data-error-required="学部学科は必須です。" value="<?php echo $department; ?>">
       </div>
       <div>
         <p>卒業年</p>
         <div>
-          <input type="radio" name="grad_year" value="23年春">23年春
+          <input type="radio" class="required-radio form-control" name="grad_year" value="23年春">23年春
         </div>
         <div>
-          <input type="radio" name="grad_year" value="23年秋">23年秋
+          <input type="radio" class="required-radio form-control" name="grad_year" value="23年秋">23年秋
         </div>
         <div>
-          <input type="radio" name="grad_year" value="24年春">24年春
+          <input type="radio" class="required-radio form-control" name="grad_year" value="24年春">24年春
         </div>
         <div>
-          <input type="radio" name="grad_year" value="24年秋">24年秋
+          <input type="radio" class="required-radio form-control" name="grad_year" value="24年秋">24年秋
         </div>
       </div>
       <div>
@@ -135,6 +132,15 @@ $info = $stmt->fetch();
         <p>その他</p>
         <textarea cols="40" rows="8" class="maxlength form-control" 
         placeholder="自由記述欄" data-maxlength="1000" id="message" name="message" rows="3"><?php echo $message; ?></textarea>
+      </div>
+
+      <div>
+        <div>
+          <a href="https://reashu.com/privacy/">プライバシーポリシー</a>をご確認の上、「同意する」にチェックしてください。
+        </div>
+        <div>
+          <input type="checkbox" name="privacy" class="required" value="同意する">同意する
+        </div>
       </div>
 
       <!--確認ページへトークンをPOSTする、隠しフィールド「ticket」-->
