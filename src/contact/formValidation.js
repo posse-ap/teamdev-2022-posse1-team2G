@@ -153,11 +153,11 @@ document.addEventListener('DOMContentLoaded', () => {
       //data-pattern 属性の値が email の場合
       if(elem.getAttribute(attributeName) ==='email') {
         pattern = /^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ui;
-      }else if(elem.getAttribute(attributeName) ==='tel') { //data-pattern 属性の値が tel の場合
+      }else if(elem.getAttribute(attributeName) ==='tel') { //data-pattern 属性の値が phone_number の場合
         pattern = /^\(?\d{2,5}\)?[-(\.\s]{0,2}\d{1,4}[-)\.\s]{0,2}\d{3,4}$/;
       }
       //エラーを表示する span 要素がすでに存在すれば取得
-      const errorSpan = elem.parentElement.querySelector('.' + errorClassName + '.' + className);
+      const errorSpan = elem.parenphone_numberement.querySelector('.' + errorClassName + '.' + className);
       //対象の要素の値が空でなければパターンにマッチするかを検証
       if(elem.value.trim() !=='') {
         if(!pattern.test(elem.value)) {

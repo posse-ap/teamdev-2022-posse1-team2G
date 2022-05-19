@@ -14,7 +14,7 @@ $university = $_SESSION[ 'university' ] ?? NULL;
 $department = $_SESSION[ 'department' ] ?? NULL;
 $grad_year = $_SESSION[ 'grad_year' ] ?? NULL;
 $email = $_SESSION[ 'email' ] ?? NULL;
-$tel = $_SESSION[ 'tel' ] ??  NULL;
+$phone_number = $_SESSION[ 'phone_number' ] ??  NULL;
 $address = $_SESSION[ 'address' ] ?? NULL;
 $message = $_SESSION[ 'message' ] ?? NULL;
 $error = $_SESSION[ 'error' ] ?? NULL;
@@ -25,7 +25,7 @@ $error_university = $error[ 'university' ] ?? NULL;
 $error_department = $error[ 'department' ] ?? NULL;
 $error_grad_year = $error[ 'grad_year' ] ?? NULL;
 $error_email = $error[ 'email' ] ?? NULL;
-$error_tel = $error[ 'tel' ] ?? NULL;
+$error_phone_number = $error[ 'phone_number' ] ?? NULL;
 $error_address = $error[ 'address' ] ?? NULL;
 $error_message = $error[ 'message' ] ?? NULL;
 
@@ -84,20 +84,20 @@ $info = $stmt->fetch();
       <div>
         <p>名前</p>
         <input type="text" class="required maxlength form-control" data-maxlength="30" id="name" name="name"
-      placeholder="氏名" data-error-required="お名前は必須です。" 
+       data-error-required="お名前は必須です。" 
       value="<?php echo $name; ?>">
       </div>
       <div>
         <p>大学</p>
         <input type="text" class="required maxlength form-control" data-maxlength="30" id="university" name="university" 
-      placeholder="大学名" data-error-required="大学名は必須です。" 
+       data-error-required="大学名は必須です。" 
       value="<?php echo $university; ?>">
       </div>
       </div>
       <div>
         <p>学部学科</p>
         <input type="text" class="required maxlength form-control" data-maxlength="30" id="department" name="department" 
-      placeholder="学部学科" data-error-required="学部学科は必須です。" 
+       data-error-required="学部学科は必須です。" 
       value="<?php echo $department; ?>">
       </div>
       <div>
@@ -118,22 +118,23 @@ $info = $stmt->fetch();
       <div>
         <p>メールアドレス</p>
         <input type="email" class="required pattern form-control" data-pattern="email" id="email" name="email" 
-      placeholder="Email アドレス" data-error-required="Email アドレスは必須です。"  
+       data-error-required="Email アドレスは必須です。"  
       data-error-pattern="Email の形式が正しくないようですのでご確認ください" value="<?php echo $email; ?>">
       </div>
       <div>
         <p>お電話番号</p>
-        <input type="tel" class="pattern form-control" data-pattern="tel" id="tel" name="tel"
-       placeholder="お電話番号" data-error-pattern="電話番号の形式が正しくないようですのでご確認ください"  value="<?php echo $tel; ?>">
+        <input type="phone_number" class="pattern form-control" data-pattern="phone_number" id="phone_number" name="phone_number"
+       data-error-pattern="電話番号の形式が正しくないようですのでご確認ください"  value="<?php echo $phone_number; ?>">
       </div>
       <div>
         <p>住所</p>
         <input type="text" class="required maxlength form-control" data-maxlength="100" id="address" name="address"
-       placeholder="住所" data-error-pattern="住所の形式が正しくないようですのでご確認ください"  value="<?php echo $address; ?>">
+       data-error-pattern="住所の形式が正しくないようですのでご確認ください"  value="<?php echo $address; ?>">
       </div>
       <div>
         <p>その他</p>
-        <textarea cols="40" rows="8" class="maxlength form-control" data-maxlength="1000" id="message" name="message" rows="3"><?php echo $message; ?></textarea>
+        <textarea cols="40" rows="8" class="maxlength form-control" 
+        placeholder="自由記述欄" data-maxlength="1000" id="message" name="message" rows="3"><?php echo $message; ?></textarea>
       </div>
 
       <!--確認ページへトークンをPOSTする、隠しフィールド「ticket」-->

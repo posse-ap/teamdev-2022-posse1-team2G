@@ -42,7 +42,7 @@ $university = h( $_SESSION[ 'university' ] );
 $department = h( $_SESSION[ 'department' ] );
 $grad_year = h( $_SESSION[ 'grad_year' ] );
 $email = h( $_SESSION[ 'email' ] ) ;
-$tel =  h( $_SESSION[ 'tel' ] ) ;
+$phone_number =  h( $_SESSION[ 'phone_number' ] ) ;
 $address = h( $_SESSION[ 'address' ] );
 $message = h( $_SESSION[ 'message' ] );
  

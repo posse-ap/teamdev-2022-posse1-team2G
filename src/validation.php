@@ -37,12 +37,12 @@ function validation($_POST)
   }
   $_SESSION["mail"] = htmlspecialchars($_POST["mail"], ENT_QUOTES);
 
-  if (!$_POST["tel"]) {
+  if (!$_POST["phone_number"]) {
     $errormessage[] = "電話番号を入力して下さい";
-  } else if (mb_strlen($_POST["tel"]) > 20) {
+  } else if (mb_strlen($_POST["phone_number"]) > 20) {
     $errormessage[] = "電話番号は20文字以内にして下さい";
   }
-  $_SESSION["tel"] = htmlspecialchars($_POST["tel"], ENT_QUOTES);
+  $_SESSION["phone_number"] = htmlspecialchars($_POST["phone_number"], ENT_QUOTES);
 
   if (!$_POST["address"]) {
     $errormessage[] = "住所を入力して下さい";
@@ -51,12 +51,12 @@ function validation($_POST)
   }
   $_SESSION["address"] = htmlspecialchars($_POST["address"], ENT_QUOTES);
 
-  if (!$_POST["tel"]) {
+  if (!$_POST["phone_number"]) {
     $errormessage[] = "名前を入力して下さい";
-  } else if (mb_strlen($_POST["tel"]) > 20) {
+  } else if (mb_strlen($_POST["phone_number"]) > 20) {
     $errormessage[] = "名前は20文字以内にして下さい";
   }
-  $_SESSION["tel"] = htmlspecialchars($_POST["tel"], ENT_QUOTES);
+  $_SESSION["phone_number"] = htmlspecialchars($_POST["phone_number"], ENT_QUOTES);
 
   if (!$_POST["message"]) {
     $errormessage[] = "お問い合わせ内容を入力して下さい";

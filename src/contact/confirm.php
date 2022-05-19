@@ -25,7 +25,7 @@ $university  = trim( filter_input(INPUT_POST, 'university') );
 $department = trim( filter_input(INPUT_POST, 'department') );
 $grad_year = trim( filter_input(INPUT_POST, 'grad_year') );
 $email = trim( (string) filter_input(INPUT_POST, 'email') );
-$tel = trim( filter_input(INPUT_POST, 'tel') );
+$phone_number = trim( filter_input(INPUT_POST, 'phone_number') );
 $address = trim( filter_input(INPUT_POST, 'address') );
 $message = trim( filter_input(INPUT_POST, 'message')); 
 
@@ -61,8 +61,8 @@ if ( $email === '' ) {
     $error[ 'email' ] = '*メールアドレスの形式が正しくありません。';
   }
 }
-if ( $tel != '' && preg_match( '/\A\(?\d{2,5}\)?[-(\.\s]{0,2}\d{1,4}[-)\.\s]{0,2}\d{3,4}\z/u', $tel ) === 0 ) {
-  $error[ 'tel' ] = '*電話番号の形式が正しくありません。';
+if ( $phone_number != '' && preg_match( '/\A\(?\d{2,5}\)?[-(\.\s]{0,2}\d{1,4}[-)\.\s]{0,2}\d{3,4}\z/u', $phone_number ) === 0 ) {
+  $error[ 'phone_number' ] = '*電話番号の形式が正しくありません。';
 }
 if ( $address === '' ) {
   $error[ 'address' ] = '*住所は必須です。';
@@ -77,7 +77,7 @@ $_SESSION[ 'university' ] = $university;
 $_SESSION[ 'department' ] = $department;
 $_SESSION[ 'grad_year' ] = $grad_year;
 $_SESSION[ 'email' ] = $email;
-$_SESSION[ 'tel' ] = $tel;
+$_SESSION[ 'phone_number' ] = $phone_number;
 $_SESSION[ 'address' ] = $address;
 $_SESSION[ 'message' ] = $message;
 $_SESSION[ 'error' ] = $error;
@@ -155,7 +155,7 @@ $info = $stmt->fetch();
       </tr>
       <tr>
         <th>お電話番号</th>
-        <td><?php echo h($tel); ?></td>
+        <td><?php echo h($phone_number); ?></td>
       </tr>
       <tr>
         <th>住所</th>
