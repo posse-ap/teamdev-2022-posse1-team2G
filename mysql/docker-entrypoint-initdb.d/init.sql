@@ -15,6 +15,7 @@ CREATE TABLE users
   mail VARCHAR(255) NOT NULL,
   phone_number VARCHAR(255) NOT NULL,
   address VARCHAR(255) NOT NULL,
+  rep VARCHAR(255) DEFAULT NULL,
   delete_flg INT NOT NULL DEFAULT 0
 );
 
@@ -199,17 +200,21 @@ DROP TABLE IF EXISTS admin;
 CREATE TABLE admin (
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   email VARCHAR(255) UNIQUE NOT NULL,
+  name VARCHAR(255) UNIQUE NOT NULL,
   password VARCHAR(255) NOT NULL,
+  -- flagが１ならboozer,２ならエージェント
   flag INT NOT NULL,
-company_id INT,
+  company_id INT,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-INSERT INTO admin (email, password, flag, company_id) VALUES
-('test@posse-ap.com', sha1('password') , 1, NULL),
-('a@a.com', sha1('a'), 2, 1),
-('b@b.com', sha1('b'), 2, 2);
+INSERT INTO admin (email, name, password, flag, company_id) VALUES
+('test@posse-ap.com', '小笹', sha1('password') , 1, NULL),
+('a@a.com', '高木', sha1('a'), 2, 1),
+('aa@a.com', '千葉', sha1('aa'), 2, 1),
+('aaa@a.com', '目暮', sha1('aaa'), 2, 1),
+('b@b.com', '佐藤', sha1('b'), 2, 2);
 
 -- INSERT INTO
 --   admin

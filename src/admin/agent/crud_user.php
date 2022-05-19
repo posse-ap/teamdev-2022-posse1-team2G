@@ -2,30 +2,30 @@
 require('../../dbconnect.php');
 
 // 新規追加
-// if (isset($_POST['checking_add'])) {
-//   $name = $_POST['name'];
-//   $university = $_POST['university'];
-//   $department = $_POST['department'];
-//   $grad_year = $_POST['grad_year'];
-//   $mail = $_POST['mail'];
-//   $phone_number = $_POST['phone_number'];
-//   $address = $_POST['address'];
+if (isset($_POST['checking_add'])) {
+  $name = $_POST['name'];
+  $university = $_POST['university'];
+  $department = $_POST['department'];
+  $grad_year = $_POST['grad_year'];
+  $mail = $_POST['mail'];
+  $phone_number = $_POST['phone_number'];
+  $address = $_POST['address'];
 
-//   $query = "INSERT INTO 
-//     users 
-//     (name,university,department,grad_year,mail,phone_number,address) 
-//     VALUES 
-//     ('$name','$university','$department','$grad_year','$mail','$phone_number','$address')";
-//   $stmt = $db->prepare($query);
-//   $stmt->execute();
-//   $result = $stmt->fetchAll();
+  $query = "INSERT INTO 
+    users 
+    (name,university,department,grad_year,mail,phone_number,address) 
+    VALUES 
+    ('$name','$university','$department','$grad_year','$mail','$phone_number','$address')";
+  $stmt = $db->prepare($query);
+  $stmt->execute();
+  $result = $stmt->fetchAll();
 
-//   if (isset($result)) {
-//     echo $return  = "データを挿入しました";
-//   } else {
-//     echo $return  = "Something Went Wrong.!";
-//   }
-// }
+  if (isset($result)) {
+    echo $return  = "データを挿入しました";
+  } else {
+    echo $return  = "Something Went Wrong.!";
+  }
+}
 
 // view modal
 if (isset($_POST['checking_view'])) {
@@ -88,16 +88,16 @@ if (isset($_POST['checking_update'])) {
 }
 
 // delete modal
-// if (isset($_POST['checking_delete'])) {
-//   $id = $_POST['stud_id'];
-//   $query = "DELETE FROM users WHERE id = '$id' ";
-//   $stmt = $db->prepare($query);
-//   $stmt->execute();
-//   $result = $stmt->fetchAll();
+if (isset($_POST['checking_delete'])) {
+  $id = $_POST['stud_id'];
+  $query = "DELETE FROM users WHERE id = '$id' ";
+  $stmt = $db->prepare($query);
+  $stmt->execute();
+  $result = $stmt->fetchAll();
 
-//   if (isset($result)) {
-//     echo $return  = "データを削除しました";
-//   } else {
-//     echo $return  = "データを削除できませんでした";
-//   }
-// }
+  if (isset($result)) {
+    echo $return  = "データを削除しました";
+  } else {
+    echo $return  = "データを削除できませんでした";
+  }
+}
