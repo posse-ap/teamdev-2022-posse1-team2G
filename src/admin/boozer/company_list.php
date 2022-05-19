@@ -1,3 +1,5 @@
+
+
 <!doctype html>
 <html lang="en">
 
@@ -271,7 +273,7 @@
             <div class="message-show">
 
             </div>
-            <table class="table table-bordered table-striped " id="myTable">
+            <table class="table table-bordered table-striped " id="companyTable">
               <thead>
                 <tr>
                   <th>ID</th>

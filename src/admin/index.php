@@ -4,15 +4,12 @@ require('../dbconnect.php');
 if (isset($_SESSION['user_id']) && $_SESSION['time'] + 10 > time()) {
     $_SESSION['time'] = time();
 
-    if (!empty($_POST)) {
-        // $stmt = $db->prepare('INSERT INTO events SET title=?');
-        // $stmt->execute(array(
-        //     $_POST['title']
-        // ));
+    // if (!empty($_POST)) {
 
-        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/index.php');
-        exit();
-    }
+    //     header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/index.php');
+    //     exit();
+    // }
+
     // user_idがない、もしくは一定時間を過ぎていた場合
 } else {
     header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/login.php');
@@ -38,7 +35,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 10 > time()) {
             イベント名：<input type="text" name="title" required>
             <input type="submit" value="登録する">
         </form>
-        <a href="/index.php">イベント一覧</a>
+        <a href="./loglog.php">イベント一覧</a>
 
        <?php require('logout.php') ?>
     </div>

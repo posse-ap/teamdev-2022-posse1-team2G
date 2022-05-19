@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  getdata();
+  GetDataTable();
 
 
 
@@ -28,7 +28,7 @@ $('.company_delete_ajax').click(function (e) {
                                 </div>\
                             ');
       $('.studentdata').html("");
-      getdata();
+      GetDataTable();
     }
   });
 });
@@ -90,7 +90,7 @@ $(document).on("click", ".delete_btn", function () {
                                 </div>\
                             ');
           $('.studentdata').html("");
-          getdata();
+          GetDataTable();
         }
       });
     }
@@ -149,7 +149,7 @@ $('.student_add_ajax').click(function (e) {
                                 </div>\
                             ');
         $('.studentdata').html("");
-        getdata();
+        GetDataTable();
         $('.company_name').val("");
         $('.phone_number').val("");
         $('.mail_contact').val("");
@@ -250,14 +250,50 @@ $(document).on("click", ".viewbtn", function () {
 
 
 
-function getdata() {
-  $.ajax({
-    type: "GET",
-    url: "./fetch_company.php",
-    success: function (response) {
-      $.each(response, function (key, value) {
-        $('.studentdata').append('<tr>' +
-          '<td class="stud_id">' + value['id'] + '</td>\
+// function getdata() {
+//   $.ajax({
+//     type: "GET",
+//     url: "./fetch_company.php",
+//     success: function (response) {
+//       $.each(response, function (key, value) {
+//         $('.studentdata').append('<tr>' +
+//           '<td class="stud_id">' + value['id'] + '</td>\
+//                                 <td>' + value['company_name'] + '</td>\
+//                                 <td>' + value['phone_number'] + '</td>\
+//                                 <td>' + value['mail_manager'] + '</td>\
+//                                 <td>' + value['representative'] + '</td>\
+//                                 <td>\
+//                                     <a href="#" class="badge btn-info viewbtn">VIEW</a>\
+//                                     <a href="#" class="badge btn-primary edit_btn">EDIT</a>\
+//                                     <a href="#" class="badge btn-danger delete_btn">Delete</a>\
+//                                 </td>\
+//                             </tr>');
+//       });
+//     }
+//   });
+// }
+
+
+  function GetDataTable() {
+    $("#companyTable").DataTable({
+     
+      columns:
+        // { data: data }
+        [
+        { data: 'id' },
+        { data: 'company_name' },
+        { data: 'phone_number' },
+        { data: 'mail_contact' },
+        { data: 'representative' },
+        // { data: 'mail_manager' },
+        ],
+      "ajax": {
+        "url": "./fetch_company.php",
+        "type": "GET",
+      "success": function (response) {
+        $.each(response, function (key, value) {
+          $('.studentdata').append('<tr>' +
+            '<td class="stud_id">' + value['id'] + '</td>\
                                 <td>' + value['company_name'] + '</td>\
                                 <td>' + value['phone_number'] + '</td>\
                                 <td>' + value['mail_manager'] + '</td>\
@@ -268,31 +304,12 @@ function getdata() {
                                     <a href="#" class="badge btn-danger delete_btn">Delete</a>\
                                 </td>\
                             </tr>');
-      });
-    }
-  });
-}
-
-
-  $(function () {
-    $("#myTable").DataTable({
-      "ajax": {
-        "url": "./fetch_company.php",
-        "type": "GET",
+        });
+        alert(response);
+        }
       },
-      columns:
-        // { data: data }
-        [
-        { data: 'id' },
-        { data: 'company_name' },
-        { data: 'phone_number' },
-        { data: 'mail_contact' },
-        { data: 'representative' },
-        // data: data,
-      ]
     });
-  })
-  
+  }
   
   
 

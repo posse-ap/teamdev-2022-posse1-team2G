@@ -90,7 +90,7 @@ $(document).ready(function () {
     var stud_id = $('#id_delete').val();
     $.ajax({
       type: "POST",
-      url: "./code.php",
+      url: "./crud_reference_ajax.php",
       data: {
         // checking_viewからchecking_deleteに変更
         'checking_delete': true,
@@ -124,7 +124,7 @@ $(document).ready(function () {
 
     // $.ajax({
     //   type: "POST",
-    //   url: "./code.php",
+    //   url: "./crud_reference_ajax.php",
     //   data: {
     //     // checking_viewからchecking_deleteに変更
     //     'checking_delete': true,
@@ -149,7 +149,7 @@ $(document).ready(function () {
 
     // $.ajax({
     //   type: "POST",
-    //   url: "./code.php",
+    //   url: "./crud_reference_ajax.php",
     //   data: {
     //     // checking_viewからchecking_deleteに変更
     //     'checking_delete': true,
@@ -205,7 +205,7 @@ $(document).ready(function () {
     if (fname != '' & lname != '' & stu_class != '' & section != '') {
       $.ajax({
         type: "POST",
-        url: "./code.php",
+        url: "./crud_reference_ajax.php",
         data: {
           // updateに変更、id追加
           'checking_update': true,
@@ -261,7 +261,7 @@ $(document).ready(function () {
 
     $.ajax({
       type: "POST",
-      url: "./code.php",
+      url: "./crud_reference_ajax.php",
       data: {
         // checking_viewからchecking_editに変更
         'checking_edit': true,
@@ -297,7 +297,7 @@ $(document).ready(function () {
 
     $.ajax({
       type: "POST",
-      url: "./code.php",
+      url: "./crud_reference_ajax.php",
       data: {
         'checking_view': true,
         'stud_id': stud_id,
@@ -341,7 +341,7 @@ $(document).ready(function () {
     if (fname != '' & lname != '' & stu_class != '' & section != '') {
       $.ajax({
         type: "POST",
-        url: "./code.php",
+        url: "./crud_reference_ajax.php",
         data: {
           'checking_add': true,
           'fname': fname,
