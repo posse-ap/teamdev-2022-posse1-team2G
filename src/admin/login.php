@@ -35,7 +35,7 @@ if (!empty($_POST)) {
     header('Location: http://' . $_SERVER['HTTP_HOST'] .'/admin/boozer/fetch_user.php');
     // header('Location: http://' . $_SERVER['HTTP_HOST'] .'/admin/index.php/' . $_SESSION['user_id']);
     // exit();
-  } else if (empty($aget) && !empty($boozer)) {
+  } else if (empty($agent) && !empty($boozer)) {
     $_SESSION = array();
     // 1をセッションのuser_idに追加
     $_SESSION['user_id'] = $boozer['id'];

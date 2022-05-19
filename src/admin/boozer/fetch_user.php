@@ -1,23 +1,4 @@
 <?php
-session_start();
-require('../../dbconnect.php');
-if (isset($_SESSION['user_id']) && $_SESSION['time'] + 10 > time()) {
-    $_SESSION['time'] = time();
-
-    if (!empty($_POST)) {
-
-        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/index.php');
-        exit();
-    }
-
-    // user_idがない、もしくは一定時間を過ぎていた場合
-} else {
-    header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/login.php');
-    exit();
-}
-?>
-
-<?php
 
 // require('../../dbconnect.php');
 
