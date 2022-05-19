@@ -13,7 +13,7 @@ CREATE TABLE users
   department VARCHAR(255) NOT NULL,
   grad_year VARCHAR(255) NOT NULL,
   mail VARCHAR(255) NOT NULL,
-  tel VARCHAR(255) NOT NULL,
+  phone_number VARCHAR(255) NOT NULL,
   address VARCHAR(255) NOT NULL,
   delete_flg INT NOT NULL DEFAULT 0
 );
