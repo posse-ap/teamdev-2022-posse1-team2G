@@ -6,7 +6,7 @@ session_start();
 session_regenerate_id( TRUE );
  
 //エスケープ処理やデータチェックを行う関数のファイルの読み込み
-require '../libs/functions.php';
+// require '../libs/functions.php';
  
 //NULL 合体演算子を使ってセッション変数を初期化
 $name = $_SESSION[ 'fullname' ] ?? NULL;
@@ -55,7 +55,7 @@ $stmt->bindValue(':id', $id, PDO::PARAM_STR);
 $stmt->execute();
 $info = $stmt->fetch();
 ?>
-
+<!-- <pre><? echo $company_id;?></pre> -->
 
 <!-- ここからフロント側 -->
 <!DOCTYPE html>
@@ -80,7 +80,7 @@ $info = $stmt->fetch();
   <h1>お問い合わせフォーム</h1>
   <p>以下のフォームからお問い合わせください。</p>
   
-  <form id="form" class="validationForm" action="./confirm.php" method="post" novalidate>
+  <form id="form" class="validationForm" action="./confirm.php?company_id=<?= htmlspecialchars($company_id);?>" method="post" novalidate>
       <div>
         <p>名前</p>
         <input type="text" class="required maxlength form-control" data-maxlength="30" id="name" name="name"
@@ -120,7 +120,7 @@ $info = $stmt->fetch();
       <div>
         <p>メールアドレス</p>
         <!-- <input type="mail" name="mail" value="<?php echo $_SESSION['mail'] ?>"> -->
-        <input type="email" class="required pattern form-control" data-pattern="email" id="email" name="mail" 
+        <input type="email" class="required pattern form-control" data-pattern="email" id="email" name="email" 
       placeholder="Email アドレス" data-error-required="Email アドレスは必須です。"  
       data-error-pattern="Email の形式が正しくないようですのでご確認ください" value="<?php echo $email; ?>">
       </div>

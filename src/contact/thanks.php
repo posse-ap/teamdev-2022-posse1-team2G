@@ -23,7 +23,7 @@ if ( isset( $_POST[ 'ticket' ], $_SESSION[ 'ticket' ] ) ) {
   //トークンが存在しない場合（入力ページにリダイレクト）
   //die( 'Access Denied（直接このページにはアクセスできません）' ); //処理を中止する場合
   $dirname = dirname( $_SERVER[ 'SCRIPT_NAME' ] );
-  $dirname = $dirname == DIRECTORY_SEPARATOR ? '' : $dirname;
+  $dirname = $dirname === DIRECTORY_SEPARATOR ? '' : $dirname;
   //サーバー変数 $_SERVER['HTTPS'] が取得出来ない環境用（オプション）
   if(isset($_SERVER['HTTP_X_FORWARDED_PROTO']) and $_SERVER['HTTP_X_FORWARDED_PROTO'] === "https") {
     $_SERVER[ 'HTTPS' ] = 'on';
@@ -49,9 +49,9 @@ $message = h( $_SESSION[ 'message' ] );
 $honbun = '';
 $honbun .= "メールフォームよりお問い合わせがありました。\n\n";
 $honbun .= "【お名前】\n";
-$honbun .= $_SESSION['fullname'] . "\n\n";
+$honbun .= $name . "\n\n";
 $honbun .= "【メールアドレス】\n";
-$honbun .= $_SESSION['mail'] . "\n\n";
+$honbun .= $email . "\n\n";
 $honbun .= "【お問い合わせ内容】\n";
 $honbun .= "申し込みいただきありがとうございます。" . "\n";
 $honbun .= "担当の者から連絡致しますので少々お待ちください。" . "\n\n";
@@ -71,8 +71,8 @@ $honbun .= "担当の者から連絡致しますので少々お待ちくださ�
       ・Content-Transfer-Encoding
       ・Content-Type
 */
-$mail_to  = $_SESSION['mail'];
-$returnMail  = $_SESSION['mail'];
+$mail_to  = $email;
+$returnMail  = $email;
 $mail_subject  = "craftのご利用";
 $mail_body  = $honbun . "\n\n";
 $mail_header = "from: ayaka1712pome@gmail.com\r\n"
@@ -101,7 +101,7 @@ if ( ini_get( 'safe_mode' ) ) {
   // companyテーブルのmail_contactカラムから送信先とってくれば送信できる
     // 送られているかテストするなら、init.sqlのメールアドレス変えてやってみるといいと思う！
   // SELECT文を変数に格納
-  require('dbconnect.php');
+  require('../dbconnect.php');
   if (isset($_GET['company_id'])) {
     $company_id = $_GET['company_id'];
   }
