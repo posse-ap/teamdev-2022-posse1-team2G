@@ -19,6 +19,6 @@
       <td><?= $student['name']; ?></td>
       <td><?= $student['university']; ?></td>
       <td><?= $student['mail']; ?></td>
-      <td><?= $student['phone_number']; ?></td>
+      <td><?= $student['tel']; ?></td>
     </tr>
 </table>

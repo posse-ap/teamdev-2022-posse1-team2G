@@ -13,8 +13,8 @@ $name = $_SESSION[ 'fullname' ] ?? NULL;
 $university = $_SESSION[ 'university' ] ?? NULL;
 $department = $_SESSION[ 'department' ] ?? NULL;
 $grad_year = $_SESSION[ 'grad_year' ] ?? NULL;
-$mail = $_SESSION[ 'mail' ] ?? NULL;
-$phone_number = $_SESSION[ 'phone_number' ] ??  NULL;
+$email = $_SESSION[ 'email' ] ?? NULL;
+$tel = $_SESSION[ 'tel' ] ??  NULL;
 $address = $_SESSION[ 'address' ] ?? NULL;
 $message = $_SESSION[ 'message' ] ?? NULL;
 $error = $_SESSION[ 'error' ] ?? NULL;
@@ -24,8 +24,8 @@ $error_name = $error[ 'fullname' ] ?? NULL;
 $error_university = $error[ 'university' ] ?? NULL;
 $error_department = $error[ 'department' ] ?? NULL;
 $error_grad_year = $error[ 'grad_year' ] ?? NULL;
-$error_email = $error[ 'mail' ] ?? NULL;
-$error_tel = $error[ 'phone_number' ] ?? NULL;
+$error_email = $error[ 'email' ] ?? NULL;
+$error_tel = $error[ 'tel' ] ?? NULL;
 $error_address = $error[ 'address' ] ?? NULL;
 $error_message = $error[ 'message' ] ?? NULL;
 
@@ -74,18 +74,11 @@ if (isset($_POST['back']) && $_POST['back']) {
   }
   $_SESSION["department"] = htmlspecialchars($_POST["department"], ENT_QUOTES);
 
-
-
-// ここだけ残す
   // 卒業年
   if (!$_POST["grad_year"]) {
     $errormessage[] = "卒業年を入力して下さい";
   }
   $_SESSION["grad_year"] = htmlspecialchars($_POST["grad_year"], ENT_QUOTES);
-
-
-
-
 
   // メールアドレス
   if (!$_POST["mail"]) {
@@ -98,12 +91,12 @@ if (isset($_POST['back']) && $_POST['back']) {
   $_SESSION["mail"] = htmlspecialchars($_POST["mail"], ENT_QUOTES);
 
   // 電話番号
-  if (!$_POST["phone_number"]) {
+  if (!$_POST["tel"]) {
     $errormessage[] = "電話番号を入力して下さい";
-  } else if (mb_strlen($_POST["phone_number"]) > 20) {
+  } else if (mb_strlen($_POST["tel"]) > 20) {
     $errormessage[] = "電話番号は20文字以内にして下さい";
   }
-  $_SESSION["phone_number"] = htmlspecialchars($_POST["phone_number"], ENT_QUOTES);
+  $_SESSION["tel"] = htmlspecialchars($_POST["tel"], ENT_QUOTES);
 
   // 住所
   if (!$_POST["address"]) {
@@ -267,7 +260,7 @@ else if (isset($_POST['send']) && $_POST['send']) {
   $_SESSION['department'] = "";
   $_SESSION['grad_year'] = "";
   $_SESSION['mail']    = "";
-  $_SESSION['phone_number'] = "";
+  $_SESSION['tel'] = "";
   $_SESSION['address'] = "";
   $_SESSION['message']  = "";
 }
@@ -336,18 +329,18 @@ $info = $stmt->fetch();
       </div>
       <div>
         <p>大学</p>
-        <input type="text" name="university" value="<?php echo $_SESSION['university'] ?>">
+        <!-- <input type="text" name="university" value="<?php echo $_SESSION['university'] ?>"> -->
         <input type="text" class="required maxlength form-control" data-maxlength="30" id="university" name="university" 
-      placeholder="氏名" data-error-required="お名前は必須です。" 
+      placeholder="大学名" data-error-required="大学名は必須です。" 
       value="<?php echo h($university); ?>">
       </div>
       </div>
       <div>
         <p>学部学科</p>
-        <input type="text" name="department" value="<?php echo $_SESSION['department'] ?>">
-        <input type="text" class="required maxlength form-control" data-maxlength="30" id="name" name="name" 
-      placeholder="氏名" data-error-required="お名前は必須です。" 
-      value="<?php echo h($name); ?>">
+        <!-- <input type="text" name="department" value="<?php echo $_SESSION['department'] ?>"> -->
+        <input type="text" class="required maxlength form-control" data-maxlength="30" id="department" name="department" 
+      placeholder="学部学科" data-error-required="学部学科は必須です。" 
+      value="<?php echo h($department); ?>">
       </div>
       <div>
         <p>卒業年</p>
@@ -366,30 +359,31 @@ $info = $stmt->fetch();
       </div>
       <div>
         <p>メールアドレス</p>
-        <input type="mail" name="mail" value="<?php echo $_SESSION['mail'] ?>">
+        <!-- <input type="mail" name="mail" value="<?php echo $_SESSION['mail'] ?>"> -->
         <input type="email" class="required pattern form-control" data-pattern="email" id="email" name="email" 
       placeholder="Email アドレス" data-error-required="Email アドレスは必須です。"  
       data-error-pattern="Email の形式が正しくないようですのでご確認ください" value="<?php echo h($email); ?>">
       </div>
       <div>
         <p>お電話番号</p>
-        <input type="phone_number" name="phone_number" value="<?php echo $_SESSION['phone_number'] ?>">
+        <!-- <input type="tel" name="tel" value="<?php echo $_SESSION['tel'] ?>"> -->
         <input type="tel" class="pattern form-control" data-pattern="tel" id="tel" name="tel"
        placeholder="お電話番号" data-error-pattern="電話番号の形式が正しくないようですのでご確認ください"  value="<?php echo h($tel); ?>">
       </div>
       <div>
         <p>住所</p>
-        <input type="text" name="address" value="<?php echo $_SESSION['address'] ?>">
-        <input type="tel" class="pattern form-control" data-pattern="tel" id="tel" name="tel"
-       placeholder="お電話番号" data-error-pattern="電話番号の形式が正しくないようですのでご確認ください"  value="<?php echo h($tel); ?>">
+        <!-- <input type="text" name="address" value="<?php echo $_SESSION['address'] ?>"> -->
+        <input type="text" class="pattern form-control" data-pattern="address" id="address" name="address"
+       placeholder="お電話番号" data-error-pattern="電話番号の形式が正しくないようですのでご確認ください"  value="<?php echo h($address); ?>">
       </div>
       <div>
         <p>その他</p>
-        <textarea cols="40" rows="8" name="message"><?php echo $_SESSION['message'] ?></textarea><br>
-        <textarea class="required maxlength showCount form-control" data-maxlength="1000" id="body" name="body" placeholder="お問い合わせ内容（1000文字まで）をお書きください" rows="3"><?php echo h($body); ?></textarea>
+        <!-- <textarea cols="40" rows="8" name="message"><?php echo $_SESSION['message'] ?></textarea><br> -->
+        <textarea cols="40" rows="8" class="required maxlength showCount form-control" data-maxlength="1000" id="message" name="message" rows="3"><?php echo h($message); ?></textarea>
       </div>
 
-      <input type="submit" name="confirm" value="確認" />
+      <!-- <input type="submit" name="confirm" value="確認" /> -->
+      <button name="submitted" type="submit" class="btn btn-primary">確認画面へ</button>
     </form>
 
 
@@ -419,7 +413,7 @@ $info = $stmt->fetch();
       </div>
       <div>
         <p>電話番号</p>
-        <p><?php echo $_SESSION['phone_number'] ?></p>
+        <p><?php echo $_SESSION['tel'] ?></p>
       </div>
       <div>
         <p>住所</p>
@@ -448,7 +442,8 @@ $info = $stmt->fetch();
   <!-- フォーム -->
   <h1>お問い合わせフォーム</h1>
   <p>以下のフォームからお問い合わせください。</p>
-  <form id="form" class="validationForm" method="post" action="confirm.php" novalidate>
+  
+  <!-- <form id="form" class="validationForm" method="post" action="confirm.php" novalidate>
     <div class="form-group">
       <label for="name">お名前（必須） 
         <span class="error-php"><?php echo h( $error_name ); ?></span>
@@ -470,7 +465,7 @@ $info = $stmt->fetch();
         <span class="error-php"><?php echo h( $error_email_check ); ?></span>
       </label>
       <input type="email" class="form-control equal-to required" data-equal-to="email" data-error-equal-to="メールアドレスが異なります" id="email_check" name="email_check" placeholder="Email アドレス（確認用 必須）" value="<?php echo h($email_check); ?>">
-     </div> -->
+     </div> --
     <div class="form-group">
       <label for="tel">お電話番号（半角英数字） 
         <span class="error-php"><?php echo h( $error_tel ); ?></span>
@@ -492,10 +487,77 @@ $info = $stmt->fetch();
     </div>
 
 
-    <!--確認ページへトークンをPOSTする、隠しフィールド「ticket」-->
+    <!--確認ページへトークンをPOSTする、隠しフィールド「ticket」--
     <input type="hidden" name="ticket" value="<?php echo h($ticket); ?>">
     <button name="submitted" type="submit" class="btn btn-primary">確認画面へ</button>
-  </form>
+  </form> -->
+  <form id="form" class="validationForm" action="./contact/contactform.php" method="post" novalidate>
+      <div>
+        <p>名前</p>
+        <input type="text" class="required maxlength form-control" data-maxlength="30" id="name" name="name" 
+      placeholder="氏名" data-error-required="お名前は必須です。" 
+      value="<?php echo h($name); ?>">
+      </div>
+      <div>
+        <p>大学</p>
+        <!-- <input type="text" name="university" value="<?php echo $_SESSION['university'] ?>"> -->
+        <input type="text" class="required maxlength form-control" data-maxlength="30" id="university" name="university" 
+      placeholder="大学名" data-error-required="大学名は必須です。" 
+      value="<?php echo h($university); ?>">
+      </div>
+      </div>
+      <div>
+        <p>学部学科</p>
+        <!-- <input type="text" name="department" value="<?php echo $_SESSION['department'] ?>"> -->
+        <input type="text" class="required maxlength form-control" data-maxlength="30" id="department" name="department" 
+      placeholder="学部学科" data-error-required="学部学科は必須です。" 
+      value="<?php echo h($department); ?>">
+      </div>
+      <div>
+        <p>卒業年</p>
+        <div>
+          <input type="radio" name="grad_year" value="23年春">23年春
+        </div>
+        <div>
+          <input type="radio" name="grad_year" value="23年秋">23年秋
+        </div>
+        <div>
+          <input type="radio" name="grad_year" value="24年春">24年春
+        </div>
+        <div>
+          <input type="radio" name="grad_year" value="24年秋">24年秋
+        </div>
+      </div>
+      <div>
+        <p>メールアドレス</p>
+        <!-- <input type="mail" name="mail" value="<?php echo $_SESSION['mail'] ?>"> -->
+        <input type="email" class="required pattern form-control" data-pattern="email" id="email" name="mail" 
+      placeholder="Email アドレス" data-error-required="Email アドレスは必須です。"  
+      data-error-pattern="Email の形式が正しくないようですのでご確認ください" value="<?php echo h($mail); ?>">
+      </div>
+      <div>
+        <p>お電話番号</p>
+        <!-- <input type="tel" name="tel" value="<?php echo $_SESSION['tel'] ?>"> -->
+        <input type="tel" class="pattern form-control" data-pattern="tel" id="tel" name="tel"
+       placeholder="お電話番号" data-error-pattern="電話番号の形式が正しくないようですのでご確認ください"  value="<?php echo h($tel); ?>">
+      </div>
+      <div>
+        <p>住所</p>
+        <!-- <input type="text" name="address" value="<?php echo $_SESSION['address'] ?>"> -->
+        <input type="text" class="pattern form-control" data-pattern="address" id="address" name="address"
+       placeholder="お電話番号" data-error-pattern="電話番号の形式が正しくないようですのでご確認ください"  value="<?php echo h($address); ?>">
+      </div>
+      <div>
+        <p>その他</p>
+        <!-- <textarea cols="40" rows="8" name="message"><?php echo $_SESSION['message'] ?></textarea><br> -->
+        <textarea cols="40" rows="8" class="required maxlength showCount form-control" data-maxlength="1000" id="message" name="message" rows="3"><?php echo h($message); ?></textarea>
+      </div>
+
+      <!--確認ページへトークンをPOSTする、隠しフィールド「ticket」-->
+      <input type="hidden" name="ticket" value="<?php echo h($ticket); ?>">
+      <!-- <input type="submit" name="confirm" value="確認" /> -->
+      <button name="submitted" type="submit" class="btn btn-primary">確認画面へ</button>
+    </form>
 </div>
 <!-- 検証用 JavaScript の読み込み -->
 <script src="./formValidation.js"></script> 
