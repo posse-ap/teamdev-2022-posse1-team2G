@@ -37,7 +37,7 @@
                    <?php echo htmlspecialchars($row['name']); ?>
                  </div>
                  <div>
-                   <a href="./contactform.php?company_id=<?= htmlspecialchars($row['company_id']); ?>">お問い合わせ</a>
+                   <a href="./contact/contactform.php?company_id=<?= htmlspecialchars($row['company_id']); ?>">お問い合わせ</a>
                  </div>
                  <div>
                    <p>比較はこちら</p>

@@ -42,7 +42,7 @@ $company = array_reduce($companies, 'array_merge', array());
     <p>マイナビ新卒紹介は…</p>
   </div>
   <div class="company_box_button">
-    <a href="./contactform.php?company_id=<?= htmlspecialchars($company['company_id']); ?>">お問い合わせ</a>
+    <a href="./contact/contactform.php?company_id=<?= htmlspecialchars($company['company_id']); ?>">お問い合わせ</a>
     <a href="" class="comparison">複数の会社を比較する</a>
   </div>
   <div class="company_box_check">
