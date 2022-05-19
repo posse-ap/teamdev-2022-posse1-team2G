@@ -21,10 +21,10 @@ $name = trim( filter_input(INPUT_POST, 'name') );
 $university  = trim( filter_input(INPUT_POST, 'university') );
 $department = trim( filter_input(INPUT_POST, 'department') );
 $grad_year = trim( filter_input(INPUT_POST, 'grad_year') );
-$email = trim( filter_input(INPUT_POST, 'email') );
+$email = trim( (string) filter_input(INPUT_POST, 'email') );
 $tel = trim( filter_input(INPUT_POST, 'tel') );
 $address = trim( filter_input(INPUT_POST, 'address') );
-// $message = trim( filter_input(INPUT_POST, 'subject'));//任意なのでエラー表示しない
+$message = trim( filter_input(INPUT_POST, 'message')); 
 
 //エラーメッセージを保存する配列の初期化
 $error = array();
@@ -88,22 +88,23 @@ if ( count( $error ) > 0 ) {
     $_SERVER[ 'HTTPS' ] = 'on';
   }
   //入力画面（contact.php）の URL
-  $url = ( empty( $_SERVER[ 'HTTPS' ] ) ? 'http://' : 'https://' ) . $_SERVER[ 'SERVER_NAME' ] . $dirname . '/contact.php';
-  header( 'HTTP/1.1 303 See Other' );
-  header( 'location: ' . $url );
+  // $url = ( empty( $_SERVER[ 'HTTPS' ] ) ? 'http://' : 'https://' ) . $_SERVER[ 'SERVER_NAME' ] . $dirname . '/contact.php';
+  // header( 'HTTP/1.1 303 See Other' );
+  // header( 'location: ' . $url );
+  $url = 'https://'. $_SERVER[ 'SERVER_NAME' ] . $dirname . '/contact.php';
   exit;
 }
 
 // 問い合わせ会社を表示させるためのSQL用意
-require('dbconnect.php');
-if (isset($_GET['company_id'])) {
-  $company_id = $_GET['company_id'];
-}
-$stmt = $db->prepare("SELECT * FROM company_posting_information WHERE id = :id");
-$id = $company_id;
-$stmt->bindValue(':id', $id, PDO::PARAM_STR);
-$stmt->execute();
-$info = $stmt->fetch();
+// require('../dbconnect.php');
+// if (isset($_GET['company_id'])) {
+//   $company_id = $_GET['company_id'];
+// }
+// $stmt = $db->prepare("SELECT * FROM company_posting_information WHERE id = :id");
+// $id = $company_id;
+// $stmt->bindValue(':id', $id, PDO::PARAM_STR);
+// $stmt->execute();
+// $info = $stmt->fetch();
 ?>
 
 <!-- ここからフロント側 -->
@@ -125,7 +126,7 @@ $info = $stmt->fetch();
   <div class="table-responsive confirm_table">
     <!-- 会社情報 -->
     <h2>お問い合わせ会社</h2>
-    <?= htmlspecialchars($info['industries']) ?>
+    <!-- <?= htmlspecialchars($info['industries']) ?> -->
 
     <!-- フォーム内容 -->
     <table class="table table-bordered">

@@ -184,47 +184,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
  
-    //指定された要素と値が一致するかどうかを検証する関数
-    // const isNotEqualTo = (elem) => {
-    //   //検証対象のクラス名
-    //   const className = 'equal-to';
-    //   //対象の（比較対象の要素の id が記述されている）data-xxxx 属性（data-equal-to）
-    //   const attributeName = 'data-' + className;
-    //   //比較対象の要素の id 
-    //   const equalTo = elem.getAttribute(attributeName);
-    //   //比較対象の要素
-    //   const equalToElem = document.getElementById(equalTo);
-    //   //エラーを表示する span 要素がすでに存在すれば取得
-    //   const errorSpan = elem.parentElement.querySelector('.' + errorClassName + '.' + className);
-    //   //対象の要素の値が空でなければ値が同じかを検証
-    //   if(elem.value.trim() !=='' && equalToElem.value.trim() !=='') {
-    //     if(equalToElem.value !== elem.value) {
-    //       if(!errorSpan) {
-    //         addError(elem, className, '入力された値が一致しません');
-    //       }
-    //       return true;
-    //     }else{
-    //       if(errorSpan) {
-    //         elem.parentNode.removeChild(errorSpan);
-    //       }
-    //       return false;
-    //     }
-    //   } 
-    // }
-    //equal-to クラスを指定された要素に input イベントを設定（値が変更される都度に検証）
-    // equalToElems.forEach( (elem) => {
-    //   elem.addEventListener('input', () => {
-    //     isNotEqualTo(elem);
-    //   });
-    //   //値を比較する要素（data-equal-to 属性に指定されている id を持つ要素）を取得
-    //   const compareTarget = document.getElementById(elem.getAttribute('data-equal-to'));
-    //   if(compareTarget) {
-    //     //値を比較する要素の値が変更された場合も、値が同じかどうかを検証
-    //     compareTarget.addEventListener('input', () => {
-    //       isNotEqualTo(elem);
-    //     });
-    //   }
-    // });
     
     //サロゲートペアを考慮した文字数を返す関数
     const getValueLength = (value) => {
@@ -308,46 +267,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }); 
     
-    //data-maxlength属性を指定した要素でshowCountクラスが指定されていれば入力文字数を表示
-    showCountElems.forEach( (elem) => {
-      //data-maxlength 属性の値を取得
-      const dataMaxlength = elem.getAttribute('data-maxlength');  
-      //data-maxlength 属性の値が存在し数値であれば
-      if(dataMaxlength && !isNaN(dataMaxlength)) {
-        //入力文字数を表示する p 要素を生成
-        const countElem = document.createElement('p');
-        //生成した p 要素にクラス countSpanWrapper を設定
-        countElem.classList.add('countSpanWrapper');
-        //p要素のコンテンツを作成（.countSpanを指定したspan要素にカウントを出力。初期値は0）
-        countElem.innerHTML = '<span class="countSpan">0</span>/' + parseInt(dataMaxlength);
-        //入力文字数を表示する p 要素を追加
-        elem.parentNode.appendChild(countElem);
-      }
-      //input イベントを設定
-      elem.addEventListener('input', (e) => {
-        //上記で作成したカウントを出力する span 要素を取得
-        const countSpan = elem.parentElement.querySelector('.countSpan');
-        //カウントを出力する span 要素が存在すれば
-        if(countSpan) {
-          //入力されている文字数（e.currentTarget は elem. のこと）
-          //サロゲートペアを考慮した文字数を取得
-          const count = getValueLength(e.currentTarget.value);
-          //span 要素に文字数を出力
-          countSpan.textContent = count;
-          //文字数が dataMaxlength（data-maxlength 属性の値）より大きい場合は文字を赤色に
-          if(count > dataMaxlength) {
-            countSpan.style.setProperty('color', 'red');
-            //span 要素に overMaxCount クラス（スタイル設定用）を追加
-            countSpan.classList.add('overMaxCount');
-          }else{
-            //dataMaxlength 未満の場合は文字を元に戻す
-            countSpan.style.removeProperty('color');
-            //span 要素から overMaxCount クラスを削除
-            countSpan.classList.remove('overMaxCount');
-          } 
-        } 
-      });
-    });
  
     //送信時の処理
     validationForm.addEventListener('submit', (e) => {
@@ -364,25 +283,12 @@ document.addEventListener('DOMContentLoaded', () => {
           e.preventDefault();
         }
       });
-      //.minlength を指定した要素の検証
-      minlengthElems.forEach( (elem) => {
-        if(isTooShort(elem)) {
-          e.preventDefault();
-        }
-      });
       //.maxlength を指定した要素の検証
       maxlengthElems.forEach( (elem) => {
         if(isTooLong(elem)) {
           e.preventDefault();
         }
       });
-      //2つの値（メールアドレス）が一致するかどうかを検証
-      equalToElems.forEach( (elem) => {
-        if(isNotEqualTo(elem)) {
-          e.preventDefault();
-        }
-      });
-      
       //.error の要素を取得
       const errorElem = document.querySelector('.' + errorClassName);
       if(errorElem) {
