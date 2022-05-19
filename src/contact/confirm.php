@@ -1,10 +1,13 @@
 <?php
 //セッションを開始
 session_start();
+
 //エスケープ処理やデータチェックを行う関数のファイルの読み込み
 require '../libs/functions.php';
+
 //POSTされたデータをチェック
 $_POST = checkInput( $_POST );
+
 //固定トークンを確認（CSRF対策）
 if ( isset( $_POST[ 'ticket' ], $_SESSION[ 'ticket' ] ) ) {
   $ticket = $_POST[ 'ticket' ];
@@ -87,7 +90,7 @@ if ( count( $error ) > 0 ) {
   if(isset($_SERVER['HTTP_X_FORWARDED_PROTO']) and $_SERVER['HTTP_X_FORWARDED_PROTO'] === "https") {
     $_SERVER[ 'HTTPS' ] = 'on';
   }
-  // var_dump($error);
+
   //入力画面（contact.php）の URL
   $url = 'https://'. $_SERVER[ 'SERVER_NAME' ] . $dirname . '/contact.php';
   exit;
@@ -104,6 +107,7 @@ $stmt->bindValue(':id', $id, PDO::PARAM_STR);
 $stmt->execute();
 $info = $stmt->fetch();
 ?>
+
 
 <!-- ここからフロント側 -->
 <!DOCTYPE html>
@@ -124,7 +128,7 @@ $info = $stmt->fetch();
   <div class="table-responsive confirm_table">
     <!-- 会社情報 -->
     <h2>お問い合わせ会社</h2>
-    <?= htmlspecialchars($info['industries']) ?>
+    <?= h($info['industries']) ?>
 
     <!-- フォーム内容 -->
     <table class="table table-bordered">
@@ -163,10 +167,10 @@ $info = $stmt->fetch();
       </tr>
     </table>
   </div>
-  <form action="./contactform.php?company_id=<?= htmlspecialchars($company_id);?>" method="post" class="confirm">
+  <form action="./contactform.php?company_id=<?= h($company_id);?>" method="post" class="confirm">
     <button type="submit" class="btn btn-secondary">戻る</button>
   </form>
-  <form action="./thanks.php?company_id=<?= htmlspecialchars($company_id);?>" method="post" class="confirm">
+  <form action="./thanks.php?company_id=<?= h($company_id);?>" method="post" class="confirm">
     <!-- 完了ページへ渡すトークンの隠しフィールド -->
     <input type="hidden" name="ticket" value="<?php echo h($ticket); ?>">
     <button type="submit" class="btn btn-success">送信</button>

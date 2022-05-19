@@ -1,8 +1,10 @@
 <?php
 //セッションを開始
 session_start(); 
+
 //エスケープ処理やデータをチェックする関数を記述したファイルの読み込み
 require '../libs/functions.php'; 
+
 //メールアドレス等を記述したファイルの読み込み
 require '../libs/mailvars.php'; 
  
@@ -76,10 +78,10 @@ $returnMail  = $email;
 $mail_subject  = "craftのご利用";
 $mail_body  = $honbun . "\n\n";
 $mail_header = "from: ayaka1712pome@gmail.com\r\n"
-  . "Return-Path: ayaka1712pome@gmail.com\r\n"
-  . "MIME-Version: 1.0\r\n"
-  . "Content-Transfer-Encoding: BASE64\r\n"
-  . "Content-Type: text/plain; charset=UTF-8\r\n";
+             . "Return-Path: ayaka1712pome@gmail.com\r\n"
+             . "MIME-Version: 1.0\r\n"
+             . "Content-Transfer-Encoding: BASE64\r\n"
+             . "Content-Type: text/plain; charset=UTF-8\r\n";
 
 //メール送信処理
 $mailsousin  = mb_send_mail($mail_to, $mail_subject, $mail_body, $mail_header);
@@ -95,12 +97,7 @@ if ( ini_get( 'safe_mode' ) ) {
 
 
 /* メールの作成 （to エージェント）*/
-  // お問い合わせページのPHP、選択された会社の情報の受け渡しはできる
-    //（company_posting_informationテーブルからselectしてる）
-  // メール送信する場合は、二つのテーブル紐づけて、
-  // companyテーブルのmail_contactカラムから送信先とってくれば送信できる
-    // 送られているかテストするなら、init.sqlのメールアドレス変えてやってみるといいと思う！
-  // SELECT文を変数に格納
+// SELECT文を変数に格納
   require('../dbconnect.php');
   if (isset($_GET['company_id'])) {
     $company_id = $_GET['company_id'];
@@ -118,19 +115,7 @@ if ( ini_get( 'safe_mode' ) ) {
   $stmt->bindValue(':id', $id, PDO::PARAM_STR);
   $stmt->execute();
   $contact_mail_info = $stmt->fetch();
-  // $contact_mail_info = array();
-  // while($contact_mail_info_raw = $stmt->fetch()) {
-  // $contact_mail_info[]=array(
-  // 'company_id' =>$contact_mail_info_raw['company_id'],
-  // 'company_name' =>$contact_mail_info_raw['company_name'],
-  // 'mail_contact' =>$contact_mail_info_raw['mail_contact']
-  // );
-  // }
-  echo "<pre>";
-  echo print_r($contact_mail_info);
-  echo "</pre>";
-  
-//メール本文の組み立て
+
 //メール本文の用意
 $honbun_agent = '';
 $honbun_agent .= "いつもboozer社craftをご利用いただきありがとうございます。\n\n";
