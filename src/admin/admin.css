@@ -2,8 +2,8 @@ body{
   background: aqua;
 }
 .aaa{
-  background-color: blueviolet;
+  outline: red 1px solid;
 }
 .outline{
-  outline: red 1px solid;
+  outline: blue 1px solid;
 }
