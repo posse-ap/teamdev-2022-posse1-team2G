@@ -15,6 +15,7 @@ CREATE TABLE users
   mail VARCHAR(255) NOT NULL,
   phone_number VARCHAR(255) NOT NULL,
   address VARCHAR(255) NOT NULL,
+  rep VARCHAR(255) DEFAULT '未設定',
   delete_flg INT NOT NULL DEFAULT 0
 );
 
@@ -88,23 +89,23 @@ INSERT INTO company_posting_information (company_id, logo, name, img, industries
 (5, './src/admin/img/logo/', '加藤会社', './src/admin/img/img/', '金融', '利用学生数１０万人', '文系', 'dream', '加藤会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, true, true, false, 'オンライン', 'オンライン', 0);
 
 
--- 管理者画面ログインテーブル
-DROP TABLE IF EXISTS admin;
-CREATE TABLE admin
-(
-  id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-  company_id INT NOT NULL,
-  password VARCHAR(255) NOT NULL,
-  mail_admin VARCHAR(255) NOT NULL,
-  delete_flg INT NOT NULL
-);
+-- -- 管理者画面ログインテーブル
+-- DROP TABLE IF EXISTS admin;
+-- CREATE TABLE admin
+-- (
+--   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+--   company_id INT NOT NULL,
+--   password VARCHAR(255) NOT NULL,
+--   mail_admin VARCHAR(255) NOT NULL,
+--   delete_flg INT NOT NULL
+-- );
 
-INSERT INTO admin (password, company_id, mail_admin, delete_flg) VALUES 
-('aaaaaa', 1, 'ssssmmmmllll@gmail.com', 0),
-('bbbbbb', 2, 'mmmmssssllll@gmail.com', 0),
-('cccccc', 3, 'ssssllllmmmm@gmail.com', 0),
-('dddddd', 4, 'mmssssmmllll@gmail.com', 0),
-('eeeeee', 5, 'llllssssmmmm@gmail.com', 0);
+-- INSERT INTO admin (password, company_id, mail_admin, delete_flg) VALUES 
+-- ('aaaaaa', 1, 'ssssmmmmllll@gmail.com', 0),
+-- ('bbbbbb', 2, 'mmmmssssllll@gmail.com', 0),
+-- ('cccccc', 3, 'ssssllllmmmm@gmail.com', 0),
+-- ('dddddd', 4, 'mmssssmmllll@gmail.com', 0),
+-- ('eeeeee', 5, 'llllssssmmmm@gmail.com', 0);
 
 
 -- 学生・エージェント中間テーブル
@@ -165,19 +166,25 @@ INSERT INTO company_user (user_id, company_id, contact_datetime) VALUES
 
 DROP TABLE IF EXISTS admin;
 
+
 CREATE TABLE admin (
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   email VARCHAR(255) UNIQUE NOT NULL,
+  name VARCHAR(255) UNIQUE NOT NULL,
   password VARCHAR(255) NOT NULL,
+  -- flagが１ならboozer,２ならエージェント
   flag INT NOT NULL,
+  company_id INT,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-INSERT INTO admin (email, password, flag) VALUES
-('test@posse-ap.com', sha1('password') ,1),
-('a@a.com', sha1('a'), 2),
-('b@b.com', sha1('b'), 2);
+INSERT INTO admin (email, name, password, flag, company_id) VALUES
+('test@posse-ap.com', '小笹', sha1('password') , 1, NULL),
+('a@a.com', '高木', sha1('a'), 2, 1),
+('aa@a.com', '千葉', sha1('aa'), 2, 1),
+('aaa@a.com', '目暮', sha1('aaa'), 2, 1),
+('b@b.com', '佐藤', sha1('b'), 2, 2);
 
 -- INSERT INTO
 --   admin
