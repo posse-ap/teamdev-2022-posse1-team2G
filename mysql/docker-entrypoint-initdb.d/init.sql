@@ -184,7 +184,10 @@ INSERT INTO admin (email, name, password, flag, company_id) VALUES
 ('a@a.com', '高木', sha1('a'), 2, 1),
 ('aa@a.com', '千葉', sha1('aa'), 2, 1),
 ('aaa@a.com', '目暮', sha1('aaa'), 2, 1),
-('b@b.com', '佐藤', sha1('b'), 2, 2);
+('b@b.com', '佐藤', sha1('b'), 2, 2),
+('c@c.com', '佐藤', sha1('c'), 2, 3),
+('d@d.com', '佐', sha1('d'), 2, 4),
+('e@d.com', '佐', sha1('e'), 2, 5);
 
 -- INSERT INTO
 --   admin

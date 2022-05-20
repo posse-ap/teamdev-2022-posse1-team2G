@@ -1,10 +1,10 @@
 <?php
 session_start();
 require('../../dbconnect.php');
-if (isset($_SESSION['user_id']) && $_SESSION['time'] + 10 > time()) {
+if (isset($_SESSION['id']) && $_SESSION['time'] + 10 > time()) {
   $_SESSION['time'] = time();
 
-  $id = $_SESSION['user_id'];
+  $id = $_SESSION['id'];
   // T使う参考サイト　https://zukucode.com/2017/08/sql-join-where.html
   // $sql = "SELECT * FROM company WHERE id='$id' ORDER BY id DESC";
   $sql = "select * from company as t1 inner join company_posting_information as t2 on t1.id = t2.company_id  where t1.id='$id' order by t1.id desc";

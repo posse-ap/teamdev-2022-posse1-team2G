@@ -27,18 +27,18 @@ if (!empty($_POST)) {
   // https://access-jp.co.jp/blogs/development/42
   if (!empty($agent)) {
     $_SESSION = array();
-    $_SESSION['user_id'] = $agent['company_id'];
+    $_SESSION['id'] = $agent['company_id'];
     $_SESSION['time'] = time();
     // $_SERVER['HTTP_HOST']=  localhost:8080
     // header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/index.php');
-    // header('Location: http://' . $_SERVER['HTTP_HOST'] .'/admin/boozer/fetch.php?company_id=' . $_SESSION['user_id']);
-    header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/agent/information_posting.php');
-    // header('Location: http://' . $_SERVER['HTTP_HOST'] .'/admin/index.php/' . $_SESSION['user_id']);
+    // header('Location: http://' . $_SERVER['HTTP_HOST'] .'/admin/boozer/fetch.php?company_id=' . $_SESSION['id']);
+    header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/agent/user_list.php');
+    // header('Location: http://' . $_SERVER['HTTP_HOST'] .'/admin/index.php/' . $_SESSION['id']);
     // exit();
   } else if (empty($agent) && !empty($boozer)) {
     $_SESSION = array();
     // 1をセッションのuser_idに追加
-    $_SESSION['user_id'] = $boozer['id'];
+    $_SESSION['id'] = $boozer['id'];
     $_SESSION['time'] = time();
     // $_SERVER['HTTP_HOST']=  localhost:8080
     header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/boozer/company_list.php');
