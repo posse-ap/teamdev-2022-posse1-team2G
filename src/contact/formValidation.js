@@ -12,8 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const requiredElems = document.querySelectorAll('.required');
     //pattern クラスを指定された要素の集まりを取得して変数に代入 
     const patternElems =  document.querySelectorAll('.pattern');
-    //minlength クラスを指定された要素の集まりを取得して変数に代入 
-    const minlengthElems =  document.querySelectorAll('.minlength');
     //maxlength クラスを指定された要素の集まりを取得して変数に代入 
     const maxlengthElems =  document.querySelectorAll('.maxlength');
  
@@ -185,47 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const getValueLength = (value) => {
       return (value.match(/[\uD800-\uDBFF][\uDC00-\uDFFF]|[\s\S]/g) || []).length;
     }
- 
-    //指定された最小文字数を満たしているかを検証する関数（満たしていない場合は true を返す）
-    const isTooShort = (elem) => {
-      //対象のクラス名
-      const className = 'minlength';
-      //対象の data-xxxx 属性の名前
-      const attributeName = 'data-' + className;
-      //data-minlength 属性から最小文字数を取得
-      const minlength = elem.getAttribute(attributeName);
-      //エラーを表示する span 要素がすでに存在すれば取得（存在しなければ null が返る）
-      const errorSpan = elem.parentElement.querySelector('.' + errorClassName + '.' + className);
-      //値が空でなければ
-      if(elem.value !=='') {
-        //サロゲートペアを考慮した文字数を取得
-        const valueLength = getValueLength(elem.value);
-        //値がdata-minlength属性で指定された最小文字数より小さければエラーを表示してtrueを返す
-        if(valueLength < minlength) {
-          if(!errorSpan) {
-            addError(elem, className, minlength + '文字以上で入力ください');
-          }
-          return true;
-        //最小文字数より大きければエラーがあれば削除して false を返す
-        }else{
-          if(errorSpan) {
-            elem.parentNode.removeChild(errorSpan);
-          }
-          return false;
-        }
-      //値が空でエラーを表示する要素が存在すれば削除
-      }else if(elem.value ==='' && errorSpan) {
-        elem.parentNode.removeChild(errorSpan);
-      }
-    }
- 
-    //minlength クラスを指定された要素に input イベントを設定（値が変更される都度に検証）
-    minlengthElems.forEach( (elem) => {
-      elem.addEventListener('input', () => {
-        isTooShort(elem);
-      });
-    }); 
- 
+  
     //指定された最大文字数を満たしているかを検証する関数（満たしていない場合は true を返す）
     const isTooLong = (elem) => {
       //対象のクラス名
