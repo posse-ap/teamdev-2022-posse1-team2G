@@ -3,6 +3,7 @@ body{
 }
 .aaa{
   outline: red 1px solid;
+  text-align: center;
 }
 .outline{
   outline: blue 1px solid;

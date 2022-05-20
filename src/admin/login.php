@@ -32,7 +32,7 @@ if (!empty($_POST)) {
     // $_SERVER['HTTP_HOST']=  localhost:8080
     // header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/index.php');
     // header('Location: http://' . $_SERVER['HTTP_HOST'] .'/admin/boozer/fetch.php?company_id=' . $_SESSION['user_id']);
-    header('Location: http://' . $_SERVER['HTTP_HOST'] .'/admin/boozer/fetch_user.php');
+    header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/agent/information_posting.php');
     // header('Location: http://' . $_SERVER['HTTP_HOST'] .'/admin/index.php/' . $_SESSION['user_id']);
     // exit();
   } else if (empty($agent) && !empty($boozer)) {
