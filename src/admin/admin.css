@@ -1,0 +1,9 @@
+body{
+  background: aqua;
+}
+.aaa{
+  background-color: blueviolet;
+}
+.outline{
+  outline: red 1px solid;
+}
