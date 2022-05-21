@@ -162,8 +162,8 @@ try {
   $sql_users = "INSERT INTO 
     users 
     (name,university,department,grad_year,mail,phone_number,address,delete_flg) 
-    VALUES 
-    ('$name','$university','$department','$grad_year','$mail','$phone_number','$address', 0)";
+    VALUES
+    ('$name','$university','$department','$grad_year','$email','$phone_number','$address', 0)";
   $stmt_users = $db->prepare($sql_users);
   $stmt_users->execute();
   $database_result_users = $stmt_users->fetchAll();
@@ -177,13 +177,23 @@ try {
   //company_userテーブルへ
   //user_idの取得・定義   （usersテーブルの最後の行のidを持ってくる）
   $stmt = $db->query('SELECT id FROM users ORDER BY id DESC LIMIT 1');  
-  $user_id = $stmt->fetch();
+  $last_user_id = $stmt->fetch();
+  echo "<pre>";
+  print_r($last_user_id);
+  echo "</pre>";
+  echo $last_user_id['id'];
+  $user_id = $last_user_id['id'];
   //company_idの取得・定義  (複数の場合はforeachやconcat?で一つ一つに分ける必要がある)
   if (isset($_GET['company_id'])) {
-    $company_id = $_GET['company_id'];
+    $company_id_array = $_GET['company_id'];
+    echo $company_id_array;
   }
+  $company_id = h($company_id_array);
+  echo $company_id;
+
   //contact_datetimeの取得・定義
   $contact_datetime = date("Y-m-d");
+  echo $contact_datetime;
   //データ登録
   $sql = "INSERT INTO 
     company_user
