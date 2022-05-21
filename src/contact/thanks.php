@@ -250,13 +250,8 @@ if ( $result_user && $result_agent) {
       <!-- ページメイン -->
       <div class="contact_wrapper">
         <p>contact</p>
-        <h1>お問い合わせ完了</h1>
-        <div class="contact_box">
-          <p>お問い合わせありがとうございます。</p>
-          <p>確認のため、自動送信メールをお送りいたします。</p>
-        </div>
         <h2>お問い合わせフォーム</h2>
-        <?php if ( $result ): ?>
+        <?php if ( $result_user && $result_agent ): ?>
         <h1>お問い合わせ完了</h1>
         <p>お問い合わせいただきありがとうございます。</p>
         <p>確認のため、自動送信メールをお送りいたします。</p>
