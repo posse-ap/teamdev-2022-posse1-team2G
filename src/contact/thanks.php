@@ -159,31 +159,32 @@ if ( ini_get( 'safe_mode' ) ) {
 try {
   require('../dbconnect.php');
   //usersテーブルへ
-  $sql = "INSERT INTO 
+  $sql_users = "INSERT INTO 
     users 
-    (name,university,department,grad_year,mail,phone_number,address) 
+    (name,university,department,grad_year,mail,phone_number,address,delete_flg) 
     VALUES 
-    ('$name','$university','$department','$grad_year','$mail','$phone_number','$address')";
-  $stmt = $db->prepare($sql);
-  $stmt->execute();
-  $database_result = $stmt->fetchAll();
+    ('$name','$university','$department','$grad_year','$mail','$phone_number','$address', 0)";
+  $stmt_users = $db->prepare($sql_users);
+  $stmt_users->execute();
+  $database_result_users = $stmt_users->fetchAll();
 
-  if (isset($database_result)) {
-    echo $return  = "userテーブルへデータを挿入しました";
+  if (isset($database_result_users)) {
+    echo $return_users  = "userテーブルへデータを挿入しました";
   } else {
-    echo $return  = "-users- Something Went Wrong.!";
+    echo $return_users  = "-users- Something Went Wrong.!";
   }
 
   //company_userテーブルへ
-  //user_idの取得・定義
-  
-  //company_idの取得・定義
+  //user_idの取得・定義   （usersテーブルの最後の行のidを持ってくる）
+  $stmt = $db->query('SELECT id FROM users ORDER BY id DESC LIMIT 1');  
+  $user_id = $stmt->fetch();
+  //company_idの取得・定義  (複数の場合はforeachやconcat?で一つ一つに分ける必要がある)
   if (isset($_GET['company_id'])) {
     $company_id = $_GET['company_id'];
   }
   //contact_datetimeの取得・定義
   $contact_datetime = date("Y-m-d");
-
+  //データ登録
   $sql = "INSERT INTO 
     company_user
     (user_id,company_id,contact_datetime) 
