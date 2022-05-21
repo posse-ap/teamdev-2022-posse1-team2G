@@ -88,9 +88,9 @@ $mailsousin  = mb_send_mail($mail_to, $mail_subject, $mail_body, $mail_header);
 //メールの送信（結果を変数 $result に代入）
 if ( ini_get( 'safe_mode' ) ) {
   //セーフモードがOnの場合は第5引数が使えない
-  $result = $mailsousin;
+  $result_user = $mailsousin;
 } else {
-  $result = mb_send_mail($mail_to, $mail_subject, $mail_body, $mail_header, '-f' . $returnMail );
+  $result_user = mb_send_mail($mail_to, $mail_subject, $mail_body, $mail_header, '-f' . $returnMail );
 }
 
 
@@ -155,9 +155,58 @@ if ( ini_get( 'safe_mode' ) ) {
   $result_agent = mb_send_mail($mail_to_agent, $mail_subject_agent, $mail_body_agent, $mail_header_agent, '-f' . $returnMail );
 }
 
+//データ追加
+try {
+  require('../dbconnect.php');
+  //usersテーブルへ
+  $sql = "INSERT INTO 
+    users 
+    (name,university,department,grad_year,mail,phone_number,address) 
+    VALUES 
+    ('$name','$university','$department','$grad_year','$mail','$phone_number','$address')";
+  $stmt = $db->prepare($sql);
+  $stmt->execute();
+  $database_result = $stmt->fetchAll();
+
+  if (isset($database_result)) {
+    echo $return  = "userテーブルへデータを挿入しました";
+  } else {
+    echo $return  = "-users- Something Went Wrong.!";
+  }
+
+  //company_userテーブルへ
+  //user_idの取得・定義
+  
+  //company_idの取得・定義
+  if (isset($_GET['company_id'])) {
+    $company_id = $_GET['company_id'];
+  }
+  //contact_datetimeの取得・定義
+  $contact_datetime = date("Y-m-d");
+
+  $sql = "INSERT INTO 
+    company_user
+    (user_id,company_id,contact_datetime) 
+    VALUES 
+    ($user_id,$company_id,'$contact_datetime')";
+  $stmt = $db->prepare($sql);
+  $stmt->execute();
+  $database_result = $stmt->fetchAll();
+
+  if (isset($database_result)) {
+    echo $return  = "company_userテーブルへデータを挿入しました";
+  } else {
+    echo $return  = "-company_users- Something Went Wrong.!";
+  }
+
+}catch(PDOException $e){
+  echo $e -> getMessage();
+  exit();
+}
+
 
 //メール送信の結果判定
-if ( $result && $result_agent) {
+if ( $result_user && $result_agent) {
   //成功した場合はセッションを破棄
   $_SESSION = array(); //空の配列を代入し、すべてのセッション変数を消去 
   session_destroy(); //セッションを破棄
