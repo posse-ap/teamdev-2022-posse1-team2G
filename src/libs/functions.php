@@ -40,6 +40,7 @@ function checkInput($var){
   <title>Document</title>
 </head>
 <body>
-  <h1>aaaaa</h1>
+  <!-- ↓のメッセージが見えたらこのファイルが見えていることになる -->
+  <h1>外部アクセス拒否できていない</h1>
 </body>
 </html>

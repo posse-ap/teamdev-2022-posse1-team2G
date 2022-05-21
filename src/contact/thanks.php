@@ -4,9 +4,6 @@ session_start();
 
 //エスケープ処理やデータをチェックする関数を記述したファイルの読み込み
 require '../libs/functions.php'; 
-
-//メールアドレス等を記述したファイルの読み込み
-require '../libs/mailvars.php'; 
  
 //お問い合わせ日時を日本時間に
 date_default_timezone_set('Asia/Tokyo'); 
