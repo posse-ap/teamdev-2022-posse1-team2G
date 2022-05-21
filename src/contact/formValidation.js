@@ -62,7 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if(checkedRadio === null) {
          if(!errorSpan) {
            //addError() を使ってエラーメッセージ表示する span 要素を生成して追加
-            addError(elem, className, '選択は必須です');
+            addError(elem, className, 'いずれか1つを選択してください');
+            console.log(checkedRadio);
           }
           return true;
         } else{ //いずれかのラジオボタンが選択されている場合
@@ -114,17 +115,23 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
  
+    // console.log(requiredElems);
     //required クラスを指定された要素に input イベントを設定（値が変更される都度に検証）
     requiredElems.forEach( (elem) => {
       //ラジオボタンまたはチェックボックスの場合
       if(elem.tagName === 'INPUT' && (elem.getAttribute('type') === 'radio' || elem.getAttribute('type') === 'checkbox' )){
         //親要素を基点に全てのラジオボタンまたはチェックボックス要素を取得
+        // console.log(elem);
         const elems = elem.parentElement.querySelectorAll(elem.tagName);
+        // console.log(elem.parentNode);
+        // console.log(elem.parentElement);
+        // console.log(elems);
         //取得した全ての要素に change イベントを設定
         elems.forEach( (elemsChild) => {
           elemsChild.addEventListener('change', () => {
             //それぞれの要素の選択状態が変更されたら検証を実行
             isValueMissing(elemsChild);
+            console.log(elemsChild);
           });
         });
       }else{

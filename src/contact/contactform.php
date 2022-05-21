@@ -99,18 +99,14 @@ $info = $stmt->fetch();
       </div>
       <div>
         <p>卒業年</p>
-        <div>
-          <input type="radio" class="required-radio" name="grad_year" data-error-required-radio="卒業年は必須です。" value="23年春">23年春
-        </div>
-        <div>
-          <input type="radio" class="required-radio" name="grad_year" data-error-required-radio="卒業年は必須です。" value="23年秋">23年秋
-        </div>
-        <div>
-          <input type="radio" class="required-radio" name="grad_year" data-error-required-radio="卒業年は必須です。" value="24年春">24年春
-        </div>
-        <div>
-          <input type="radio" class="required-radio" name="grad_year" data-error-required-radio="卒業年は必須です。" value="24年秋">24年秋
-        </div>
+        <label>23年春</label>
+        <input type="radio" class="required" name="grad_year" data-error-required-radio="卒業年は必須です。" value="23年春">
+        <label>23年秋</label>
+        <input type="radio"  name="grad_year" data-error-required-radio="卒業年は必須です。" value="23年秋">
+        <label>24年春</label>
+        <input type="radio"  name="grad_year" data-error-required-radio="卒業年は必須です。" value="24年春">
+        <label>24年秋</label>
+        <input type="radio"  name="grad_year" data-error-required-radio="卒業年は必須です。" value="24年秋">
       </div>
       <div>
         <p>メールアドレス</p>
