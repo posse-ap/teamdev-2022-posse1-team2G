@@ -17,8 +17,19 @@ section{
   letter-spacing: 0.1em;
 }
 
-.green{
-  background-color: rgba(1, 191, 189, 0.07);
+.back_color{
+  background-color: rgba(38, 166, 154, 0.05);
+}
+
+.title_box{
+  padding-bottom: 20px;
+}
+
+.capital{
+  font-size: 16px;
+  font-weight: bold;
+  padding-right: 15px;
+  color: #34373a;
 }
 
 /* ヘッダーについて */
@@ -27,18 +38,19 @@ header{
   z-index: 999;
   top: 0;
   height: 65px;
-  background-color: rgba(1, 191, 189, 0.8);
+  background-color: rgba(38, 166, 154, 0.85);
   display: flex;
   align-items: center;
   width: 100%;
   margin: 0 auto;
 }
 
-.header_logo {
+.header_logo a{
   padding: 10px 20px;
   color: white;
   font-size: 30px;
   font-weight: bold;
+  text-decoration: none;
 }
 /* .header_logo img{
   width: 100px;
@@ -80,17 +92,34 @@ header{
 .top_sentence{
   position: absolute;
   top: 480px;
-  padding: 0 40px 0 50px;
-  font-size: 18px;
+  left: 20px;
+  padding: 0 30px 0 40px;
+  font-size: 20px;
   color: white;
   background-color: rgba(0, 0, 0, 0.3);
-  border-bottom: solid 10px #2ab9b9;
+  /* border-bottom: solid 10px rgb(122,220,180); */
   /* background: linear-gradient(transparent 60%, #01bebd 60%); */
+  -webkit-transform: skew(-15deg);
+  transform: skew(-15deg);
+  z-index: 10;
 }
+.top_sentence::before{
+  content: "Recruit";
+  position: absolute;
+  top: -40px;
+  left: 15px;
+  transform: rotate(-8deg);
+  color: rgb(53, 223, 206);
+  font-size: 80px;
+  font-family: luxus-brut, cursive;
+  font-style: italic;
+  z-index: -1;
+}
+
 .top_search{
   position: absolute;
   top: 90px;
-  left: 700px;
+  left: 720px;
   width: 680px;
   height: 510px;
   background-color: white;
@@ -98,13 +127,190 @@ header{
   box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);
 }
 
-/* Q&Aについて */
-#question .title_box{
-  padding-bottom: 20px;
+/* 企業一覧について */
+.company_list{
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
+.company_box{
+  position: relative;
+  background-color: white;
+  top: 0;
+  width: 350px;
+  height: 450px;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+  transition: all .3s;
+  border-radius: 4px;
+  margin-bottom: 30px;
+}
+.company_box:hover{
+  top: -3px;
+  box-shadow: 0 13px 13px rgba(0, 0, 0, 0.2);
+}
+
+.company_box_logo{
+  position: absolute;
+  top: 75px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 120px;
+  height: 120px;
+  background-color: white;
+  z-index: 100;
+  border: 1px solid;
+  border-color: rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+}
+.company_box_logo img{
+  width: 100%;
+}
+
+.company_box_img{
+  position: relative;
+  width: 100%;
+}
+.company_box_img img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 160px;
+  z-index: 10;
+}
+
+.company_box_name{
+  position: absolute;
+  top: 190px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 600;
+  color: #34373a;
+  font-size: 19px;
+  background: linear-gradient(transparent 83%, #cccccc 83%);
+  height: 41px;
+}
+
+.company_box_info{
+  position: absolute;
+  width: 90%;
+  top: 240px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  display: block;
+}
+
+.company_info_first, .company_info_second, .company_info_third{
+  display: flex;
+}
+.company_info_first p, .company_info_second p, .company_info_third p{
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.company_box_exp{
+  position: absolute;
+  top: 315px;
+  width: 90%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-size: 14px;
+}
+.company_box_exp p{
+  width: 100%;
+}
+
+.company_box_button{
+  position: absolute;
+  top: 385px;
+  width: 95%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-size: 14px;
+  margin: 0 auto;
+}
+.company_box_button .inquiry{
+  position: relative;
+  color: #fff;
+  background-color: #eb6100;
+  cursor: pointer;
+  font-weight: 550;
+  font-size: 12px;
+  padding: 12px 20px 12px 10px;
+  text-decoration: none;
+  border-radius: 4px;
+}
+.company_box_button .inquiry:hover{
+  background: #f56500;
+}
+.company_box_button .inquiry::after{
+  content: "";
+  position: absolute;
+  top: 50%;
+  bottom: 0;
+  right: 10px;
+  font-size: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 6px;
+  height: 6px;
+  border-top: solid 2px white;
+  border-right: solid 2px white;
+  transform: translateY(-50%) rotate(45deg);
+}
+.company_box_button .comparison{
+  color: #fff;
+  background-color: #02a348;
+  cursor: pointer;
+  font-weight: 550;
+  font-size: 12px;
+  padding: 12px 20px 12px 10px;
+  text-decoration: none;
+  border-radius: 4px;
+}
+.company_box_button .comparison:hover{
+  background: #01ad4c;
+}
+.company_box_button .comparison::after{
+  content: "";
+  position: absolute;
+  top: 50%;
+  bottom: 0;
+  right: 10px;
+  font-size: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 6px;
+  height: 6px;
+  border-top: solid 2px white;
+  border-right: solid 2px white;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.company_box_check{
+  position: absolute;
+  bottom: 10px;
+  font-size: 14px;
+  margin-left: 18px;
+}
+.company_box_check .check:hover{
+  opacity: 0.5;
+}
+.company_box_check input{
+  margin-right: 5px;
+}
+
+
+/* Q&Aについて */
 .question_wrapper{
-  max-width: 1000px;
+  max-width: 1100px;
   padding: 0 32px;
   margin: 0 auto;
 }
@@ -139,7 +345,7 @@ header{
   right: 25px;
   width: 16px;
   height: 2px;
-  background: rgba(1, 191, 189, 1);
+  background: rgba(38, 166, 154, 1);
   transform: rotate(90deg);
   -webkit-transition: .4s ease;
   transition: .4s ease;
@@ -152,7 +358,7 @@ header{
   right: 25px;
   width: 16px;
   height: 2px;
-  background: rgba(1, 191, 189, 1);
+  background: rgba(38, 166, 154, 1);
   -webkit-transition: .4s ease;
   transition: .4s ease;
 }
@@ -185,8 +391,13 @@ header{
 }
 .answer_box_txt{
   display: flex;
+  position: relative;
 }
 .answer_box_txt p{
+  position: absolute;
+  top: 50%;
+  left: 60px;
+  transform: translate(0, -50%);
   margin: 0;
   line-height: 1.2;
   font-size: 14px;
