@@ -42,7 +42,7 @@ $email = h( $_SESSION[ 'email' ] ) ;
 $phone_number =  h( $_SESSION[ 'phone_number' ] ) ;
 $address = h( $_SESSION[ 'address' ] );
 $message = h( $_SESSION[ 'message' ] );
-$privacy = h( $_SESSION[ 'privacy' ] );
+// $privacy = h( $_SESSION[ 'privacy' ] );
 
 /* メールの作成 （to 学生）*/
 //メール本文の組み立て
