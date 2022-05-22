@@ -144,7 +144,7 @@ $info = $stmt->fetch();
       <button name="submitted" type="submit" class="btn btn-primary">確認画面へ</button>
     </form>
 </div>
-<!-- 検証用 JavaScript の読み込み -->
+<!--  JavaScript の読み込み -->
 <script src="./formValidation.js"></script> 
 
 

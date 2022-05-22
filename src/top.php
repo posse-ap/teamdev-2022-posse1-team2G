@@ -88,7 +88,6 @@ $companies = $stmt->fetchAll();
               <div id="checked_company_box"></div>
               <!-- 比較するボタンを押すと、一時表示された会社の情報を比較表ページにpostする -->
               <button name="submitted" type="submit" class="">比較する</button>
-              <!-- <a href="./compare_table.php">比較する</a> -->
             </form>
           </div>
         </div>
