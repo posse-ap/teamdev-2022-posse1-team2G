@@ -45,22 +45,22 @@ $price = $unit_price * (1 + $tax);
 </head>
 
 <body>
-  <div>
-    <div>
-      <p>売り上げ状況</p>
+  <div class='sales_status'>
+    <div class='sales_status_title'>
+      <h1>売り上げ状況</h1>
     </div>
     <div>
-      <div class=''>
-        <p>￥<?= number_format($month['month'] * $price) ?>/<?= $month['month'] ?>件</p>
-        <small>今月の売上高/売り上げ件数</small>
+      <div class='sales_status_month'>
+        <h2>￥<?= number_format($month['month'] * $price) ?>/<?= $month['month'] ?><small>件</small></h2>
+        <p>今月の売上高/売り上げ件数</p>
       </div>
-      <div>
-        <p>￥<?= number_format($yesterday['yesterday'] * $price) ?>/<?= $yesterday['yesterday'] ?>件</p>
-        <small>昨日の売上高/売り上げ件数</small>
+      <div class='sales_status_yesterday'>
+        <h2>￥<?= number_format($yesterday['yesterday'] * $price) ?>/<?= $yesterday['yesterday'] ?><small>件</small></h2>
+        <p>昨日の売上高/売り上げ件数</p>
       </div>
-      <div>
-        <p>￥<?= number_format($today['today'] * $price) ?>/<?= $today['today'] ?>件</p>
-        <small>今日の売上高/売り上げ件数</small>
+      <div class='sales_status_today'>
+        <h2>￥<?= number_format($today['today'] * $price) ?>/<?= $today['today'] ?><small>件</small></h2>
+        <p>今日の売上高/売り上げ件数</p>
       </div>
     </div>
 
