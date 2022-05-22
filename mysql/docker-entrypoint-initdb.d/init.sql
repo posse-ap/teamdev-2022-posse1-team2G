@@ -51,6 +51,7 @@ INSERT INTO company (company_name, phone_number, mail_contact, mail_manager, mai
 ('加藤会社', '0120-3456-1991', 'aaaauuuuuduu@gmail.com', 'llllssssmmmm@gmail.com', 'marusankakudbatu@gmail.com', '諸星', '〇県〇市','marumaruurl.com');
 
 
+
 -- エージェント掲載情報テーブル
 DROP TABLE IF EXISTS company_posting_information;
 CREATE TABLE company_posting_information
@@ -63,30 +64,172 @@ CREATE TABLE company_posting_information
   industries VARCHAR(255) NOT NULL,
   achievement VARCHAR(255) NOT NULL,
   type VARCHAR(255) NOT NULL,
-  catch_copy VARCHAR(255) NOT NULL,
-  information VARCHAR(255) NOT NULL,
-  strength VARCHAR(255) NOT NULL,
-  job_offer_number VARCHAR(255) NOT NULL,
-  user_count VARCHAR(255) NOT NULL,
-  informal_job_offer_rate VARCHAR(255) NOT NULL,
-  satisfaction_degrees VARCHAR(255) NOT NULL,
-  finding_employment_target VARCHAR(255) NOT NULL,
-  ES boolean NOT NULL,
-  interview boolean NOT NULL,
-  limited_course boolean NOT NULL,
-  competence_diagnosis boolean NOT NULL,
-  special_selection boolean NOT NULL,
-  interview_style VARCHAR(255) NOT NULL,
-  location VARCHAR(255) NOT NULL,
-  delete_flg INT NOT NULL
+  delete_flg INT NOT NULL DEFAULT 0
 );
 
-INSERT INTO company_posting_information (company_id, logo, name, img, industries, achievement, type, catch_copy, information, strength, job_offer_number, user_count, informal_job_offer_rate, satisfaction_degrees, finding_employment_target, ES, interview, limited_course, competence_diagnosis, special_selection, interview_style, location, delete_flg) VALUES 
-(1, './src/admin/img/logo/', '鈴木会社', './src/admin/img/img/', 'IT', '満足度９８％', '理系', 'dream', '鈴木会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, true, true, true, 'オンライン', 'オンライン', 0),
-(2, './src/admin/img/logo/', '佐藤会社', './src/admin/img/img/', 'サービス', '内定率４０％', '文系', 'dream', '佐藤会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, false, true, true, true, 'オンライン', 'オンライン', 0),
-(3, './src/admin/img/logo/', '田中会社', './src/admin/img/img/', '商社', '顧客数No.1', '理系', 'dream', '田中会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, false, false, true, 'オンライン', 'オンライン', 0),
-(4, './src/admin/img/logo/', '山田会社', './src/admin/img/img/', '小売り', '顧客満足度９０%', '理系', 'dream', '山田会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, true, false, true, '対面', '都心', 0),
-(5, './src/admin/img/logo/', '加藤会社', './src/admin/img/img/', '金融', '利用学生数１０万人', '文系', 'dream', '加藤会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, true, true, false, 'オンライン', 'オンライン', 0);
+INSERT INTO company_posting_information (company_id, logo, name, img, industries, achievement, type) VALUES 
+(1, './src/admin/img/logo/', '鈴木会社', './src/admin/img/img/', 'IT', '満足度９８％', '理系'),
+(2, './src/admin/img/logo/', '佐藤会社', './src/admin/img/img/', 'サービス', '内定率４０％', '文系'),
+(3, './src/admin/img/logo/', '田中会社', './src/admin/img/img/', '商社', '顧客数No.1', '理系'),
+(4, './src/admin/img/logo/', '山田会社', './src/admin/img/img/', '小売り', '顧客満足度９０%', '理系'),
+(5, './src/admin/img/logo/', '加藤会社', './src/admin/img/img/', '金融', '利用学生数１０万人', '文系');
+
+
+
+-- 実績のテーブル(数値ベース)
+DROP TABLE IF EXISTS company_achievement;
+CREATE TABLE company_achievement
+(
+  achievement_id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  company_id INT NOT NULL,
+  -- 求人数
+  job_offer_number VARCHAR(255) NOT NULL,
+-- 紹介企業数
+  company_number VARCHAR(255) NOT NULL,
+  -- 利用学生数
+  user_count VARCHAR(255) NOT NULL,
+  -- 昨年の利用学生数
+  user_count_last_year VARCHAR(255) NOT NULL,
+  -- 内定率
+  informal_job_offer_rate VARCHAR(255) NOT NULL,
+  -- 満足度
+  satisfaction_degrees VARCHAR(255) NOT NULL
+);
+
+INSERT INTO company_achievement (company_id, job_offer_number, company_number, user_count, user_count_last_year,  informal_job_offer_rate, satisfaction_degrees) VALUES 
+(1, '100万人', '120社', '10万人', '1819人', '30%', '89%'),
+(2, '1000人', '20社', '1万人', '819人', '50%', '89%'),
+(3, '34445人', '220社', '50万人', '3181人', '30%', '88%'),
+(4, '10030人', '40社', '1万人', '319人', '40%', '60%'),
+(5, '1060人', '10社', '30万人', '1819人', '29%', '89%');
+
+
+
+-- サービス（〇×についてのテーブル）
+DROP TABLE IF EXISTS company_service;
+CREATE TABLE company_service
+(
+  service_id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  company_id INT NOT NULL,
+  --  ES添削
+  ES_correction boolean NOT NULL,
+  -- 面談
+  interview boolean NOT NULL,
+  -- インターン
+  internship boolean NOT NULL,
+  -- セミナー
+  seminar boolean NOT NULL,
+  -- 研修
+  training boolean NOT NULL,
+  -- 地方学生支援
+  regional_student_support boolean NOT NULL,
+  -- 限定講座
+  limited_course boolean NOT NULL,
+  -- 適性診断
+  competence_diagnosis boolean NOT NULL,
+  -- 特別選考
+  special_selection boolean NOT NULL
+);
+
+INSERT INTO company_service (company_id, ES_correction, interview, internship, seminar, training, regional_student_support, limited_course, competence_diagnosis, special_selection) VALUES 
+(1, true, true, true, true, true, true, true, true, true),
+(2, true, false, true, true, true, false, true, true, true),
+(3, true, true, true, true, false, true, true, true, false),
+(4, false, true, true, true, true, true, false, true, true),
+(5, true, false, true, false, true, false, true, true, false);
+
+-- 企業説明
+DROP TABLE IF EXISTS company_feature;
+CREATE TABLE company_feature
+(
+  feature_id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  company_id INT NOT NULL,
+  feature VARCHAR(255) NOT NULL,
+  message VARCHAR(255) NOT NULL
+);
+
+INSERT INTO company_feature (company_id, feature, message) VALUES 
+(1, '➀すごい➁やばい➂ｖｂｋｆｖばえうヴぁえいうヴぇらいうあえいうｒヴあｆｄヴあｄｊ', 'ｆヴあヴあヴぁｓｄヴぁｓｊｋｄｖｊｋｓｄヴぁｓｊｄヴぁｊｓｋ'),
+(2, '➀すごい➁やばい➂ｖｂｋｆｖばえうヴぁえいうヴぇらいうあえいうｒヴあｆｄヴあｄｊ', 'ｆヴあヴあヴぁｓｄヴぁｓｊｋｄｖｊｋｓｄヴぁｓｊｄヴぁｊｓｋ'),
+(3, '➀すごい➁やばい➂ｖｂｋｆｖばえうヴぁえいうヴぇらいうあえいうｒヴあｆｄヴあｄｊ', 'ｆヴあヴあヴぁｓｄヴぁｓｊｋｄｖｊｋｓｄヴぁｓｊｄヴぁｊｓｋ'),
+(4, '➀すごい➁やばい➂ｖｂｋｆｖばえうヴぁえいうヴぇらいうあえいうｒヴあｆｄヴあｄｊ', 'ｆヴあヴあヴぁｓｄヴぁｓｊｋｄｖｊｋｓｄヴぁｓｊｄヴぁｊｓｋ'),
+(5, '➀すごい➁やばい➂ｖｂｋｆｖばえうヴぁえいうヴぇらいうあえいうｒヴあｆｄヴあｄｊ', 'ｆヴあヴあヴぁｓｄヴぁｓｊｋｄｖｊｋｓｄヴぁｓｊｄヴぁｊｓｋ');
+
+
+
+
+-- 会社概要、取り扱い
+DROP TABLE IF EXISTS company_overview;
+CREATE TABLE company_overview
+(
+  overview_id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  company_id INT NOT NULL,
+  -- 歴史（創業年）
+  history VARCHAR(255) NOT NULL,
+  -- 従業員数
+  employee_number VARCHAR(255) NOT NULL,
+  -- 資本金
+  capital VARCHAR(255) NOT NULL,
+  -- 取り扱い地域
+  handling_area VARCHAR(255) NOT NULL,
+  -- 取り扱い業種
+  handling_industries VARCHAR(255) NOT NULL,
+  -- 取り扱い職種
+  handling_job_category VARCHAR(255) NOT NULL,
+  -- 主な就職先
+  main_finding_employment_target VARCHAR(255) NOT NULL,
+  -- 面談形式
+  interview_format VARCHAR(255) NOT NULL,
+  -- 面談場所
+  interview_location VARCHAR(255) NOT NULL
+);
+
+INSERT INTO company_overview (company_id, history, employee_number, capital, handling_area, handling_industries, handling_job_category, main_finding_employment_target, interview_format, interview_location) VALUES 
+(1, '1970年創業', '100人', '1000万円', '日本（主に関東）、海外', 'IT、インターネット、メーカー、商社、コンサルティング、マスコミ、エンターテインメント、メディカル', '経営、管理、マーケティング、営業、コンサルタント、専門職、ゲーム、電気・電子、人事、工事、土木、広告', "'dnvsd.png','vsuus.png','vfdnv.png'", 'オンライン', 'オンライン'),
+(2, '1970年創業', '100人', '1000万円', '日本（主に関東）、海外', 'IT、インターネット、メーカー、商社、コンサルティング、マスコミ、エンターテインメント、メディカル', '経営、管理、マーケティング、営業、コンサルタント、専門職、ゲーム、電気・電子、人事、工事、土木、広告', "'dnvsd.png','vsuus.png','vfdnv.png'", 'オンライン', 'オンライン'),
+(3, '1970年創業', '100人', '1000万円', '日本（主に関東）、海外', 'IT、インターネット、メーカー、商社、コンサルティング、マスコミ、エンターテインメント、メディカル', '経営、管理、マーケティング、営業、コンサルタント、専門職、ゲーム、電気・電子、人事、工事、土木、広告', "'dnvsd.png','vsuus.png','vfdnv.png'", 'オンライン', 'オンライン'),
+(4, '1970年創業', '100人', '1000万円', '日本（主に関東）、海外', 'IT、インターネット、メーカー、商社、コンサルティング、マスコミ、エンターテインメント、メディカル', '経営、管理、マーケティング、営業、コンサルタント、専門職、ゲーム、電気・電子、人事、工事、土木、広告', "'dnvsd.png','vsuus.png','vfdnv.png'", 'オンライン', 'オンライン'),
+(5, '1970年創業', '100人', '1000万円', '日本（主に関東）、海外', 'IT、インターネット、メーカー、商社、コンサルティング、マスコミ、エンターテインメント、メディカル', '経営、管理、マーケティング、営業、コンサルタント、専門職、ゲーム、電気・電子、人事、工事、土木、広告', "'dnvsd.png','vsuus.png','vfdnv.png'", 'オンライン', 'オンライン');
+
+
+
+
+-- -- エージェント掲載情報テーブル
+-- DROP TABLE IF EXISTS company_posting_information;
+-- CREATE TABLE company_posting_information
+-- (
+--   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+--   company_id INT NOT NULL,
+--   logo VARCHAR(255) NOT NULL,
+--   name VARCHAR(255) NOT NULL,
+--   img VARCHAR(255) NOT NULL,
+--   industries VARCHAR(255) NOT NULL,
+--   achievement VARCHAR(255) NOT NULL,
+--   type VARCHAR(255) NOT NULL,
+--   catch_copy VARCHAR(255) NOT NULL,
+--   information VARCHAR(255) NOT NULL,
+--   strength VARCHAR(255) NOT NULL,
+--   job_offer_number VARCHAR(255) NOT NULL,
+--   user_count VARCHAR(255) NOT NULL,
+--   informal_job_offer_rate VARCHAR(255) NOT NULL,
+--   satisfaction_degrees VARCHAR(255) NOT NULL,
+--   finding_employment_target VARCHAR(255) NOT NULL,
+--   ES boolean NOT NULL,
+--   interview boolean NOT NULL,
+--   limited_course boolean NOT NULL,
+--   competence_diagnosis boolean NOT NULL,
+--   special_selection boolean NOT NULL,
+--   interview_style VARCHAR(255) NOT NULL,
+--   location VARCHAR(255) NOT NULL,
+--   delete_flg INT NOT NULL
+-- );
+
+-- INSERT INTO company_posting_information (company_id, logo, name, img, industries, achievement, type, catch_copy, information, strength, job_offer_number, user_count, informal_job_offer_rate, satisfaction_degrees, finding_employment_target, ES, interview, limited_course, competence_diagnosis, special_selection, interview_style, location, delete_flg) VALUES 
+-- (1, './src/admin/img/logo/', '鈴木会社', './src/admin/img/img/', 'IT', '満足度９８％', '理系', 'dream', '鈴木会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, true, true, true, 'オンライン', 'オンライン', 0),
+-- (2, './src/admin/img/logo/', '佐藤会社', './src/admin/img/img/', 'サービス', '内定率４０％', '文系', 'dream', '佐藤会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, false, true, true, true, 'オンライン', 'オンライン', 0),
+-- (3, './src/admin/img/logo/', '田中会社', './src/admin/img/img/', '商社', '顧客数No.1', '理系', 'dream', '田中会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, false, false, true, 'オンライン', 'オンライン', 0),
+-- (4, './src/admin/img/logo/', '山田会社', './src/admin/img/img/', '小売り', '顧客満足度９０%', '理系', 'dream', '山田会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, true, false, true, '対面', '都心', 0),
+-- (5, './src/admin/img/logo/', '加藤会社', './src/admin/img/img/', '金融', '利用学生数１０万人', '文系', 'dream', '加藤会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, true, true, false, 'オンライン', 'オンライン', 0);
 
 
 -- -- 管理者画面ログインテーブル

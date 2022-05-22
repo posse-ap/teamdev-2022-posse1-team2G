@@ -11,40 +11,40 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 1000000 > time()) {
 
   // 以下のSELECT分の結果
   // select * from company as t1 inner join company_posting_information as t2 on t1.id = t2.company_id  where t1.id=1 order by t1.id desc\G 
-//   id: 1
-//              company_name: 鈴木会社
-//              phone_number: 0120-3456-1987
-//              mail_contact: aaaaiiiiuuuu@gmail.com
-//              mail_manager: ssssmmmmllll@gmail.com
-//         mail_notification: maruaaaamaruaaaa@gmail.com
-//            representative: 赤井
-//                   address: 〇県△市
-//               company_url: marumaruurl.com
-//                delete_flg: 0
-//                        id: 1
-//                company_id: 1
-//                      logo: ./src/admin/img/logo/
-//                      name: 鈴木会社
-//                       img: ./src/admin/img/img/
-//                industries: IT
-//               achievement: 満足度９８％
-//                      type: 理系
-//                catch_copy: dream
-//               information: 鈴木会社は～で、実績が～で、…
-//                  strength: 強み
-//          job_offer_number: 1千万人
-//                user_count: 2千万人
-//   informal_job_offer_rate: 90%
-//      satisfaction_degrees: 89%
-// finding_employment_target: IT企業
-//                        ES: 1
-//                 interview: 1
-//            limited_course: 1
-//      competence_diagnosis: 1
-//         special_selection: 1
-//           interview_style: オンライン
-//                  location: オンライン
-//                delete_flg: 0
+  //   id: 1
+  //              company_name: 鈴木会社
+  //              phone_number: 0120-3456-1987
+  //              mail_contact: aaaaiiiiuuuu@gmail.com
+  //              mail_manager: ssssmmmmllll@gmail.com
+  //         mail_notification: maruaaaamaruaaaa@gmail.com
+  //            representative: 赤井
+  //                   address: 〇県△市
+  //               company_url: marumaruurl.com
+  //                delete_flg: 0
+  //                        id: 1
+  //                company_id: 1
+  //                      logo: ./src/admin/img/logo/
+  //                      name: 鈴木会社
+  //                       img: ./src/admin/img/img/
+  //                industries: IT
+  //               achievement: 満足度９８％
+  //                      type: 理系
+  //                catch_copy: dream
+  //               information: 鈴木会社は～で、実績が～で、…
+  //                  strength: 強み
+  //          job_offer_number: 1千万人
+  //                user_count: 2千万人
+  //   informal_job_offer_rate: 90%
+  //      satisfaction_degrees: 89%
+  // finding_employment_target: IT企業
+  //                        ES: 1
+  //                 interview: 1
+  //            limited_course: 1
+  //      competence_diagnosis: 1
+  //         special_selection: 1
+  //           interview_style: オンライン
+  //                  location: オンライン
+  //                delete_flg: 0
   $stmt = $db->prepare($sql);
   $stmt->execute();
   $result_array = $stmt->fetchAll();
@@ -52,7 +52,7 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 1000000 > time()) {
 
   // 二次元配列になっていたものを一次元に変換
   $result = array_reduce($result_array, 'array_merge', array());
-// print_r($result);
+
 
   // user_idがない、もしくは一定時間を過ぎていた場合
 } else {
@@ -61,10 +61,8 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 1000000 > time()) {
 }
 ?>
 <pre>
-  <?PHP print_r($result);?>
+  <?php print_r($result); ?>
 </pre>
-
-
 <!doctype html>
 <html lang="ja">
 
@@ -77,10 +75,7 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 1000000 > time()) {
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.css" />
 
-
-
-  <!-- <link rel="stylesheet" href="../../style.css"> -->
-  <link rel="stylesheet" href="../admin.css">
+  <link rel="stylesheet" href="../../admin/admin_style.css">
 
 
   <title>各企業詳細掲載ページ</title>
@@ -88,38 +83,54 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 1000000 > time()) {
 
 <body>
   <div>
-    <div class='outline'>
-      <h1 class='aaa'>企業掲載情報</h1>
+    <div class='company_information_titie'>
+      <h1>企業掲載情報</h1>
     </div>
-
-    <div>
-      <h2>会社情報</h2>
-      <dl class="row">
-        <dt class="col-sm-3">会社名</dt>
-        <dd class="col-sm-9">○○会社</dd>
-        <dt class="col-sm-3">メールアドレス</dt>
-        <dd class="col-sm-9">
-          <p>a@cavav.com</p>
-          <p>a@dva.com</p>
-        </dd>
-        <dt class="col-sm-3">別の用語</dt>
-        <dd class="col-sm-9">この別の用語の定義。</dd>
-        </dd>
+    <div class="company_contract_information">
+      <p><?= $result['company_name'] ?>契約情報</p>
+      <dl class='company_information_list'>
+        <dt>会社名</dt>
+        <dd><?= $result['company_name'] ?></dd>
+        <dt>電話番号</dt>
+        <dd><?= $result['phone_number'] ?>-22</dd>
+        <dt>メールアドレス（contact）</dt>
+        <dd><?= $result['mail_contact'] ?></dd>
+        <dt>メールアドレス（manager）</dt>
+        <dd><?= $result['mail_manager'] ?></dd>
+        <dt>メールアドレス（notification）</dt>
+        <dd><?= $result['mail_notification'] ?></dd>
+        <dt>代表者</dt>
+        <dd><?= $result['representative'] ?></dd>
+        <dt>住所</dt>
+        <dd><?= $result['address'] ?></dd>
+        <dt>会社のURL</dt>
+        <dd><?= $result['company_url'] ?></dd>
+      </dl>
+    </div>
+    <div class="company_posting_information">
+      <p>掲載情報</p>
+      <dl class='company_information_list'>
+        <dt>ロゴ</dt>
+        <dd><?= $result['logo'] ?></dd>
+        <dt>写真</dt>
+        <dd><?= $result['img'] ?>-22</dd>
+        <dt>業種</dt>
+        <dd><?= $result['industries'] ?></dd>
+        <dt>実績</dt>
+        <dd><?= $result['achievement'] ?></dd>
+        <dt>タイプ</dt>
+        <dd><?= $result['type'] ?></dd>
+        <dt>キャッチコピー</dt>
+        <dd><?= $result['catch_copy'] ?></dd>
+        <dt>住所</dt>
+        <dd><?= $result['address'] ?></dd>
+        <dt>会社のURL</dt>
+        <dd><?= $result['company_url'] ?></dd>
       </dl>
     </div>
 
-    <dl class="row">
-      <dt class="col-sm-3">説明リスト</dt>
-      <dd class="col-sm-9">説明リストは、用語を定義するのに最適。</dd>
-      <dt class="col-sm-3">用語</dt>
-      <dd class="col-sm-9">
-        <p>用語の定義。</p>
-        <p>同じ用語の2番目の定義。</p>
-      </dd>
-      <dt class="col-sm-3">別の用語</dt>
-      <dd class="col-sm-9">この別の用語の定義。</dd>
-      </dd>
-    </dl>
+
+
 
 
   </div>
