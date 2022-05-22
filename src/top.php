@@ -1,6 +1,12 @@
 <?php
 require('./dbconnect.php');
 
+//エスケープ処理やデータをチェックする関数を記述したファイルの読み込み
+require './libs/functions.php'; 
+
+//比較ボタンの挙動（company_idの受け渡し）を記述したファイルの読み込み
+require './to_compare_table.php'; 
+
 $sql = 'SELECT * FROM company_posting_information';
 $stmt = $db->query($sql);
 $stmt->execute();
@@ -66,7 +72,7 @@ $companies = $stmt->fetchAll();
                 </div>
                 <div class="company_box_check">
                   <!-- valueにデータを追加していくことで、一時表示ボックスに反映できる -->
-                  <label for="check"><input type="checkbox" name="select_company_checkboxes" value="<?= $company['company_id'];?><?= $company['type'];?>" onchange="checked_counter()">選択する</label>
+                  <label for="check"><input type="checkbox" name="select_company_checkboxes" value="'<?= $company['company_id'];?>'-'<?= $company['type'];?>'" onchange="checked_counter()">選択する</label>
                 </div>
               </a>
             </div>
@@ -77,14 +83,22 @@ $companies = $stmt->fetchAll();
           <!-- 比較チェックボタンついた会社を一時表示するボックス -->
           <div class="selected_company_box">
             <p>比較するエージェント会社</p>
-            <div id="checked_company_box"></div>
+            <form id="form" class="validationForm" action="./compare_table.php" method="post">
+              <!-- 比較チェックボタンついた会社の表示箇所 -->
+              <div id="checked_company_box">
+                <label name=""></label>
+              </div>
+              <!-- 比較するボタンを押すと、一時表示された会社の情報を比較表ページにpostする -->
+              <button name="submitted" type="submit" class="">比較する</button>
+              <!-- <a href="./compare_table.php">比較する</a> -->
+            </form>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <script src="style.js"></script>
+  <!-- <script src="style.js"></script> -->
 </body>
 
 </html>
