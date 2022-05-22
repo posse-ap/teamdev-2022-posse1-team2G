@@ -6,12 +6,22 @@
 }
 
 .company_contract_information,
-.company_posting_information{
+.company_posting_information,
+.company_achievement,
+.company_service,
+.company_feature,
+.company_overview
+{
   width: 80vw;
   margin: 40px auto 0;
 }
 .company_contract_information p,
-.company_posting_information p{
+.company_posting_information p,
+.company_achievement p,
+.company_service p,
+.company_feature p,
+.company_overview p
+{
 font-size: 1.6rem;
 text-align: center;
 }

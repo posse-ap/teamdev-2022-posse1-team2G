@@ -7,7 +7,20 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 1000000 > time()) {
   $id = $_SESSION['id'];
   // T使う参考サイト　https://zukucode.com/2017/08/sql-join-where.html
   // $sql = "SELECT * FROM company WHERE id='$id' ORDER BY id DESC";
-  $sql = "select * from company as t1 inner join company_posting_information as t2 on t1.id = t2.company_id  where t1.id='$id' order by t1.id desc";
+  // $sql = "select * from company as t1 inner join company_posting_information as t2 on t1.id = t2.company_id  where t1.id='$id' order by t1.id desc";
+  $sql = "select * 
+  from company as t1 
+  inner join company_posting_information as t2 
+    on t1.id = t2.company_id 
+  inner join company_achievement as t3 
+    on t1.id=t3.company_id 
+  inner join company_service 
+    as t4 on t1.id=t4.company_id 
+  inner join company_feature 
+    as t5 on t1.id=t5.company_id 
+  inner join company_overview 
+    as t6 on t1.id=t6.company_id 
+  where t1.id='$id' order by t1.id";
 
   // 以下のSELECT分の結果
   // select * from company as t1 inner join company_posting_information as t2 on t1.id = t2.company_id  where t1.id=1 order by t1.id desc\G 
@@ -108,7 +121,7 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 1000000 > time()) {
       </dl>
     </div>
     <div class="company_posting_information">
-      <p>掲載情報</p>
+      <p>掲載基本情報</p>
       <dl class='company_information_list'>
         <dt>ロゴ</dt>
         <dd><?= $result['logo'] ?></dd>
@@ -120,14 +133,81 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 1000000 > time()) {
         <dd><?= $result['achievement'] ?></dd>
         <dt>タイプ</dt>
         <dd><?= $result['type'] ?></dd>
-        <dt>キャッチコピー</dt>
-        <dd><?= $result['catch_copy'] ?></dd>
-        <dt>住所</dt>
-        <dd><?= $result['address'] ?></dd>
-        <dt>会社のURL</dt>
-        <dd><?= $result['company_url'] ?></dd>
       </dl>
     </div>
+    <div class="company_achievement">
+      <p>掲載基本情報（実績）</p>
+      <dl class='company_information_list'>
+        <dt>ロゴ</dt>
+        <dd><?= $result['job_offer_number'] ?></dd>
+        <dt>写真</dt>
+        <dd><?= $result['company_number'] ?>-22</dd>
+        <dt>業種</dt>
+        <dd><?= $result['user_count'] ?></dd>
+        <dt>実績</dt>
+        <dd><?= $result['user_count_last_year'] ?></dd>
+        <dt>タイプ</dt>
+        <dd><?= $result['informal_job_offer_rate'] ?></dd>
+        <dt>満足度</dt>
+        <dd><?= $result['satisfaction_degrees'] ?></dd>
+      </dl>
+    </div>
+    <div class="company_service">
+      <p>掲載基本情報（サービス）</p>
+      <dl class='company_information_list'>
+        <dt>ES添削</dt>
+        <dd><?= $result['ES_correction'] ?></dd>
+        <dt>面談</dt>
+        <dd><?= $result['interview'] ?>-22</dd>
+        <dt>インターンシップ</dt>
+        <dd><?= $result['internship'] ?>-22</dd>
+        <dt>セミナー</dt>
+        <dd><?= $result['seminar'] ?></dd>
+        <dt>研修</dt>
+        <dd><?= $result['training'] ?></dd>
+        <dt>地方学生支援</dt>
+        <dd><?= $result['regional_student_support'] ?></dd>
+        <dt>限定講座</dt>
+        <dd><?= $result['limited_course'] ?></dd>
+        <dt>適性診断</dt>
+        <dd><?= $result['competence_diagnosis'] ?></dd>
+        <dt>特別選考</dt>
+        <dd><?= $result['special_selection'] ?></dd>
+      </dl>
+    </div>
+    <div class="company_feature">
+      <p>掲載説明</p>
+      <dl class='company_information_list'>
+        <dt>特徴</dt>
+        <dd><?= $result['feature'] ?></dd>
+        <dt>メッセージ</dt>
+        <dd><?= $result['message'] ?>-22</dd>
+      </dl>
+    </div>
+    <div class="company_overview">
+      <p>会社概要、取り扱い</p>
+      <dl class='company_information_list'>
+        <dt>歴史</dt>
+        <dd><?= $result['history'] ?></dd>
+        <dt>従業員数</dt>
+        <dd><?= $result['employee_number'] ?>-22</dd>
+        <dt>資本金</dt>
+        <dd><?= $result['capital'] ?>-22</dd>
+        <dt>取り扱い地域</dt>
+        <dd><?= $result['handling_area'] ?></dd>
+        <dt>取り扱い業種</dt>
+        <dd><?= $result['handling_industries'] ?></dd>
+        <dt>取り扱い職種</dt>
+        <dd><?= $result['handling_job_category'] ?></dd>
+        <dt>主な就職先</dt>
+        <dd><?= $result['main_finding_employment_target'] ?></dd>
+        <dt>面談形式</dt>
+        <dd><?= $result['interview_format'] ?></dd>
+        <dt>面談場所</dt>
+        <dd><?= $result['interview_location'] ?></dd>
+      </dl>
+    </div>
+
 
 
 
