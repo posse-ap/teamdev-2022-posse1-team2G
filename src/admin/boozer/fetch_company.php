@@ -61,6 +61,7 @@ if (!empty($_GET['input'])) {
     // print_r($result_array);
 }
 
+//  select t1.id, t1.company_name, t1.phone_number, t1.mail_contact, t1.mail_manager, t1.mail_notification, t1.representative, t1.address, t1.company_url, count(t1.id) as count from company as t1 inner join company_user as t2 on t1.id = t2.company_id group by t1.id order by t1.id\G;
 
 if ($result_array == true) {
     header('Content-type: application/json');

@@ -95,7 +95,7 @@ $(document).ready(function () {
                                 </div>\
                             ');
           $('.studentdata').html("");
-          GetDataTable();
+          getdate();
         }
       });
     }
@@ -154,7 +154,7 @@ $(document).ready(function () {
                                 </div>\
                             ');
           $('.studentdata').html("");
-          GetDataTable();
+          getdate();
           $('.company_name').val("");
           $('.phone_number').val("");
           $('.mail_contact').val("");
