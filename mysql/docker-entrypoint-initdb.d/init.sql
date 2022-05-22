@@ -259,15 +259,15 @@ CREATE TABLE company_user
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   user_id INT NOT NULL,
   company_id INT NOT NULL,
-  contact_datetime DATETIME NOT NULL
+  contact_datetime DATE NOT NULL
 );
 
 INSERT INTO company_user (user_id, company_id, contact_datetime) VALUES 
 (1, 1, '2022-04-30'),
-(1, 2, '2022-05-03'),
-(2, 1, '2022-05-06'),
-(3, 4, '2022-05-06'),
-(4, 3, '2022-05-10'),
+(1, 2, '2022-05-22'),
+(2, 1, '2022-05-23'),
+(3, 4, '2022-05-24'),
+(4, 3, '2022-05-23'),
 (5, 5, '2022-06-01');
 
 
