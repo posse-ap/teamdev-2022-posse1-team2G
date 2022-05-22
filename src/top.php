@@ -1,16 +1,30 @@
 <?php
 require('./dbconnect.php');
 
-//エスケープ処理やデータをチェックする関数を記述したファイルの読み込み
-require './libs/functions.php'; 
-
-//比較ボタンの挙動（company_idの受け渡し）を記述したファイルの読み込み
-require './to_compare_table.php'; 
-
 $sql = 'SELECT * FROM company_posting_information';
 $stmt = $db->query($sql);
 $stmt->execute();
 $companies = $stmt->fetchAll();
+
+
+//セッションを開始
+session_start();
+ 
+//セッションIDを更新して変更（セッションハイジャック対策）
+session_regenerate_id( TRUE );
+//エスケープ処理やデータをチェックする関数を記述したファイルの読み込み
+require './libs/functions.php'; 
+
+//NULL 合体演算子を使ってセッション変数を初期化（PHP7.0以降）
+$id = $_SESSION[ 'id' ] ?? NULL;
+
+//CSRF対策のトークンを生成
+if ( !isset( $_SESSION[ 'ticket' ] ) ) {
+  //セッション変数にトークンを代入
+  $_SESSION[ 'ticket' ] = bin2hex(random_bytes(32));
+}
+//トークンを変数に代入（隠しフィールドに挿入する値）
+$ticket = $_SESSION[ 'ticket' ];
 
 ?>
 
@@ -85,9 +99,11 @@ $companies = $stmt->fetchAll();
             <p>比較するエージェント会社</p>
             <form id="form" class="validationForm" action="./compare_table.php" method="post">
               <!-- 比較チェックボタンついた会社の表示箇所 -->
-              <div id="checked_company_box"></div>
+                 <div id="checked_company_box"></div>
+              <!-- 完了ページへ渡すトークンの隠しフィールド -->
+                 <input type="hidden" name="ticket" value="<?php echo h($ticket); ?>">
               <!-- 比較するボタンを押すと、一時表示された会社の情報を比較表ページにpostする -->
-              <button name="submitted" type="submit" class="">比較する</button>
+                 <button name="submitted" type="submit" class="">比較する</button>
             </form>
           </div>
         </div>
@@ -95,7 +111,8 @@ $companies = $stmt->fetchAll();
     </section>
   </main>
 
-  <!-- <script src="style.js"></script> -->
+  <!-- 比較ボタンの挙動（company_idの受け渡し）を記述したファイルの読み込み -->
+  <script src="./to_compare_table.js"></script>
 </body>
 
 </html>

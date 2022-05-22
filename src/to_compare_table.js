@@ -1,13 +1,5 @@
-<?php
-require('./dbconnect.php');
-$sql = 'SELECT * FROM company_posting_information';
-$stmt = $db->query($sql);
-$stmt->execute();
-$companies = $stmt->fetchAll();
 
-?>
 
-<script>
 /* 
  比較チェックボタンついた会社を一時表示するボックスの関数
 */
@@ -36,10 +28,9 @@ let compare_checked_buttons = document.getElementsByName("select_company_checkbo
         let split_company_id = element.replace(/[^0-9]/g, '');
       //   console.log(split_company_id);
         
-        at_once_company_contents+=`<input type="checkbox" name="id" class="required" value="${split_company_id}" checked>${element}`
+        at_once_company_contents+=`<input type="checkbox" name="id[]" class="required" value="${split_company_id}" checked>${element}`
         checked_company_box.innerHTML = at_once_company_contents;
       });
       
    }
 
-</script>

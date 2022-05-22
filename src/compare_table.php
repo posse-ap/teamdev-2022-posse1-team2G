@@ -1,29 +1,39 @@
 <?php
 require('./dbconnect.php');
 
-//エスケープ処理やデータをチェックする関数を記述したファイルの読み込み
-require './libs/functions.php'; 
-
-//比較ボタンの挙動（company_idの受け渡し）を記述したファイルの読み込み
-require './to_compare_table.php'; 
-
-// $sql = 'SELECT * FROM company_posting_information';
-// $stmt = $db->query($sql);
-// $stmt->execute();
-// $companies = $stmt->fetchAll();
-
-
 //セッションを開始
 session_start();
-
 //エスケープ処理やデータチェックを行う関数のファイルの読み込み
-require '../libs/functions.php';
-
+require './libs/functions.php';
 //POSTされたデータをチェック
 $_POST = checkInput( $_POST );
+//固定トークンを確認（CSRF対策）
+if ( isset( $_POST[ 'ticket' ], $_SESSION[ 'ticket' ] ) ) {
+  $ticket = $_POST[ 'ticket' ];
+  if ( $ticket !== $_SESSION[ 'ticket' ] ) {
+    //トークンが一致しない場合は処理を中止
+    die( 'Access Denied!' );
+  }
+} else {
+  //トークンが存在しない場合は処理を中止（直接このページにアクセスするとエラーになる）
+  die( 'Access Denied（直接このページにはアクセスできません）' );
+}
 
-//POSTされたデータを変数に格納（値の初期化とデータの整形：前後にあるホワイトスペースを削除）
-$company_id = trim( filter_input(INPUT_POST, 'id') );
+//POSTされたデータを初期化して前後にあるホワイトスペースを削除
+// $company_id = trim( (string) filter_input(INPUT_POST, 'id') );
+$company_id =  $_POST['id'];
+
+//POSTされたデータとエラーの配列をセッション変数に保存
+// $_SESSION[ 'id' ] = $company_id;
+
+print_r($company_id);
+
+
+// if (isset($_POST['id']) && is_array($_POST['id'])) {
+//   foreach( $_POST['id'] as $value ){
+//       echo "{$value}, ";
+//   }
+// }
 
 //
 $stmt = $db->prepare("SELECT * FROM company_posting_information WHERE id = :id");
