@@ -1,7 +1,7 @@
 <?php
 session_start();
 require('../../dbconnect.php');
-if (isset($_SESSION['id']) && $_SESSION['time'] + 10 > time()) {
+if (isset($_SESSION['id']) && $_SESSION['time'] + 1000000 > time()) {
   $_SESSION['time'] = time();
 
   $id = $_SESSION['id'];
@@ -79,8 +79,8 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 10 > time()) {
 
 
 
-  <link rel="stylesheet" href="../../style.css">
-  <!-- <link rel="stylesheet" href="../admin.css"> -->
+  <!-- <link rel="stylesheet" href="../../style.css"> -->
+  <link rel="stylesheet" href="../admin.css">
 
 
   <title>各企業詳細掲載ページ</title>

@@ -24,7 +24,7 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 10 > time()) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./normalize.css">
-    <link rel="stylesheet" href="admin.css">
+    <!-- <link rel="stylesheet" href="admin.css"> -->
     <title>管理者ログイン</title>
 </head>
 
