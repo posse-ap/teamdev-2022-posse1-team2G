@@ -12,14 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const requiredElems = document.querySelectorAll('.required');
     //pattern クラスを指定された要素の集まりを取得して変数に代入 
     const patternElems =  document.querySelectorAll('.pattern');
-    //equal-to クラスを指定された要素の集まりを取得して変数に代入 
-    const equalToElems = document.querySelectorAll('.equal-to');
-    //minlength クラスを指定された要素の集まりを取得して変数に代入 
-    const minlengthElems =  document.querySelectorAll('.minlength');
     //maxlength クラスを指定された要素の集まりを取得して変数に代入 
     const maxlengthElems =  document.querySelectorAll('.maxlength');
-    //showCount クラスを指定された要素の集まりを取得して変数に代入 
-    const showCountElems =  document.querySelectorAll('.showCount');
  
     //エラーメッセージを表示する span 要素を生成して親要素に追加する関数
     //elem ：対象の要素
@@ -68,7 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if(checkedRadio === null) {
          if(!errorSpan) {
            //addError() を使ってエラーメッセージ表示する span 要素を生成して追加
-            addError(elem, className, '選択は必須です');
+            addError(elem, className, 'いずれか1つを選択してください');
+            console.log(checkedRadio);
           }
           return true;
         } else{ //いずれかのラジオボタンが選択されている場合
@@ -120,17 +115,23 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
  
+    // console.log(requiredElems);
     //required クラスを指定された要素に input イベントを設定（値が変更される都度に検証）
     requiredElems.forEach( (elem) => {
       //ラジオボタンまたはチェックボックスの場合
       if(elem.tagName === 'INPUT' && (elem.getAttribute('type') === 'radio' || elem.getAttribute('type') === 'checkbox' )){
         //親要素を基点に全てのラジオボタンまたはチェックボックス要素を取得
+        // console.log(elem);
         const elems = elem.parentElement.querySelectorAll(elem.tagName);
+        // console.log(elem.parentNode);
+        // console.log(elem.parentElement);
+        // console.log(elems);
         //取得した全ての要素に change イベントを設定
         elems.forEach( (elemsChild) => {
           elemsChild.addEventListener('change', () => {
             //それぞれの要素の選択状態が変更されたら検証を実行
             isValueMissing(elemsChild);
+            console.log(elemsChild);
           });
         });
       }else{
@@ -153,11 +154,11 @@ document.addEventListener('DOMContentLoaded', () => {
       //data-pattern 属性の値が email の場合
       if(elem.getAttribute(attributeName) ==='email') {
         pattern = /^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ui;
-      }else if(elem.getAttribute(attributeName) ==='tel') { //data-pattern 属性の値が phone_number の場合
+      }else if(elem.getAttribute(attributeName) ==='phone_number') { //data-pattern 属性の値が phone_number の場合
         pattern = /^\(?\d{2,5}\)?[-(\.\s]{0,2}\d{1,4}[-)\.\s]{0,2}\d{3,4}$/;
       }
       //エラーを表示する span 要素がすでに存在すれば取得
-      const errorSpan = elem.parenphone_numberement.querySelector('.' + errorClassName + '.' + className);
+      const errorSpan = elem.parentElement.querySelector('.' + errorClassName + '.' + className);
       //対象の要素の値が空でなければパターンにマッチするかを検証
       if(elem.value.trim() !=='') {
         if(!pattern.test(elem.value)) {
@@ -189,47 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const getValueLength = (value) => {
       return (value.match(/[\uD800-\uDBFF][\uDC00-\uDFFF]|[\s\S]/g) || []).length;
     }
- 
-    //指定された最小文字数を満たしているかを検証する関数（満たしていない場合は true を返す）
-    const isTooShort = (elem) => {
-      //対象のクラス名
-      const className = 'minlength';
-      //対象の data-xxxx 属性の名前
-      const attributeName = 'data-' + className;
-      //data-minlength 属性から最小文字数を取得
-      const minlength = elem.getAttribute(attributeName);
-      //エラーを表示する span 要素がすでに存在すれば取得（存在しなければ null が返る）
-      const errorSpan = elem.parentElement.querySelector('.' + errorClassName + '.' + className);
-      //値が空でなければ
-      if(elem.value !=='') {
-        //サロゲートペアを考慮した文字数を取得
-        const valueLength = getValueLength(elem.value);
-        //値がdata-minlength属性で指定された最小文字数より小さければエラーを表示してtrueを返す
-        if(valueLength < minlength) {
-          if(!errorSpan) {
-            addError(elem, className, minlength + '文字以上で入力ください');
-          }
-          return true;
-        //最小文字数より大きければエラーがあれば削除して false を返す
-        }else{
-          if(errorSpan) {
-            elem.parentNode.removeChild(errorSpan);
-          }
-          return false;
-        }
-      //値が空でエラーを表示する要素が存在すれば削除
-      }else if(elem.value ==='' && errorSpan) {
-        elem.parentNode.removeChild(errorSpan);
-      }
-    }
- 
-    //minlength クラスを指定された要素に input イベントを設定（値が変更される都度に検証）
-    minlengthElems.forEach( (elem) => {
-      elem.addEventListener('input', () => {
-        isTooShort(elem);
-      });
-    }); 
- 
+  
     //指定された最大文字数を満たしているかを検証する関数（満たしていない場合は true を返す）
     const isTooLong = (elem) => {
       //対象のクラス名

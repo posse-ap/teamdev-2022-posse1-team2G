@@ -23,7 +23,7 @@ if ( isset( $_POST[ 'ticket' ], $_SESSION[ 'ticket' ] ) ) {
 $name = trim( filter_input(INPUT_POST, 'name') );
 $university  = trim( filter_input(INPUT_POST, 'university') );
 $department = trim( filter_input(INPUT_POST, 'department') );
-$grad_year = trim( filter_input(INPUT_POST, 'grad_year') );
+$grad_year = trim( (string) filter_input(INPUT_POST, 'grad_year') );
 $email = trim( (string) filter_input(INPUT_POST, 'email') );
 $phone_number = trim( filter_input(INPUT_POST, 'phone_number') );
 $address = trim( filter_input(INPUT_POST, 'address') );
