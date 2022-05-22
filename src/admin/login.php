@@ -32,7 +32,7 @@ if (!empty($_POST)) {
     // $_SERVER['HTTP_HOST']=  localhost:8080
     // header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/index.php');
     // header('Location: http://' . $_SERVER['HTTP_HOST'] .'/admin/boozer/fetch.php?company_id=' . $_SESSION['user_id']);
-    header('Location: http://' . $_SERVER['HTTP_HOST'] .'/admin/boozer/fetch_user.php');
+    header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/boozer/fetch_user.php');
     // header('Location: http://' . $_SERVER['HTTP_HOST'] .'/admin/index.php/' . $_SESSION['user_id']);
     // exit();
   } else if (empty($agent) && !empty($boozer)) {
@@ -48,7 +48,7 @@ if (!empty($_POST)) {
     //   $errormessage[] = "メールアドレスを入力して下さい";
     // }
     // if (!$_POST["password"]) {
-      //   $errormessage[] = "パスワードを入力して下さい";
+    //   $errormessage[] = "パスワードを入力して下さい";
     // }
     $errormessage[] = "パスワードもしくはメールアドレスが間違っています";
     // exit;
@@ -83,14 +83,24 @@ if (!empty($_POST)) {
       </ul>
     <?php } ?>
 
-    <form action="/admin/login.php" method="POST">
-      メールアドレス<input type="email" name="email" >
-      パスワード<input type="password"name="password">
+    <form action="/admin/login.php" method="POST" class='box'>
+      <h1>Login</h1>
+      <input type="email" name="email" placeholder="Username">
+      パスワード<input type="password" name="password" placeholder="password">
       <input type="submit" value="ログイン">
     </form>
     <!-- <a href="/index.php">イベント一覧</a> -->
     <a href="./forgetPass.php">パスワードをお忘れの方</a>
   </div>
 </body>
+
+
+<form class="box" action="index.htyml" method="post">
+  <h1>Login</h1>
+  <input type="text" name="" placeholder="Username">
+  <input type="password" name="" placeholder="Password">
+  <input type="submit" name="" value="Login">
+</form>
+
 
 </html>
