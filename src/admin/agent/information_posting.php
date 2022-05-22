@@ -72,6 +72,16 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 1000000 > time()) {
   header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/login.php');
   exit();
 }
+
+function correctness_decision($val)
+{
+  if ($val == true) {
+    echo '〇';
+  } else {
+    echo '✕';
+  }
+}
+
 ?>
 <pre>
   <?php print_r($result); ?>
@@ -95,17 +105,17 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 1000000 > time()) {
 </head>
 
 <body>
-  <div>
+  <>
     <div class='company_information_titie'>
-      <h1>企業掲載情報</h1>
+      <h1><?= $result['company_name'] ?>掲載情報</h1>
     </div>
     <div class="company_contract_information">
-      <p><?= $result['company_name'] ?>契約情報</p>
+      <p>契約情報</p>
       <dl class='company_information_list'>
         <dt>会社名</dt>
         <dd><?= $result['company_name'] ?></dd>
         <dt>電話番号</dt>
-        <dd><?= $result['phone_number'] ?>-22</dd>
+        <dd><?= $result['phone_number'] ?></dd>
         <dt>メールアドレス（contact）</dt>
         <dd><?= $result['mail_contact'] ?></dd>
         <dt>メールアドレス（manager）</dt>
@@ -120,13 +130,23 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 1000000 > time()) {
         <dd><?= $result['company_url'] ?></dd>
       </dl>
     </div>
+    <img src="../../img/IMG_0082.PNG" alt="makikoさん">
+    <img src="../../img/IMG" alt="makikoさん">
+    <img src="../../../img/makiko.jpg" alt="makityann">
+    <img src="../img/makiko.jpg" alt="aa">
+    <div>
+
+      <? echo $result['img'] ?>
+    </div>
+
+
     <div class="company_posting_information">
       <p>掲載基本情報</p>
       <dl class='company_information_list'>
         <dt>ロゴ</dt>
         <dd><?= $result['logo'] ?></dd>
         <dt>写真</dt>
-        <dd><?= $result['img'] ?>-22</dd>
+        <dd><img src="../../img/<? $result['img'] ?>" alt="まきこさん"></dd>
         <dt>業種</dt>
         <dd><?= $result['industries'] ?></dd>
         <dt>実績</dt>
@@ -138,41 +158,51 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 1000000 > time()) {
     <div class="company_achievement">
       <p>掲載基本情報（実績）</p>
       <dl class='company_information_list'>
-        <dt>ロゴ</dt>
+        <dt>求人数</dt>
         <dd><?= $result['job_offer_number'] ?></dd>
-        <dt>写真</dt>
-        <dd><?= $result['company_number'] ?>-22</dd>
-        <dt>業種</dt>
+        <dt>紹介企業数</dt>
+        <dd><?= $result['company_number'] ?></dd>
+        <dt>利用学生数</dt>
         <dd><?= $result['user_count'] ?></dd>
-        <dt>実績</dt>
+        <dt>昨年の利用学生数</dt>
         <dd><?= $result['user_count_last_year'] ?></dd>
-        <dt>タイプ</dt>
+        <dt>内定率</dt>
         <dd><?= $result['informal_job_offer_rate'] ?></dd>
         <dt>満足度</dt>
         <dd><?= $result['satisfaction_degrees'] ?></dd>
       </dl>
     </div>
+    <div>
+      <img src="../../img/makiko.jpg" alt="">
+    </div>
     <div class="company_service">
       <p>掲載基本情報（サービス）</p>
       <dl class='company_information_list'>
         <dt>ES添削</dt>
-        <dd><?= $result['ES_correction'] ?></dd>
+        <dd><?php
+            // if ($result['ES_correction'] == true) {
+            //   echo '〇';
+            // } else {
+            //   echo '✕';
+            // }
+            correctness_decision($result['ES_correction']);
+            ?></dd>
         <dt>面談</dt>
-        <dd><?= $result['interview'] ?>-22</dd>
+        <dd><?php correctness_decision($result['interview']); ?></dd>
         <dt>インターンシップ</dt>
-        <dd><?= $result['internship'] ?>-22</dd>
+        <dd><?php correctness_decision($result['internship']); ?></dd>
         <dt>セミナー</dt>
-        <dd><?= $result['seminar'] ?></dd>
+        <dd><?php correctness_decision($result['seminar']); ?></dd>
         <dt>研修</dt>
-        <dd><?= $result['training'] ?></dd>
+        <dd><?php correctness_decision($result['training']); ?></dd>
         <dt>地方学生支援</dt>
-        <dd><?= $result['regional_student_support'] ?></dd>
+        <dd><?php correctness_decision($result['regional_student_support']); ?></dd>
         <dt>限定講座</dt>
-        <dd><?= $result['limited_course'] ?></dd>
+        <dd><?php correctness_decision($result['limited_course']); ?></dd>
         <dt>適性診断</dt>
-        <dd><?= $result['competence_diagnosis'] ?></dd>
+        <dd><?php correctness_decision($result['competence_diagnosis']); ?></dd>
         <dt>特別選考</dt>
-        <dd><?= $result['special_selection'] ?></dd>
+        <dd><?php correctness_decision($result['special_selection']); ?></dd>
       </dl>
     </div>
     <div class="company_feature">
@@ -190,7 +220,7 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 1000000 > time()) {
         <dt>歴史</dt>
         <dd><?= $result['history'] ?></dd>
         <dt>従業員数</dt>
-        <dd><?= $result['employee_number'] ?>-22</dd>
+        <dd><?= $result['employee_number'] ?></dd>
         <dt>資本金</dt>
         <dd><?= $result['capital'] ?>-22</dd>
         <dt>取り扱い地域</dt>
@@ -213,15 +243,15 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 1000000 > time()) {
 
 
 
-  </div>
+    </div>
 
 
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.js"></script>
-  <script src="./user_list.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.js"></script>
+    <script src="./user_list.js"></script>
 
 
 </body>

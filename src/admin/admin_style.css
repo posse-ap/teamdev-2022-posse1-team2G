@@ -12,7 +12,7 @@
 .company_feature,
 .company_overview
 {
-  width: 80vw;
+  width: 64vw;
   margin: 40px auto 0;
 }
 .company_contract_information p,
@@ -38,6 +38,7 @@ text-align: center;
 .company_information_list > dt,
 .company_information_list > dd {
     padding: 1em;
+    /* padding: .8rem 1.6rem; */
     margin: 0px;
 }
 
@@ -47,6 +48,7 @@ text-align: center;
 
 .company_information_list > dd {
     background-color: #fff;
+
 }
 
 @media screen and (max-width: 767px) {
@@ -81,5 +83,6 @@ text-align: center;
     .company_information_list > dd {
         width: 80%;
         border-right: 1px solid #ddd;
+                margin: 0 auto;
     }
 }
