@@ -1,3 +1,77 @@
+/* ----------    login.php      ------------ */
+.login_body{
+    background-color: rgb(245, 248, 243);
+}
+.login_logo img{
+    width: 64%;
+    height: auto;
+}
+.login_title,
+.login_pass_forget{
+    text-align: center;
+}
+.login_title h1{
+color: rgb(129, 188, 138);
+}
+.login_container{
+    width: 64vw;
+    margin: 0 auto;
+    background-color: rgb(233, 246, 232);
+    padding: 40px 0;
+    box-shadow: 0 0 16px rgb(194, 201, 194);
+    border-radius: 2%;
+}
+.login_mail,
+.login_pass{
+    width: 64%;
+    margin: 0 auto;
+}
+.login_mail{
+    margin-bottom: 24px;
+}
+.login_container input,
+.login_pass input{
+width: 100%;
+padding: 8px 0;
+}
+.login_submit{
+    width: 32%;
+    margin: 24px auto;
+}
+.login_submit input{
+    background-color: rgb(129, 188, 138);
+color: #fff;
+font-weight: bold;
+border: none;
+box-shadow: 0 0 8px 2px rgb(167, 201, 149);
+}
+.login_submit input:hover{
+  opacity: 0.8;
+}
+.login_container p{
+    margin: 8px 0;
+}
+.login_error {
+    list-style: none;
+    padding: 0;
+    width: 72%;
+    margin: 0 auto;
+    background-color: rgb(232, 209, 209);
+}
+.login_error li{
+    font-size: .8rem;
+    padding: 16px;
+    border: 1px solid red;
+    text-align: center;
+    color: red;
+    font-weight: bold;
+}
+
+
+
+
+
+/* ----------    information_posting.php      ------------ */
 .company_information_titie{
   text-align: center;
 }
