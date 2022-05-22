@@ -1,7 +1,7 @@
 <?php
 session_start();
 require('../dbconnect.php');
-if (isset($_SESSION['user_id']) && $_SESSION['time'] + 10 > time()) {
+if (isset($_SESSION['id']) && $_SESSION['time'] + 10 > time()) {
   $_SESSION['time'] = time();
 
   // if (!empty($_POST)) {

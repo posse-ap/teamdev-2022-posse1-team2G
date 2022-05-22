@@ -1,0 +1,88 @@
+.company_information_titie{
+  text-align: center;
+}
+.company_information_titie h1{
+  font-size: 2rem;
+}
+
+.company_contract_information,
+.company_posting_information,
+.company_achievement,
+.company_service,
+.company_feature,
+.company_overview
+{
+  width: 64vw;
+  margin: 40px auto 0;
+}
+.company_contract_information p,
+.company_posting_information p,
+.company_achievement p,
+.company_service p,
+.company_feature p,
+.company_overview p
+{
+font-size: 1.6rem;
+text-align: center;
+}
+
+
+
+
+.company_information_list,
+.company_information_list > dt,
+.company_information_list > dd {
+    box-sizing: border-box;
+}
+
+.company_information_list > dt,
+.company_information_list > dd {
+    padding: 1em;
+    /* padding: .8rem 1.6rem; */
+    margin: 0px;
+}
+
+.company_information_list > dt {
+    background-color: #9ea9a3;
+}
+
+.company_information_list > dd {
+    background-color: #fff;
+
+}
+
+@media screen and (max-width: 767px) {
+    .company_information_list > dd {
+        border: 1px solid #ddd;
+        border-top: none;
+    }
+    .company_information_list > dt,
+    .company_information_list > dd {
+        text-align: center;
+    }
+    .company_information_list > dd > ul {
+        text-align: left;
+    }
+}
+@media print, (min-width: 768px) {
+    .company_information_list {
+        display: flex;
+        flex-wrap: wrap;
+        border-bottom: 1px solid #ddd;
+    }
+    .company_information_list > dt,
+    .company_information_list > dd {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-top: 1px solid #ddd;
+    }
+    .company_information_list > dt {
+        width: 20%;
+    }
+    .company_information_list > dd {
+        width: 80%;
+        border-right: 1px solid #ddd;
+                margin: 0 auto;
+    }
+}

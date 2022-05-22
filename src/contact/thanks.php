@@ -4,9 +4,6 @@ session_start();
 
 //エスケープ処理やデータをチェックする関数を記述したファイルの読み込み
 require '../libs/functions.php'; 
-
-//メールアドレス等を記述したファイルの読み込み
-require '../libs/mailvars.php'; 
  
 //お問い合わせ日時を日本時間に
 date_default_timezone_set('Asia/Tokyo'); 
@@ -45,7 +42,7 @@ $email = h( $_SESSION[ 'email' ] ) ;
 $phone_number =  h( $_SESSION[ 'phone_number' ] ) ;
 $address = h( $_SESSION[ 'address' ] );
 $message = h( $_SESSION[ 'message' ] );
- 
+
 /* メールの作成 （to 学生）*/
 //メール本文の組み立て
 $honbun = '';
@@ -90,9 +87,9 @@ $mailsousin  = mb_send_mail($mail_to, $mail_subject, $mail_body, $mail_header);
 //メールの送信（結果を変数 $result に代入）
 if ( ini_get( 'safe_mode' ) ) {
   //セーフモードがOnの場合は第5引数が使えない
-  $result = $mailsousin;
+  $result_user = $mailsousin;
 } else {
-  $result = mb_send_mail($mail_to, $mail_subject, $mail_body, $mail_header, '-f' . $returnMail );
+  $result_user = mb_send_mail($mail_to, $mail_subject, $mail_body, $mail_header, '-f' . $returnMail );
 }
 
 
@@ -157,23 +154,56 @@ if ( ini_get( 'safe_mode' ) ) {
   $result_agent = mb_send_mail($mail_to_agent, $mail_subject_agent, $mail_body_agent, $mail_header_agent, '-f' . $returnMail );
 }
 
+//データ追加
+try {
+  require('../dbconnect.php');
+  //usersテーブルへ
+  //データ登録
+  $sql_users = "INSERT INTO 
+    users 
+    (name,university,department,grad_year,mail,phone_number,address,delete_flg) 
+    VALUES
+    ('$name','$university','$department','$grad_year','$email','$phone_number','$address', 0)";
+  $stmt_users = $db->prepare($sql_users);
+  $stmt_users->execute();
+  $database_result_users = $stmt_users->fetchAll();
+
+  //company_userテーブルへ
+  //データ登録の準備
+    //user_idの取得・定義   （usersテーブルの最後の行のidを持ってくる）
+    $stmt = $db->query('SELECT id FROM users ORDER BY id DESC LIMIT 1');  
+    $last_user_id = $stmt->fetch();
+    $user_id = $last_user_id['id'];
+    //company_idの取得・定義  (複数の場合はforeachやconcat?で一つ一つに分ける必要がある)
+    if (isset($_GET['company_id'])) {
+      $company_id_array = $_GET['company_id'];
+    }
+    $company_id = h($company_id_array);
+    //contact_datetimeの取得・定義
+    $contact_datetime = date("Y-m-d");
+  //データ登録
+  $sql = "INSERT INTO 
+    company_user
+    (user_id,company_id,contact_datetime) 
+    VALUES 
+    ($user_id,$company_id,'$contact_datetime')";
+  $stmt = $db->prepare($sql);
+  $stmt->execute();
+  $database_result = $stmt->fetchAll();
+
+}catch(PDOException $e){
+  echo $e -> getMessage();
+  exit();
+}
 
 //メール送信の結果判定
-if ( $result && $result_agent) {
+if ( $result_user && $result_agent) {
   //成功した場合はセッションを破棄
   $_SESSION = array(); //空の配列を代入し、すべてのセッション変数を消去 
   session_destroy(); //セッションを破棄
 } else {
   //送信失敗時（もしあれば）
 }
-// //メール送信の結果判定
-// if ( $result_agent ) {
-//   //成功した場合はセッションを破棄
-//   $_SESSION = array(); //空の配列を代入し、すべてのセッション変数を消去 
-//   session_destroy(); //セッションを破棄
-// } else {
-//   //送信失敗時（もしあれば）
-// }
 ?>
 <!-- ここまでPHP -->
 
@@ -192,13 +222,8 @@ if ( $result && $result_agent) {
       <!-- ページメイン -->
       <div class="contact_wrapper">
         <p>contact</p>
-        <h1>お問い合わせ完了</h1>
-        <div class="contact_box">
-          <p>お問い合わせありがとうございます。</p>
-          <p>確認のため、自動送信メールをお送りいたします。</p>
-        </div>
         <h2>お問い合わせフォーム</h2>
-        <?php if ( $result ): ?>
+        <?php if ( $result_user && $result_agent ): ?>
         <h1>お問い合わせ完了</h1>
         <p>お問い合わせいただきありがとうございます。</p>
         <p>確認のため、自動送信メールをお送りいたします。</p>

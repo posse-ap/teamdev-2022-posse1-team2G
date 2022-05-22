@@ -27,18 +27,18 @@ if (!empty($_POST)) {
   // https://access-jp.co.jp/blogs/development/42
   if (!empty($agent)) {
     $_SESSION = array();
-    $_SESSION['user_id'] = $agent['company_id'];
+    $_SESSION['id'] = $agent['company_id'];
     $_SESSION['time'] = time();
     // $_SERVER['HTTP_HOST']=  localhost:8080
     // header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/index.php');
-    // header('Location: http://' . $_SERVER['HTTP_HOST'] .'/admin/boozer/fetch.php?company_id=' . $_SESSION['user_id']);
-    header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/boozer/fetch_user.php');
-    // header('Location: http://' . $_SERVER['HTTP_HOST'] .'/admin/index.php/' . $_SESSION['user_id']);
+    // header('Location: http://' . $_SERVER['HTTP_HOST'] .'/admin/boozer/fetch.php?company_id=' . $_SESSION['id']);
+    header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/agent/information_posting.php');
+    // header('Location: http://' . $_SERVER['HTTP_HOST'] .'/admin/index.php/' . $_SESSION['id']);
     // exit();
   } else if (empty($agent) && !empty($boozer)) {
     $_SESSION = array();
     // 1をセッションのuser_idに追加
-    $_SESSION['user_id'] = $boozer['id'];
+    $_SESSION['id'] = $boozer['id'];
     $_SESSION['time'] = time();
     // $_SERVER['HTTP_HOST']=  localhost:8080
     header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/boozer/company_list.php');
@@ -65,7 +65,6 @@ if (!empty($_POST)) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./normalize.css">
-  <link rel="stylesheet" href="admin.css">
   <title>管理者ログイン</title>
 </head>
 
