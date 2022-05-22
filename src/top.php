@@ -85,9 +85,7 @@ $companies = $stmt->fetchAll();
             <p>比較するエージェント会社</p>
             <form id="form" class="validationForm" action="./compare_table.php" method="post">
               <!-- 比較チェックボタンついた会社の表示箇所 -->
-              <div id="checked_company_box">
-                <label name=""></label>
-              </div>
+              <div id="checked_company_box"></div>
               <!-- 比較するボタンを押すと、一時表示された会社の情報を比較表ページにpostする -->
               <button name="submitted" type="submit" class="">比較する</button>
               <!-- <a href="./compare_table.php">比較する</a> -->

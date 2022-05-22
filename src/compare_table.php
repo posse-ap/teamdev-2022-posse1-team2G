@@ -7,10 +7,10 @@ require './libs/functions.php';
 //比較ボタンの挙動（company_idの受け渡し）を記述したファイルの読み込み
 require './to_compare_table.php'; 
 
-$sql = 'SELECT * FROM company_posting_information';
-$stmt = $db->query($sql);
-$stmt->execute();
-$companies = $stmt->fetchAll();
+// $sql = 'SELECT * FROM company_posting_information';
+// $stmt = $db->query($sql);
+// $stmt->execute();
+// $companies = $stmt->fetchAll();
 
 
 //セッションを開始
@@ -23,7 +23,14 @@ require '../libs/functions.php';
 $_POST = checkInput( $_POST );
 
 //POSTされたデータを変数に格納（値の初期化とデータの整形：前後にあるホワイトスペースを削除）
-$name = trim( filter_input(INPUT_POST, 'name') );
+$company_id = trim( filter_input(INPUT_POST, 'id') );
+
+//
+$stmt = $db->prepare("SELECT * FROM company_posting_information WHERE id = :id");
+$id = $company_id;
+$stmt->bindValue(':id', $id, PDO::PARAM_STR);
+$stmt->execute();
+$info = $stmt->fetch();
 
 ?>
 

@@ -26,16 +26,33 @@ let compare_checked_buttons = document.getElementsByName("select_company_checkbo
           if(compare_checked_buttons[i].checked){
             let company_value = compare_checked_buttons.item(i).value;
             box_contents.push(company_value);
-            let split_company_id = company_value.replace(/[^0-9]/g, '');
+            // let split_company_id = company_value.replace(/[^0-9]/g, '');
             // console.log(split_company_id);
-            company_ids = split_company_id;
+            // //表示箇所に選択されている会社を表示
+            // let at_once_company_contents = '';
+            // at_once_company_contents+=`<input type="checkbox" name="id" class="required" value="${split_company_id}">"${company_value}"`
+            // checked_company_box.innerHTML = at_once_company_contents;
           }
         } 
+        console.log(box_contents);
+      //   console.log(split_company_id);
         
      //表示箇所に選択されている会社を表示
-        checked_company_box.textContent = box_contents;
-        console.log(company_ids);
+      //   checked_company_box.textContent = box_contents;
+      //   console.log(box_contents);
+
+      //表示箇所に選択されている会社を表示
+      let at_once_company_contents = '';
+      box_contents.forEach(function(element){
+        let split_company_id = element.replace(/[^0-9]/g, '');
+        console.log(split_company_id);
+        
+        at_once_company_contents+=`<input type="checkbox" name="id" class="required" value="${split_company_id}" checked>"${element}"`
+        checked_company_box.innerHTML = at_once_company_contents;
+      });
+      
    }
+
 
 
 
