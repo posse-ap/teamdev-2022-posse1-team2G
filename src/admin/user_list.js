@@ -244,12 +244,14 @@ $(document).ready(function () {
 
 
 
-function getdata() {
+function getdata(input) {
   $.ajax({
     type: "GET",
     url: "./fetch_user.php",
+    data: { input: input },
     success: function (response) {
       // console.log(response);
+      $('.studentdata').html(response);
       $.each(response, function (key, value) {
         // console.log(value['fname']);
         $('.studentdata').append('<tr>' +
@@ -267,5 +269,18 @@ function getdata() {
       });
     }
   });
+
+  $('#search').click(function () {
+
+    var input = $('#live_search').val();
+    if (input != '') {
+      getdata(input);
+    }
+    else {
+      getdata();
+    }
+
+  });
+
   }
 });

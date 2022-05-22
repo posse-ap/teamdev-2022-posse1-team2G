@@ -16,7 +16,7 @@
 <body>
 
   <!-- Add Modal -->
-  <div class="modal fade" id="userAddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!-- <div class="modal fade" id="userAddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -69,7 +69,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
 
   <!-- View Modal -->
@@ -77,7 +77,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title" id="exampleModalLabel">会社詳細</h4>
+          <h4 class="modal-title" id="exampleModalLabel">学生詳細情報</h4>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -91,6 +91,10 @@
             <div class="col-md-6 pb-2">
               <h5>名前</h5>
               <p class="name_view"></p>
+            </div>
+            <div class="col-md-6 pb-2">
+              <h5>担当者</h5>
+              <p class="rep_view"></p>
             </div>
             <div class="col-md-6 pb-2">
               <h5>大学名</h5>
@@ -157,31 +161,42 @@
             <!-- add modalからもってきてクラス名をIDに変更 -->
             <div class="col-md-6">
               <label for="">名前</label>
-              <input type="text" class="form-control" id="name_edit">
+              <p class="form-control" id="name_edit"></p>
+              <!-- <input type="text" class="form-control" > -->
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="">担当者</label>
+              <input type="text" class="form-control" id="rep_edit">
             </div>
             <div class="col-md-6">
               <label for="">大学名</label>
-              <input type="text" class="form-control" id="university_edit">
+              <p class="form-control" id="university_edit"></p>
+              <!-- <input type="text" class="form-control" id="university_edit"> -->
             </div>
             <div class="col-md-6">
               <label for="">学部</label>
-              <input type="text" class="form-control" id="department_edit">
+              <p class="form-control" id="department_edit"></p>
+              <!-- <input type="text" class="form-control" id="department_edit"> -->
             </div>
             <div class="col-md-6">
               <label for="">卒業年</label>
-              <input type="text" class="form-control" id="grad_year_edit">
+              <p class="form-control" id="grad_year_edit"></p>
+              <!-- <input type="text" class="form-control" id="grad_year_edit"> -->
             </div>
             <div class="col-md-6">
               <label for="">メールアドレス</label>
-              <input type="text" class="form-control" id="mail_edit">
+              <p class="form-control" id="mail_edit"></p>
+              <!-- <input type="text" class="form-control" id="mail_edit"> -->
             </div>
             <div class="col-md-6">
               <label for="">電話番号</label>
-              <input type="text" class="form-control" id="phone_number_edit">
+              <p class="form-control" id="phone_number_edit"></p>
+              <!-- <input type="text" class="form-control" id="phone_number_edit"> -->
             </div>
             <div class="col-md-6">
               <label for="">住所</label>
-              <input type="text" class="form-control" id="address_edit">
+              <p class="form-control" id="address_edit"></p>
+              <!-- <input type="text" class="form-control" id="address_edit"> -->
             </div>
           </div>
         </div>
@@ -196,7 +211,7 @@
 
 
   <!-- Delete Modal -->
-  <div class="modal fade" id="userDeleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!-- <div class="modal fade" id="userDeleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -220,7 +235,7 @@
       </div>
     </div>
   </div>
-  </div>
+  </div> -->
 
 
 
@@ -231,9 +246,9 @@
           <div class="card-header">
             <h4>
               学生一覧
-              <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#userAddModal">
+              <!-- <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#userAddModal">
                 Add
-              </button>
+              </button> -->
             </h4>
           </div>
           <div class="card-body">
@@ -251,7 +266,7 @@
                   <th>名前</th>
                   <th>電話番号</th>
                   <th>メールアドレス</th>
-                  <th>会社</th>
+                  <th>担当者</th>
                   <th>機能</th>
                 </tr>
               </thead>
@@ -281,7 +296,7 @@
 
   <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.js"></script>
 
-  <script src="../user_list.js"></script>
+  <script src="./user_list.js"></script>
 
 
 </body>

@@ -11,7 +11,7 @@ if (!empty($_POST)) {
   $login->bindValue('password', sha1($_POST['password']));
   $login->execute();
   // print_r($login);
-  $user = $login->fetch();
+  $agent = $login->fetch();
 
   $loginBoozer = $db->prepare('SELECT * FROM admin WHERE email = :email AND password = :password AND flag = 1');
   $loginBoozer->bindValue('email', $_POST['email']);
@@ -19,24 +19,29 @@ if (!empty($_POST)) {
   $loginBoozer->execute();
   $boozer = $loginBoozer->fetch();
 
-  //  print_r($user);
-  //  print_r($boozer);
+  // print_r($agent);
+  // print_r($boozer);
+  //  Array ( [id] => 1 [email] => test@posse-ap.com [password] => 5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8 [flag] => 1 [company_id] => [created_at] => 2022-05-19 18:19:48 [updated_at] => 2022-05-19 18:19:48 )
 
   // !emptyではなく、issetとすると空の配列をfalseと判定する
   // https://access-jp.co.jp/blogs/development/42
-  if (!empty($user)) {
+  if (!empty($agent)) {
     $_SESSION = array();
-    $_SESSION['user_id'] = $user['id'];
+    $_SESSION['user_id'] = $agent['company_id'];
     $_SESSION['time'] = time();
     // $_SERVER['HTTP_HOST']=  localhost:8080
-    header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/index.php');
+    // header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/index.php');
+    // header('Location: http://' . $_SERVER['HTTP_HOST'] .'/admin/boozer/fetch.php?company_id=' . $_SESSION['user_id']);
+    header('Location: http://' . $_SERVER['HTTP_HOST'] .'/admin/boozer/fetch_user.php');
+    // header('Location: http://' . $_SERVER['HTTP_HOST'] .'/admin/index.php/' . $_SESSION['user_id']);
     // exit();
-  } else if (empty($user) && !empty($boozer)) {
+  } else if (empty($agent) && !empty($boozer)) {
     $_SESSION = array();
+    // 1をセッションのuser_idに追加
     $_SESSION['user_id'] = $boozer['id'];
     $_SESSION['time'] = time();
     // $_SERVER['HTTP_HOST']=  localhost:8080
-    header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/reset.php');
+    header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/boozer/company_list.php');
     // exit();
   } else {
     // if (!$_POST["email"]) {
