@@ -159,6 +159,7 @@ if ( ini_get( 'safe_mode' ) ) {
 try {
   require('../dbconnect.php');
   //usersテーブルへ
+  //データ登録
   $sql_users = "INSERT INTO 
     users 
     (name,university,department,grad_year,mail,phone_number,address,delete_flg) 
@@ -168,32 +169,19 @@ try {
   $stmt_users->execute();
   $database_result_users = $stmt_users->fetchAll();
 
-  if (isset($database_result_users)) {
-    echo $return_users  = "userテーブルへデータを挿入しました";
-  } else {
-    echo $return_users  = "-users- Something Went Wrong.!";
-  }
-
   //company_userテーブルへ
-  //user_idの取得・定義   （usersテーブルの最後の行のidを持ってくる）
-  $stmt = $db->query('SELECT id FROM users ORDER BY id DESC LIMIT 1');  
-  $last_user_id = $stmt->fetch();
-  echo "<pre>";
-  print_r($last_user_id);
-  echo "</pre>";
-  echo $last_user_id['id'];
-  $user_id = $last_user_id['id'];
-  //company_idの取得・定義  (複数の場合はforeachやconcat?で一つ一つに分ける必要がある)
-  if (isset($_GET['company_id'])) {
-    $company_id_array = $_GET['company_id'];
-    echo $company_id_array;
-  }
-  $company_id = h($company_id_array);
-  echo $company_id;
-
-  //contact_datetimeの取得・定義
-  $contact_datetime = date("Y-m-d");
-  echo $contact_datetime;
+  //データ登録の準備
+    //user_idの取得・定義   （usersテーブルの最後の行のidを持ってくる）
+    $stmt = $db->query('SELECT id FROM users ORDER BY id DESC LIMIT 1');  
+    $last_user_id = $stmt->fetch();
+    $user_id = $last_user_id['id'];
+    //company_idの取得・定義  (複数の場合はforeachやconcat?で一つ一つに分ける必要がある)
+    if (isset($_GET['company_id'])) {
+      $company_id_array = $_GET['company_id'];
+    }
+    $company_id = h($company_id_array);
+    //contact_datetimeの取得・定義
+    $contact_datetime = date("Y-m-d");
   //データ登録
   $sql = "INSERT INTO 
     company_user
@@ -204,17 +192,10 @@ try {
   $stmt->execute();
   $database_result = $stmt->fetchAll();
 
-  if (isset($database_result)) {
-    echo $return  = "company_userテーブルへデータを挿入しました";
-  } else {
-    echo $return  = "-company_users- Something Went Wrong.!";
-  }
-
 }catch(PDOException $e){
   echo $e -> getMessage();
   exit();
 }
-
 
 //メール送信の結果判定
 if ( $result_user && $result_agent) {
@@ -224,14 +205,6 @@ if ( $result_user && $result_agent) {
 } else {
   //送信失敗時（もしあれば）
 }
-// //メール送信の結果判定
-// if ( $result_agent ) {
-//   //成功した場合はセッションを破棄
-//   $_SESSION = array(); //空の配列を代入し、すべてのセッション変数を消去 
-//   session_destroy(); //セッションを破棄
-// } else {
-//   //送信失敗時（もしあれば）
-// }
 ?>
 <!-- ここまでPHP -->
 
