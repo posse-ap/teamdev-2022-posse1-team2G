@@ -28,15 +28,15 @@ let compare_checked_buttons = document.getElementsByName("select_company_checkbo
             box_contents.push(company_value);
           }
         } 
-        console.log(box_contents);
+      //   console.log(box_contents);
 
       //表示箇所に選択されている会社を表示
       let at_once_company_contents = '';
       box_contents.forEach(function(element){
         let split_company_id = element.replace(/[^0-9]/g, '');
-        console.log(split_company_id);
+      //   console.log(split_company_id);
         
-        at_once_company_contents+=`<input type="checkbox" name="id" class="required" value="${split_company_id}" checked>"${element}"`
+        at_once_company_contents+=`<input type="checkbox" name="id" class="required" value="${split_company_id}" checked>${element}`
         checked_company_box.innerHTML = at_once_company_contents;
       });
       

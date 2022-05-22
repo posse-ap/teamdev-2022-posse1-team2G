@@ -72,7 +72,7 @@ $companies = $stmt->fetchAll();
                 </div>
                 <div class="company_box_check">
                   <!-- valueにデータを追加していくことで、一時表示ボックスに反映できる -->
-                  <label for="check"><input type="checkbox" name="select_company_checkboxes" value="'<?= $company['company_id'];?>'-'<?= $company['type'];?>'" onchange="checked_counter()">選択する</label>
+                  <label for="check"><input type="checkbox" name="select_company_checkboxes" value="<?= $company['company_id'];?>-<?= $company['type'];?>" onchange="checked_counter()">選択する</label>
                 </div>
               </a>
             </div>
