@@ -20,7 +20,6 @@ if (!empty($_GET['input'])) {
     $stmt->execute();
     $result_array = $stmt->fetchAll();
 } else {
-    $id = $_SESSION['user_id'];
     $sql = "SELECT * FROM users WHERE id = $id ORDER BY id DESC";
     $stmt = $db->prepare($sql);
     $stmt->execute();
