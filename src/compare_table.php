@@ -21,26 +21,53 @@ if ( isset( $_POST[ 'ticket' ], $_SESSION[ 'ticket' ] ) ) {
 
 //POSTされたデータを初期化して前後にあるホワイトスペースを削除
 // $company_id = trim( (string) filter_input(INPUT_POST, 'id') );
-$company_id =  $_POST['id'];
+$company_ids =  $_POST['id'];
 
 //POSTされたデータとエラーの配列をセッション変数に保存
 // $_SESSION[ 'id' ] = $company_id;
 
-print_r($company_id);
+// $keywords = ['A', 'B', 'C', 'D', 'E']; 
 
+echo "<pre>";
+print_r($company_ids); //Array ( [0] => 1 [1] => 5 )
+echo "</pre>";
 
-// if (isset($_POST['id']) && is_array($_POST['id'])) {
-//   foreach( $_POST['id'] as $value ){
-//       echo "{$value}, ";
-//   }
+// echo "<pre>";
+// print_r($keywords); 
+// echo "</pre>";
+
+// キーワードの数だけループして、LIKE句の配列を作る
+$company_id_Condition = [];
+// foreach ($company_ids as $company_id) {
+//     $company_id_Condition[] = 'company_id LIKE "%' . $company_id . '%"';
 // }
+foreach ($company_ids as $company_id) {
+  $company_id_Condition[] = 'company_id = ' . $company_id;
+}
 
-//
-$stmt = $db->prepare("SELECT * FROM company_posting_information WHERE id = :id");
-$id = $company_id;
-$stmt->bindValue(':id', $id, PDO::PARAM_STR);
+echo "<pre>";
+print_r($company_id_Condition); 
+echo "</pre>";
+
+
+// これをORでつなげて、文字列にする
+$company_id_Condition = implode(' OR ', $company_id_Condition);
+
+// あとはSELECT文にくっつけてできあがり♪
+$sql = 'SELECT * FROM company_posting_information WHERE ' . $company_id_Condition;
+$stmt = $db->query($sql);
 $stmt->execute();
-$info = $stmt->fetch();
+$companies = $stmt->fetchAll();
+
+echo "<pre>";
+print_r($companies);
+echo "</pre>";
+
+// $stmt = $db->prepare("SELECT * FROM company_posting_information WHERE id = :id");
+// $id = $company_id;
+// $stmt->bindValue(':id', $id, PDO::PARAM_STR);
+// $stmt->execute();
+// $info = $stmt->fetch();
 
 ?>
 
