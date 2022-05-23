@@ -1,3 +1,18 @@
+<?php
+require('../../dbconnect.php');
+
+$sql = "SELECT company_name FROM company";
+$stmt = $db->prepare($sql);
+$stmt->execute();
+$names = $stmt->fetchAll();
+// print_r($names);
+?>
+<!-- <?php foreach ($names as $name) : ?>
+<?php print_r($name); ?>
+<?php print_r($name['company_name']); ?>
+<?php endforeach; ?> -->
+
+
 <!doctype html>
 <html lang="en">
 
@@ -237,10 +252,19 @@
             </h4>
           </div>
           <div class="card-body">
-            <div>
-              <input type="text" class='form-control' id='live_search' name='input' autocomplete="off" placeholder="フリーワードを入力してください..">
+            <form>
+              <div>
+                <input type="text" class='form-control' id='live_search' name='input' autocomplete="off" placeholder="フリーワードを入力してください..">
+              </div>
+              <div>
+                <select name="" id="select_company">
+                  <?php foreach ($names as $name) : ?>
+                    <option value="<?= $name['company_name'] ?>"><?= $name['company_name'] ?></option>
+                  <?php endforeach; ?>
+                </select>
+              </div>
               <input type="submit" id="search" value='検索'>
-            </div>
+            </form>
             <div class="message-show">
 
             </div>

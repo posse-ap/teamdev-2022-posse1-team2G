@@ -273,6 +273,9 @@ function getdata(input) {
   $('#search').click(function () {
 
     var input = $('#live_search').val();
+    var select = $('#select_company').val();
+    // alert(input);
+
     if (input != '') {
       getdata(input);
     }
