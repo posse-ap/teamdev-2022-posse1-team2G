@@ -6,6 +6,26 @@ $stmt = $db->query($sql);
 $stmt->execute();
 $companies = $stmt->fetchAll();
 
+
+//セッションを開始
+session_start();
+ 
+//セッションIDを更新して変更（セッションハイジャック対策）
+session_regenerate_id( TRUE );
+//エスケープ処理やデータをチェックする関数を記述したファイルの読み込み
+require './libs/functions.php'; 
+
+//NULL 合体演算子を使ってセッション変数を初期化（PHP7.0以降）
+$id = $_SESSION[ 'id' ] ?? NULL;
+
+//CSRF対策のトークンを生成
+if ( !isset( $_SESSION[ 'ticket' ] ) ) {
+  //セッション変数にトークンを代入
+  $_SESSION[ 'ticket' ] = bin2hex(random_bytes(32));
+}
+//トークンを変数に代入（隠しフィールドに挿入する値）
+$ticket = $_SESSION[ 'ticket' ];
+
 ?>
 
 
@@ -66,7 +86,7 @@ $companies = $stmt->fetchAll();
                 </div>
                 <div class="company_box_check">
                   <!-- valueにデータを追加していくことで、一時表示ボックスに反映できる -->
-                  <label for="check"><input type="checkbox" name="select_company_checkboxes" value="<?= $company['company_id'];?><?= $company['type'];?>" onchange="checked_counter()">選択する</label>
+                  <label for="check"><input type="checkbox" name="select_company_checkboxes" value="<?= $company['company_id'];?>-<?= $company['type'];?>" onchange="checked_counter()">選択する</label>
                 </div>
               </a>
             </div>
@@ -77,14 +97,22 @@ $companies = $stmt->fetchAll();
           <!-- 比較チェックボタンついた会社を一時表示するボックス -->
           <div class="selected_company_box">
             <p>比較するエージェント会社</p>
-            <div id="checked_company_box"></div>
+            <form id="form" class="validationForm" action="./compare_table.php" method="post">
+              <!-- 比較チェックボタンついた会社の表示箇所 -->
+                 <div id="checked_company_box"></div>
+              <!-- 完了ページへ渡すトークンの隠しフィールド -->
+                 <input type="hidden" name="ticket" value="<?php echo h($ticket); ?>">
+              <!-- 比較するボタンを押すと、一時表示された会社の情報を比較表ページにpostする -->
+                 <button name="submitted" type="submit" class="">比較する</button>
+            </form>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <script src="style.js"></script>
+  <!-- 比較ボタンの挙動（company_idの受け渡し）を記述したファイルの読み込み -->
+  <script src="./to_compare_table.js"></script>
 </body>
 
 </html>
