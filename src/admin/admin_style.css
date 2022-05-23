@@ -68,10 +68,15 @@ box-shadow: 0 0 8px 2px rgb(167, 201, 149);
 }
 
 /* ----------    boozer/index.php      ------------ */
-.sales_status_title h1{
-    margin: 0 auto;
-    color: rgb(132, 16, 16);
+/* .sales_status_title{
+   text-align: center;
+   border: 1px solid red;
 }
+.sales_status{
+    width: 80vw;
+    margin: 0 auto;
+    border: 1px solid red;
+} */
 
 
 

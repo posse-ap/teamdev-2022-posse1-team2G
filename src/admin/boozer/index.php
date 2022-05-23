@@ -45,7 +45,7 @@ $price = $unit_price * (1 + $tax);
 </head>
 
 <body>
-  <div class='sales_status'>
+  <div class='https://blog.8bit.co.jp/?p=11410'>
     <div class='sales_status_title'>
       <h1>売り上げ状況</h1>
     </div>
