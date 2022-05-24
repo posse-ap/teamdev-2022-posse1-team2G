@@ -254,10 +254,11 @@ $(document).ready(function () {
   });
 
   
-  function getdata() {
+  function getdata(input) {
     $.ajax({
       type: "GET",
       url: "./fetch_company.php",
+      data: {input:input},
       success: function (response) {
         $.each(response, function (key, value) {
           $('.studentdata').append('<tr>' +
@@ -275,6 +276,18 @@ $(document).ready(function () {
         });
       }
     });
+    $('#search').click(function () {
+
+      var input = $('#live_search').val();
+      if (input != '') {
+        getdata(input);
+      }
+      else {
+        getdata();
+      }
+    });
+
+
   }
 
 

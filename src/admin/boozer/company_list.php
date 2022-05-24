@@ -268,8 +268,11 @@
             </h4>
           </div>
           <div class="card-body">
+            <div>
+              <input type="text" class='form-control' id='live_search' name='input' autocomplete="off" placeholder="フリーワードを入力してください..">
+            </div>
+            <input type="submit" id="search" value='検索'>
             <div class="message-show">
-
             </div>
             <table class="table table-bordered table-striped " id="companyTable">
               <thead>
