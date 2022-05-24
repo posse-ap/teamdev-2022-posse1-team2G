@@ -286,7 +286,7 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 10 > time()) {
                   <th>電話番号</th>
                   <th>メールアドレス</th>
                   <th>担当者</th>
-                  <th>機能</th>
+                  <th>操作</th>
                 </tr>
               </thead>
               <tbody class="studentdata">

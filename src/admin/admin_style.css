@@ -68,6 +68,16 @@ box-shadow: 0 0 8px 2px rgb(167, 201, 149);
 }
 
 
+/* ----------    boozer/user_list.php     ------------ */
+.search_container{
+    background-color: red;
+}
+.hh{
+    color: blue;
+}
+
+
+
 
 
 

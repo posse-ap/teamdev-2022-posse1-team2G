@@ -19,9 +19,12 @@ $names = $stmt->fetchAll();
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+  <link rel="stylesheet" href="../../normalize.css">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.css" />
+  <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.css" /> -->
+
+  <link rel="stylesheet" href="../admin_style.css">
 
   <title>bozer学生一覧</title>
 </head>
@@ -166,6 +169,7 @@ $names = $stmt->fetchAll();
         <div class="modal-body">
           <div class="row">
             <input type="hidden" id="id_delete">
+            <input type="hidden" id="company_name_delete">
             <div class="col-md-12">
               <h3>本当に削除しますか？</h3>
             </div>
@@ -186,24 +190,30 @@ $names = $stmt->fetchAll();
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
-            <h4>
+            <h4 class='hh'>
               学生一覧
             </h4>
           </div>
           <div class="card-body">
-            <div>
-              <input type="text" class='form-control' id='live_search' name='input' autocomplete="off" placeholder="フリーワードを入力してください..">
+            <div class='search_container'>
+              <div>
+                <input type="text" class='form-control' id='live_search' name='input' autocomplete="off" placeholder="フリーワードを入力してください..">
+              </div>
+              <div>
+                <select name="select_company">
+                  <option value=''>選択してください</option>
+                  <?php foreach ($names as $name) : ?>
+                    <option value="<?= $name['company_name'] ?>"><?= $name['company_name'] ?></option>
+                  <?php endforeach; ?>
+                </select>
+              </div>
+              <div>
+                <input type="submit" id="search" value='検索'>
+              </div>
+              <div>
+                <button id='reset'>リセット</button>
+              </div>
             </div>
-            <div>
-              <select name="select_company">
-                <option value=''>選択してください</option>
-                <?php foreach ($names as $name) : ?>
-                  <option value="<?= $name['company_name'] ?>"><?= $name['company_name'] ?></option>
-                <?php endforeach; ?>
-              </select>
-            </div>
-            <input type="submit" id="search" value='検索'>
-            <button id='reset'>リセット</button>
             <div class="message-show">
             </div>
             <table class="table table-bordered table-striped " id="myTable">
@@ -214,7 +224,7 @@ $names = $stmt->fetchAll();
                   <th>会社</th>
                   <th>電話番号</th>
                   <th>登録日時</th>
-                  <th>機能</th>
+                  <th>操作</th>
                 </tr>
               </thead>
               <tbody class="studentdata">

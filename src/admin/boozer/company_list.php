@@ -9,6 +9,9 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.css" />
+  <!-- icon用 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
 
   <title>PHP - AJAX - CRUD</title>
 </head>
@@ -269,9 +272,14 @@
           </div>
           <div class="card-body">
             <div>
-              <input type="text" class='form-control' id='live_search' name='input' autocomplete="off" placeholder="会社名...">
+              <input type="text" class='form-control ' id='live_search' name='input' autocomplete="off" placeholder="会社名...">
             </div>
-            <input type="submit" id="search" value='検索'>
+            <div>
+              <input type="submit" id="search" value='検索'>
+            </div>
+            <div>
+              <button id='reset'>リセット</button>
+            </div>
             <div class="message-show">
             </div>
             <table class="table table-bordered table-striped">
@@ -282,7 +290,7 @@
                   <th>電話番号</th>
                   <th>連絡用メールアドレス</th>
                   <th>今月の金額</th>
-                  <th>機能</th>
+                  <th>操作</th>
                 </tr>
               </thead>
               <tbody class="studentdata">

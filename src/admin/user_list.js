@@ -6,12 +6,14 @@ $(document).ready(function () {
     e.preventDefault();
 
     var stud_id = $('#id_delete').val();
+    var stud_company_name = $('#company_name_delete').val();
     $.ajax({
       type: "POST",
       url: "./crud_user.php",
       data: {
         'checking_delete': true,
         'stud_id': stud_id,
+        'stud_company_name': stud_company_name,
       },
       success: function (response) {
         $('#userDeleteModal').modal('hide');
@@ -32,8 +34,13 @@ $(document).ready(function () {
 
 // 削除ボタン押してみたときの挙動
   $(document).on("click", ".delete_btn", function () {
+    // stud_idはusersのid
     var stud_id = $(this).closest('tr').find('.stud_id').text();
-    $('#id_delete').val(stud_id)
+    // #id_deleteのvalueをstud_idにする
+    $('#id_delete').val(stud_id);
+    var stud_company_name = $(this).closest('tr').find('.stud_company_name').text();
+    $('#company_name_delete').val(stud_company_name);
+
     $('#userDeleteModal').modal('show');
 
   });
@@ -196,7 +203,7 @@ function getdata(input, select) {
                                 <td>' + value['name'] + '</td>\
                                 <td>' + value['company_name'] + '</td>\
                                 <td>' + value['phone_number'] + '</td>\
-                                <td>' + value['contact_datetime'] + '</td>\
+                                <td class="stud_company_name">' + value['contact_datetime'] + '</td>\
                                 <td>\
                                     <a href="#" class="badge btn-info viewbtn">VIEW</a>\
                                     <a href="#" class="badge btn-primary edit_btn">EDIT</a>\

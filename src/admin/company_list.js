@@ -253,12 +253,12 @@ $(document).ready(function () {
 
   });
 
-  
+
   function getdata(input) {
     $.ajax({
       type: "GET",
       url: "./fetch_company.php",
-      data: {input:input},
+      data: { input: input },
       success: function (response) {
         $('.studentdata').html(response);
         $.each(response, function (key, value) {
@@ -269,29 +269,31 @@ $(document).ready(function () {
                                 <td>' + value['mail_manager'] + '</td>\
                                 <td>' + (Number(value['count_month']) * price).toLocaleString() + '</td>\
                                 <td>\
-                                    <a href="#" class="badge btn-info viewbtn">VIEW</a>\
+                                    <i class="bi bi-pencil-square viewbtn"></i>\
                                     <a href="#" class="badge btn-primary edit_btn">EDIT</a>\
-                                    <a href="#" class="badge btn-danger delete_btn">Delete</a>\
+                                    <i class="bi bi-trash text-danger delete_btn"></i>\
                                 </td>\
                             </tr>');
         });
       }
     });
     $('#search').click(function () {
-
       var input = $('#live_search').val();
-      if (input != '') {
-        getdata(input);
-      }
-      else {
-        getdata();
-      }
+      // if (input != '') {
+      //   getdata(input);
+      // }
+      // else {
+      //   getdata();
+      // }
+      getdata(input);
+    });
+
+    $('#reset').click(function () {
+      getdata();
     });
 
 
   }
-
-
 
 
 });
