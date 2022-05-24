@@ -25,13 +25,13 @@ $names = $stmt->fetchAll();
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.css" />
 
-  <title>PHP - AJAX - CRUD</title>
+  <title>bozer学生一覧</title>
 </head>
 
 <body>
 
   <!-- Add Modal -->
-  <div class="modal fade" id="userAddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!-- <div class="modal fade" id="userAddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -84,7 +84,7 @@ $names = $stmt->fetchAll();
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
 
   <!-- View Modal -->
@@ -106,6 +106,10 @@ $names = $stmt->fetchAll();
             <div class="col-md-6 pb-2">
               <h5>名前</h5>
               <p class="name_view"></p>
+            </div>
+            <div class="col-md-6 pb-2">
+              <h5>会社名</h5>
+              <p class="company_name_view"></p>
             </div>
             <div class="col-md-6 pb-2">
               <h5>大学名</h5>
@@ -271,8 +275,8 @@ $names = $stmt->fetchAll();
                   <th>ID</th>
                   <th>名前</th>
                   <th>電話番号</th>
-                  <th>メールアドレス</th>
                   <th>会社</th>
+                  <th>登録日時</th>
                   <th>機能</th>
                 </tr>
               </thead>

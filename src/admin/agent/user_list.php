@@ -29,7 +29,7 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 10 > time()) {
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.css" />
 
-  <title>PHP - AJAX - CRUD</title>
+  <title>agent学生一覧</title>
 </head>
 
 <body>

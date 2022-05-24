@@ -32,10 +32,19 @@ if (isset($_POST['checking_view'])) {
   $stud_id = $_POST['stud_id'];
   $result = [];
 
-  $query = "SELECT * FROM users WHERE id='$stud_id' ";
+  // $query = "SELECT * FROM users WHERE id='$stud_id' ";
+  $query = "SELECT t1.contact_datetime, t2.id, t2.name, t2.university, t2.department, t2.grad_year, t2.mail, t2.phone_number, t2.address, t2.rep, t3.company_name 
+  FROM company_user as t1 
+  inner join users as t2 
+  on t1.user_id=t2.id 
+  inner join company as t3 
+  on t1.company_id=t3.id 
+  where t2.id='$stud_id' 
+  ORDER BY t1.contact_datetime DESC";
   $stmt = $db->prepare($query);
   $stmt->execute();
   $result = $stmt->fetchAll();
+  // print_r($result);
 
   if ($result == true) {
 
@@ -50,7 +59,15 @@ if (isset($_POST['checking_view'])) {
 if (isset($_POST['checking_edit'])) {
   $stud_id = $_POST['stud_id'];
 
-  $query_edit = "SELECT * FROM users WHERE id='$stud_id' ";
+  // $query_edit = "SELECT * FROM users WHERE id='$stud_id' ";
+  $query_edit = "SELECT t1.contact_datetime, t2.id, t2.name, t2.university, t2.department, t2.grad_year, t2.mail, t2.phone_number, t2.address, t2.rep, t3.company_name 
+  FROM company_user as t1 
+  inner join users as t2 
+  on t1.user_id=t2.id 
+  inner join company as t3 
+  on t1.company_id=t3.id 
+  where t2.id='$stud_id' 
+  ORDER BY t1.contact_datetime DESC";
   $stmt_edit = $db->prepare($query_edit);
   $stmt_edit->execute();
   $result_edit = $stmt_edit->fetchAll();
@@ -74,7 +91,9 @@ if (isset($_POST['checking_update'])) {
   $address = $_POST['address'];
   // $company_url = $_POST['company_url'];
 
-  $query = "UPDATE users SET name='$name', university='$university', department='$department', grad_year='$grad_year', mail='$mail', phone_number='$phone_number', address='$address' WHERE id='$id'";
+  // updateできるのはuserの内容だけ（会社情報は変更できない）
+  $query = "UPDATE users 
+  SET name='$name', university='$university', department='$department', grad_year='$grad_year', mail='$mail', phone_number='$phone_number', address='$address' WHERE id='$id'";
   $stmt = $db->prepare($query);
   $stmt->execute();
   $result = $stmt->fetchAll();
@@ -88,16 +107,19 @@ if (isset($_POST['checking_update'])) {
 }
 
 // delete modal
-// if (isset($_POST['checking_delete'])) {
-//   $id = $_POST['stud_id'];
-//   $query = "DELETE FROM users WHERE id = '$id' ";
-//   $stmt = $db->prepare($query);
-//   $stmt->execute();
-//   $result = $stmt->fetchAll();
+if (isset($_POST['checking_delete'])) {
+  $id = $_POST['stud_id'];
+  $query = "DELETE FROM users WHERE id = '$id' ";
+  $stmt = $db->prepare($query);
+  $stmt->execute();
+  $result = $stmt->fetchAll();
 
-//   if (isset($result)) {
-//     echo $return  = "データを削除しました";
-//   } else {
-//     echo $return  = "データを削除できませんでした";
-//   }
-// }
+  // where文で会社IDとも一致させればできそう
+  $q = "DELETE FROM company_user WHERE user_id = '$id' ";
+
+  if (isset($result)) {
+    echo $return  = "データを削除しました";
+  } else {
+    echo $return  = "データを削除できませんでした";
+  }
+}

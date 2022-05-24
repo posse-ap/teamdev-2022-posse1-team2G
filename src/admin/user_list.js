@@ -172,6 +172,7 @@ $(document).ready(function () {
           $('.mail_view').text(userview['mail']);
           $('.phone_number_view').text(userview['phone_number']);
           $('.address_view').text(userview['address']);
+          $('.company_name_view').text(userview['company_name']);
         });
         $('#userViewModal').modal('show');
       }
@@ -180,67 +181,67 @@ $(document).ready(function () {
   });
 
 
-  $('.user_add_ajax').click(function (e) {
-    e.preventDefault();
+  // $('.user_add_ajax').click(function (e) {
+  //   e.preventDefault();
 
-    var name = $('.name').val();
-    var university = $('.university').val();
-    var department = $('.department').val();
-    var grad_year = $('.grad_year').val();
-    var mail = $('.mail').val();
-    var phone_number = $('.phone_number').val();
-    var address = $('.address').val();
+  //   var name = $('.name').val();
+  //   var university = $('.university').val();
+  //   var department = $('.department').val();
+  //   var grad_year = $('.grad_year').val();
+  //   var mail = $('.mail').val();
+  //   var phone_number = $('.phone_number').val();
+  //   var address = $('.address').val();
 
-    if (name != '' & university != '' & department != '' & grad_year != '' & mail != '' & phone_number != '' & address != '') {
-      $.ajax({
-        type: "POST",
-        url: "./crud_user.php",
-        data: {
-          'checking_add': true,
-          'name': name,
-          'university': university,
-          'department': department,
-          'grad_year': grad_year,
-          'mail': mail,
-          'phone_number': phone_number,
-          'address': address,
-        },
-        success: function (response) {
-          // console.log(response);
-          $('#userAddModal').modal('hide');
-          $('.message-show').append('\
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">\
-                                    <strong>Hey!</strong> '+ response + '.\
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">\
-                                        <span aria-hidden="true">&times;</span>\
-                                    </button>\
-                                </div>\
-                            ');
-          $('.studentdata').html("");
-          getdata();
-          $('.name').val("");
-          $('.university').val("");
-          $('.department').val("");
-          $('.grad_year').val("");
-          $('.mail').val("");
-          $('.phone_number').val("");
-          $('.address').val("");
-        }
-      });
+  //   if (name != '' & university != '' & department != '' & grad_year != '' & mail != '' & phone_number != '' & address != '') {
+  //     $.ajax({
+  //       type: "POST",
+  //       url: "./crud_user.php",
+  //       data: {
+  //         'checking_add': true,
+  //         'name': name,
+  //         'university': university,
+  //         'department': department,
+  //         'grad_year': grad_year,
+  //         'mail': mail,
+  //         'phone_number': phone_number,
+  //         'address': address,
+  //       },
+  //       success: function (response) {
+  //         // console.log(response);
+  //         $('#userAddModal').modal('hide');
+  //         $('.message-show').append('\
+  //                               <div class="alert alert-success alert-dismissible fade show" role="alert">\
+  //                                   <strong>Hey!</strong> '+ response + '.\
+  //                                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">\
+  //                                       <span aria-hidden="true">&times;</span>\
+  //                                   </button>\
+  //                               </div>\
+  //                           ');
+  //         $('.studentdata').html("");
+  //         getdata();
+  //         $('.name').val("");
+  //         $('.university').val("");
+  //         $('.department').val("");
+  //         $('.grad_year').val("");
+  //         $('.mail').val("");
+  //         $('.phone_number').val("");
+  //         $('.address').val("");
+  //       }
+  //     });
 
-    }
-    else {
-      // console.log("Please enter all fileds.");
-      $('.error-message').append('\
-                        <div class="alert alert-warning alert-dismissible fade show" role="alert">\
-                            <strong>Hey!</strong> Please enter all fileds.\
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">\
-                                <span aria-hidden="true">&times;</span>\
-                            </button>\
-                        </div>\
-                    ');
-    }
-  })
+  //   }
+  //   else {
+  //     // console.log("Please enter all fileds.");
+  //     $('.error-message').append('\
+  //                       <div class="alert alert-warning alert-dismissible fade show" role="alert">\
+  //                           <strong>Hey!</strong> Please enter all fileds.\
+  //                           <button type="button" class="close" data-dismiss="alert" aria-label="Close">\
+  //                               <span aria-hidden="true">&times;</span>\
+  //                           </button>\
+  //                       </div>\
+  //                   ');
+  //   }
+  // })
 
 
 
@@ -261,8 +262,8 @@ function getdata(input, select) {
           '<td class="stud_id">' + value['id'] + '</td>\
                                 <td>' + value['name'] + '</td>\
                                 <td>' + value['phone_number'] + '</td>\
-                                <td>' + value['mail'] + '</td>\
-                                <td>' + value['address'] + '</td>\
+                                <td>' + value['company_name'] + '</td>\
+                                <td>' + value['contact_datetime'] + '</td>\
                                 <td>\
                                     <a href="#" class="badge btn-info viewbtn">VIEW</a>\
                                     <a href="#" class="badge btn-primary edit_btn">EDIT</a>\
@@ -281,12 +282,12 @@ function getdata(input, select) {
     if (input != '' && select != '') {
       getdata(input, select);
     }
-    else if (input == '' && select != ''){
-      getdata(select);
-    }
-    else if (input != '' && select == ''){
-      getdata(input);
-    }
+    // else if (input == '' && select != ''){
+    //   getdata(select);
+    // }
+    // else if (input != '' && select == ''){
+    //   getdata(input);
+    // }
     else {
       getdata();
     }
@@ -301,6 +302,6 @@ function getdata(input, select) {
 
 //   var input = $('#live_search').val();
 //   var select = $('[name=select_company]').val();
-//   alert(select);
+//   alert(input);
 
 // });
