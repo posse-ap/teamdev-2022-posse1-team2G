@@ -30,9 +30,8 @@ $(document).ready(function () {
     
   })
 
-// 削除機能押してみたときの挙動
+// 削除ボタン押してみたときの挙動
   $(document).on("click", ".delete_btn", function () {
-
     var stud_id = $(this).closest('tr').find('.stud_id').text();
     $('#id_delete').val(stud_id)
     $('#userDeleteModal').modal('show');
@@ -40,7 +39,7 @@ $(document).ready(function () {
   });
 
 
-
+// updateするを押してみたときの挙動
   $('.user_update_ajax').click(function (e) {
     e.preventDefault();
 
@@ -116,9 +115,7 @@ $(document).ready(function () {
 
 
   // edit modal
-  // view modalから持ってきた
   $(document).on("click", ".edit_btn", function () {
-
     var stud_id = $(this).closest('tr').find('.stud_id').text();
     $.ajax({
       type: "POST",
@@ -181,70 +178,6 @@ $(document).ready(function () {
   });
 
 
-  // $('.user_add_ajax').click(function (e) {
-  //   e.preventDefault();
-
-  //   var name = $('.name').val();
-  //   var university = $('.university').val();
-  //   var department = $('.department').val();
-  //   var grad_year = $('.grad_year').val();
-  //   var mail = $('.mail').val();
-  //   var phone_number = $('.phone_number').val();
-  //   var address = $('.address').val();
-
-  //   if (name != '' & university != '' & department != '' & grad_year != '' & mail != '' & phone_number != '' & address != '') {
-  //     $.ajax({
-  //       type: "POST",
-  //       url: "./crud_user.php",
-  //       data: {
-  //         'checking_add': true,
-  //         'name': name,
-  //         'university': university,
-  //         'department': department,
-  //         'grad_year': grad_year,
-  //         'mail': mail,
-  //         'phone_number': phone_number,
-  //         'address': address,
-  //       },
-  //       success: function (response) {
-  //         // console.log(response);
-  //         $('#userAddModal').modal('hide');
-  //         $('.message-show').append('\
-  //                               <div class="alert alert-success alert-dismissible fade show" role="alert">\
-  //                                   <strong>Hey!</strong> '+ response + '.\
-  //                                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">\
-  //                                       <span aria-hidden="true">&times;</span>\
-  //                                   </button>\
-  //                               </div>\
-  //                           ');
-  //         $('.studentdata').html("");
-  //         getdata();
-  //         $('.name').val("");
-  //         $('.university').val("");
-  //         $('.department').val("");
-  //         $('.grad_year').val("");
-  //         $('.mail').val("");
-  //         $('.phone_number').val("");
-  //         $('.address').val("");
-  //       }
-  //     });
-
-  //   }
-  //   else {
-  //     // console.log("Please enter all fileds.");
-  //     $('.error-message').append('\
-  //                       <div class="alert alert-warning alert-dismissible fade show" role="alert">\
-  //                           <strong>Hey!</strong> Please enter all fileds.\
-  //                           <button type="button" class="close" data-dismiss="alert" aria-label="Close">\
-  //                               <span aria-hidden="true">&times;</span>\
-  //                           </button>\
-  //                       </div>\
-  //                   ');
-  //   }
-  // })
-
-
-
 function getdata(input, select) {
   $.ajax({
     type: "GET",
@@ -261,8 +194,8 @@ function getdata(input, select) {
         $('.studentdata').append('<tr>' +
           '<td class="stud_id">' + value['id'] + '</td>\
                                 <td>' + value['name'] + '</td>\
-                                <td>' + value['phone_number'] + '</td>\
                                 <td>' + value['company_name'] + '</td>\
+                                <td>' + value['phone_number'] + '</td>\
                                 <td>' + value['contact_datetime'] + '</td>\
                                 <td>\
                                     <a href="#" class="badge btn-info viewbtn">VIEW</a>\
@@ -273,21 +206,19 @@ function getdata(input, select) {
       });
     }
   });
+  // 検索ボタンを推したときの徐堂
   $('#search').click(function () {
-
     var input = $('#live_search').val();
     var select = $('[name=select_company]').val();
-
-
+    // フリーワードも会社も両方入力されている場合
     if (input != '' && select != '') {
       getdata(input, select);
     }
-    // else if (input == '' && select != ''){
-    //   getdata(select);
-    // }
-    // else if (input != '' && select == ''){
-    //   getdata(input);
-    // }
+    // 会社のみで絞り込む場合
+    else if (input == '' && select != ''){
+      getdata(input, select);
+    }
+      // 絞り込み検索しない場合
     else {
       getdata();
     }
@@ -302,6 +233,6 @@ function getdata(input, select) {
 
 //   var input = $('#live_search').val();
 //   var select = $('[name=select_company]').val();
-//   alert(input);
+//   alert(select);
 
 // });
