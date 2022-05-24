@@ -277,7 +277,6 @@ $names = $stmt->fetchAll();
                 </tr>
               </thead>
               <tbody class="studentdata">
-
               </tbody>
             </table>
           </div>

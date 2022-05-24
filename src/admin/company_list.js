@@ -260,6 +260,7 @@ $(document).ready(function () {
       url: "./fetch_company.php",
       data: {input:input},
       success: function (response) {
+        $('.studentdata').html(response);
         $.each(response, function (key, value) {
           $('.studentdata').append('<tr>' +
             '<td class="stud_id">' + value['id'] + '</td>\

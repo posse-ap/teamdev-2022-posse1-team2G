@@ -269,24 +269,23 @@
           </div>
           <div class="card-body">
             <div>
-              <input type="text" class='form-control' id='live_search' name='input' autocomplete="off" placeholder="フリーワードを入力してください..">
+              <input type="text" class='form-control' id='live_search' name='input' autocomplete="off" placeholder="会社名...">
             </div>
             <input type="submit" id="search" value='検索'>
             <div class="message-show">
             </div>
-            <table class="table table-bordered table-striped " id="companyTable">
+            <table class="table table-bordered table-striped">
               <thead>
                 <tr>
                   <th>ID</th>
                   <th>会社名</th>
                   <th>電話番号</th>
-                  <th>メールアドレス</th>
+                  <th>連絡用メールアドレス</th>
                   <th>今月の金額</th>
                   <th>機能</th>
                 </tr>
               </thead>
               <tbody class="studentdata">
-
               </tbody>
             </table>
           </div>

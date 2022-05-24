@@ -1,9 +1,4 @@
 <?php
-
-// define("TAX", 0.1);
-// $money = 20000 * (1 + TAX);
-// $money_json = json_encode($money);
-
 require('../../dbconnect.php');
 
 //   print_r($money);
@@ -15,14 +10,17 @@ require('../../dbconnect.php');
 if (!empty($_GET['input'])) {
     $input = $_GET['input'];
 
-    $sql = "select t1.*,t2.* from
+$sql = "select t1.*,t2.* from
 (select * from company) as t1
 left outer join 
-(select count(*) as count_month, company_id from company_user where company_id IS NULL OR DATE_FORMAT(contact_datetime, '%Y%m')=DATE_FORMAT(NOW(), '%Y%m') group by company_id) as t2
+(select count(*) as count_month, company_id 
+from company_user 
+where company_id IS NULL OR DATE_FORMAT(contact_datetime, '%Y%m')=DATE_FORMAT(NOW(), '%Y%m') 
+group by company_id) as t2
 on t1.id=t2.company_id
 WHERE 
-    t1.company_name LIKE '%{$input}%' 
-    ORDER BY t2.count_month DESC ";
+t1.company_name LIKE '%{$input}%' 
+ORDER BY t2.count_month DESC";
 
 //     *************************** 1. row ***************************
 //                id: 1

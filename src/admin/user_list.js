@@ -272,7 +272,6 @@ function getdata(input, select) {
       });
     }
   });
-
   $('#search').click(function () {
 
     var input = $('#live_search').val();
