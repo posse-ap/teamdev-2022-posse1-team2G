@@ -205,6 +205,7 @@ $names = $stmt->fetchAll();
               </select>
             </div>
             <input type="submit" id="search" value='検索'>
+            <button id='reset'>リセット</button>
             <div class="message-show">
             </div>
             <table class="table table-bordered table-striped " id="myTable">

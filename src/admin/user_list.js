@@ -222,7 +222,10 @@ function getdata(input, select) {
     else {
       getdata();
     }
+  });
 
+  $('#reset').click(function () {
+    getdata();
   });
 
   }
