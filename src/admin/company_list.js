@@ -265,7 +265,7 @@ $(document).ready(function () {
                                 <td>' + value['company_name'] + '</td>\
                                 <td>' + value['phone_number'] + '</td>\
                                 <td>' + value['mail_manager'] + '</td>\
-                                <td>' + value['count_month']+ '</td>\
+                                <td>' + (Number(value['count_month']) * price).toLocaleString() + '</td>\
                                 <td>\
                                     <a href="#" class="badge btn-info viewbtn">VIEW</a>\
                                     <a href="#" class="badge btn-primary edit_btn">EDIT</a>\

@@ -21,52 +21,84 @@ left outer join
 (select count(*) as count_month, company_id from company_user where company_id IS NULL OR DATE_FORMAT(contact_datetime, '%Y%m')=DATE_FORMAT(NOW(), '%Y%m') group by company_id) as t2
 on t1.id=t2.company_id
 WHERE 
-    t1.company_id LIKE '%{$input}%' 
-    ORDER BY t1.company_id DESC ";
+    t1.company_name LIKE '%{$input}%' 
+    ORDER BY t2.count_month DESC ";
+
+//     *************************** 1. row ***************************
+//                id: 1
+//      company_name: 鈴木会社
+//      phone_number: 0120-3456-1987
+//      mail_contact: aaaaiiiiuuuu@gmail.com
+//      mail_manager: ssssmmmmllll@gmail.com
+// mail_notification: maruaaaamaruaaaa@gmail.com
+//    representative: 赤井
+//           address: 〇県△市
+//       company_url: marumaruurl.com
+//        delete_flg: 0
+//       count_month: 1
+//        company_id: 1
+// *************************** 2. row ***************************
+//                id: 2
+//      company_name: 佐藤会社
+//      phone_number: 0120-3456-1988
+//      mail_contact: aaaauuuuiiii@gmail.com
+//      mail_manager: mmmmssssllll@gmail.com
+// mail_notification: maruaaaaasankaku@gmail.com
+//    representative: 世良
+//           address: △県〇市
+//       company_url: marumaruurl.com
+//        delete_flg: 0
+//       count_month: 1
+//        company_id: 2
+// *************************** 3. row ***************************
+//                id: 3
+//      company_name: 田中会社
+//      phone_number: 0120-3456-1989
+//      mail_contact: iiiiaaaauuuu@gmail.com
+//      mail_manager: ssssllllmmmm@gmail.com
+// mail_notification: sankakumaaaaaaru@gmail.com
+//    representative: 毛利
+//           address: △県〇市
+//       company_url: marumaruurl.com
+//        delete_flg: 0
+//       count_month: 1
+//        company_id: 3
+// *************************** 4. row ***************************
+//                id: 4
+//      company_name: 山田会社
+//      mail_contact: iiiiuuuuaaaa@gmail.com
+//      mail_manager: mmssssmmllll@gmail.com
+// mail_notification: sankakusankaaaku@gmail.com
+//    representative: 安室
+//           address: △県△市
+//       company_url: marumruurl.com
+//        delete_flg: 0
+//       count_month: 1
+//        company_id: 4
+// *************************** 5. row ***************************
+//                id: 5
+//      company_name: 加藤会社
+//      phone_number: 0120-3456-1991
+//      mail_contact: aaaauuuuuduu@gmail.com
+//      mail_manager: llllssssmmmm@gmail.com
+// mail_notification: marusankakudbatu@gmail.com
+//    representative: 諸星
+//           address: 〇県〇市
+//       company_url: marumaruurl.com
+//        delete_flg: 0
+//       count_month: NULL
+//        company_id: NULL
 
     $stmt = $db->prepare($sql);
     $stmt->execute();
     $result_array = $stmt->fetchAll();
 } else {
-    //  -----   company_userの自動id   ---------
-    //                id: 3
-    //           user_id: 2
-    //        company_id: 1
-    //  contact_datetime: 2022-05-06 00:00:00
-
-    //   ----- companyの自動id      -----------
-    //                id: 1
-    //      company_name: 鈴木会社
-    //      phone_number: 0120-3456-1987
-    //      mail_contact: aaaaiiiiuuuu@gmail.com
-    //      mail_manager: ssssmmmmllll@gmail.com
-    // mail_notification: maruaaaamaruaaaa@gmail.com
-    //    representative: 赤井
-    //           address: 〇県△市
-    //       company_url: marumaruurl.com
-    //        delete_flg: 0
-
-    //   -----    usersの自動id   --------
-    //                id: 2
-    //              name: 佐藤太郎
-    //        university: 〇△大学
-    //        department: 学部
-    //         grad_year: 24年春
-    //              mail: marusankaku@gmail.com
-    //      phone_number: 080-5432-1988
-    //           address: △県〇市
-    //               rep: 未設定
-    //        delete_flg: 0
-    //             count: 2
-    // $sql =  "select *,(select count(*) as count from company_user as t1 inner join company as t2 on t1.company_id = t2.id inner join users as t3 on t1.user_id = t3.id where company_id = 1 order by company_id desc) as count 
-    // from company_user as t1 inner join company as t2 on t1.company_id = t2.id inner join users as t3 on t1.user_id 
-    // = t3.id order by company_id desc";
-    // $sql = "select t1.id, t1.company_name, t1.phone_number, t1.mail_contact, t1.mail_manager, t1.mail_notification, t1.representative, t1.address, t1.company_url, count(t1.id) as count from company as t1 inner join company_user as t2 on t1.id = t2.company_id group by t1.id order by t1.id";
     $sql = "select t1.*,t2.* from
 (select * from company) as t1
 left outer join 
 (select count(*) as count_month, company_id from company_user where company_id IS NULL OR DATE_FORMAT(contact_datetime, '%Y%m')=DATE_FORMAT(NOW(), '%Y%m') group by company_id) as t2
 on t1.id=t2.company_id
+ORDER BY t2.count_month DESC 
 ";
     $stmt = $db->prepare($sql);
     $stmt->execute();
