@@ -188,9 +188,6 @@ $names = $stmt->fetchAll();
           <div class="card-header">
             <h4>
               学生一覧
-              <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#userAddModal">
-                Add
-              </button>
             </h4>
           </div>
           <div class="card-body">
@@ -199,6 +196,7 @@ $names = $stmt->fetchAll();
             </div>
             <div>
               <select name="select_company">
+                <option value=''>選択してください</option>
                 <?php foreach ($names as $name) : ?>
                   <option value="<?= $name['company_name'] ?>"><?= $name['company_name'] ?></option>
                 <?php endforeach; ?>

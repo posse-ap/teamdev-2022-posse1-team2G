@@ -211,17 +211,22 @@ function getdata(input, select) {
     var input = $('#live_search').val();
     var select = $('[name=select_company]').val();
     // フリーワードも会社も両方入力されている場合
-    if (input != '' && select != '') {
-      getdata(input, select);
-    }
-    // 会社のみで絞り込む場合
-    else if (input == '' && select != ''){
-      getdata(input, select);
-    }
-      // 絞り込み検索しない場合
-    else {
-      getdata();
-    }
+    // if (input != '' && select != '') {
+    //   getdata(input, select);
+    // }
+    // // 会社のみで検索する場合
+    // else if (input == '' && select != ''){
+    //   getdata(input, select);
+    // }
+    //   // フリーワードのみで検索する場合
+    // else if (input != '' && select == ''){
+    //   getdata(input, select);
+    // }
+    //   // 絞り込み検索しない場合
+    // else {
+    //   getdata();
+    // }
+    getdata(input, select);
   });
 
   $('#reset').click(function () {

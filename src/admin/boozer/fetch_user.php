@@ -7,7 +7,12 @@ if (!empty($_GET['input'])&& !empty($_GET['select']) ) {
     $input = $_GET['input'];
     $select = $_GET['select'];
 
-    $sql = " SELECT * FROM company_user as t1 inner join users as t2 on t1.user_id=t2.id inner join company as t3 on t1.company_id=t3.id
+    $sql = " SELECT t1.contact_datetime, t2.id, t2.name, t2.university, t2.department, t2.grad_year, t2.mail, t2.phone_number, t2.address, t3.company_name 
+    FROM company_user as t1 
+    inner join users as t2 
+    on t1.user_id=t2.id 
+    inner join company as t3 
+    on t1.company_id=t3.id
     WHERE 
     ( t2.id LIKE '%{$input}%' 
     OR t2.name LIKE '%{$input}%' 
@@ -19,21 +24,51 @@ if (!empty($_GET['input'])&& !empty($_GET['select']) ) {
     OR t2.address LIKE '%{$input}%' )
     -- 会社で検索
     AND t3.company_name LIKE '$select'
-    ORDER BY t2.id DESC ";
+    ORDER BY t1.contact_datetime DESC";
 
     $stmt = $db->prepare($sql);
     $stmt->execute();
     $result_array = $stmt->fetchAll();
 } 
-// 会社だけ入力されていたら会社で絞り込み
+// 会社だけ入力されていたら会社で検索
 else if(empty($_GET['input']) && !empty($_GET['select'])){
-    $input = $_GET['input'];
+    // $input = $_GET['input'];
     $select = $_GET['select'];
-    $sql = " SELECT * FROM company_user as t1 inner join users as t2 on t1.user_id=t2.id inner join company as t3 on t1.company_id=t3.id
+    $sql = " SELECT t1.contact_datetime, t2.id, t2.name, t2.university, t2.department, t2.grad_year, t2.mail, t2.phone_number, t2.address, t3.company_name 
+    FROM company_user as t1 
+    inner join users as t2 
+    on t1.user_id=t2.id 
+    inner join company as t3 
+    on t1.company_id=t3.id
     WHERE 
     -- 会社で検索
     t3.company_name LIKE '$select'
-    ORDER BY t2.id DESC ";
+    ORDER BY t1.contact_datetime DESC";
+
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+    $result_array = $stmt->fetchAll();
+} 
+// 会社は選択されていないがフリーワードで検索
+else if (!empty($_GET['input']) && empty($_GET['select'])) {
+    $input = $_GET['input'];
+    $select = $_GET['select'];
+    $sql = " SELECT t1.contact_datetime, t2.id, t2.name, t2.university, t2.department, t2.grad_year, t2.mail, t2.phone_number, t2.address, t3.company_name 
+    FROM company_user as t1 
+    inner join users as t2 
+    on t1.user_id=t2.id 
+    inner join company as t3 
+    on t1.company_id=t3.id
+    WHERE 
+    t2.id LIKE '%{$input}%' 
+    OR t2.name LIKE '%{$input}%' 
+    OR t2.university LIKE '%{$input}%' 
+    OR t2.department LIKE '%{$input}%' 
+    OR t2.grad_year LIKE '%{$input}%' 
+    OR t2.mail LIKE '%{$input}%' 
+    OR t2.phone_number LIKE '%{$input}%' 
+    OR t2.address LIKE '%{$input}%'
+    ORDER BY t1.contact_datetime DESC";
 
     $stmt = $db->prepare($sql);
     $stmt->execute();
@@ -125,7 +160,6 @@ else {
     $stmt = $db->prepare($sql);
     $stmt->execute();
     $result_array = $stmt->fetchAll();
-    // print_r($result_array);
 }
 
 
@@ -134,25 +168,26 @@ if ($result_array == true) {
     echo json_encode($result_array);
 } else {
     echo $return =
-        "<h4> 検索条件:$input, $select </h4><p>に一致するデータはありませんでした</p> ";
+        "<h4> 検索条件:$input  $select </h4><p>に一致するデータはありませんでした</p> ";
 }
 
-$sql = "SELECT t1.contact_datetime, t2.id, t2.name, t2.university, t2.department, t2.grad_year, t2.mail, t2.phone_number, t2.address, t2.rep, t3.company_name 
-    FROM company_user as t1 
-    inner join users as t2 
-    on t1.user_id=t2.id 
-    inner join company as t3 
-    on t1.company_id=t3.id 
-    ORDER BY t1.contact_datetime DESC";
-$sql = "SELECT *
-  FROM company_user as t1 
-  inner join users as t2 
-  on t1.user_id=t2.id 
-  inner join company as t3 
-  on t1.company_id=t3.id 
-  where t2.id=1 
-  ORDER BY t1.contact_datetime DESC";
-$stmt = $db->prepare($sql);
-$stmt->execute();
-$result_array = $stmt->fetchAll();
+// SQL文の作成
+// $sql = "SELECT t1.contact_datetime, t2.id, t2.name, t2.university, t2.department, t2.grad_year, t2.mail, t2.phone_number, t2.address, t2.rep, t3.company_name 
+//     FROM company_user as t1 
+//     inner join users as t2 
+//     on t1.user_id=t2.id 
+//     inner join company as t3 
+//     on t1.company_id=t3.id 
+//     ORDER BY t1.contact_datetime DESC";
+// $sql = "SELECT *
+//   FROM company_user as t1 
+//   inner join users as t2 
+//   on t1.user_id=t2.id 
+//   inner join company as t3 
+//   on t1.company_id=t3.id 
+//   where t2.id=1 
+//   ORDER BY t1.contact_datetime DESC";
+// $stmt = $db->prepare($sql);
+// $stmt->execute();
+// $result_array = $stmt->fetchAll();
 // print_r($result_array);
