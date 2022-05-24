@@ -1,7 +1,7 @@
 let tax = 0.1;
 let unit_price = 20000;
 let price = unit_price * (1 + tax);
-console.log(price);
+// console.log(price);
 
 $(document).ready(function () {
   getdata();
@@ -83,7 +83,7 @@ $(document).ready(function () {
           'company_url': company_url,
         },
         success: function (response) {
-          console.log(response);
+          // console.log(response);
           // Add→Edit
           $('#companyEditModal').modal('hide');
           $('.message-show').append('\
@@ -265,7 +265,7 @@ $(document).ready(function () {
                                 <td>' + value['company_name'] + '</td>\
                                 <td>' + value['phone_number'] + '</td>\
                                 <td>' + value['mail_manager'] + '</td>\
-                                <td>' + (Number(value['count']) * price).toLocaleString() + '</td>\
+                                <td>' + value['count_month']+ '</td>\
                                 <td>\
                                     <a href="#" class="badge btn-info viewbtn">VIEW</a>\
                                     <a href="#" class="badge btn-primary edit_btn">EDIT</a>\

@@ -252,19 +252,19 @@ $names = $stmt->fetchAll();
             </h4>
           </div>
           <div class="card-body">
-            <form>
-              <div>
-                <input type="text" class='form-control' id='live_search' name='input' autocomplete="off" placeholder="フリーワードを入力してください..">
-              </div>
-              <div>
-                <select name="" id="select_company">
-                  <?php foreach ($names as $name) : ?>
-                    <option value="<?= $name['company_name'] ?>"><?= $name['company_name'] ?></option>
-                  <?php endforeach; ?>
-                </select>
-              </div>
-              <input type="submit" id="search" value='検索'>
-            </form>
+
+            <div>
+              <input type="text" class='form-control' id='live_search' name='input' autocomplete="off" placeholder="フリーワードを入力してください..">
+            </div>
+            <div>
+              <select name="select_company">
+                <?php foreach ($names as $name) : ?>
+                  <option value="<?= $name['company_name'] ?>"><?= $name['company_name'] ?></option>
+                <?php endforeach; ?>
+              </select>
+            </div>
+            <input type="submit" id="search" value='検索'>
+
             <div class="message-show">
 
             </div>

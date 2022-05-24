@@ -244,11 +244,14 @@ $(document).ready(function () {
 
 
 
-function getdata(input) {
+function getdata(input, select) {
   $.ajax({
     type: "GET",
     url: "./fetch_user.php",
-    data: { input: input },
+    data: {
+      input: input,
+      select: select
+    },
     success: function (response) {
       // console.log(response);
       $('.studentdata').html(response);
@@ -273,10 +276,16 @@ function getdata(input) {
   $('#search').click(function () {
 
     var input = $('#live_search').val();
-    var select = $('#select_company').val();
-    // alert(input);
+    var select = $('[name=select_company]').val();
 
-    if (input != '') {
+
+    if (input != '' && select != '') {
+      getdata(input, select);
+    }
+    else if (input == '' && select != ''){
+      getdata(select);
+    }
+    else if (input != '' && select == ''){
       getdata(input);
     }
     else {
@@ -287,3 +296,12 @@ function getdata(input) {
 
   }
 });
+
+
+// $('#search').click(function () {
+
+//   var input = $('#live_search').val();
+//   var select = $('[name=select_company]').val();
+//   alert(select);
+
+// });
