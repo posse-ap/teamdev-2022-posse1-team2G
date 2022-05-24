@@ -33,7 +33,7 @@ $(document).ready(function () {
                                 </div>\
                             ');
         $('.studentdata').html("");
-        GetDataTable();
+        getdata();
       }
     });
   });
@@ -95,7 +95,7 @@ $(document).ready(function () {
                                 </div>\
                             ');
           $('.studentdata').html("");
-          getdate();
+          getdata();
         }
       });
     }
@@ -154,7 +154,7 @@ $(document).ready(function () {
                                 </div>\
                             ');
           $('.studentdata').html("");
-          getdate();
+          getdata();
           $('.company_name').val("");
           $('.phone_number').val("");
           $('.mail_contact').val("");
@@ -278,52 +278,6 @@ $(document).ready(function () {
   }
 
 
-  // function GetDataTable() {
-  //   $("#companyTable").DataTable({
-
-  //     columns:
-  //       // { data: data }
-  //       [
-  //       { data: 'id' },
-  //       { data: 'company_name' },
-  //       { data: 'phone_number' },
-  //       { data: 'mail_contact' },
-  //       { data: 'representative' },
-  //       // { data: 'mail_manager' },
-  //       ],
-  //     "ajax": {
-  //       "url": "./fetch_company.php",
-  //       "type": "GET",
-  //     "success": function (response) {
-  //       $.each(response, function (key, value) {
-  //         $('.studentdata').append('<tr>' +
-  //           '<td class="stud_id">' + value['id'] + '</td>\
-  //                               <td>' + value['company_name'] + '</td>\
-  //                               <td>' + value['phone_number'] + '</td>\
-  //                               <td>' + value['mail_manager'] + '</td>\
-  //                               <td>' + value['representative'] + '</td>\
-  //                               <td>\
-  //                                   <a href="#" class="badge btn-info viewbtn">VIEW</a>\
-  //                                   <a href="#" class="badge btn-primary edit_btn">EDIT</a>\
-  //                                   <a href="#" class="badge btn-danger delete_btn">Delete</a>\
-  //                               </td>\
-  //                           </tr>');
-  //       });
-  //       // alert(response);
-  //       }
-  //     },
-  //   });
-  // }
-
-
-
-  // $(function () {
-  //   $("#myTable").DataTable({
-  //     "language": {
-  //       "url": "//cdn.datatables.net/plug-ins/1.10.22/i18n/Japanese.json"
-  //     }
-  //   });
-  // });
 
 
 });
