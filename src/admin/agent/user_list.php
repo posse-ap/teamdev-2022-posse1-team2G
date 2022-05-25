@@ -37,64 +37,6 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 10 > time()) {
 </head>
 
 <body>
-
-  <!-- Add Modal -->
-  <!-- <div class="modal fade" id="userAddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">新規学生追加
-          </h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="error-message">
-
-              </div>
-            </div>
-            <div class="col-md-6">
-              <label for="">名前</label>
-              <input type="text" class="form-control name">
-            </div>
-            <div class="col-md-6">
-              <label for="">大学</label>
-              <input type="text" class="form-control university">
-            </div>
-            <div class="col-md-6">
-              <label for="">学部</label>
-              <input type="text" class="form-control department">
-            </div>
-            <div class="col-md-6">
-              <label for="">卒業年</label>
-              <input type="text" class="form-control grad_year">
-            </div>
-            <div class="col-md-6">
-              <label for="">メールアドレス</label>
-              <input type="text" class="form-control mail">
-            </div>
-            <div class="col-md-6">
-              <label for="">電話番号</label>
-              <input type="text" class="form-control phone_number">
-            </div>
-            <div class="col-md-6">
-              <label for="">住所</label>
-              <input type="text" class="form-control address">
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary user_add_ajax">Save</button>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
-
   <!-- View Modal -->
   <div class="modal fade" id="userViewModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -182,44 +124,9 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 10 > time()) {
               </div>
             </div>
             <!-- add modalからもってきてクラス名をIDに変更 -->
-            <div class="col-md-6">
-              <label for="">名前</label>
-              <p class="form-control" id="name_edit"></p>
-              <!-- <input type="text" class="form-control" > -->
-            </div>
             <div class="col-md-6 mb-3">
               <label for="">担当者</label>
               <input type="text" class="form-control" id="rep_edit">
-            </div>
-            <div class="col-md-6">
-              <label for="">大学名</label>
-              <p class="form-control" id="university_edit"></p>
-              <!-- <input type="text" class="form-control" id="university_edit"> -->
-            </div>
-            <div class="col-md-6">
-              <label for="">学部</label>
-              <p class="form-control" id="department_edit"></p>
-              <!-- <input type="text" class="form-control" id="department_edit"> -->
-            </div>
-            <div class="col-md-6">
-              <label for="">卒業年</label>
-              <p class="form-control" id="grad_year_edit"></p>
-              <!-- <input type="text" class="form-control" id="grad_year_edit"> -->
-            </div>
-            <div class="col-md-6">
-              <label for="">メールアドレス</label>
-              <p class="form-control" id="mail_edit"></p>
-              <!-- <input type="text" class="form-control" id="mail_edit"> -->
-            </div>
-            <div class="col-md-6">
-              <label for="">電話番号</label>
-              <p class="form-control" id="phone_number_edit"></p>
-              <!-- <input type="text" class="form-control" id="phone_number_edit"> -->
-            </div>
-            <div class="col-md-6">
-              <label for="">住所</label>
-              <p class="form-control" id="address_edit"></p>
-              <!-- <input type="text" class="form-control" id="address_edit"> -->
             </div>
           </div>
         </div>
