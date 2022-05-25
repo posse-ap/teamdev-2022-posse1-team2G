@@ -4,7 +4,7 @@ $(document).ready(function () {
   // modal内の削除するボタンを押したときの挙動
   $('.user_delete_ajax').click(function (e) {
     e.preventDefault();
-
+// id_deleteの値を変数に入れる
     var stud_id = $('#id_delete').val();
     var stud_company_name = $('#company_name_delete').val();
     $.ajax({
@@ -124,12 +124,15 @@ $(document).ready(function () {
   // edit modal
   $(document).on("click", ".edit_btn", function () {
     var stud_id = $(this).closest('tr').find('.stud_id').text();
+    var stud_company_name = $(this).closest('tr').find('.stud_company_name').text();
+    
     $.ajax({
       type: "POST",
       url: "./crud_user.php",
       data: {
         'checking_edit': true,
         'stud_id': stud_id,
+        'stud_company_name': stud_company_name,
       },
       success: function (response) {
         $.each(response, function (key, useredit) {
@@ -158,6 +161,7 @@ $(document).ready(function () {
   $(document).on("click", ".viewbtn", function () {
 
     var stud_id = $(this).closest('tr').find('.stud_id').text();
+    var stud_company_name = $(this).closest('tr').find('.stud_company_name').text();
 
     $.ajax({
       type: "POST",
@@ -165,6 +169,7 @@ $(document).ready(function () {
       data: {
         'checking_view': true,
         'stud_id': stud_id,
+        'stud_company_name': stud_company_name,
       },
       success: function (response) {
         $.each(response, function (key, userview) {

@@ -30,6 +30,7 @@ require('../../dbconnect.php');
 // view modal
 if (isset($_POST['checking_view'])) {
   $stud_id = $_POST['stud_id'];
+  $stud_company_name = $_POST['stud_company_name'];
   $result = [];
 
   // $query = "SELECT * FROM users WHERE id='$stud_id' ";
@@ -40,6 +41,7 @@ if (isset($_POST['checking_view'])) {
   inner join company as t3 
   on t1.company_id=t3.id 
   where t2.id='$stud_id' 
+  AND t3.company_name='$stud_company_name' 
   ORDER BY t1.contact_datetime DESC";
   $stmt = $db->prepare($query);
   $stmt->execute();
@@ -58,6 +60,7 @@ if (isset($_POST['checking_view'])) {
 // edit modal
 if (isset($_POST['checking_edit'])) {
   $stud_id = $_POST['stud_id'];
+  $stud_company_name = $_POST['stud_company_name'];
 
   // $query_edit = "SELECT * FROM users WHERE id='$stud_id' ";
   $query_edit = "SELECT t1.contact_datetime, t2.id, t2.name, t2.university, t2.department, t2.grad_year, t2.mail, t2.phone_number, t2.address, t2.rep, t3.company_name 
@@ -67,6 +70,7 @@ if (isset($_POST['checking_edit'])) {
   inner join company as t3 
   on t1.company_id=t3.id 
   where t2.id='$stud_id' 
+  AND t3.company_name='$stud_company_name' 
   ORDER BY t1.contact_datetime DESC";
   $stmt_edit = $db->prepare($query_edit);
   $stmt_edit->execute();
