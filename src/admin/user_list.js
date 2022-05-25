@@ -214,40 +214,60 @@ function getdata(input, select) {
     }
   });
   // 検索ボタンを推したときの徐堂
-  $('#search').click(function () {
-    var input = $('#live_search').val();
-    var select = $('[name=select_company]').val();
-    // フリーワードも会社も両方入力されている場合
-    // if (input != '' && select != '') {
-    //   getdata(input, select);
-    // }
-    // // 会社のみで検索する場合
-    // else if (input == '' && select != ''){
-    //   getdata(input, select);
-    // }
-    //   // フリーワードのみで検索する場合
-    // else if (input != '' && select == ''){
-    //   getdata(input, select);
-    // }
-    //   // 絞り込み検索しない場合
-    // else {
-    //   getdata();
-    // }
-    getdata(input, select);
+  // $('#search').click(function () {
+  //   var input = $('#live_search').val();
+  //   var select = $('[name=select_company]').val();
+  //   // フリーワードも会社も両方入力されている場合
+  //   // if (input != '' && select != '') {
+  //   //   getdata(input, select);
+  //   // }
+  //   // // 会社のみで検索する場合
+  //   // else if (input == '' && select != ''){
+  //   //   getdata(input, select);
+  //   // }
+  //   //   // フリーワードのみで検索する場合
+  //   // else if (input != '' && select == ''){
+  //   //   getdata(input, select);
+  //   // }
+  //   //   // 絞り込み検索しない場合
+  //   // else {
+  //   //   getdata();
+  //   // }
+  //   getdata(input, select);
+  // });
+
+  // $('#reset').click(function () {
+  //   getdata();
+  // });
+
+
+ 
+
+
+
+    }
   });
 
-  $('#reset').click(function () {
-    getdata();
-  });
 
-  }
+
+//   }
+// });
+
+
+$('#search').click(function () {
+
+  var input = $('#live_search').val();
+  var select = $('[name=select_company]').val();
+  alert(select);
+
 });
 
 
-// $('#search').click(function () {
-
-//   var input = $('#live_search').val();
-//   var select = $('[name=select_company]').val();
-//   alert(select);
-
+// $("#live_search").keypress(function (e) {
+//   if (e.which == 13) {
+//     var input = $('#live_search').val();
+//     var select = $('[name=select_company]').val();
+//     alert(input);
+//     // getdata(input, select);
+//   }
 // });

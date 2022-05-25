@@ -22,7 +22,9 @@ $names = $stmt->fetchAll();
   <link rel="stylesheet" href="../../normalize.css">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-  <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.css" /> -->
+  <link rel="stylesheet" href="../../normalize.css">
+  <!-- bootstrap icon -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 
   <link rel="stylesheet" href="../admin_style.css">
 
@@ -196,23 +198,24 @@ $names = $stmt->fetchAll();
           </div>
           <div class="card-body">
             <div class='search_container'>
-              <div>
+              <div class='user_list_search_text'>
                 <input type="text" class='form-control' id='live_search' name='input' autocomplete="off" placeholder="フリーワードを入力してください..">
               </div>
-              <div>
+              <div class='user_list_search_select'>
                 <select name="select_company">
-                  <option value=''>選択してください</option>
+                  <option value=''>会社を選択</option>
                   <?php foreach ($names as $name) : ?>
                     <option value="<?= $name['company_name'] ?>"><?= $name['company_name'] ?></option>
                   <?php endforeach; ?>
                 </select>
               </div>
-              <div>
-                <input type="submit" id="search" value='検索'>
+              <div class='user_list_search_submit'>
+                <!-- <input type="submit" id="search" value='検索'> -->
+                <i class="bi bi-search font-weight-bold" id='search' width='24' height='24'></i>
               </div>
-              <div>
+              <!-- <div>
                 <button id='reset'>リセット</button>
-              </div>
+              </div> -->
             </div>
             <div class="message-show">
             </div>
