@@ -12,7 +12,7 @@ $names = $stmt->fetchAll();
 <?php endforeach; ?> -->
 
 <!doctype html>
-<html lang="en">
+<html lang="ja">
 
 <head>
   <!-- Required meta tags -->
