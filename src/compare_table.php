@@ -19,13 +19,8 @@ if ( isset( $_POST[ 'ticket' ], $_SESSION[ 'ticket' ] ) ) {
   die( 'Access Denied（直接このページにはアクセスできません）' );
 }
 
-
+//company_idを取得
 $company_ids =  $_POST['id'];
-
-// echo "<pre>";
-// print_r($company_ids); //Array ( [0] => 1 [1] => 5 )
-// echo "</pre>";
-
 
 // キーワードの数だけループして、LIKE句の配列を作る
 $company_id_Condition = [];
@@ -33,15 +28,10 @@ foreach ($company_ids as $company_id) {
   $company_id_Condition[] = 'company_id = ' . $company_id;
 }
 
-// echo "<pre>";
-// print_r($company_id_Condition); 
-// echo "</pre>";
-
-
 // これをORでつなげて、文字列にする
 $company_id_Condition = implode(' OR ', $company_id_Condition);
 
-// あとはSELECT文にくっつけてできあがり♪
+// あとはSELECT文にくっつける
 $sql = 'SELECT * FROM company_posting_information WHERE ' . $company_id_Condition;
 $stmt = $db->query($sql);
 $stmt->execute();
@@ -50,13 +40,30 @@ $companies = $stmt->fetchAll();
 // echo "<pre>";
 // print_r($companies);
 // echo "</pre>";
-
-// $stmt = $db->prepare("SELECT * FROM company_posting_information WHERE id = :id");
-// $id = $company_id;
-// $stmt->bindValue(':id', $id, PDO::PARAM_STR);
-// $stmt->execute();
-// $info = $stmt->fetch();
-
+// [id] => 1
+//             [company_id] => 1
+//             [logo] => ./src/admin/img/logo/
+//             [name] => 鈴木会社
+//             [img] => ./src/admin/img/img/
+//             [industries] => IT
+//             [achievement] => 満足度９８％
+//             [type] => 理系
+//             [catch_copy] => dream
+//             [information] => 鈴木会社は～で、実績が～で、…
+//             [strength] => 強み
+//             [job_offer_number] => 1千万人
+//             [user_count] => 2千万人
+//             [informal_job_offer_rate] => 90%
+//             [satisfaction_degrees] => 89%
+//             [finding_employment_target] => IT企業
+//             [ES] => 1
+//             [interview] => 1
+//             [limited_course] => 1
+//             [competence_diagnosis] => 1
+//             [special_selection] => 1
+//             [interview_style] => オンライン
+//             [location] => オンライン
+//             [delete_flg] => 0
 ?>
 
 
@@ -75,26 +82,7 @@ $companies = $stmt->fetchAll();
   <main>
     <section id="company">
       <div class="company_wrapper">
-        <h2>比較表</h2>
-        <!-- <div class="company_list">
-          <!-- 一つの会社ボックス --
-          <?php foreach ($companies as $company) : ?>
-              <div class="company_box outline">
-                  <div class="company_info_second">
-                      <img src="" alt="">
-                      <p><?= $company['name']; ?></p>
-                  </div>
-                  
-                  <div class="company_box_check">
-                    <!-- valueにデータを追加していくことで、一時表示ボックスに反映できる --
-                    <label for="check"><input type="checkbox" name="select_company_checkboxes" value="<?= $company['company_id'];?>-<?= $company['name'];?>" onchange="checked_counter()">お問い合わせする</label>
-                  </div>
-                <!-- </a> --
-              </div>
-            <?php endforeach; ?>
-            <!-- ここまで --
-        </div> -->
-        
+        <h2>比較表</h2>        
       </div>
     </section>
   </main>
@@ -107,7 +95,7 @@ $companies = $stmt->fetchAll();
           <thead>
               <!-- 企業名 -->
               <tr class="tr-sticky">
-                  <th width="5px">企業名</th>
+                  <th>企業名</th>
                     <?php foreach ($companies as $company) : ?>
                        <td class="p-0" style="text-align:center" ><?= $company['name']; ?></td>
                     <?php endforeach; ?>
@@ -115,9 +103,9 @@ $companies = $stmt->fetchAll();
               </tr>
           </thead>
 
-              <!-- start title -->
+              <!-- 企業ロゴ -->
               <tr>
-                <th class="text-center" width="5px">企業ロゴ</th>
+                <th class="text-center">企業ロゴ</th>
                 <?php foreach ($companies as $company) : ?>
                   <td class="">
                       <div class="table_company_img">
@@ -131,39 +119,15 @@ $companies = $stmt->fetchAll();
                 <?php endforeach; ?>
               </tr>
 
-              <!-- start img -->
+              <!-- サブタイトル -->
+              <tr class="tr-sticky">
+                  <td>基本情報</td>
+              </tr>
               <tr>
-                  <th width="5px">企業イメージ</th>
-                  <td class="" style="text-align:center">
-                      <a href = "/ec_shopping/ec/compareItem/4549995250022" onclick="ga('send', 'event', 'link_ec_shopping_specs_compare', 'click', 'ec_shopping_compare_specs_link_{key(4549995250022)}', 1);">
-                          <div class="img-outer row m-0">
-                              <div class="img-container text-center col-xs-12">
-                                  <img class="compare-img" src="http://thumbnail.image.rakuten.co.jp/@0_gold/gigamedia/img/sba/pc/ip2021s256_sbht.jpg?_ex=128x128" alt="5/30 受付まで iPad 10.2インチ 第9世代 Wi-Fi 256GB 2021年秋モデル MK2P3J/A + SoftBank 光 ソフトバンク光 セット 送料無料 新品 WiFi">
-                              </div>
-                          </div>
-                          <div>
-                              <p class="pt-1 text-center"><span class="price pinkred h4" itemprop="price" content="38980"> ¥38,980                                    </span> </p>
-                              <div class="text-center">
-                                  <button class="btn hikaku text-banner">価格比較をする</button>
-                              </div>
-                          </div>
-                      </a>
-                  </td>
-                  <td class="p-0" style="text-align:center">
-                      <a href = "/ec_shopping/ec/compareItem/4549995250015" onclick="ga('send', 'event', 'link_ec_shopping_specs_compare', 'click', 'ec_shopping_compare_specs_link_{key(4549995250015)}', 1);">
-                          <div class="img-outer row m-0">
-                              <div class="img-container text-center col-xs-12">
-                                  <img class="compare-img" src="http://thumbnail.image.rakuten.co.jp/@0_gold/gigamedia/img/sba/pc/ip2021g256_sbht.jpg?_ex=128x128" alt="5/30 受付まで iPad 10.2インチ 第9世代 Wi-Fi 256GB 2021年秋モデル MK2N3J/A + SoftBank 光 ソフトバンク光 セット 送料無料 新品 WiFi">
-                              </div>
-                          </div>
-                          <div>
-                              <p class="pt-1 text-center"><span class="price pinkred h4" itemprop="price" content="38980"> ¥38,980                                    </span> </p>
-                              <div class="text-center">
-                                  <button class="btn hikaku text-banner">価格比較をする</button>
-                              </div>
-                          </div>
-                      </a>
-                  </td>
+                  <th>業界</th>
+                  <?php foreach ($companies as $company) : ?>
+                    <td class=""><?= $company['industries']; ?></td>
+                  <?php endforeach; ?>
               </tr>
   	</table>
   </div>
