@@ -29,10 +29,10 @@ $(document).ready(function () {
         getdata();
       }
     });
-    
+
   })
 
-// 削除ボタン押してみたときの挙動
+  // 削除ボタン押してみたときの挙動
   $(document).on("click", ".delete_btn", function () {
     // stud_idはusersのid
     var stud_id = $(this).closest('tr').find('.stud_id').text();
@@ -46,7 +46,7 @@ $(document).ready(function () {
   });
 
 
-// updateするを押してみたときの挙動
+  // updateするを押してみたときの挙動
   $('.user_update_ajax').click(function (e) {
     e.preventDefault();
 
@@ -185,21 +185,21 @@ $(document).ready(function () {
   });
 
 
-function getdata(input, select) {
-  $.ajax({
-    type: "GET",
-    url: "./fetch_user.php",
-    data: {
-      input: input,
-      select: select
-    },
-    success: function (response) {
-      // console.log(response);
-      $('.studentdata').html(response);
-      $.each(response, function (key, value) {
-        // console.log(value['fname']);
-        $('.studentdata').append('<tr>' +
-          '<td class="stud_id">' + value['id'] + '</td>\
+  function getdata(input, select) {
+    $.ajax({
+      type: "GET",
+      url: "./fetch_user.php",
+      data: {
+        input: input,
+        select: select,
+      },
+      success: function (response) {
+        // console.log(response);
+        $('.studentdata').html(response);
+        $.each(response, function (key, value) {
+          // console.log(value['fname']);
+          $('.studentdata').append('<tr>' +
+            '<td class="stud_id">' + value['id'] + '</td>\
                                 <td>' + value['name'] + '</td>\
                                 <td>' + value['company_name'] + '</td>\
                                 <td>' + value['phone_number'] + '</td>\
@@ -210,38 +210,33 @@ function getdata(input, select) {
                                     <a href="#" class="badge btn-danger delete_btn">Delete</a>\
                                 </td>\
                             </tr>');
-      });
-    }
-  });
-  検索ボタンを推したときの徐堂
-  $('#search').click(function () {
-    var input = $('#live_search').val();
-    var select = $('[name=select_company]').val();
-    // フリーワードも会社も両方入力されている場合
-    // if (input != '' && select != '') {
-    //   getdata(input, select);
-    // }
-    // // 会社のみで検索する場合
-    // else if (input == '' && select != ''){
-    //   getdata(input, select);
-    // }
-    //   // フリーワードのみで検索する場合
-    // else if (input != '' && select == ''){
-    //   getdata(input, select);
-    // }
-    //   // 絞り込み検索しない場合
-    // else {
-    //   getdata();
-    // }
-    getdata(input, select);
-  });
-
-  $('#reset').click(function () {
-    getdata();
-  });
-
-    }
-  });
+        });
+      }
+    });
+    // 検索ボタンを推したときの挙動
+    $('#search').click(function () {
+      var input = $('#live_search').val();
+      var select = $('[name=select_company]').val();
+      // フリーワードも会社も両方入力されている場合
+      // if (input != '' && select != '') {
+      //   getdata(input, select);
+      // }
+      // // 会社のみで検索する場合
+      // else if (input == '' && select != ''){
+      //   getdata(input, select);
+      // }
+      //   // フリーワードのみで検索する場合
+      // else if (input != '' && select == ''){
+      //   getdata(input, select);
+      // }
+      //   // 絞り込み検索しない場合
+      // else {
+      //   getdata();
+      // }
+      getdata(input, select);
+    });
+  }
+});
 
 
 
