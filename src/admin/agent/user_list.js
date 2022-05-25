@@ -275,10 +275,8 @@ $(document).ready(function () {
       url: "./fetch_user.php",
       data: { input: input },
       success: function (response) {
-        // console.log(response);
         $('.studentdata').html(response);
         $.each(response, function (key, value) {
-          // console.log(value['fname']);
           $('.studentdata').append('<tr>' +
             '<td class="stud_id">' + value['id'] + '</td>\
                                 <td>' + value['name'] + '</td>\
@@ -294,17 +292,12 @@ $(document).ready(function () {
       }
     });
 
-    // $('#search').click(function () {
-
-    //   var input = $('#live_search').val();
-    //   if (input != '') {
-    //     getdata(input);
-    //   }
-    //   else {
-    //     getdata();
-    //   }
-
-    // });
+    $("#live_search").keypress(function (e) {
+      if (e.which == 13) {
+        var input = $('#live_search').val();
+        getdata(input);
+      }
+    });
 
   }
 });

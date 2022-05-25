@@ -4,14 +4,16 @@ $(document).ready(function () {
   // modal内の削除するボタンを押したときの挙動
   $('.user_delete_ajax').click(function (e) {
     e.preventDefault();
-
+// id_deleteの値を変数に入れる
     var stud_id = $('#id_delete').val();
+    var stud_company_name = $('#company_name_delete').val();
     $.ajax({
       type: "POST",
       url: "./crud_user.php",
       data: {
         'checking_delete': true,
         'stud_id': stud_id,
+        'stud_company_name': stud_company_name,
       },
       success: function (response) {
         $('#userDeleteModal').modal('hide');
@@ -27,20 +29,24 @@ $(document).ready(function () {
         getdata();
       }
     });
-    
+    // alert(stud_company_name);
   })
 
-// 削除機能押してみたときの挙動
+  // 削除ボタン押してみたときの挙動
   $(document).on("click", ".delete_btn", function () {
-
+    // stud_idはusersのid
     var stud_id = $(this).closest('tr').find('.stud_id').text();
-    $('#id_delete').val(stud_id)
+    // #id_deleteのvalueをstud_idにする
+    $('#id_delete').val(stud_id);
+    var stud_company_name = $(this).closest('tr').find('.stud_company_name').text();
+    $('#company_name_delete').val(stud_company_name);
+
     $('#userDeleteModal').modal('show');
 
   });
 
 
-
+  // updateするを押してみたときの挙動
   $('.user_update_ajax').click(function (e) {
     e.preventDefault();
 
@@ -116,16 +122,17 @@ $(document).ready(function () {
 
 
   // edit modal
-  // view modalから持ってきた
   $(document).on("click", ".edit_btn", function () {
-
     var stud_id = $(this).closest('tr').find('.stud_id').text();
+    var stud_company_name = $(this).closest('tr').find('.stud_company_name').text();
+    
     $.ajax({
       type: "POST",
       url: "./crud_user.php",
       data: {
         'checking_edit': true,
         'stud_id': stud_id,
+        'stud_company_name': stud_company_name,
       },
       success: function (response) {
         $.each(response, function (key, useredit) {
@@ -154,6 +161,7 @@ $(document).ready(function () {
   $(document).on("click", ".viewbtn", function () {
 
     var stud_id = $(this).closest('tr').find('.stud_id').text();
+    var stud_company_name = $(this).closest('tr').find('.stud_company_name').text();
 
     $.ajax({
       type: "POST",
@@ -161,6 +169,7 @@ $(document).ready(function () {
       data: {
         'checking_view': true,
         'stud_id': stud_id,
+        'stud_company_name': stud_company_name,
       },
       success: function (response) {
         $.each(response, function (key, userview) {
@@ -172,6 +181,7 @@ $(document).ready(function () {
           $('.mail_view').text(userview['mail']);
           $('.phone_number_view').text(userview['phone_number']);
           $('.address_view').text(userview['address']);
+          $('.company_name_view').text(userview['company_name']);
         });
         $('#userViewModal').modal('show');
       }
@@ -180,107 +190,79 @@ $(document).ready(function () {
   });
 
 
-  $('.user_add_ajax').click(function (e) {
-    e.preventDefault();
-
-    var name = $('.name').val();
-    var university = $('.university').val();
-    var department = $('.department').val();
-    var grad_year = $('.grad_year').val();
-    var mail = $('.mail').val();
-    var phone_number = $('.phone_number').val();
-    var address = $('.address').val();
-
-    if (name != '' & university != '' & department != '' & grad_year != '' & mail != '' & phone_number != '' & address != '') {
-      $.ajax({
-        type: "POST",
-        url: "./crud_user.php",
-        data: {
-          'checking_add': true,
-          'name': name,
-          'university': university,
-          'department': department,
-          'grad_year': grad_year,
-          'mail': mail,
-          'phone_number': phone_number,
-          'address': address,
-        },
-        success: function (response) {
-          // console.log(response);
-          $('#userAddModal').modal('hide');
-          $('.message-show').append('\
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">\
-                                    <strong>Hey!</strong> '+ response + '.\
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">\
-                                        <span aria-hidden="true">&times;</span>\
-                                    </button>\
-                                </div>\
-                            ');
-          $('.studentdata').html("");
-          getdata();
-          $('.name').val("");
-          $('.university').val("");
-          $('.department').val("");
-          $('.grad_year').val("");
-          $('.mail').val("");
-          $('.phone_number').val("");
-          $('.address').val("");
-        }
-      });
-
-    }
-    else {
-      // console.log("Please enter all fileds.");
-      $('.error-message').append('\
-                        <div class="alert alert-warning alert-dismissible fade show" role="alert">\
-                            <strong>Hey!</strong> Please enter all fileds.\
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">\
-                                <span aria-hidden="true">&times;</span>\
-                            </button>\
-                        </div>\
-                    ');
-    }
-  })
-
-
-
-function getdata(input) {
-  $.ajax({
-    type: "GET",
-    url: "./fetch_user.php",
-    data: { input: input },
-    success: function (response) {
-      // console.log(response);
-      $('.studentdata').html(response);
-      $.each(response, function (key, value) {
-        // console.log(value['fname']);
-        $('.studentdata').append('<tr>' +
-          '<td class="stud_id">' + value['id'] + '</td>\
+  function getdata(input, select) {
+    $.ajax({
+      type: "GET",
+      url: "./fetch_user.php",
+      data: {
+        input: input,
+        select: select,
+      },
+      success: function (response) {
+        // console.log(response);
+        $('.studentdata').html(response);
+        $.each(response, function (key, value) {
+          // console.log(value['fname']);
+          $('.studentdata').append('<tr>' +
+            '<td class="stud_id">' + value['id'] + '</td>\
                                 <td>' + value['name'] + '</td>\
+                                <td class="stud_company_name">' + value['company_name'] + '</td>\
                                 <td>' + value['phone_number'] + '</td>\
-                                <td>' + value['mail'] + '</td>\
-                                <td>' + value['address'] + '</td>\
+                                <td>' + value['contact_datetime'] + '</td>\
                                 <td>\
                                     <a href="#" class="badge btn-info viewbtn">VIEW</a>\
                                     <a href="#" class="badge btn-primary edit_btn">EDIT</a>\
                                     <a href="#" class="badge btn-danger delete_btn">Delete</a>\
                                 </td>\
                             </tr>');
-      });
-    }
-  });
-
-  $('#search').click(function () {
-
-    var input = $('#live_search').val();
-    if (input != '') {
-      getdata(input);
-    }
-    else {
-      getdata();
-    }
-
-  });
-
+        });
+      }
+    });
+    // 検索ボタンを推したときの挙動
+    $('#search').click(function () {
+      var input = $('#live_search').val();
+      var select = $('[name=select_company]').val();
+      // フリーワードも会社も両方入力されている場合
+      // if (input != '' && select != '') {
+      //   getdata(input, select);
+      // }
+      // // 会社のみで検索する場合
+      // else if (input == '' && select != ''){
+      //   getdata(input, select);
+      // }
+      //   // フリーワードのみで検索する場合
+      // else if (input != '' && select == ''){
+      //   getdata(input, select);
+      // }
+      //   // 絞り込み検索しない場合
+      // else {
+      //   getdata();
+      // }
+      getdata(input, select);
+    });
   }
 });
+
+
+
+//   }
+// });
+
+
+// $('#search').click(function () {
+
+//   var input = $('#live_search').val();
+//   var select = $('[name=select_company]').val();
+//   alert(select);
+
+// });
+
+
+// $("#live_search").keypress(function (e) {
+//   if (e.which == 13) {
+//     var input = $('#live_search').val();
+//     var select = $('[name=select_company]').val();
+//     alert(input);
+//     // getdata(input, select);
+//   }
+// });

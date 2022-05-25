@@ -1,5 +1,3 @@
-
-
 <!doctype html>
 <html lang="en">
 
@@ -11,6 +9,8 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.css" />
+  <!-- icon用 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 
   <title>PHP - AJAX - CRUD</title>
 </head>
@@ -270,22 +270,31 @@
             </h4>
           </div>
           <div class="card-body">
-            <div class="message-show">
-
+            <div class='company_list_search_container'>
+              <i class="bi bi-search company_list_search_container_icon"></i>
+              <input type="search" class='form-control company_list_search_container_search' id='live_search' name='input' autocomplete="off" placeholder="会社名...">
+              <!-- <input type="text" class='form-control ' id='live_search' name='input' autocomplete="off" placeholder="会社名..."> -->
             </div>
-            <table class="table table-bordered table-striped " id="companyTable">
+            <!-- <div>
+              <input type="submit" id="search" value='検索'>
+            </div> -->
+            <!-- <div>
+              <button id='reset'>リセット</button>
+            </div> -->
+            <div class="message-show">
+            </div>
+            <table class="table table-bordered table-striped">
               <thead>
                 <tr>
                   <th>ID</th>
                   <th>会社名</th>
                   <th>電話番号</th>
-                  <th>メールアドレス</th>
+                  <th>連絡用メールアドレス</th>
                   <th>今月の金額</th>
-                  <th>機能</th>
+                  <th>操作</th>
                 </tr>
               </thead>
               <tbody class="studentdata">
-
               </tbody>
             </table>
           </div>

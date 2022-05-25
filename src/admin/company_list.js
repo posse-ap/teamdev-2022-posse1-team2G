@@ -1,7 +1,7 @@
 let tax = 0.1;
 let unit_price = 20000;
 let price = unit_price * (1 + tax);
-console.log(price);
+// console.log(price);
 
 $(document).ready(function () {
   getdata();
@@ -33,7 +33,7 @@ $(document).ready(function () {
                                 </div>\
                             ');
         $('.studentdata').html("");
-        GetDataTable();
+        getdata();
       }
     });
   });
@@ -83,7 +83,7 @@ $(document).ready(function () {
           'company_url': company_url,
         },
         success: function (response) {
-          console.log(response);
+          // console.log(response);
           // Add→Edit
           $('#companyEditModal').modal('hide');
           $('.message-show').append('\
@@ -95,7 +95,7 @@ $(document).ready(function () {
                                 </div>\
                             ');
           $('.studentdata').html("");
-          getdate();
+          getdata();
         }
       });
     }
@@ -154,7 +154,7 @@ $(document).ready(function () {
                                 </div>\
                             ');
           $('.studentdata').html("");
-          getdate();
+          getdata();
           $('.company_name').val("");
           $('.phone_number').val("");
           $('.mail_contact').val("");
@@ -253,19 +253,21 @@ $(document).ready(function () {
 
   });
 
-  
-  function getdata() {
+
+  function getdata(input) {
     $.ajax({
       type: "GET",
       url: "./fetch_company.php",
+      data: { input: input },
       success: function (response) {
+        $('.studentdata').html(response);
         $.each(response, function (key, value) {
           $('.studentdata').append('<tr>' +
             '<td class="stud_id">' + value['id'] + '</td>\
                                 <td>' + value['company_name'] + '</td>\
                                 <td>' + value['phone_number'] + '</td>\
                                 <td>' + value['mail_manager'] + '</td>\
-                                <td>' + (Number(value['count']) * price).toLocaleString() + '</td>\
+                                <td>' + (Number(value['count_month']) * price).toLocaleString() + '</td>\
                                 <td>\
                                     <a href="#" class="badge btn-info viewbtn">VIEW</a>\
                                     <a href="#" class="badge btn-primary edit_btn">EDIT</a>\
@@ -275,55 +277,27 @@ $(document).ready(function () {
         });
       }
     });
+    $("#live_search").keypress(function (e) {
+      if (e.which == 13) {
+        var input = $('#live_search').val();
+        getdata(input);
+      }
+    });
   }
 
 
-  // function GetDataTable() {
-  //   $("#companyTable").DataTable({
-
-  //     columns:
-  //       // { data: data }
-  //       [
-  //       { data: 'id' },
-  //       { data: 'company_name' },
-  //       { data: 'phone_number' },
-  //       { data: 'mail_contact' },
-  //       { data: 'representative' },
-  //       // { data: 'mail_manager' },
-  //       ],
-  //     "ajax": {
-  //       "url": "./fetch_company.php",
-  //       "type": "GET",
-  //     "success": function (response) {
-  //       $.each(response, function (key, value) {
-  //         $('.studentdata').append('<tr>' +
-  //           '<td class="stud_id">' + value['id'] + '</td>\
-  //                               <td>' + value['company_name'] + '</td>\
-  //                               <td>' + value['phone_number'] + '</td>\
-  //                               <td>' + value['mail_manager'] + '</td>\
-  //                               <td>' + value['representative'] + '</td>\
-  //                               <td>\
-  //                                   <a href="#" class="badge btn-info viewbtn">VIEW</a>\
-  //                                   <a href="#" class="badge btn-primary edit_btn">EDIT</a>\
-  //                                   <a href="#" class="badge btn-danger delete_btn">Delete</a>\
-  //                               </td>\
-  //                           </tr>');
-  //       });
-  //       // alert(response);
-  //       }
-  //     },
-  //   });
-  // }
-
-
-
-  // $(function () {
-  //   $("#myTable").DataTable({
-  //     "language": {
-  //       "url": "//cdn.datatables.net/plug-ins/1.10.22/i18n/Japanese.json"
-  //     }
-  //   });
-  // });
-
-
 });
+
+// $('#search').click(function () {
+
+//   var input = $('#live_search').val();
+//   // var select = $('[name=select_company]').val();
+//   alert(input);
+// });
+
+// $("#live_search").keypress(function (e) {
+//   if (e.which == 13) {
+//     var input = $('#live_search').val();
+//     alert(input);
+//   }
+// });

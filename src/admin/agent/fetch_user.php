@@ -10,7 +10,20 @@ $id = $_SESSION['id'];
     // $sql = "SELECT * FROM users WHERE id = $id ORDER BY id DESC";
 
     // idは複数あるので検索対象に加えずにした（＊のところで他のidをselectしなければ大丈夫だけどその記述が長くなりそうなのでやめた）
-    $sql = "select * from users as t1 inner join company_user as t2 on t1.id = t2.user_id inner join company t3 on t1.id=t3.id where company_id='$id' OR name LIKE '%{$input}%'  OR university LIKE '%{$input}%'  OR department LIKE '%{$input}%'  OR grad_year LIKE '%{$input}%'  OR mail LIKE '%{$input}%'  OR phone_number LIKE '%{$input}%'  OR address LIKE '%{$input}%'  ORDER BY id DESC ";
+    $sql = "SELECT * from users as t1 
+    inner join company_user as t2 
+    on t1.id = t2.user_id 
+    inner join company t3 
+    on t1.id=t3.id 
+    where company_id='$id' 
+    OR name LIKE '%{$input}%' 
+    OR university LIKE '%{$input}%' 
+    OR department LIKE '%{$input}%' 
+    OR grad_year LIKE '%{$input}%' 
+    OR mail LIKE '%{$input}%' 
+    OR phone_number LIKE '%{$input}%' 
+    OR address LIKE '%{$input}%' 
+    ORDER BY t1.id DESC ";
     // fname
     // $sql = " SELECT * FROM users WHERE 
     // id LIKE '%{$input}%' 
@@ -30,7 +43,14 @@ $id = $_SESSION['id'];
     // $id = $_SESSION['id'];
     // $id = $_SESSION['id'];
     // $sql = "SELECT * FROM users WHERE id = $id ORDER BY id DESC";
-    $sql = "select * from users as t1 inner join company_user as t2 on t1.id = t2.user_id inner join company t3 on t1.id=t3.id where company_id='$id' order by t1.id desc";
+    $sql = "SELECT * from users as t1 
+    inner join company_user as t2 
+    on t1.id = t2.user_id 
+    inner join company t3 
+    on t1.id=t3.id 
+    where company_id='$id' 
+    order by t1.id desc";
+
     $stmt = $db->prepare($sql);
     $stmt->execute();
     $result_array = $stmt->fetchAll();
