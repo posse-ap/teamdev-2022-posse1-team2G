@@ -275,9 +275,9 @@
               <input type="search" class='form-control company_list_search_container_search' id='live_search' name='input' autocomplete="off" placeholder="会社名...">
               <!-- <input type="text" class='form-control ' id='live_search' name='input' autocomplete="off" placeholder="会社名..."> -->
             </div>
-            <div>
+            <!-- <div>
               <input type="submit" id="search" value='検索'>
-            </div>
+            </div> -->
             <!-- <div>
               <button id='reset'>リセット</button>
             </div> -->

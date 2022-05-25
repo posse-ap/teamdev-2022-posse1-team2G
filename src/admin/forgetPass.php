@@ -13,20 +13,18 @@
 
 
   <div class='login_form'>
-    <div class='login_mail'>
+    <div class='login_forget_mail'>
       <div>
         <p>メールアドレス</p>
       </div>
-      <div class='mail_container'>
+      <div class='forget_mail_container'>
         <input type="email" name="email">
       </div>
     </div>
-    <div class='login_submit'>
+    <div class='login_forget_submit'>
       <input type="submit" value="送信">
     </div>
-
   </div>
-
 
 </body>
 

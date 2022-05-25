@@ -254,54 +254,50 @@ $(document).ready(function () {
   });
 
 
-  // function getdata(input) {
-  //   $.ajax({
-  //     type: "GET",
-  //     url: "./fetch_company.php",
-  //     data: { input: input },
-  //     success: function (response) {
-  //       $('.studentdata').html(response);
-  //       $.each(response, function (key, value) {
-  //         $('.studentdata').append('<tr>' +
-  //           '<td class="stud_id">' + value['id'] + '</td>\
-  //                               <td>' + value['company_name'] + '</td>\
-  //                               <td>' + value['phone_number'] + '</td>\
-  //                               <td>' + value['mail_manager'] + '</td>\
-  //                               <td>' + (Number(value['count_month']) * price).toLocaleString() + '</td>\
-  //                               <td>\
-  //                                   <a href="#" class="badge btn-info viewbtn">VIEW</a>\
-  //                                   <a href="#" class="badge btn-primary edit_btn">EDIT</a>\
-  //                                   <a href="#" class="badge btn-danger delete_btn">Delete</a>\
-  //                               </td>\
-  //                           </tr>');
-  //       });
-  //     }
-  //   });
-  //   // $('#search').click(function () {
-  //   //   var input = $('#live_search').val();
-  //   //   // if (input != '') {
-  //   //   //   getdata(input);
-  //   //   // }
-  //   //   // else {
-  //   //   //   getdata();
-  //   //   // }
-  //   //   getdata(input);
-  //   // });
-
-  //   // $('#reset').click(function () {
-  //   //   getdata();
-  //   // });
-
-
-  // }
+  function getdata(input) {
+    $.ajax({
+      type: "GET",
+      url: "./fetch_company.php",
+      data: { input: input },
+      success: function (response) {
+        $('.studentdata').html(response);
+        $.each(response, function (key, value) {
+          $('.studentdata').append('<tr>' +
+            '<td class="stud_id">' + value['id'] + '</td>\
+                                <td>' + value['company_name'] + '</td>\
+                                <td>' + value['phone_number'] + '</td>\
+                                <td>' + value['mail_manager'] + '</td>\
+                                <td>' + (Number(value['count_month']) * price).toLocaleString() + '</td>\
+                                <td>\
+                                    <a href="#" class="badge btn-info viewbtn">VIEW</a>\
+                                    <a href="#" class="badge btn-primary edit_btn">EDIT</a>\
+                                    <a href="#" class="badge btn-danger delete_btn">Delete</a>\
+                                </td>\
+                            </tr>');
+        });
+      }
+    });
+    $("#live_search").keypress(function (e) {
+      if (e.which == 13) {
+        var input = $('#live_search').val();
+        getdata(input);
+      }
+    });
+  }
 
 
 });
 
-$('#search').click(function () {
+// $('#search').click(function () {
 
-  var input = $('#live_search').val();
-  // var select = $('[name=select_company]').val();
-  alert(input);
+//   var input = $('#live_search').val();
+//   // var select = $('[name=select_company]').val();
+//   alert(input);
+// });
 
-});
+// $("#live_search").keypress(function (e) {
+//   if (e.which == 13) {
+//     var input = $('#live_search').val();
+//     alert(input);
+//   }
+// });
