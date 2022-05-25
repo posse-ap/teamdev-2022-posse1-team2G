@@ -30,7 +30,8 @@ $error_phone_number = $error[ 'phone_number' ] ?? NULL;
 $error_address = $error[ 'address' ] ?? NULL;
 $error_message = $error[ 'message' ] ?? NULL;
 $error_privacy = $error[ 'privacy' ] ?? NULL;
- 
+$company_id_session = $_SESSION[ 'company_id' ] ?? NULL;
+
 //CSRF対策のトークンを生成
 if ( !isset( $_SESSION[ 'ticket' ] ) ) {
   //セッション変数にトークンを代入
@@ -42,20 +43,6 @@ $ticket = $_SESSION[ 'ticket' ];
 
 // 問い合わせ会社を表示させるためのSQL用意
 require('../dbconnect.php');
-// // https://hirashimatakumi.com/blog/311.html
-// // URLパラメーターから値を取得
-// // http://localhost:8080/contactform.php?company_id=3
-// // のようなパラメータで問い合わせフォームが表示されるのでこれの3の部分を取得するための挙動
-// if (isset($_GET['company_id'])) {
-//   $company_id = $_GET['company_id'];
-// }
-
-// $stmt = $db->prepare("SELECT * FROM company_posting_information WHERE id = :id");
-// $id = $company_id;
-// $stmt->bindValue(':id', $id, PDO::PARAM_STR);
-// $stmt->execute();
-// $company = $stmt->fetch();
-
 
 //company_idを取得
 $company_ids =  $_POST['id'];
@@ -75,6 +62,18 @@ $stmt = $db->query($sql);
 $stmt->execute();
 $companies = $stmt->fetchAll();
 
+// //Company_idのsessionを生成
+if ( !isset( $_SESSION[ 'company_id' ] ) ) {
+  //セッション変数に代入
+  $_SESSION[ 'company_id' ] = [];
+  foreach ($companies as $company){
+    array_push($_SESSION[ 'company_id' ],$company["id"]);
+  }
+}
+// sessionを変数に代入
+$company_id_sessions = $_SESSION[ 'company_id' ];
+// print_r($company_id_session);
+
 ?>
 
 <!-- ここからフロント側 -->
@@ -89,19 +88,17 @@ $companies = $stmt->fetchAll();
 <body>
 <!-- ↑ヘッダー関数 -->
 
-
-  <!-- 入力画面 -->  
 <div class="container">
   <!-- 会社情報 -->
   <h2>お問い合わせ会社</h2>
-  <?php foreach ($companies as $company) : ?>
-     <?= h($company['name']) ?>
-  <?php endforeach; ?>
+    <?php foreach ($companies as $company) : ?>
+      <?= h($company['name']) ?>
+    <?php endforeach; ?>
   <!-- フォーム -->
   <h1>お問い合わせフォーム</h1>
   <p>以下のフォームからお問い合わせください。</p>
-  
-  <form id="form" class="validationForm" action="./confirm.php?company_id=<?= h($company_id);?>" method="post" novalidate>
+
+  <form id="form" class="validationForm" action="./confirm.php" method="post" novalidate>
       <div>
         <p>名前</p>
         <input type="text" class="required maxlength" data-maxlength="30" id="name" name="name"
@@ -162,6 +159,10 @@ $companies = $stmt->fetchAll();
 
       <!--確認ページへトークンをPOSTする、隠しフィールド「ticket」-->
       <input type="hidden" name="ticket" value="<?php echo $ticket; ?>">
+      <!-- 確認ページへトークンをPOSTする、隠しフィールド「company_id_session」-->
+      <?php foreach ($companies as $company) : ?>
+        <input type="hidden" name="company_id_session[]" value="<?php echo $company["id"]; ?>">
+      <?php endforeach; ?>
       <button name="submitted" type="submit" class="btn btn-primary">確認画面へ</button>
     </form>
 </div>

@@ -28,6 +28,13 @@ $email = trim( (string) filter_input(INPUT_POST, 'email') );
 $phone_number = trim( filter_input(INPUT_POST, 'phone_number') );
 $address = trim( filter_input(INPUT_POST, 'address') );
 $message = trim( filter_input(INPUT_POST, 'message')); 
+$company_id_session = (array)$_POST['company_id_session'];
+
+echo "<pre>";
+print_r($company_id_session);
+echo"</pre>";
+
+
 
 //エラーメッセージを保存する配列の初期化
 $error = array();
@@ -81,6 +88,7 @@ $_SESSION[ 'phone_number' ] = $phone_number;
 $_SESSION[ 'address' ] = $address;
 $_SESSION[ 'message' ] = $message;
 $_SESSION[ 'error' ] = $error;
+$_SESSION[ 'company_id' ] = $company_id_session;
 //チェックの結果にエラーがある場合は入力フォームに戻す
 if ( count( $error ) > 0 ) {
   //エラーがある場合
@@ -96,16 +104,37 @@ if ( count( $error ) > 0 ) {
   exit;
 }
 
+// // 問い合わせ会社を表示させるためのSQL用意
+// require('../dbconnect.php');
+// if (isset($_GET['company_id'])) {
+//   $company_id = $_GET['company_id'];
+// }
+// $stmt = $db->prepare("SELECT * FROM company_posting_information WHERE id = :id");
+// $id = $company_id;
+// $stmt->bindValue(':id', $id, PDO::PARAM_STR);
+// $stmt->execute();
+// $info = $stmt->fetch();
+
+//company_idを取得
+// $company_ids =  $_POST['id'];
+
 // 問い合わせ会社を表示させるためのSQL用意
 require('../dbconnect.php');
-if (isset($_GET['company_id'])) {
-  $company_id = $_GET['company_id'];
+
+// キーワードの数だけループして、LIKE句の配列を作る
+$company_id_Condition = [];
+foreach ($company_id_session as $company_id) {
+  $company_id_Condition[] = 'company_id = ' . $company_id;
 }
-$stmt = $db->prepare("SELECT * FROM company_posting_information WHERE id = :id");
-$id = $company_id;
-$stmt->bindValue(':id', $id, PDO::PARAM_STR);
+
+// これをORでつなげて、文字列にする
+$company_id_Condition = implode(' OR ', $company_id_Condition);
+
+// あとはSELECT文にくっつける
+$sql = 'SELECT * FROM company_posting_information WHERE ' . $company_id_Condition;
+$stmt = $db->query($sql);
 $stmt->execute();
-$info = $stmt->fetch();
+$companies = $stmt->fetchAll();
 ?>
 
 
@@ -128,7 +157,9 @@ $info = $stmt->fetch();
   <div class="table-responsive confirm_table">
     <!-- 会社情報 -->
     <h2>お問い合わせ会社</h2>
-    <?= h($info['industries']) ?>
+    <?php foreach ($companies as $company) : ?>
+       <?= h($company['name']) ?>
+    <?php endforeach; ?>
 
     <!-- フォーム内容 -->
     <table class="table table-bordered">
