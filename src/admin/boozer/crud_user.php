@@ -111,7 +111,7 @@ if (isset($_POST['checking_delete'])) {
   $id = $_POST['stud_id'];
   $company_name = $_POST['stud_company_name'];
 
-$query = "select t1.company_id, t2.id, t2.name, t3.company_name from company_user as t1 inner join users as t2 on t1.user_id=t2.id inner join company as t3 on t1.company_id=t3.id where t2.id='$id' AND company_name='$company_name'";
+// $query = "select t1.company_id, t2.id, t2.name, t3.company_name from company_user as t1 inner join users as t2 on t1.user_id=t2.id inner join company as t3 on t1.company_id=t3.id where t2.id='$id' AND company_name='$company_name'";
 // +------------+----+--------------+--------------+
 // | company_id | id | name         | company_name |
 // +------------+----+--------------+--------------+
@@ -120,19 +120,25 @@ $query = "select t1.company_id, t2.id, t2.name, t3.company_name from company_use
 // +------------+----+--------------+--------------+
 
 
-  $query = "DELETE FROM company_user WHERE company_id = (select t1.company_id from company_user as t1 inner join users as t2 on t1.user_id=t2.id inner join company as t3 on t1.company_id=t3.id where t2.id='$id' AND company_name='$company_name') ";
+//   $query = "DELETE FROM company_user WHERE company_id = (select t1.company_id from company_user as t1 inner join users as t2 on t1.user_id=t2.id inner join company as t3 on t1.company_id=t3.id where t2.id='$id' AND company_name='$company_name') ";
 
-  $query = "DELETE from company_user where company_user.company_id in ( 
-  select t1.company_id from company_user as t1 inner join users as t2 on t1.user_id=t2.id inner join company as t3 on t1.company_id=t3.id where t2.id='$id' AND company_name='$company_name'
-) ";
+//   $query = "DELETE from company_user where company_user.company_id in ( 
+//   select t1.company_id from company_user as t1 inner join users as t2 on t1.user_id=t2.id inner join company as t3 on t1.company_id=t3.id where t2.id='$id' AND company_name='$company_name'
+// ) ";
 
+$query= "DELETE t1 from company_user as t1 
+inner join company as t2 
+on t1.company_id=t2.id 
+inner join users as t3 
+on t1.user_id=t3.id 
+where t1.user_id='$id' AND t2.company_name='$company_name';";
 
-"DELETE from company_user 
-where company_user.company_id in ( 
-  select (
+// "DELETE from company_user 
+// where company_user.company_id in ( 
+//   select (
     
-  )
-  select t1.company_id from company_user as t1 inner join users as t2 on t1.user_id=t2.id inner join company as t3 on t1.company_id=t3.id where t2.id='$id' AND company_name='$company_name'";
+//   )
+//   select t1.company_id from company_user as t1 inner join users as t2 on t1.user_id=t2.id inner join company as t3 on t1.company_id=t3.id where t2.id='$id' AND company_name='$company_name'";
   // $query = "DELETE FROM users WHERE id = '$id' ";
   $stmt = $db->prepare($query);
   $stmt->execute();
