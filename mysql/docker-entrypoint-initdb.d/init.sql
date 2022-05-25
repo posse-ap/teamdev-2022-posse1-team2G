@@ -15,7 +15,7 @@ CREATE TABLE users
   mail VARCHAR(255) NOT NULL,
   phone_number VARCHAR(255) NOT NULL,
   address VARCHAR(255) NOT NULL,
-  rep VARCHAR(255) DEFAULT '未設定',
+  -- rep VARCHAR(255) DEFAULT '未設定',
   delete_flg INT NOT NULL DEFAULT 0
 );
 
@@ -259,7 +259,8 @@ CREATE TABLE company_user
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   user_id INT NOT NULL,
   company_id INT NOT NULL,
-  contact_datetime DATE NOT NULL
+  rep VARCHAR(255) DEFAULT '未設定',
+  contact_datetime DATETIME NOT NULL
 );
 
 INSERT INTO company_user (user_id, company_id, contact_datetime) VALUES 

@@ -76,7 +76,7 @@ else if (!empty($_GET['input']) && empty($_GET['select'])) {
 }
 else {
     // $sql = "SELECT * FROM users ORDER BY id DESC";
-    $sql = "SELECT t1.contact_datetime, t2.id, t2.name, t2.university, t2.department, t2.grad_year, t2.mail, t2.phone_number, t2.address, t2.rep, t3.company_name 
+    $sql = "SELECT t1.contact_datetime, t1.rep, t2.id, t2.name, t2.university, t2.department, t2.grad_year, t2.mail, t2.phone_number, t2.address, t3.company_name 
     FROM company_user as t1 
     inner join users as t2 
     on t1.user_id=t2.id 
