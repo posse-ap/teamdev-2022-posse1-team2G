@@ -1,15 +1,31 @@
 <?php
 session_start();
 require('../../dbconnect.php');
+$id = $_SESSION['id'];
+
+$sql = "SELECT rep FROM company_user";
+$sql = "SELECT t2.name from company as t1 
+inner join admin as t2 
+on t1.id=t2.company_id
+where t1.id='$id';";
+$stmt = $db->prepare($sql);
+$stmt->execute();
+$names = $stmt->fetchAll();
+
+// +--------+
+// | name   |
+// +--------+
+// | 高木   |
+// | 千葉   |
+// | 目暮   |
+// | 佐藤   |
+// | 山本   |
+// | 佐     |
+// | 島     |
+// +--------+
+
 if (isset($_SESSION['id']) && $_SESSION['time'] + 10 > time()) {
   $_SESSION['time'] = time();
-
-  // if (!empty($_POST)) {
-
-  //     header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/index.php');
-  //     exit();
-  // }
-
   // user_idがない、もしくは一定時間を過ぎていた場合
 } else {
   header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/login.php');
@@ -176,20 +192,28 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 10 > time()) {
           <div class="card-header">
             <h4>
               学生一覧
-              <!-- <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#userAddModal">
-                Add
-              </button> -->
             </h4>
           </div>
           <div class="card-body">
             <div>
-              <div>
-                <i class="bi bi-search"></i>
-                <input type="search" class='form-control' id='live_search' name='input' autocomplete="off" placeholder="検索内容を入力...">
+              <div class='user_list_search_text'>
+                <input type="text" class='form-control' id='live_search' name='input' autocomplete="off" placeholder="フリーワードを入力してください..">
               </div>
-              <!-- <input type="text" class='form-control' id='live_search' name='input' autocomplete="off" placeholder="フリーワードを入力してください..">
-              <input type="submit" id="search" value='検索'> -->
+              <div>
+                <select name="select_name">
+                  <option value='未設定'>未設定</option>
+                  <?php foreach ($names as $names) : ?>
+                    <option value="<?= $names['name'] ?>"><?= $names['name'] ?></option>
+                  <?php endforeach; ?>
+                </select>
+              </div>
+              <div>
+                <!-- <i class="bi bi-search font-weight-bold" width='24' height='24'></i> -->
+                <input type="submit" id="search">
+              </div>
             </div>
+            <!-- <input type="text" class='form-control' id='live_search' name='input' autocomplete="off" placeholder="フリーワードを入力してください..">
+              <input type="submit" id="search" value='検索'> -->
             <div class="message-show">
 
             </div>

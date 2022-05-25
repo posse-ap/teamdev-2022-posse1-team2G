@@ -116,38 +116,39 @@ $(document).ready(function () {
 
 
 
-  function getdata(input) {
-    $.ajax({
-      type: "GET",
-      url: "./fetch_user.php",
-      data: { input: input },
-      success: function (response) {
-        $('.studentdata').html(response);
-        $.each(response, function (key, value) {
-          // stud_idはuserのid
-          $('.studentdata').append('<tr>' +
-            '<td class="stud_id">' + value['id'] + '</td>\
-                                <td>' + value['name'] + '</td>\
-                                <td>' + value['phone_number'] + '</td>\
-                                <td>' + value['mail'] + '</td>\
-                                <td>' + value['rep'] + '</td>\
-                                <td>\
-                                    <a href="#" class="badge btn-info viewbtn">VIEW</a>\
-                                    <a href="#" class="badge btn-primary edit_btn">EDIT</a>\
-                                </td>\
-                            </tr>');
-        });
-      }
-    });
+  // function getdata(input, select) {
+  //   $.ajax({
+  //     type: "GET",
+  //     url: "./fetch_user.php",
+  //     data: {
+  //       input: input,
+  //       select: select,
+  //     },
+  //     success: function (response) {
+  //       $('.studentdata').html(response);
+  //       $.each(response, function (key, value) {
+  //         // stud_idはuserのid
+  //         $('.studentdata').append('<tr>' +
+  //           '<td class="stud_id">' + value['id'] + '</td>\
+  //                               <td>' + value['name'] + '</td>\
+  //                               <td>' + value['phone_number'] + '</td>\
+  //                               <td>' + value['mail'] + '</td>\
+  //                               <td>' + value['rep'] + '</td>\
+  //                               <td>\
+  //                                   <a href="#" class="badge btn-info viewbtn">VIEW</a>\
+  //                                   <a href="#" class="badge btn-primary edit_btn">EDIT</a>\
+  //                               </td>\
+  //                           </tr>');
+  //       });
+  //     }
+  //   });
 
-    $("#live_search").keypress(function (e) {
-      if (e.which == 13) {
-        var input = $('#live_search').val();
-        getdata(input);
-      }
-    });
-
-  }
+  //   $('#search').click(function () {
+  //     var input = $('#live_search').val();
+  //     var select = $('[name=select_name]').val();
+  //     getdata(input, select);
+  //   });
+  // }
 });
 
 // $("#live_search").keypress(function (e) {
@@ -157,3 +158,14 @@ $(document).ready(function () {
 //     alert(input)
 //   }
 // });
+// $("#search").click(function (e) {
+//   var input = $('#live_search').val();
+//   // getdata(input);
+//   alert(input);
+// });
+
+$('#search').click(function () {
+  var input = $('#live_search').val();
+  // var select = $('[name=select_company]').val();
+  alert(input);
+});

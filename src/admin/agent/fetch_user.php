@@ -3,53 +3,66 @@ session_start();
 require('../../dbconnect.php');
 $id = $_SESSION['id'];
 
-if (!empty($_GET['input'])) {
+if (!empty($_GET['input'])&& !empty($_GET['select'])) {
   $input = $_GET['input'];
-  // $id = $_SESSION['id'];
-  // $id = $_SESSION['id'];
-  // $sql = "SELECT * FROM users WHERE id = $id ORDER BY id DESC";
+  $select = $_GET['select'];
 
   // idは複数あるので検索対象に加えずにした（＊のところで他のidをselectしなければ大丈夫だけどその記述が長くなりそうなのでやめた）
-  $sql = "SELECT * from users as t1 
-    inner join company_user as t2 
-    on t1.id = t2.user_id 
-    inner join company t3 
-    on t1.id=t3.id 
-    where company_id='$id' 
-    OR name LIKE '%{$input}%' 
+  $sql = "SELECT * from company_user as t1 
+  inner join users as t2 
+  on t1.user_id=t2.id 
+  where t1.company_id = '$id'
+    AND (name LIKE '%{$input}%' 
     OR university LIKE '%{$input}%' 
     OR department LIKE '%{$input}%' 
     OR grad_year LIKE '%{$input}%' 
     OR mail LIKE '%{$input}%' 
     OR phone_number LIKE '%{$input}%' 
-    OR address LIKE '%{$input}%' 
+    OR address LIKE '%{$input}%' )
+    AND rep LIKE '%{$select}%' 
     ORDER BY t1.id DESC ";
-  // fname
-  // $sql = " SELECT * FROM users WHERE 
-  // id LIKE '%{$input}%' 
-  // OR name LIKE '%{$input}%' 
-  // OR university LIKE '%{$input}%' 
-  // OR department LIKE '%{$input}%' 
-  // OR grad_year LIKE '%{$input}%' 
-  // OR mail LIKE '%{$input}%' 
-  // OR phone_number LIKE '%{$input}%' 
-  // OR address LIKE '%{$input}%' 
-  // ORDER BY id DESC ";
-
+  $stmt = $db->prepare($sql);
+  $stmt->execute();
+  $result_array = $stmt->fetchAll();
+} 
+// 担当者だけ入力
+else if(empty($_GET['input']) && !empty($_GET['select'])){
+  $sql = "SELECT * from company_user as t1 
+  inner join users as t2 
+  on t1.user_id=t2.id 
+  where t1.company_id = '$id' 
+    AND rep LIKE '%{$select}%' 
+    ORDER BY t1.id DESC ";
+  $stmt = $db->prepare($sql);
+  $stmt->execute();
+  $result_array = $stmt->fetchAll();
+}
+  // 担当者だけ入力
+else if(!empty($_GET['input']) && empty($_GET['select'])){
+  $sql = "SELECT * from company_user as t1 
+  inner join users as t2 
+  on t1.user_id=t2.id 
+  where t1.company_id = '$id' 
+    AND (name LIKE '%{$input}%' 
+    OR university LIKE '%{$input}%' 
+    OR department LIKE '%{$input}%' 
+    OR grad_year LIKE '%{$input}%' 
+    OR mail LIKE '%{$input}%' 
+    OR phone_number LIKE '%{$input}%' 
+    OR address LIKE '%{$input}%' )
+    ORDER BY t1.id DESC ";
   $stmt = $db->prepare($sql);
   $stmt->execute();
   $result_array = $stmt->fetchAll();
 } else {
-  // $id = $_SESSION['id'];
-  // $id = $_SESSION['id'];
-  // $sql = "SELECT * FROM users WHERE id = $id ORDER BY id DESC";
-  $sql = "SELECT * from users as t1 
-    inner join company_user as t2 
-    on t1.id = t2.user_id 
-    inner join company t3 
-    on t1.id=t3.id 
-    where company_id='$id' 
-    order by t1.id desc";
+
+  // $sql = "SELECT * from users as t1 
+  //   inner join company_user as t2 
+  //   on t1.id = t2.user_id 
+  //   inner join company t3 
+  //   on t1.id=t3.id 
+  //   where company_id='$id' 
+  //   order by t1.id desc";
     
   $sql = "SELECT * from company_user as t1 
   inner join users as t2 

@@ -1,7 +1,6 @@
 <?php
 require('../../dbconnect.php');
 session_start();
-require('../../dbconnect.php');
 // sessionに保存されたcompany_id
 $id = $_SESSION['id'];
 
