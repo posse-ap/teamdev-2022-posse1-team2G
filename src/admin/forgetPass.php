@@ -1,3 +1,32 @@
+<?php
+session_start();
+require('../dbconnect.php');
+
+  $errormessage = array();
+
+if (!empty($_POST)) {
+  $login = $db->prepare('SELECT * FROM admin WHERE email = :email AND flag = 2');
+  $login->bindValue('email', $_POST['email']);
+  // $login->bindValue('password', sha1($_POST['password']));
+  $login->execute();
+  $agent = $login->fetch();
+
+  if (!empty($agent)) {
+    $_SESSION = array();
+    // $_SESSION['id'] = $agent['company_id'];
+    // $_SESSION['time'] = time();
+
+    header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/phone_number.pho');
+  } else {
+    $errormessage[] = "パスワードもしくはメールアドレスが間違っています";
+  }
+}
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -10,8 +39,17 @@
 </head>
 
 <body>
+  <?php if ($errormessage) { ?>
+    <ul class='login_error'>
+      <!-- $errorは連想配列なのでforeachで分解していく -->
+      <?php foreach ($errormessage as $value) { ?>
+        <li><?php echo $value; ?></li>
+      <?php } ?>
+      <!-- 分解したエラー文をlistの中に表示していく -->
+    </ul>
+  <?php } ?>
 
-
+  <form action="/admin/forgetPass.php" method="POST"></form>
   <div class='login_form'>
     <div class='login_forget_mail'>
       <div>
