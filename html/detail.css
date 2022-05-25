@@ -1,9 +1,66 @@
-
-
-.top_page_img img{
+/* トップページ写真 */
+.detail_top_page_img img{
   width: 100%;
   height: 450px;
 }
+
+/* コンテンツの親要素 */
+.company_detail_container{
+  display: flex;
+  margin: 0 auto;
+  /* justify-content: space-around; */
+  /* margin-top: 50px; */
+}
+
+
+/* mainコンテンツ */
+.company_detail_main{
+  /* ↓メインとサイドを3対1の割合で表示 */
+  flex: 3;
+  /* ↓calc関数:メインコンテンツの幅=(100%-サイドバーのサイズ分)を指定
+      ⇒サイドバーを固定したままメインコンテンツを可変 */
+  width: calc( 100% - 300px );
+  /* width: 50%; 
+   text-align: center; */
+}
+
+/* 
+よしたかくん担当
+ */
+/* 強み・特徴 */
+/* 企業からのメッセージ */
+/* 実績テーブル */
+
+
+
+/* 
+りゅうじくん担当
+ */
+/* 先輩の就職先ロゴ */
+/* サポートテーブル */
+/* 会社情報テーブル */
+/* 取扱テーブル */
+
+
+
+
+/* sideコンテンツ（目次） */
+.company_detail_side{
+  /* ↓メインとサイドを3対1の割合で表示 */
+  flex: 1;
+  /* height: auto;
+  width: 307px;
+  padding: 20px;
+  margin-bottom: 230px;
+  margin-top: -91px;
+  background-color: white;
+  z-index: 2;
+  margin-right: 65px; */
+}
+
+
+
+/* 
 .company_logo{
   text-align: center;
   vertical-align: middle;
@@ -32,25 +89,10 @@
   color: blue;
 }
 
-.company_container{
-  display: flex;
-  justify-content: space-around;
-  margin-top: 50px;
-}
-
 .company_detail,.referral_case{
   border: solid 1px black;
 }
-.company_information{
-  height: auto;
-  width: 307px;
-  padding: 20px;
-  margin-bottom: 230px;
-  margin-top: -91px;
-  background-color: white;
-  z-index: 2;
-  margin-right: 65px;
-}
+
 .go_to_application_requirements{
   margin-top: 15px;
   background: linear-gradient(to bottom, #FFF, #0ede1c 30%, #9beca0 60%, #cfedd4);
@@ -60,10 +102,7 @@
 .application_requirements p{
   text-align: center;
 }
-.company_detail_flex{
-  width: 50%;
-  text-align: center;
-}
+
 .company_detail,.referral_case{
   width: 70%;
   margin-left: 100px;
@@ -96,3 +135,4 @@
   font-size: 13px;
   color: #34373a;
 }
+ */
