@@ -10,7 +10,7 @@ require('../../dbconnect.php');
 if (!empty($_GET['input'])) {
     $input = $_GET['input'];
 
-$sql = "select t1.*,t2.* from
+$sql = "SELECT t1.*,t2.* from
 (select * from company) as t1
 left outer join 
 (select count(*) as count_month, company_id 
@@ -91,10 +91,11 @@ ORDER BY t2.count_month DESC";
     $stmt->execute();
     $result_array = $stmt->fetchAll();
 } else {
-    $sql = "select t1.*,t2.* from
+    $sql = "SELECT t1.*,t2.* from
 (select * from company) as t1
 left outer join 
-(select count(*) as count_month, company_id from company_user where company_id IS NULL OR DATE_FORMAT(contact_datetime, '%Y%m')=DATE_FORMAT(NOW(), '%Y%m') group by company_id) as t2
+(select count(*) as count_month, company_id from company_user where company_id IS NULL OR DATE_FORMAT(contact_datetime, '%Y%m')=DATE_FORMAT(NOW(), '%Y%m') 
+group by company_id) as t2
 on t1.id=t2.company_id
 ORDER BY t2.count_month DESC 
 ";

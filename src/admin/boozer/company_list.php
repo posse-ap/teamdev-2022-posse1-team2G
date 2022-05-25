@@ -262,7 +262,7 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
-            <h4>
+            <h4 class='aba'>
               会社一覧
               <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#companyAddModal">
                 Add

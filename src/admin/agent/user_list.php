@@ -29,6 +29,10 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 10 > time()) {
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.css" />
 
+  <!-- icon用 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+
+
   <title>agent学生一覧</title>
 </head>
 
@@ -272,8 +276,12 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 10 > time()) {
           </div>
           <div class="card-body">
             <div>
-              <input type="text" class='form-control' id='live_search' name='input' autocomplete="off" placeholder="フリーワードを入力してください..">
-              <input type="submit" id="search" value='検索'>
+              <div>
+                <i class="bi bi-search"></i>
+                <input type="search" class='form-control' id='live_search' name='input' autocomplete="off" placeholder="検索内容を入力...">
+              </div>
+              <!-- <input type="text" class='form-control' id='live_search' name='input' autocomplete="off" placeholder="フリーワードを入力してください..">
+              <input type="submit" id="search" value='検索'> -->
             </div>
             <div class="message-show">
 
