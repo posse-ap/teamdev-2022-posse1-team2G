@@ -42,19 +42,39 @@ $ticket = $_SESSION[ 'ticket' ];
 
 // 問い合わせ会社を表示させるためのSQL用意
 require('../dbconnect.php');
-// https://hirashimatakumi.com/blog/311.html
-// URLパラメーターから値を取得
-// http://localhost:8080/contactform.php?company_id=3
-// のようなパラメータで問い合わせフォームが表示されるのでこれの3の部分を取得するための挙動
-if (isset($_GET['company_id'])) {
-  $company_id = $_GET['company_id'];
+// // https://hirashimatakumi.com/blog/311.html
+// // URLパラメーターから値を取得
+// // http://localhost:8080/contactform.php?company_id=3
+// // のようなパラメータで問い合わせフォームが表示されるのでこれの3の部分を取得するための挙動
+// if (isset($_GET['company_id'])) {
+//   $company_id = $_GET['company_id'];
+// }
+
+// $stmt = $db->prepare("SELECT * FROM company_posting_information WHERE id = :id");
+// $id = $company_id;
+// $stmt->bindValue(':id', $id, PDO::PARAM_STR);
+// $stmt->execute();
+// $company = $stmt->fetch();
+
+
+//company_idを取得
+$company_ids =  $_POST['id'];
+
+// キーワードの数だけループして、LIKE句の配列を作る
+$company_id_Condition = [];
+foreach ($company_ids as $company_id) {
+  $company_id_Condition[] = 'company_id = ' . $company_id;
 }
 
-$stmt = $db->prepare("SELECT * FROM company_posting_information WHERE id = :id");
-$id = $company_id;
-$stmt->bindValue(':id', $id, PDO::PARAM_STR);
+// これをORでつなげて、文字列にする
+$company_id_Condition = implode(' OR ', $company_id_Condition);
+
+// あとはSELECT文にくっつける
+$sql = 'SELECT * FROM company_posting_information WHERE ' . $company_id_Condition;
+$stmt = $db->query($sql);
 $stmt->execute();
-$info = $stmt->fetch();
+$companies = $stmt->fetchAll();
+
 ?>
 
 <!-- ここからフロント側 -->
@@ -74,8 +94,9 @@ $info = $stmt->fetch();
 <div class="container">
   <!-- 会社情報 -->
   <h2>お問い合わせ会社</h2>
-  <?= h($info['industries']) ?>
-
+  <?php foreach ($companies as $company) : ?>
+     <?= h($company['name']) ?>
+  <?php endforeach; ?>
   <!-- フォーム -->
   <h1>お問い合わせフォーム</h1>
   <p>以下のフォームからお問い合わせください。</p>

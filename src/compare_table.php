@@ -136,7 +136,7 @@ $companies = $stmt->fetchAll();
     <!-- お問い合わせチェックボタンついた会社を一時表示するボックス -->
     <div class="selected_company_box">
       <p>お問い合わせするエージェント会社</p>
-      <form id="form" class="validationForm" action="./contact/contactform.php?company_id=<?= htmlspecialchars($company['company_id']); ?>" method="post">
+      <form id="form" class="validationForm" action="./contact/contactform.php" method="post">
         <!-- お問い合わせチェックボタンついた会社の表示箇所 -->
            <div id="checked_company_box"></div>
         <!-- 完了ページへ渡すトークンの隠しフィールド -->
