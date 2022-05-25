@@ -10,8 +10,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.css" />
   <!-- icon用 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 
   <title>PHP - AJAX - CRUD</title>
 </head>
@@ -271,15 +270,17 @@
             </h4>
           </div>
           <div class="card-body">
-            <div>
-              <input type="text" class='form-control ' id='live_search' name='input' autocomplete="off" placeholder="会社名...">
+            <div class='company_list_search_container'>
+              <i class="bi bi-search company_list_search_container_icon"></i>
+              <input type="search" class='form-control company_list_search_container_search' id='live_search' name='input' autocomplete="off" placeholder="会社名...">
+              <!-- <input type="text" class='form-control ' id='live_search' name='input' autocomplete="off" placeholder="会社名..."> -->
             </div>
             <div>
               <input type="submit" id="search" value='検索'>
             </div>
-            <div>
+            <!-- <div>
               <button id='reset'>リセット</button>
-            </div>
+            </div> -->
             <div class="message-show">
             </div>
             <table class="table table-bordered table-striped">

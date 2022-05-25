@@ -209,7 +209,7 @@ $names = $stmt->fetchAll();
                   <?php endforeach; ?>
                 </select>
               </div>
-              <div class='user_list_search_submit' id='search'>
+              <div class='user_list_search_submit' >
                 <!-- <input type="submit" id="search" value='検索'> -->
                 <i class="bi bi-search font-weight-bold" width='24' height='24'></i>
               </div>

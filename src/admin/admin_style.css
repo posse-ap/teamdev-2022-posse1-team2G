@@ -98,13 +98,6 @@ font-size: .8rem;
     width: 24%;
     position: relative;
 }
-.user_list_search_select select{
-    width: 100%;
-    height: 100%;
-font-size: .8rem;
-border: 1px solid black;
-padding-left: 12px;
-}
 .user_list_search_select:after {
     content: "";
     position: absolute;
@@ -116,14 +109,21 @@ padding-left: 12px;
     border-left: 3px solid rgb(63, 66, 64);
     pointer-events: none;
     transform: translateY(-50%) rotate(
--135deg);
-}
+        -135deg);
+    }
+    .user_list_search_select select{
+        width: 100%;
+        height: 100%;
+    font-size: .8rem;
+    border: 1px solid black;
+    padding-left: 12px;
+    }
 /* .user_list_search_select_hidden{
     font-size: .2rem;
 } */
 .user_list_search_submit{
     width: 6%;
-    background-color: rgb(119, 145, 107);
+    background-color: rgb(111, 141, 111);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -140,6 +140,72 @@ font-weight: bold;
   -webkit-appearance: none;
   -moz-appearance: none;
 }
+
+
+
+
+
+
+/* ----------   boozer/company_list.php      ------------ */
+
+/* ✕ボタンが自動で生成される */
+input[type="search"] {
+  -webkit-appearance: searchfield;
+}
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: searchfield-cancel-button;
+}
+
+.company_list_search_container{
+    position: relative;
+    background-color: red;
+}
+.company_list_search_container i::before{
+    content: '';
+    position: absolute;
+top: 20px;
+
+}
+
+.company_list_search_container{
+  position: relative;
+  box-sizing: border-box;
+  border: 2px solid #3879D9;
+  display: block;
+  padding: 3px 10px;
+  border-radius: 3px;
+  height: 2.3em;
+  width: 265px;
+  overflow: hidden;
+}
+.company_list_search_container_search{
+  border: none;
+  height: 2.0em;
+}
+.company_list_search_container_search:focus {
+  outline: 0;
+}
+.company_list_search_container_icon{
+  cursor: pointer;
+  font-family: FontAwesome;
+  border: none;
+  background: #3879D9;
+  color: #fff;
+  position: absolute;
+  width: 3.5em;
+  height: 3.0em;
+  right:0px;
+  top: -5px;
+  outline : none;
+}
+
+
+
+
+
+
+
+
 
 
 
