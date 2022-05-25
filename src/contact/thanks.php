@@ -96,105 +96,120 @@ if ( ini_get( 'safe_mode' ) ) {
 /* メールの作成 （to エージェント）*/
 // SELECT文を変数に格納
   require('../dbconnect.php');
-  if (isset($_GET['company_id'])) {
-    $company_id = $_GET['company_id'];
-  }
-  $id = $company_id;
-  $sql = "SELECT
-              company_posting_information.company_id AS company_id,
-              company_posting_information.name AS company_name,
-              company.mail_contact AS mail_contact
-              FROM company_posting_information
-              INNER JOIN company
-              ON  company_posting_information.company_id = company.id
-              WHERE company_posting_information.id = :id ";
-  $stmt = $db->prepare($sql); 
-  $stmt->bindValue(':id', $id, PDO::PARAM_STR);
-  $stmt->execute();
-  $contact_mail_info = $stmt->fetch();
+  $company_id_session = $_SESSION[ 'company_id' ];
+  echo "<pre>";
+  print_r($company_id_session);
+  echo"</pre>";
 
-//メール本文の用意
-$honbun_agent = '';
-$honbun_agent .= "いつもboozer社craftをご利用いただきありがとうございます。\n\n";
-$honbun_agent .= "当サイトより学生ユーザーから貴社へのお問い合わせがあったので通知メールを送信いたしました。" . "\n";
-$honbun_agent .= "管理ページの申し込み一覧ページよりご確認ください。" . "\n\n";
-
+  // キーワードの数だけループして、LIKE句の配列を作る
+  $company_id_Condition = [];
+  foreach ($company_id_session as $company_id) {
+    $id = $company_id;
+    $sql = "SELECT
+                company_posting_information.company_id AS company_id,
+                company_posting_information.name AS company_name,
+                company.mail_notification AS mail_notification
+                FROM company_posting_information
+                INNER JOIN company
+                ON  company_posting_information.company_id = company.id
+                WHERE company_posting_information.id = :id ";
+    $stmt = $db->prepare($sql); 
+    $stmt->bindValue(':id', $id, PDO::PARAM_STR);
+    $stmt->execute();
+    $contact_mail_info = $stmt->fetch();
+      
+    echo "<pre>";
+    print_r($contact_mail_info);
+    echo"</pre>";
   
-//-------- sendmail（mb_send_mail）を使ったメールの送信処理------------
-/* 
- mail_to_agent($宛先):	送信先のメールアドレス 各アドレスをカンマで区切ると、複数の宛先をtoに指定できる。このパラメータは、自動的にはエンコードされない。
- mail_subject_agent($件名):	メールの件名
- mail_body_agent($本文):  メールの本文
- mail_header_agent($ヘッダー):	ヘッダー
-    from:  送信元として表示されるメールアドレス
-    Return-Path:  fromと同じメアド
-    以下headerの文字化け防止
-      ・MIME-Version
-      ・Content-Transfer-Encoding
-      ・Content-Type
-*/
-$mail_to_agent  = $contact_mail_info['mail_contact'];
-$returnMail  = $contact_mail_info['mail_contact'];
-$mail_subject_agent  = "craft: 貴社への学生情報追加の通知について";
-$mail_body_agent  = $honbun_agent . "\n\n";
-$mail_header_agent = "from: ayaka1712pome@gmail.com\r\n"
-  . "Return-Path: ayaka1712pome@gmail.com\r\n"
-  . "MIME-Version: 1.0\r\n"
-  . "Content-Transfer-Encoding: BASE64\r\n"
-  . "Content-Type: text/plain; charset=UTF-8\r\n";
+  //メール本文の用意
+  $honbun_agent = '';
+  $honbun_agent .= "いつもboozer社craftをご利用いただきありがとうございます。\n\n";
+  $honbun_agent .= "当サイトより学生ユーザーから貴社へのお問い合わせがあったので通知メールを送信いたしました。" . "\n";
+  $honbun_agent .= "管理ページの申し込み一覧ページよりご確認ください。" . "\n\n";
+  
+    
+  //-------- sendmail（mb_send_mail）を使ったメールの送信処理------------
+  /* 
+   mail_to_agent($宛先):	送信先のメールアドレス 各アドレスをカンマで区切ると、複数の宛先をtoに指定できる。このパラメータは、自動的にはエンコードされない。
+   mail_subject_agent($件名):	メールの件名
+   mail_body_agent($本文):  メールの本文
+   mail_header_agent($ヘッダー):	ヘッダー
+      from:  送信元として表示されるメールアドレス
+      Return-Path:  fromと同じメアド
+      以下headerの文字化け防止
+        ・MIME-Version
+        ・Content-Transfer-Encoding
+        ・Content-Type
+  */
+  $mail_to_agent  = $contact_mail_info['mail_notification'];
+  $returnMail  = $contact_mail_info['mail_notification'];
+  $mail_subject_agent  = "craft: 貴社への学生情報追加の通知について";
+  $mail_body_agent  = $honbun_agent . "\n\n";
+  $mail_header_agent = "from: ayaka1712pome@gmail.com\r\n"
+    . "Return-Path: ayaka1712pome@gmail.com\r\n"
+    . "MIME-Version: 1.0\r\n"
+    . "Content-Transfer-Encoding: BASE64\r\n"
+    . "Content-Type: text/plain; charset=UTF-8\r\n";
+  
+  //メール送信処理
+  $mailsousin_agent  = mb_send_mail($mail_to_agent, $mail_subject_agent, $mail_body_agent, $mail_header_agent);
+   
+  //メールの送信（結果を変数 $result_agent に代入）
+  if ( ini_get( 'safe_mode' ) ) {
+    //セーフモードがOnの場合は第5引数が使えない
+    $result_agent = $mailsousin_agent;
+  } else {
+    $result_agent = mb_send_mail($mail_to_agent, $mail_subject_agent, $mail_body_agent, $mail_header_agent, '-f' . $returnMail );
+  }
+  
+  //データ追加
+  try {
+    require('../dbconnect.php');
+    //usersテーブルへ
+    //データ登録
+    $sql_users = "INSERT INTO 
+      users 
+      (name,university,department,grad_year,mail,phone_number,address,delete_flg) 
+      VALUES
+      ('$name','$university','$department','$grad_year','$email','$phone_number','$address', 0)";
+    $stmt_users = $db->prepare($sql_users);
+    $stmt_users->execute();
+    $database_result_users = $stmt_users->fetchAll();
+  
+    //company_userテーブルへ
+    //データ登録の準備
+      //user_idの取得・定義   （usersテーブルの最後の行のidを持ってくる）
+      $stmt = $db->query('SELECT id FROM users ORDER BY id DESC LIMIT 1');  
+      $last_user_id = $stmt->fetch();
+      $user_id = $last_user_id['id'];
+      //company_idの取得・定義  (複数の場合はforeachやconcat?で一つ一つに分ける必要がある)
+      // if (isset($_GET['company_id'])) {
+      //   $company_id_array = $_GET['company_id'];
+      // }
+      // $company_id = h($company_id_array);
+      //contact_datetimeの取得・定義
+      $contact_datetime = date("Y-m-d");
+    //データ登録
+    $sql = "INSERT INTO 
+      company_user
+      (user_id,company_id,contact_datetime) 
+      VALUES 
+      ($user_id,$company_id,'$contact_datetime')";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+    $database_result = $stmt->fetchAll();
+  
+  }catch(PDOException $e){
+    echo $e -> getMessage();
+    exit();
+  }
+  
+}  
+  // これをORでつなげて、文字列にする
+  // $company_id_Condition = implode(' OR ', $company_id_Condition);
 
-//メール送信処理
-$mailsousin_agent  = mb_send_mail($mail_to_agent, $mail_subject_agent, $mail_body_agent, $mail_header_agent);
- 
-//メールの送信（結果を変数 $result_agent に代入）
-if ( ini_get( 'safe_mode' ) ) {
-  //セーフモードがOnの場合は第5引数が使えない
-  $result_agent = $mailsousin_agent;
-} else {
-  $result_agent = mb_send_mail($mail_to_agent, $mail_subject_agent, $mail_body_agent, $mail_header_agent, '-f' . $returnMail );
-}
 
-//データ追加
-try {
-  require('../dbconnect.php');
-  //usersテーブルへ
-  //データ登録
-  $sql_users = "INSERT INTO 
-    users 
-    (name,university,department,grad_year,mail,phone_number,address,delete_flg) 
-    VALUES
-    ('$name','$university','$department','$grad_year','$email','$phone_number','$address', 0)";
-  $stmt_users = $db->prepare($sql_users);
-  $stmt_users->execute();
-  $database_result_users = $stmt_users->fetchAll();
-
-  //company_userテーブルへ
-  //データ登録の準備
-    //user_idの取得・定義   （usersテーブルの最後の行のidを持ってくる）
-    $stmt = $db->query('SELECT id FROM users ORDER BY id DESC LIMIT 1');  
-    $last_user_id = $stmt->fetch();
-    $user_id = $last_user_id['id'];
-    //company_idの取得・定義  (複数の場合はforeachやconcat?で一つ一つに分ける必要がある)
-    if (isset($_GET['company_id'])) {
-      $company_id_array = $_GET['company_id'];
-    }
-    $company_id = h($company_id_array);
-    //contact_datetimeの取得・定義
-    $contact_datetime = date("Y-m-d");
-  //データ登録
-  $sql = "INSERT INTO 
-    company_user
-    (user_id,company_id,contact_datetime) 
-    VALUES 
-    ($user_id,$company_id,'$contact_datetime')";
-  $stmt = $db->prepare($sql);
-  $stmt->execute();
-  $database_result = $stmt->fetchAll();
-
-}catch(PDOException $e){
-  echo $e -> getMessage();
-  exit();
-}
 
 //メール送信の結果判定
 if ( $result_user && $result_agent) {

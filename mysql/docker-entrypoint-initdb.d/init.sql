@@ -44,11 +44,11 @@ CREATE TABLE company
 );
 
 INSERT INTO company (company_name, phone_number, mail_contact, mail_manager, mail_notification, representative, address, company_url) VALUES 
-('鈴木会社', '0120-3456-1987', 'aaaaiiiiuuuu@gmail.com', 'ssssmmmmllll@gmail.com', 'maruaaaamaruaaaa@gmail.com', '赤井', '〇県△市','marumaruurl.com'),
-('佐藤会社', '0120-3456-1988', 'aaaauuuuiiii@gmail.com', 'mmmmssssllll@gmail.com', 'maruaaaaasankaku@gmail.com', '世良', '△県〇市','marumaruurl.com'),
-('田中会社', '0120-3456-1989', 'iiiiaaaauuuu@gmail.com', 'ssssllllmmmm@gmail.com', 'sankakumaaaaaaru@gmail.com', '毛利', '△県〇市','marumaruurl.com'),
-('山田会社', '0120-3456-1990', 'iiiiuuuuaaaa@gmail.com', 'mmssssmmllll@gmail.com', 'sankakusankaaaku@gmail.com', '安室', '△県△市', 'marumruurl.com'),
-('加藤会社', '0120-3456-1991', 'aaaauuuuuduu@gmail.com', 'llllssssmmmm@gmail.com', 'marusankakudbatu@gmail.com', '諸星', '〇県〇市','marumaruurl.com');
+('鈴木会社', '0120-3456-1987', 'aaaaiiiiuuuu@gmail.com', 'ssssmmmmllll@gmail.com', 'suzuki@gmail.com', '赤井', '〇県△市','marumaruurl.com'),
+('佐藤会社', '0120-3456-1988', 'aaaauuuuiiii@gmail.com', 'mmmmssssllll@gmail.com', 'satouu@gmail.com', '世良', '△県〇市','marumaruurl.com'),
+('田中会社', '0120-3456-1989', 'iiiiaaaauuuu@gmail.com', 'ssssllllmmmm@gmail.com', 'tanaka@gmail.com', '毛利', '△県〇市','marumaruurl.com'),
+('山田会社', '0120-3456-1990', 'iiiiuuuuaaaa@gmail.com', 'mmssssmmllll@gmail.com', 'yamada@gmail.com', '安室', '△県△市', 'marumruurl.com'),
+('加藤会社', '0120-3456-1991', 'aaaauuuuuduu@gmail.com', 'llllssssmmmm@gmail.com', 'katouu@gmail.com', '諸星', '〇県〇市','marumaruurl.com');
 
 
 
