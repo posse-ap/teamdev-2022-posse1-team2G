@@ -1,4 +1,15 @@
-.twrapper{
+/* 
+   比較表 
+*/
+/* ロゴ写真 */
+.table_company_img img{
+	width: 17rem;
+}
+
+
+
+
+/* .twrapper{
 	overflow: auto;
 	white-space: nowrap;
 }
@@ -30,4 +41,4 @@
 	min-width: 120px;
 	max-width: 120px;
 	left: 0;
-}
+} */
