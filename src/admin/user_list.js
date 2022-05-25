@@ -29,7 +29,7 @@ $(document).ready(function () {
         getdata();
       }
     });
-
+    // alert(stud_company_name);
   })
 
   // 削除ボタン押してみたときの挙動
@@ -201,9 +201,9 @@ $(document).ready(function () {
           $('.studentdata').append('<tr>' +
             '<td class="stud_id">' + value['id'] + '</td>\
                                 <td>' + value['name'] + '</td>\
-                                <td>' + value['company_name'] + '</td>\
+                                <td class="stud_company_name">' + value['company_name'] + '</td>\
                                 <td>' + value['phone_number'] + '</td>\
-                                <td class="stud_company_name">' + value['contact_datetime'] + '</td>\
+                                <td>' + value['contact_datetime'] + '</td>\
                                 <td>\
                                     <a href="#" class="badge btn-info viewbtn">VIEW</a>\
                                     <a href="#" class="badge btn-primary edit_btn">EDIT</a>\
