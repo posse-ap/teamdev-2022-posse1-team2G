@@ -132,9 +132,9 @@ $cnt = count($companies);
                   <div class="table_company_img">
                     <img src="\img\SHI95_sansyainsuizokukanoosuii.jpg" alt="企業ロゴ">
                   </div>
-                  <div class="company_box_check">
+                  <div class="company_box_check self__checkbox">
                     <!-- valueにデータを追加していくことで、一時表示ボックスに反映できる -->
-                    <label for="check"><input type="checkbox" name="select_company_checkboxes" value="<?= $company['company_id']; ?>-<?= $company['name']; ?>" onchange="checked_counter()">お問い合わせする</label>
+                    <input type="checkbox" name="select_company_checkboxes" value="<?= $company['company_id']; ?>-<?= $company['name']; ?>" onchange="checked_counter()"><label for="check">お問い合わせする</label>
                   </div>
                 </td>
               <?php endforeach; ?>
@@ -279,11 +279,11 @@ $cnt = count($companies);
     </section>
     <section>
       <!-- お問い合わせチェックボタンついた会社を一時表示するボックス -->
-      <div class="selected_company_box">
+      <div id="at_once_box" class="selected_company_box">
         <p>お問い合わせするエージェント会社</p>
         <form id="form" class="validationForm" action="./contact/contactform.php" method="post">
           <!-- お問い合わせチェックボタンついた会社の表示箇所 -->
-          <div id="checked_company_box"></div>
+          <div id="checked_company_box" class="self__checkbox"></div>
           <!-- 完了ページへ渡すトークンの隠しフィールド -->
           <input type="hidden" name="ticket" value="<?php echo h($ticket); ?>">
           <!-- お問い合わせするボタンを押すと、一時表示された会社の情報を比較表ページにpostする -->
@@ -293,7 +293,7 @@ $cnt = count($companies);
     </section>
   </main>
 
-  <script src="./to_compare_table.js"></script>
+  <script src="./compare_table.js"></script>
 </body>
 
 </html>

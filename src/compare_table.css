@@ -92,6 +92,16 @@ td + td{
 	background-color: #92c1c0;
 }
 
+
+.selected_company_box{
+	/* display: none; */
+	position: fixed;
+  bottom: 0;
+  width: 100%;
+	background-color: #92c1c0;
+}
+
+
 /* .twrapper{
 	overflow: auto;
 	white-space: nowrap;
