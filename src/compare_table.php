@@ -63,9 +63,13 @@ $stmt = $db->query($sql);
 $stmt->execute();
 $companies = $stmt->fetchAll();
 
-echo "<pre>";
-print_r($companies);
-echo "</pre>";
+// 企業数のカウント,数値を文字列に型変換する
+$cnt = (string)count($companies);
+echo $cnt;
+
+// echo "<pre>";
+// print_r($companies);
+// echo "</pre>";
 
 ?>
 
@@ -85,7 +89,7 @@ echo "</pre>";
   <main>
     <section id="company">
       <div class="company_wrapper">
-        <h2>比較表</h2>        
+        <h1>比較表</h1>        
       </div>
     </section>
   </main>
@@ -124,7 +128,8 @@ echo "</pre>";
 
               <!-- 基本情報 -->
               <tr class="tr-sticky">
-                  <td>基本情報</td>
+                  <!-- <th></th> -->
+                  <td colspan= <? echo $cnt+1;?>>基本情報</td>
               </tr>
               <tr>
                   <th>業界</th>
@@ -132,12 +137,6 @@ echo "</pre>";
                     <td class=""><?= $company['industries']; ?></td>
                   <?php endforeach; ?>
               </tr>
-              <!-- <tr>
-                  <th>強み</th>
-                  <?php foreach ($companies as $company) : ?>
-                    <td class=""><?= $company['strength']; ?></td>
-                  <?php endforeach; ?>
-              </tr> -->
               <tr>
                   <th>おすすめの人</th>
                   <?php foreach ($companies as $company) : ?>
@@ -173,12 +172,6 @@ echo "</pre>";
                     <td class=""><?= $company['satisfaction_degrees']; ?></td>
                   <?php endforeach; ?>
               </tr>
-              <!-- <tr>
-                  <th>主な就職先</th>
-                  <?php foreach ($companies as $company) : ?>
-                    <td class=""><?= $company['finding_employment_target']; ?></td>
-                  <?php endforeach; ?>
-              </tr> -->
 
               <!-- サポート -->
               <tr class="tr-sticky">
