@@ -88,8 +88,10 @@ $mailsousin  = mb_send_mail($mail_to, $mail_subject, $mail_body, $mail_header);
 if ( ini_get( 'safe_mode' ) ) {
   //セーフモードがOnの場合は第5引数が使えない
   $result_user = $mailsousin;
+  echo 1;
 } else {
   $result_user = mb_send_mail($mail_to, $mail_subject, $mail_body, $mail_header, '-f' . $returnMail );
+  echo 2;
 }
 
 
@@ -159,8 +161,10 @@ if ( ini_get( 'safe_mode' ) ) {
   if ( ini_get( 'safe_mode' ) ) {
     //セーフモードがOnの場合は第5引数が使えない
     $result_agent = $mailsousin_agent;
+    echo 3;
   } else {
     $result_agent = mb_send_mail($mail_to_agent, $mail_subject_agent, $mail_body_agent, $mail_header_agent, '-f' . $returnMail );
+    echo 4;
   }
   
   //データ追加
