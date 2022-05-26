@@ -51,6 +51,7 @@ header{
 /* メイン全体について */
 .compare_wrapper{
 	margin-top: 6rem;
+	margin-bottom: 6.5rem;
 	text-align: center;
 	/* background-color: #e5e5e5; */
 	/* outline: red; */

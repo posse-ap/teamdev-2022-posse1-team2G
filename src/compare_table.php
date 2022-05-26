@@ -65,6 +65,7 @@ $companies = $stmt->fetchAll();
 
 // 企業数のカウント
 $cnt = count($companies);
+$row=0;
 // echo $cnt;
 
 // echo "<pre>";
@@ -134,9 +135,12 @@ $cnt = count($companies);
                   </div>
                   <div class="company_box_check self__checkbox">
                     <!-- valueにデータを追加していくことで、一時表示ボックスに反映できる -->
-                    <input type="checkbox" name="select_company_checkboxes" value="<?= $company['company_id']; ?>-<?= $company['name']; ?>" onchange="checked_counter()"><label for="check">お問い合わせする</label>
+                    <input type="checkbox" name="select_company_checkboxes" value="<?= $company['company_id']; ?>-<?= $company['name']; ?>" onchange="checked_counter()">
+                    <!-- <input type="checkbox" name="select_company_checkboxes" value="<?= $company['company_id']; ?>-<?= $company['name']; ?>" id="checked_box_<? echo $row; ?>"> -->
+                    <label for="check">お問い合わせする</label>
                   </div>
                 </td>
+                <? $row += 1;?>
               <?php endforeach; ?>
             </tr>
 

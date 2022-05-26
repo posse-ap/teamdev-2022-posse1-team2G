@@ -3,6 +3,8 @@
 */
 //各チェックボックスを取得
 let compare_checked_buttons = document.getElementsByName("select_company_checkboxes");
+// console.log(compare_checked_buttons.length);
+
 let compare_display_box = document.getElementById("at_once_box");
 //各チェックボックスが選択されたら呼び出される関数
    function checked_counter(){
@@ -15,10 +17,15 @@ let compare_display_box = document.getElementById("at_once_box");
         let checked_company_box = document.getElementById("checked_company_box")
      //チェックボックスごとに、選択されているかどうかで文字列用の配列に出し入れを行う
         for(let i = 0; i < compare_checked_buttons.length; i++){
+          let company_value = compare_checked_buttons.item(i).value;
           if(compare_checked_buttons[i].checked){
-            let company_value = compare_checked_buttons.item(i).value;
             box_contents.push(company_value);
+            // console.log(i+"push");
           }
+          // }else{
+          //   box_contents.pop(company_value);
+          //   console.log(i+"pop");
+          // }
         } 
       //   console.log(box_contents);
 
@@ -34,3 +41,8 @@ let compare_display_box = document.getElementById("at_once_box");
       
    }
 
+  
+    // for(let i = 0; i < compare_checked_buttons.length; i++){
+    //   var checked_companies = document.getElementById(`checked_box_${i}`);
+    //   }
+    //   checked_companies.addEventListener(checked_counter);
