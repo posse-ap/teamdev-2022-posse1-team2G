@@ -140,7 +140,7 @@ $row=0;
               <th class="text_center">お問い合わせ</th>
               <?php foreach ($companies as $company) : ?>
                 <td class="">
-                  <div class="company_box_check self__checkbox">
+                  <div class="company_box_check">
                     <!-- valueにデータを追加していくことで、一時表示ボックスに反映できる -->
                     <input type="checkbox" name="select_company_checkboxes" value="<?= $company['company_id']; ?>-<?= $company['name']; ?>" id="checked_box_<? echo $row; ?>" onchange="checked_counter()">
                     <label for="checked_box_<? echo $row; ?>">選択する</label>
@@ -290,7 +290,7 @@ $row=0;
     <section>
       <!-- お問い合わせチェックボタンついた会社を一時表示するボックス -->
       <div id="at_once_box" class="selected_company_box">
-        <p class="box-title">お問い合わせするエージェント会社</p>
+        <p class="box-title">選択済みエージェント会社</p>
         <form id="form" class="validationForm" action="./contact/contactform.php" method="post">
           <!-- お問い合わせチェックボタンついた会社の表示箇所 -->
           <div id="checked_company_box" class="self__checkbox"></div>
