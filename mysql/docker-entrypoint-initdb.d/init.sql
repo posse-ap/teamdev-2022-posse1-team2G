@@ -113,7 +113,7 @@ CREATE TABLE company_service
   company_id INT NOT NULL,
   --  ES添削
   ES_correction boolean NOT NULL,
-  -- 面談
+  -- 面接対策
   interview boolean NOT NULL,
   -- インターン
   internship boolean NOT NULL,

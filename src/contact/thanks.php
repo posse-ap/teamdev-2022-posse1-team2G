@@ -83,16 +83,17 @@ $mail_header = "from: ayaka1712pome@gmail.com\r\n"
 //メール送信処理
 $mailsousin  = mb_send_mail($mail_to, $mail_subject, $mail_body, $mail_header);
 
+$result_user = $mailsousin;
  
-//メールの送信（結果を変数 $result に代入）
-if ( ini_get( 'safe_mode' ) ) {
-  //セーフモードがOnの場合は第5引数が使えない
-  $result_user = $mailsousin;
-  echo 1;
-} else {
-  $result_user = mb_send_mail($mail_to, $mail_subject, $mail_body, $mail_header, '-f' . $returnMail );
-  echo 2;
-}
+// //メールの送信（結果を変数 $result に代入）
+// if ( ini_get( 'safe_mode' ) ) {
+//   //セーフモードがOnの場合は第5引数が使えない
+//   $result_user = $mailsousin;
+//   echo 1;
+// } else {
+//   $result_user = mb_send_mail($mail_to, $mail_subject, $mail_body, $mail_header, '-f' . $returnMail );
+//   echo 2;
+// }
 
 
 /* メールの作成 （to エージェント）*/
@@ -157,15 +158,16 @@ if ( ini_get( 'safe_mode' ) ) {
   //メール送信処理
   $mailsousin_agent  = mb_send_mail($mail_to_agent, $mail_subject_agent, $mail_body_agent, $mail_header_agent);
    
-  //メールの送信（結果を変数 $result_agent に代入）
-  if ( ini_get( 'safe_mode' ) ) {
-    //セーフモードがOnの場合は第5引数が使えない
-    $result_agent = $mailsousin_agent;
-    echo 3;
-  } else {
-    $result_agent = mb_send_mail($mail_to_agent, $mail_subject_agent, $mail_body_agent, $mail_header_agent, '-f' . $returnMail );
-    echo 4;
-  }
+  // //メールの送信（結果を変数 $result_agent に代入）
+  // if ( ini_get( 'safe_mode' ) ) {
+  //   //セーフモードがOnの場合は第5引数が使えない
+  //   $result_agent = $mailsousin_agent;
+  //   echo 3;
+  // } else {
+  //   $result_agent = mb_send_mail($mail_to_agent, $mail_subject_agent, $mail_body_agent, $mail_header_agent, '-f' . $returnMail );
+  //   echo 4;
+  // }
+  $result_agent = $mailsousin_agent;
   
   //データ追加
   try {
@@ -203,16 +205,12 @@ if ( ini_get( 'safe_mode' ) ) {
     $stmt = $db->prepare($sql);
     $stmt->execute();
     $database_result = $stmt->fetchAll();
-  
+
   }catch(PDOException $e){
     echo $e -> getMessage();
     exit();
   }
-  
-}  
-  // これをORでつなげて、文字列にする
-  // $company_id_Condition = implode(' OR ', $company_id_Condition);
-
+}
 
 
 //メール送信の結果判定

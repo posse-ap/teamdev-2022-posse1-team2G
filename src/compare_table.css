@@ -6,8 +6,15 @@
 	width: 17rem;
 }
 
-
-
+td {
+	border: 2px dashed orange;
+}
+.colap {
+	border-collapse: collapse;
+}
+.fill {
+	background-color: darksalmon;
+}
 
 /* .twrapper{
 	overflow: auto;

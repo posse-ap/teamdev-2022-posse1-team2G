@@ -25,45 +25,48 @@ $company_ids =  $_POST['id'];
 // キーワードの数だけループして、LIKE句の配列を作る
 $company_id_Condition = [];
 foreach ($company_ids as $company_id) {
-  $company_id_Condition[] = 'company_id = ' . $company_id;
+  $company_id_Condition[] = 'company_posting_information.company_id = ' . $company_id;
 }
 
 // これをORでつなげて、文字列にする
 $company_id_Condition = implode(' OR ', $company_id_Condition);
 
 // あとはSELECT文にくっつける
-$sql = 'SELECT * FROM company_posting_information WHERE ' . $company_id_Condition;
+// $sql = 'SELECT * FROM company_posting_information WHERE ' . $company_id_Condition;
+$sql = 'SELECT
+          company_posting_information.company_id AS company_id,
+          company_posting_information.name AS name,
+          company_posting_information.industries AS industries,
+          company_posting_information.type AS type,
+          company_achievement.job_offer_number AS job_offer_number,
+          company_achievement.user_count AS user_count,
+          company_achievement.informal_job_offer_rate AS informal_job_offer_rate,
+          company_achievement.user_count AS user_count,
+          company_achievement.satisfaction_degrees AS satisfaction_degrees,
+          company_service.ES_correction AS ES_correction,
+          company_service.interview AS interview,
+          company_service.limited_course AS limited_course,
+          company_service.competence_diagnosis AS competence_diagnosis,
+          company_service.special_selection AS special_selection,
+          company_service.internship AS internship,
+          company_overview.interview_format AS interview_format,
+          company_overview.interview_location AS interview_location
+          FROM company_posting_information
+          INNER JOIN company_achievement
+          ON  company_posting_information.company_id = company_achievement.company_id
+          INNER JOIN company_service
+          ON  company_posting_information.company_id = company_service.company_id 
+          INNER JOIN company_overview
+          ON  company_posting_information.company_id = company_overview.company_id
+          WHERE ' . $company_id_Condition;
 $stmt = $db->query($sql);
 $stmt->execute();
 $companies = $stmt->fetchAll();
 
-// echo "<pre>";
-// print_r($companies);
-// echo "</pre>";
-// [id] => 1
-//             [company_id] => 1
-//             [logo] => ./src/admin/img/logo/
-//             [name] => 鈴木会社
-//             [img] => ./src/admin/img/img/
-//             [industries] => IT
-//             [achievement] => 満足度９８％
-//             [type] => 理系
-//             [catch_copy] => dream
-//             [information] => 鈴木会社は～で、実績が～で、…
-//             [strength] => 強み
-//             [job_offer_number] => 1千万人
-//             [user_count] => 2千万人
-//             [informal_job_offer_rate] => 90%
-//             [satisfaction_degrees] => 89%
-//             [finding_employment_target] => IT企業
-//             [ES] => 1
-//             [interview] => 1
-//             [limited_course] => 1
-//             [competence_diagnosis] => 1
-//             [special_selection] => 1
-//             [interview_style] => オンライン
-//             [location] => オンライン
-//             [delete_flg] => 0
+echo "<pre>";
+print_r($companies);
+echo "</pre>";
+
 ?>
 
 
@@ -89,7 +92,7 @@ $companies = $stmt->fetchAll();
 
   <section>
   <div class="twrapper">
-  	<table>
+  	<table class="colap">
   		<tbody>
 
           <thead>
@@ -103,7 +106,7 @@ $companies = $stmt->fetchAll();
               </tr>
           </thead>
 
-              <!-- 企業ロゴ -->
+              <!-- 企業ロゴとお問い合わせチェックボックス -->
               <tr>
                 <th class="text-center">企業ロゴ</th>
                 <?php foreach ($companies as $company) : ?>
@@ -119,12 +122,122 @@ $companies = $stmt->fetchAll();
                 <?php endforeach; ?>
               </tr>
 
-              <!-- サブタイトル -->
+              <!-- 基本情報 -->
               <tr class="tr-sticky">
                   <td>基本情報</td>
               </tr>
               <tr>
                   <th>業界</th>
+                  <?php foreach ($companies as $company) : ?>
+                    <td class=""><?= $company['industries']; ?></td>
+                  <?php endforeach; ?>
+              </tr>
+              <!-- <tr>
+                  <th>強み</th>
+                  <?php foreach ($companies as $company) : ?>
+                    <td class=""><?= $company['strength']; ?></td>
+                  <?php endforeach; ?>
+              </tr> -->
+              <tr>
+                  <th>おすすめの人</th>
+                  <?php foreach ($companies as $company) : ?>
+                    <td class=""><?= $company['type']; ?></td>
+                  <?php endforeach; ?>
+              </tr>
+
+              <!-- 実績 -->
+              <tr class="tr-sticky">
+                  <td>実績</td>
+              </tr>
+              <tr>
+                  <th>求人数</th>
+                  <?php foreach ($companies as $company) : ?>
+                    <td class=""><?= $company['job_offer_number']; ?></td>
+                  <?php endforeach; ?>
+              </tr>
+              <tr>
+                  <th>学生利用者数</th>
+                  <?php foreach ($companies as $company) : ?>
+                    <td class=""><?= $company['user_count']; ?></td>
+                  <?php endforeach; ?>
+              </tr>
+              <tr>
+                  <th>内定率</th>
+                  <?php foreach ($companies as $company) : ?>
+                    <td class=""><?= $company['informal_job_offer_rate']; ?></td>
+                  <?php endforeach; ?>
+              </tr>
+              <tr>
+                  <th>満足度</th>
+                  <?php foreach ($companies as $company) : ?>
+                    <td class=""><?= $company['satisfaction_degrees']; ?></td>
+                  <?php endforeach; ?>
+              </tr>
+              <!-- <tr>
+                  <th>主な就職先</th>
+                  <?php foreach ($companies as $company) : ?>
+                    <td class=""><?= $company['finding_employment_target']; ?></td>
+                  <?php endforeach; ?>
+              </tr> -->
+
+              <!-- サポート -->
+              <tr class="tr-sticky">
+                  <td>サポート</td>
+              </tr>
+              <tr>
+                  <th>ES対策</th>
+                  <?php foreach ($companies as $company) : ?>
+                    <td class="">
+                      <? if($company['industries'] = 1):?>
+                      <div>〇</div> 
+                      <?else: ?>
+                      <div>✕</div> 
+                     <?endif; ?></td>
+                  <?php endforeach; ?>
+              </tr>
+              <tr>
+                  <th>面接対策</th>
+                  <?php foreach ($companies as $company) : ?>
+                    <td class=""><?= $company['industries']; ?></td>
+                  <?php endforeach; ?>
+              </tr>
+              <tr>
+                  <th>限定講座</th>
+                  <?php foreach ($companies as $company) : ?>
+                    <td class=""><?= $company['industries']; ?></td>
+                  <?php endforeach; ?>
+              </tr>
+              <tr>
+                  <th>適正診断</th>
+                  <?php foreach ($companies as $company) : ?>
+                    <td class=""><?= $company['industries']; ?></td>
+                  <?php endforeach; ?>
+              </tr>
+              <tr>
+                  <th>特別選考</th>
+                  <?php foreach ($companies as $company) : ?>
+                    <td class=""><?= $company['industries']; ?></td>
+                  <?php endforeach; ?>
+              </tr>
+              <tr>
+                  <th>インターン紹介</th>
+                  <?php foreach ($companies as $company) : ?>
+                    <td class=""><?= $company['industries']; ?></td>
+                  <?php endforeach; ?>
+              </tr>
+
+              <!-- その他 -->
+              <tr class="tr-sticky">
+                  <td>その他</td>
+              </tr>
+              <tr>
+                  <th>面談形態</th>
+                  <?php foreach ($companies as $company) : ?>
+                    <td class=""><?= $company['industries']; ?></td>
+                  <?php endforeach; ?>
+              </tr>
+              <tr>
+                  <th>拠点</th>
                   <?php foreach ($companies as $company) : ?>
                     <td class=""><?= $company['industries']; ?></td>
                   <?php endforeach; ?>
