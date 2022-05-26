@@ -1,16 +1,9 @@
 <?php
 session_start();
 require('../../dbconnect.php');
-$id = $_SESSION['id'];
 
-$sql = "SELECT rep FROM company_user";
-$sql = "SELECT t2.name from company as t1 
-inner join admin as t2 
-on t1.id=t2.company_id
-where t1.id='$id';";
-$stmt = $db->prepare($sql);
-$stmt->execute();
-$names = $stmt->fetchAll();
+
+
 
 // +--------+
 // | name   |
@@ -27,6 +20,17 @@ $names = $stmt->fetchAll();
 if (isset($_SESSION['id']) && $_SESSION['time'] + 10 > time()) {
   $_SESSION['time'] = time();
   // user_idがない、もしくは一定時間を過ぎていた場合
+  $id = $_SESSION['id'];
+
+  $sql = "SELECT rep FROM company_user";
+  $sql = "SELECT t2.name from company as t1 
+inner join admin as t2 
+on t1.id=t2.company_id
+where t1.id='$id';";
+  $stmt = $db->prepare($sql);
+  $stmt->execute();
+  $names = $stmt->fetchAll();
+
 } else {
   header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/login.php');
   exit();

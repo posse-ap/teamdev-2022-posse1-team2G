@@ -2,7 +2,7 @@
 session_start();
 require('../dbconnect.php');
 
-  $errormessage = array();
+$errormessage = array();
 
 if (!empty($_POST)) {
   $login = $db->prepare('SELECT * FROM admin WHERE email = :email AND flag = 2');
@@ -13,12 +13,15 @@ if (!empty($_POST)) {
 
   if (!empty($agent)) {
     $_SESSION = array();
+    $_SESSION['name'] = $agent['name'];
+    // $_SESSION['times'] = time();
+    // $_SESSION = array();
     // $_SESSION['id'] = $agent['company_id'];
     // $_SESSION['time'] = time();
 
-    header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/phone_number.pho');
+    header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/forget_pass_phone.php');
   } else {
-    $errormessage[] = "パスワードもしくはメールアドレスが間違っています";
+    $errormessage[] = "入力されたメールアドレスは登録されていません";
   }
 }
 
@@ -49,21 +52,21 @@ if (!empty($_POST)) {
     </ul>
   <?php } ?>
 
-  <form action="/admin/forgetPass.php" method="POST"></form>
-  <div class='login_form'>
-    <div class='login_forget_mail'>
-      <div>
-        <p>メールアドレス</p>
+  <form action="/admin/forget_pass.php" method="POST">
+    <div class='login_form'>
+      <div class='login_forget_mail'>
+        <div>
+          <p>メールアドレス</p>
+        </div>
+        <div class='forget_mail_container'>
+          <input type="email" name="email">
+        </div>
       </div>
-      <div class='forget_mail_container'>
-        <input type="email" name="email">
+      <div class='login_forget_submit'>
+        <input type="submit" value="送信">
       </div>
     </div>
-    <div class='login_forget_submit'>
-      <input type="submit" value="送信">
-    </div>
-  </div>
-
+  </form>
 </body>
 
 </html>

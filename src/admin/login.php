@@ -112,7 +112,7 @@ if (!empty($_POST)) {
           <input type="submit" value="ログイン">
         </div>
         <div class='login_pass_forget'>
-          <a href="./forgetPass.php">パスワードを忘れた場合</a>
+          <a href="./forget_pass.php">パスワードを忘れた場合</a>
         </div>
       </form>
       <!-- <a href="/index.php">イベント一覧</a> -->

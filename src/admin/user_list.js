@@ -126,9 +126,78 @@ $(document).ready(function () {
     var stud_id = $(this).closest('tr').find('.stud_id').text();
     var stud_company_name = $(this).closest('tr').find('.stud_company_name').text();
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    もしかしたらURLのせいかも
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
     $.ajax({
       type: "POST",
-      url: "./crud_user.php",
+      // url: "./crud_user.php",
+      url: "../boozer/crud_user.php",
       data: {
         'checking_edit': true,
         'stud_id': stud_id,
@@ -162,6 +231,7 @@ $(document).ready(function () {
 
     var stud_id = $(this).closest('tr').find('.stud_id').text();
     var stud_company_name = $(this).closest('tr').find('.stud_company_name').text();
+    // alert(stud_id);
 
     $.ajax({
       type: "POST",

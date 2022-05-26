@@ -112,10 +112,8 @@ $names = $stmt->fetchAll();
         <div class="modal-body">
           <div class="row">
             <input type="hidden" id="id_edit">
-
             <div class="col-md-12">
               <div class="error-message">
-
               </div>
             </div>
             <!-- add modalからもってきてクラス名をIDに変更 -->
@@ -209,9 +207,9 @@ $names = $stmt->fetchAll();
                   <?php endforeach; ?>
                 </select>
               </div>
-              <div class='user_list_search_submit'>
+              <div class='user_list_search_submit' id="search">
                 <!-- <input type="submit" id="search" value='検索'> -->
-                <i class="bi bi-search font-weight-bold" id="search" width='24' height='24'></i>
+                <i class="bi bi-search font-weight-bold" width='24' height='24'></i>
               </div>
               <!-- <div>
                 <button id='reset'>リセット</button>
