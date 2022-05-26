@@ -116,7 +116,7 @@ $row=0;
 
             <thead>
               <!-- 企業名 -->
-              <tr class="tr-sticky">
+              <tr class="tr_first">
                 <th>企業名</th>
                 <?php foreach ($companies as $company) : ?>
                   <td class="p-0" style="text-align:center"><?= $company['name']; ?></td>
@@ -127,17 +127,23 @@ $row=0;
 
             <!-- 企業ロゴとお問い合わせチェックボックス -->
             <tr>
-              <th class="text-center">企業ロゴ</th>
+              <th class="text_center">企業ロゴ</th>
               <?php foreach ($companies as $company) : ?>
                 <td class="">
                   <div class="table_company_img">
                     <img src="\img\SHI95_sansyainsuizokukanoosuii.jpg" alt="企業ロゴ">
                   </div>
+                </td>
+              <?php endforeach; ?>
+            </tr>
+            <tr>
+              <th class="text_center">お問い合わせ</th>
+              <?php foreach ($companies as $company) : ?>
+                <td class="">
                   <div class="company_box_check self__checkbox">
                     <!-- valueにデータを追加していくことで、一時表示ボックスに反映できる -->
-                    <input type="checkbox" name="select_company_checkboxes" value="<?= $company['company_id']; ?>-<?= $company['name']; ?>" onchange="checked_counter()">
-                    <!-- <input type="checkbox" name="select_company_checkboxes" value="<?= $company['company_id']; ?>-<?= $company['name']; ?>" id="checked_box_<? echo $row; ?>"> -->
-                    <label for="check">お問い合わせする</label>
+                    <input type="checkbox" name="select_company_checkboxes" value="<?= $company['company_id']; ?>-<?= $company['name']; ?>" id="checked_box_<? echo $row; ?>" onchange="checked_counter()">
+                    <label for="checked_box_<? echo $row; ?>">選択する</label>
                   </div>
                 </td>
                 <? $row += 1;?>
@@ -145,7 +151,7 @@ $row=0;
             </tr>
 
             <!-- 基本情報 -->
-            <tr class="tr-sticky">
+            <tr class="">
               <!-- <th></th> -->
               <td class="fill" colspan=<? echo $cnt + 1; ?>>基本情報</td>
             </tr>
@@ -163,7 +169,7 @@ $row=0;
             </tr>
 
             <!-- 実績 -->
-            <tr class="tr-sticky">
+            <tr class="">
               <td class="fill" colspan=<? echo $cnt + 1; ?>>実績</td>
             </tr>
             <tr>
@@ -192,7 +198,7 @@ $row=0;
             </tr>
 
             <!-- サポート -->
-            <tr class="tr-sticky">
+            <tr class="">
               <td class="fill" colspan=<? echo $cnt + 1; ?>>サポート</td>
             </tr>
             <tr>
@@ -263,7 +269,7 @@ $row=0;
             </tr>
 
             <!-- その他 -->
-            <tr class="tr-sticky">
+            <tr class="">
               <td class="fill" colspan=<? echo $cnt + 1; ?>>その他</td>
             </tr>
             <tr>
@@ -272,7 +278,7 @@ $row=0;
                 <td class=""><?= $company['interview_format']; ?></td>
               <?php endforeach; ?>
             </tr>
-            <tr>
+            <tr class="tr_last">
               <th>拠点</th>
               <?php foreach ($companies as $company) : ?>
                 <td class=""><?= $company['interview_location']; ?></td>
@@ -284,14 +290,14 @@ $row=0;
     <section>
       <!-- お問い合わせチェックボタンついた会社を一時表示するボックス -->
       <div id="at_once_box" class="selected_company_box">
-        <p>お問い合わせするエージェント会社</p>
+        <p class="box-title">お問い合わせするエージェント会社</p>
         <form id="form" class="validationForm" action="./contact/contactform.php" method="post">
           <!-- お問い合わせチェックボタンついた会社の表示箇所 -->
           <div id="checked_company_box" class="self__checkbox"></div>
           <!-- 完了ページへ渡すトークンの隠しフィールド -->
           <input type="hidden" name="ticket" value="<?php echo h($ticket); ?>">
           <!-- お問い合わせするボタンを押すと、一時表示された会社の情報を比較表ページにpostする -->
-          <button name="submitted" type="submit" class="">お問い合わせ画面へ</button>
+          <button name="submitted" type="submit" class="contact_button">お問い合わせ画面へ</button>
         </form>
       </div>
     </section>

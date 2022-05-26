@@ -2,6 +2,7 @@
 body{
 	/* background-color: #e5e5e5; */
 	background-color: rgba(38, 166, 154, 0.05);
+	margin: 0 auto;
 }
 
 /* ヘッダーについて */
@@ -74,15 +75,25 @@ table {
 }
 
 /* 説明行の枠線 */
+.tr_first{
+	border-top: 0.4rem solid #e0e4eb;
+}
+.tr_last{
+	border-bottom: 0.4rem solid #e0e4eb;
+}
 th,td {
-	border-top: 2px solid #92c1c0;
-	border-bottom: 2px solid #92c1c0;
+	border-top: 0.2rem solid #e0e4eb;
+	border-bottom: 0.2rem solid #e0e4eb;
+	/* border-top: 0.2rem solid #92c1c0;
+	border-bottom: 0.2rem solid #92c1c0; */
 }
 th{
-	border-right: 2px solid #92c1c0;
+	border-right: 0.2rem solid #e0e4eb;
+	/* border-right: 0.2rem solid #92c1c0; */
 }
 td + td{
-	border-left: 2px solid #92c1c0;
+	border-left: 0.2rem solid #e0e4eb;
+	/* border-left: 0.2rem solid #92c1c0; */
 }
 /* 横方向の結合 */
 .colap {
@@ -90,18 +101,72 @@ td + td{
 }
 /* セルの色付け */
 .fill {
-	background-color: #92c1c0;
+	/* background-color: #aec4e2; */
+	background-color: #e0e4eb;
 }
 
+/* チェックボックスについて */
+input[type=checkbox] {
+	display: none; /* checkboxを非表示にする */
+}
+input[type="checkbox"]:checked + label {
+	background: #31A9EE;/* マウス選択時の背景色を指定する */
+	color: #ffffff; /* マウス選択時のフォント色を指定する */
+}
+label:hover {
+	background-color: #E2EDF9; /* マウスオーバー時の背景色を指定する */
+}
+label {
+/* display: block; ブロックレベル要素化する */
+/* float: left; 要素の左寄せ・回り込を指定する */
+margin: 5px; /* ラベル外側の余白を指定する */
+/* margin-left: 0 auto; */
+width: 9rem; /* ラベルの横幅を指定する */
+height: 45px; /* ラベルの高さを指定する */
+text-align: center; /* テキストのセンタリングを指定する */
+line-height: 45px; /* 行の高さを指定する */
+padding: 0.3rem 2rem 0.3rem; /* ラベル内の余白を指定する */
+cursor: pointer; /* マウスカーソルの形（リンクカーソル）を指定する */
+/* color: #2c1d1d; フォントの色を指定 */
+font-weight: bold;
+/* justify-content: center; */
+border: 2px solid #6d9bdb;/* ラベルの境界線を実線で指定する */
+border-radius: 5px; /* 角丸を指定する */
+}
 
+/* 選択済みボックスについて */
 .selected_company_box{
 	/* display: none; */
 	position: fixed;
   bottom: 0;
   width: 100%;
-	background-color: #92c1c0;
+	/* background-color: #92c1c0; */
+	/* margin: 2em 0; */
+  background: #f1f1f1;
+  /* box-shadow: 0 0.2rem 4px rgba(0, 0, 0, 0.22); */
 }
-
+.selected_company_box .box-title {
+	font-size: 1.2em;
+	background: #92c1c0;
+	padding: 4px;
+	margin: 0 auto;
+	/* text-align: center; */
+	color: #FFF;
+	font-weight: bold;
+	letter-spacing: 0.05rem;
+}
+.contact_button{
+	font-size: 0.8rem;
+	background-color: #aec4e2;
+	padding: 0.4rem;
+	margin-bottom: 1rem;
+	/* text-align: center; */
+	color: #232424;
+	font-weight: bold;
+	letter-spacing: 0.05rem;
+	border-color: #aec4e2;
+	border-radius: 1rem;
+}
 
 /* .twrapper{
 	overflow: auto;

@@ -35,7 +35,7 @@ let compare_display_box = document.getElementById("at_once_box");
         let split_company_id = element.replace(/[^0-9]/g, '');
       //   console.log(split_company_id);
         
-        at_once_company_contents+=`<input type="checkbox" name="id[]" class="required" value="${split_company_id}" checked>${element}`
+        at_once_company_contents+=`<input type="checkbox" name="id[]" class="required" value="${split_company_id}" checked><label>${element}</label>`
         checked_company_box.innerHTML = at_once_company_contents;
       });
       
