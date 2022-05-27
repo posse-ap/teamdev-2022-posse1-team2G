@@ -128,26 +128,26 @@ include('./_parts_agent/_header_agent.php');
   <div class="container">
     <section id="contact">
       <!-- ページメイン -->
-      <div class="contact_wrapper">
-        <p>contact</p>
-        <h2>お問い合わせフォーム</h2>
-        <?php if ( $result ): ?>
-        <h1>お問い合わせ完了</h1>
-        <p>お問い合わせいただきありがとうございます。</p>
-        <p>boozer社より担当者が折り返しご連絡させていただきますので</p>
-        <p>今しばらくお待ちください。</p>
-        <p>万が一連絡がこない場合は、お手数をおかけしますが下記のメールアドレスまでご連絡ください。</p>
-        <p><?php echo h($email); ?></p>
-        <?php else: ?>
-        <p>申し訳ございませんが、送信に失敗しました。</p>
-        <p>しばらくしてもう一度お試しになるか、下記のメールにてご連絡ください。</p>
-        <p>ご迷惑をおかけして誠に申し訳ございません。</p>
-        <p><?php echo h($email); ?></p>
-        <?php endif; ?>
+      <div class="contact_wrapper form_card">
+        <p class="sub_subtitle">contact</p>
+        <h1>お問い合わせフォーム</h1>
+        <div class="contents">
+           <?php if ( $result ): ?>
+              <p class="result">お問い合わせ完了</p>
+              <p>お問い合わせいただきありがとうございます。</p>
+              <p>boozer社より担当者が折り返しご連絡させていただきますので</p>
+              <p>今しばらくお待ちください。</p>
+              <p>万が一連絡がこない場合は、お手数をおかけしますが下記のメールアドレスまでご連絡ください。</p>
+              <p class="mail"><?php echo h($email); ?></p>
+           <?php else: ?>
+              <p class="result">申し訳ございませんが、送信に失敗しました。</p>
+              <p>しばらくしてもう一度お試しになるか、下記のメールにてご連絡ください。</p>
+              <p>ご迷惑をおかけして誠に申し訳ございません。</p>
+              <p class="mail"><?php echo h($email); ?></p>
+           <?php endif; ?>
+        </div>
       </div>
       
-      <!-- 戻るボタン -->
-      <a href="./user_list.php">申し込み一覧はこちら</a>
     </section>
     </div>
     </main>

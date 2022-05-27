@@ -52,11 +52,6 @@ $ticket = $_SESSION[ 'ticket' ];
 include('./_parts_agent/_header_agent.php');  
 ?>
 
-<!-- header関数読み込み -->
-<?php
-include('./_parts_boozer/_header_boozer.php');  
-?>
-
 
 <div class="container">
 
@@ -64,30 +59,30 @@ include('./_parts_boozer/_header_boozer.php');
   <h1>ー申請フォームー</h1>
   <p>以下のフォームからお問い合わせください。</p>
 
-  <form id="form" class="validationForm" action="./thanks.php" method="post" novalidate>
- 
-      <div>
-        <p>目的</p>
-        <label>無効申請</label>
-        <input type="radio"  name="purpose" data-error-required-radio="目的は必須です。" value="無効申請">
-        <label>登録情報の変更</label>
-        <input type="radio"  name="purpose" data-error-required-radio="目的は必須です。" value="登録情報の変更">
-        <label>その他</label>
-        <input type="radio"  name="purpose" data-error-required-radio="目的は必須です。" value="その他">
-      </div>
-      
-      <div>
-        <p>内容</p>
-        <textarea cols="40" rows="8" class="maxlength" 
-        placeholder="自由記述欄" data-maxlength="1000" id="message" name="message" rows="3"><?php echo $message; ?></textarea>
-      </div>
-
-
-      <!--確認ページへトークンをPOSTする、隠しフィールド「ticket」-->
-      <input type="hidden" name="ticket" value="<?php echo $ticket; ?>">
-
-      <button name="submitted" type="submit" class="btn btn-primary">送信</button>
-    </form>
+  <form id="form" class="validationForm form_card" action="./thanks.php" method="post" novalidate>
+     <!-- <div class="form_card"> -->
+         <div>
+           <p class="subtitle">目的</p>
+           <label>無効申請</label>
+           <input type="radio"  name="purpose" data-error-required-radio="目的は必須です。" value="無効申請">
+           <label>登録情報の変更</label>
+           <input type="radio"  name="purpose" data-error-required-radio="目的は必須です。" value="登録情報の変更">
+           <label>その他</label>
+           <input type="radio"  name="purpose" data-error-required-radio="目的は必須です。" value="その他">
+         </div>
+         
+         <div>
+           <p class="subtitle">内容</p>
+           <textarea cols="40" rows="8" class="maxlength" 
+           placeholder="自由記述欄" data-maxlength="1000" id="message" name="message" rows="3"><?php echo $message; ?></textarea>
+         </div>
+   
+         <!--確認ページへトークンをPOSTする、隠しフィールド「ticket」-->
+         <input type="hidden" name="ticket" value="<?php echo $ticket; ?>">
+   
+         <button name="submitted" type="submit" class="btn btn-primary">送信</button>
+     <!-- </div> -->
+  </form>
 </div>
 
 
