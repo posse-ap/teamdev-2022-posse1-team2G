@@ -7,10 +7,14 @@
   display: flex;
   /* outline: 1px solid red; */
   align-items: center;
-  width: 80%;
+  width: 88%;
   margin: 0 auto;
   border-bottom: 1px solid rgba(85, 96, 83, 0.281);
   height: 80px;
+}
+
+.top_container {
+  border-top: 1px solid rgba(85, 96, 83, 0.281);
 }
 
 .contactform_question {
@@ -96,22 +100,33 @@
 }
 
 .contactform_submit input:hover {
-opacity: .7;
+  opacity: .7;
 }
 
 
 @media screen and (min-width: 767px) and (max-width: 1024px) {
-
-  .contactform_question p,
   .contactform_question p {
-    font-size: .8rem;
+    font-size: .9rem;
+  }
+
+  .contactform_not_required p,
+  .contactform_required p {
+    font-size: .9rem;
+    padding: 4px 0;
   }
 }
 
 @media screen and (max-width: 767px) {
 
   .contactform_question p,
-  .contactform_question p {
+  .contactform_required p,
+  .contactform_not_required p {
     font-size: .8rem;
   }
+
+  .contactform_required,
+  .contactform_not_required {
+    width: 12%;
+  }
+
 }
