@@ -99,12 +99,6 @@
 
 
 
-
-
-
-
-
-
 /* ----------    boozer/user_list.php     ------------ */
 .search_container {
     /* background-color: red; */
@@ -362,7 +356,7 @@ input[type="search"]::-webkit-search-cancel-button {
 
 
 /* 管理画面　詳細modal */
-.view_container{
+.view_container {
     border-bottom: 1px solid #000;
     background-color: red;
 }
