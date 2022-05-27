@@ -50,6 +50,13 @@ if ( isset( $_POST[ 'ticket' ], $_SESSION[ 'ticket' ] ) ) {
   header( 'location: ' . $url );
   exit; //忘れないように
 }
+
+//POSTされたデータを変数に格納（値の初期化とデータの整形：前後にあるホワイトスペースを削除）
+$purpose = trim( (string) filter_input(INPUT_POST, 'purpose') );
+$message = trim( filter_input(INPUT_POST, 'message')); 
+//POSTされたデータとエラーの配列をセッション変数に保存
+$_SESSION[ 'purpose' ] = $purpose;
+$_SESSION[ 'message' ] = $message;
  
 //変数にエスケープ処理したセッション変数の値を代入
 $purpose = h( $_SESSION[ 'purpose' ] );
