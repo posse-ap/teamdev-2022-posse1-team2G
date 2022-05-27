@@ -65,7 +65,7 @@ $companies = $stmt->fetchAll();
 
 // 企業数のカウント
 $cnt = count($companies);
-$row=0;
+$row = 0;
 // echo $cnt;
 
 // echo "<pre>";
@@ -87,7 +87,7 @@ $row=0;
 </head>
 
 <body>
- <header>
+  <header>
     <div class="header_wrapper">
       <div class="header_logo">
         <!-- <img src="" alt="logo"> -->
@@ -108,23 +108,25 @@ $row=0;
     </nav>
   </header>
   <main class="compare_wrapper">
-    <h1>比較表</h1>
+    <h1>～比較表結果～</h1>
     <section>
       <div class="twrapper">
         <table class="colap">
           <tbody>
 
-            <thead>
-              <!-- 企業名 -->
-              <tr class="tr_first">
-                <th>企業名</th>
-                <?php foreach ($companies as $company) : ?>
-                  <td class="p-0" style="text-align:center"><?= $company['name']; ?></td>
-                <?php endforeach; ?>
-                <!-- <td class="p-0" style="text-align:center" >企業</td> -->
-              </tr>
-            </thead>
-
+          <!-- 基本情報 -->
+            <tr class="">
+              <!-- <th></th> -->
+              <td class="fill" colspan=<? echo $cnt + 1; ?>>基本情報</td>
+            </tr>
+            <!-- 企業名 -->
+            <tr class="">
+              <th>企業名</th>
+              <?php foreach ($companies as $company) : ?>
+                <td class="company_name" style="text-align:center"><?= $company['name']; ?></td>
+              <?php endforeach; ?>
+              <!-- <td class="company_name" style="text-align:center" >企業</td> -->
+            </tr>
             <!-- 企業ロゴとお問い合わせチェックボックス -->
             <tr>
               <th class="text_center">企業ロゴ</th>
@@ -136,31 +138,28 @@ $row=0;
                 </td>
               <?php endforeach; ?>
             </tr>
+            <!-- お問い合わせ -->
             <tr>
               <th class="text_center">お問い合わせ</th>
               <?php foreach ($companies as $company) : ?>
                 <td class="">
                   <div class="company_box_check">
                     <!-- valueにデータを追加していくことで、一時表示ボックスに反映できる -->
-                    <input type="checkbox" name="select_company_checkboxes" value="<?= $company['company_id']; ?>-<?= $company['name']; ?>" id="checked_box_<? echo $row; ?>" onchange="checked_counter()">
+                    <input type="checkbox" name="select_company_checkboxes" value="<?= $company['company_id']; ?><?= $company['name']; ?>" id="checked_box_<? echo $row; ?>" onchange="checked_counter()">
                     <label for="checked_box_<? echo $row; ?>">選択する</label>
                   </div>
                 </td>
-                <? $row += 1;?>
+                <? $row += 1; ?>
               <?php endforeach; ?>
             </tr>
-
-            <!-- 基本情報 -->
-            <tr class="">
-              <!-- <th></th> -->
-              <td class="fill" colspan=<? echo $cnt + 1; ?>>基本情報</td>
-            </tr>
+            <!-- 業界 -->
             <tr>
               <th>業界</th>
               <?php foreach ($companies as $company) : ?>
                 <td class=""><?= $company['industries']; ?></td>
               <?php endforeach; ?>
             </tr>
+            <!-- おすすめの人 -->
             <tr>
               <th>おすすめの人</th>
               <?php foreach ($companies as $company) : ?>
@@ -168,7 +167,7 @@ $row=0;
               <?php endforeach; ?>
             </tr>
 
-            <!-- 実績 -->
+          <!-- 実績 -->
             <tr class="">
               <td class="fill" colspan=<? echo $cnt + 1; ?>>実績</td>
             </tr>
@@ -197,7 +196,7 @@ $row=0;
               <?php endforeach; ?>
             </tr>
 
-            <!-- サポート -->
+          <!-- サポート -->
             <tr class="">
               <td class="fill" colspan=<? echo $cnt + 1; ?>>サポート</td>
             </tr>
@@ -268,7 +267,7 @@ $row=0;
               <?php endforeach; ?>
             </tr>
 
-            <!-- その他 -->
+          <!-- その他 -->
             <tr class="">
               <td class="fill" colspan=<? echo $cnt + 1; ?>>その他</td>
             </tr>
@@ -278,7 +277,7 @@ $row=0;
                 <td class=""><?= $company['interview_format']; ?></td>
               <?php endforeach; ?>
             </tr>
-            <tr class="tr_last">
+            <tr class="">
               <th>拠点</th>
               <?php foreach ($companies as $company) : ?>
                 <td class=""><?= $company['interview_location']; ?></td>
@@ -290,7 +289,7 @@ $row=0;
     <section>
       <!-- お問い合わせチェックボタンついた会社を一時表示するボックス -->
       <div id="at_once_box" class="selected_company_box">
-        <p class="box-title">選択済みエージェント会社</p>
+        <p class="box-title">✓選択済みエージェント会社</p>
         <form id="form" class="validationForm" action="./contact/contactform.php" method="post">
           <!-- お問い合わせチェックボタンついた会社の表示箇所 -->
           <div id="checked_company_box" class="self__checkbox"></div>
@@ -304,6 +303,7 @@ $row=0;
   </main>
 
   <script src="./compare_table.js"></script>
+  <!-- <script src="./to_compare_table.js"></script> -->
 </body>
 
 </html>

@@ -52,7 +52,7 @@ header{
 /* メイン全体について */
 .compare_wrapper{
 	margin-top: 6rem;
-	margin-bottom: 6.5rem;
+	margin-bottom: 10.5rem;
 	text-align: center;
 	/* background-color: #e5e5e5; */
 	/* outline: red; */
@@ -68,6 +68,10 @@ table {
 	/* border: 2px solid #01bfbd; */
 	background-color: #fff;
 }
+/* 会社名 */
+.company_name{
+	font-weight: bold;
+}
 
 /* ロゴ写真 */
 .table_company_img img{
@@ -75,12 +79,12 @@ table {
 }
 
 /* 説明行の枠線 */
-.tr_first{
+/* .tr_first{
 	border-top: 0.4rem solid #e8ecf1;
 }
 .tr_last{
 	border-bottom: 0.4rem solid #e8ecf1;
-}
+} */
 th,td {
 	border-top: 0.2rem solid #e8ecf1;
 	border-bottom: 0.2rem solid #e8ecf1;
@@ -103,21 +107,22 @@ td + td{
 .fill {
 	/* background-color: #aec4e2; */
 	background-color: #e8ecf1;
+	font-weight: bold;
 }
 
 /* チェックボックスについて */
-input[type=checkbox] {
+.company_box_check input[type=checkbox] {
 	display: none; /* checkboxを非表示にする */
 }
-input[type="checkbox"]:checked + label {
+.company_box_check input[type="checkbox"]:checked + label {
 	background: #50b4ee;/* マウス選択時の背景色を指定する */
 	border: 0.3rem solid #50b4ee;/* ラベルの境界線を実線で指定する */
 	color: #ffffff; /* マウス選択時のフォント色を指定する */
 }
-label:hover {
+.company_box_check label:hover {
 	background-color: #E2EDF9; /* マウスオーバー時の背景色を指定する */
 }
-label {
+.company_box_check label {
 /* display: block; ブロックレベル要素化する */
 /* float: left; 要素の左寄せ・回り込を指定する */
 margin: 1rem; /* ラベル外側の余白を指定する */
@@ -163,7 +168,7 @@ border-radius: 5px; /* 角丸を指定する */
 	/* background-color: #66b6e5; */
 	background-color: #fff;
 	padding: 0.4rem;
-	margin-bottom: 1rem;
+	margin: 0.3rem 0 1rem;
 	/* text-align: center; */
 	/* color: #232424; */
 	/* color: #66b6e5; */
