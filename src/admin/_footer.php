@@ -1,5 +1,4 @@
-<?php
-?>
+
   </main>
 
 <footer class="footer">
@@ -26,5 +25,3 @@
     </p>
   </div>
 </footer>
-
-</body>

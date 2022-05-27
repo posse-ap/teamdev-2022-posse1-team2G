@@ -25,13 +25,17 @@ $names = $stmt->fetchAll();
   <link rel="stylesheet" href="../../normalize.css">
   <!-- bootstrap icon -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
-
   <link rel="stylesheet" href="../admin_style.css">
+  <link rel="stylesheet" href="../parts.css">
 
   <title>bozer学生一覧</title>
 </head>
 
-<body>
+<!-- header関数読み込み -->
+<?php
+include('./_parts_boozer/_header_boozer.php');  
+?>
+<div class="container_all">
   <!-- View Modal -->
   <div class="modal fade" id="userViewModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -223,6 +227,12 @@ $names = $stmt->fetchAll();
       </div>
     </div>
   </div>
+  </div>
+
+  <!-- ↓footer関数の読み込み -->
+  <?php
+  include('../_footer.php');  
+  ?>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>

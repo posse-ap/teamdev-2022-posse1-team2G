@@ -11,12 +11,16 @@
   <!-- icon用 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
   <link rel="stylesheet" href="../admin_style.css">
-
-  <title>PHP - AJAX - CRUD</title>
+  <link rel="stylesheet" href="../parts.css">
+  <!-- <link rel="stylesheet" href="../admin_index.css"> -->
+  <title>会社一覧</title>
 </head>
 
-<body>
-
+<!-- header関数読み込み -->
+<?php
+include('./_parts_boozer/_header_boozer.php');  
+?>
+<div class="container_all">
   <!-- Add Modal -->
   <div class="modal fade" id="companyAddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -254,10 +258,11 @@
       </div>
     </div>
   </div>
+</div>
 
 
 
-  <div class="container mt-5">
+  <div class="container mt-5 container_all">
     <div class="row">
       <div class="col-md-12">
         <div class="card">
@@ -302,6 +307,12 @@
       </div>
     </div>
   </div>
+
+
+<!-- ↓footer関数の読み込み -->
+<?php
+include('../_footer.php');  
+?>
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
