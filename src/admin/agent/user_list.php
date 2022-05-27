@@ -1,10 +1,6 @@
 <?php
 session_start();
 require('../../dbconnect.php');
-
-
-
-
 // +--------+
 // | name   |
 // +--------+
@@ -21,7 +17,6 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 10 > time()) {
   $_SESSION['time'] = time();
   // user_idがない、もしくは一定時間を過ぎていた場合
   $id = $_SESSION['id'];
-
   $sql = "SELECT rep FROM company_user";
   $sql = "SELECT t2.name from company as t1 
 inner join admin as t2 
@@ -30,28 +25,22 @@ where t1.id='$id';";
   $stmt = $db->prepare($sql);
   $stmt->execute();
   $names = $stmt->fetchAll();
-
 } else {
   header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/login.php');
   exit();
 }
 ?>
-
 <!doctype html>
-<html lang="en">
-
+<html lang="ja">
 <head>
-  <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.css" />
-
   <!-- icon用 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
-
+<link rel="stylesheet" href="../admin_style.css">
 
   <title>agent学生一覧</title>
 </head>
@@ -122,7 +111,6 @@ where t1.id='$id';";
     </div>
   </div>
 
-
   <!-- Edit Modal -->
   <!-- add modal から変更 -->
   <div class="modal fade" id="userEditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -137,13 +125,10 @@ where t1.id='$id';";
         <div class="modal-body">
           <div class="row">
             <input type="hidden" id="id_edit">
-
             <div class="col-md-12">
               <div class="error-message">
-
               </div>
             </div>
-            <!-- add modalからもってきてクラス名をIDに変更 -->
             <div class="col-md-6 mb-3">
               <label for="">担当者</label>
               <input type="text" class="form-control" id="rep_edit">
@@ -160,35 +145,6 @@ where t1.id='$id';";
 
 
 
-  <!-- Delete Modal -->
-  <!-- <div class="modal fade" id="userDeleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">削除する</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-            <input type="hidden" id="id_delete">
-            <div class="col-md-12">
-              <h3>本当に削除しますか？</h3>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
-          <button type="button" class="btn btn-danger user_delete_ajax">削除</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  </div> -->
-
-
-
   <div class="container mt-5">
     <div class="row">
       <div class="col-md-12">
@@ -199,29 +155,25 @@ where t1.id='$id';";
             </h4>
           </div>
           <div class="card-body">
-            <div>
+            <div class='search_container'>
               <div class='user_list_search_text'>
                 <input type="text" class='form-control' id='live_search' name='input' autocomplete="off" placeholder="フリーワードを入力してください..">
               </div>
-              <div>
+              <div class='user_list_search_select'>
                 <select name="select_name">
-                  <option value='未設定'>未設定</option>
+                  <option value=''>担当者を選択</option>
+                  <option value=' 未設定'>未設定</option>
                   <?php foreach ($names as $names) : ?>
                     <option value="<?= $names['name'] ?>"><?= $names['name'] ?></option>
                   <?php endforeach; ?>
                 </select>
               </div>
-              <div>
-                <!-- <i class="bi bi-search font-weight-bold" width='24' height='24'></i> -->
-                <input type="submit" id="search">
+              <div class='user_list_search_submit' id="search"> <i class="bi bi-search font-weight-bold" width='24' height='24'></i>
               </div>
             </div>
-            <!-- <input type="text" class='form-control' id='live_search' name='input' autocomplete="off" placeholder="フリーワードを入力してください..">
-              <input type="submit" id="search" value='検索'> -->
             <div class="message-show">
-
             </div>
-            <table class="table table-bordered table-striped " id="myTable">
+            <table class="table table-bordered table-striped">
               <thead>
                 <tr>
                   <th>ID</th>
@@ -233,7 +185,6 @@ where t1.id='$id';";
                 </tr>
               </thead>
               <tbody class="studentdata">
-
               </tbody>
             </table>
           </div>
@@ -241,26 +192,10 @@ where t1.id='$id';";
       </div>
     </div>
   </div>
-
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-
-
-  <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script> -->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
-
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-
-
   <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.js"></script>
-
   <script src="./user_list.js"></script>
-
-
 </body>
-
 </html>

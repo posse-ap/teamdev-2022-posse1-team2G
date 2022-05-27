@@ -27,11 +27,14 @@ if (!empty($_GET['input'])&& !empty($_GET['select'])) {
 } 
 // 担当者だけ入力
 else if(empty($_GET['input']) && !empty($_GET['select'])){
+  $input = $_GET['input'];
+  $select = $_GET['select'];
+
   $sql = "SELECT * from company_user as t1 
   inner join users as t2 
   on t1.user_id=t2.id 
   where t1.company_id = '$id' 
-    AND rep LIKE '%{$select}%' 
+    AND t1.rep LIKE '%{$select}%' 
     ORDER BY t1.id DESC ";
   $stmt = $db->prepare($sql);
   $stmt->execute();
@@ -39,6 +42,9 @@ else if(empty($_GET['input']) && !empty($_GET['select'])){
 }
   // 担当者だけ入力
 else if(!empty($_GET['input']) && empty($_GET['select'])){
+  $input = $_GET['input'];
+  $select = $_GET['select'];
+
   $sql = "SELECT * from company_user as t1 
   inner join users as t2 
   on t1.user_id=t2.id 
@@ -113,7 +119,7 @@ if ($result_array == true) {
   echo json_encode($result_array);
 } else {
   echo $return =
-    "<h4> $input </h4><p>に一致するデータはありませんでした</p> ";
+    "<h4> $input $select</h4><p>に一致するデータはありませんでした</p> ";
 }
 
 

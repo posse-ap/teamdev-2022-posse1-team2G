@@ -42,8 +42,7 @@ $names = $stmt->fetchAll();
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-          <div>
+        <div class="modal-body view_container">
             <div class="col-md-6 pb-2">
               <h5>ID</h5>
               <p class="id_view"></p>
@@ -80,15 +79,6 @@ $names = $stmt->fetchAll();
               <h5>住所</h5>
               <p class="address_view"></p>
             </div>
-            <!-- <h4 class="phone_number_view"></h4>
-            <h4 class="mail_contact_view"></h4>
-            <h4 class="mail_manager_view"></h4>
-            <h4 class="mail_notification_view"></h4>
-            <h4 class="representative_view"></h4>
-            <h4 class="address_view"></h4>
-            <h4 class="company_url_view"></h4> -->
-
-          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -211,13 +201,10 @@ $names = $stmt->fetchAll();
                 <!-- <input type="submit" id="search" value='検索'> -->
                 <i class="bi bi-search font-weight-bold" width='24' height='24'></i>
               </div>
-              <!-- <div>
-                <button id='reset'>リセット</button>
-              </div> -->
             </div>
             <div class="message-show">
             </div>
-            <table class="table table-bordered table-striped " id="myTable">
+            <table class="table table-bordered table-striped">
               <thead>
                 <tr>
                   <th>ID</th>
@@ -236,14 +223,10 @@ $names = $stmt->fetchAll();
       </div>
     </div>
   </div>
-
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.js"></script>
   <script src="../user_list.js"></script>
-
-
 </body>
-
 </html>

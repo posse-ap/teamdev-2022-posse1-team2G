@@ -51,12 +51,12 @@ if (isset($_POST['checking_edit'])) {
   $stmt_edit->execute();
   $result_edit = $stmt_edit->fetchAll();
   // print_r($result_edit);
-  // if ($result_edit == true) {
-  //   header('Content-type: application/json');
-  //   echo json_encode($result_edit);
-  // } else {
-  //   echo $return = "編集画面開けません!";
-  // }
+  if ($result_edit == true) {
+    header('Content-type: application/json');
+    echo json_encode($result_edit);
+  } else {
+    echo $return = "編集画面開けません!";
+  }
 }
 
 // 五本目　update 　二本目の新規挿入と近い
