@@ -29,22 +29,46 @@ where t1.id='$id';";
   header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/login.php');
   exit();
 }
+
+// ↓header関数の読み込み ↓うまくいかない、css読み取ってくれない
+//src\admin\agent\user_list.php
+// src\admin\agent\_parts_agent\_header_agent.php
+// include('./_parts_agent/_header_agent.php');
 ?>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>agent学生一覧</title>
+  <link rel="stylesheet" href="../admin_index.css">
+  <link rel="stylesheet" href="../admin_style.css">
+  <!-- ↓この_header.phpから見たparts.cssの位置ではなく、このphpファイルが読み込まれるファイルから見た位置を指定してあげる必要がある -->
+  <link rel="stylesheet" href="../parts.css">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <!-- icon用 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
-<link rel="stylesheet" href="../admin_style.css">
 
-  <title>agent学生一覧</title>
 </head>
-
 <body>
+  <header>
+    <div class="header_wrapper">
+      <div class="header_logo">
+        <img src="../../img/boozer_logo.png" alt="logo">
+        <!-- <a href="#">CRAFT</a> -->
+      </div>
+    </div>
+    <nav class="header_nav">
+      <ul>
+        <li class="nav_item"><a href="./user_list.php">申し込み一覧</a></li>
+        <li class="nav_item"><a href="./information_posting.php">登録情報</a></li>
+        <li class="nav_item"><a href="./contact_form.php">申請</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
   <!-- View Modal -->
   <div class="modal fade" id="userViewModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -191,6 +215,32 @@ where t1.id='$id';";
       </div>
     </div>
   </div>
+
+  <footer class="footer">
+    <div id="footer-menu">
+      <div>
+        <a class="footer-menu__btn dfont" id="footerlogo" href="https://reashu.com"><img src="../../img/shukatsu_logo.png" alt="就活の教科書 | 新卒大学生向け就職活動サイト"></a>
+        <p class="site_description futo">23卒/22卒の内定者と運営する、新しい就活情報サイト</p>
+      </div>
+      <nav>
+        <div class="footer-links cf">
+          <ul id="menu-%e3%83%95%e3%83%83%e3%82%bf%e3%83%bc%e3%83%a1%e3%83%8b%e3%83%a5%e3%83%bc" class="nav footer-nav cf">
+            <li id="menu-item-13320" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13320"><a href="https://reashu.com/what-is-reashu/">就活の教科書とは</a></li>
+            <li id="menu-item-67013" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-67013"><a href="https://reashu.com/?page_id=49113">運営責任者（監修者）</a></li>
+            <li id="menu-item-94658" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-94658"><a href="https://reashu.com/recruit/">ライター募集中</a></li>
+            <li id="menu-item-68279" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-68279"><a href="https://synergy-career.co.jp">運営会社</a></li>
+            <li id="menu-item-12448" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12448"><a href="https://reashu.com/privacy/">プライバシーポリシー</a></li>
+            <li id="menu-item-12449" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12449"><a href="https://reashu.com/contact/">広告等のお問い合わせ</a></li>
+            <li id="menu-item-12446" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12446"><a href="https://reashu.com/sitemap/">サイトマップ</a></li>
+          </ul>
+        </div>
+      </nav>
+      <p class="copyright dfont">
+        &copy; 2022 株式会社Synergy Career All rights reserved.
+      </p>
+    </div>
+  </footer>
+
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>

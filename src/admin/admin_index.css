@@ -43,3 +43,11 @@
   margin: 0 auto;
 
 }
+
+
+/* ここからコンタクトフォーム */
+.container{
+  margin: 4rem 0 4rem;
+  /* margin-top: 4rem; */
+  text-align: center;
+}

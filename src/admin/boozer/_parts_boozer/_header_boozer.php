@@ -7,15 +7,18 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>就活エージェント比較サイト</title>
-  <link rel="stylesheet" href="./parts.css">
+  <title>boozer 管理者画面</title>
+  <!-- ↓この_header.phpから見たparts.cssの位置ではなく、このphpファイルが読み込まれるファイルから見た位置を指定してあげる必要がある -->
+  <link rel="stylesheet" href="../_parts_boozer/parts.css">
+  <link rel="stylesheet" href="../admin_index.css">
+  <link rel="stylesheet" href="../admin_style.css">
 </head>
 <body>
   <header>
     <div class="header_wrapper">
       <div class="header_logo">
-        <!-- <img src="" alt="logo"> -->
-        <a href="#">CRAFT</a>
+        <img src="../../img/boozer_logo.png" alt="logo">
+        <!-- <a href="#">CRAFT</a> -->
       </div>
     </div>
     <nav class="header_nav">

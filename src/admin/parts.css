@@ -7,7 +7,7 @@ header{
   position: fixed;
   z-index: 999;
   top: 0;
-  height: 65px;
+  height: 6rem;
   /* background-color: rgba(38, 166, 154, 0.85); */
   background-color: #26a69a;
   display: flex;
