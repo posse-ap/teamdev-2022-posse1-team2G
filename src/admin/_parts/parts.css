@@ -1,10 +1,15 @@
+/* 全体について */
+body {
+  margin: 0 auto;
+}
 /* ヘッダーについて */
 header{
   position: fixed;
   z-index: 999;
   top: 0;
   height: 65px;
-  background-color: rgba(38, 166, 154, 0.85);
+  /* background-color: rgba(38, 166, 154, 0.85); */
+  background-color: #26a69a;
   display: flex;
   align-items: center;
   width: 100%;
@@ -46,72 +51,68 @@ header{
 }
 
 /* フッダーについて */
-footer{
+.dfont {
+  font-family: "Quicksand","Helvetica", "Arial", "Hiragino Kaku Gothic ProN", "Hiragino Sans", YuGothic, "Yu Gothic", "メイリオ", Meiryo, sans-serif;
+}
+.footer {
   position: relative;
-  width: 100%;
-  height: 300px;
-  background-color: #1E2022;
+  clear: both;
+  font-size: 0.95em;
+  font-size: 1.2em;
+  /* opacity: 0.75; */
 }
-
-.footer_student{
-  position: absolute;
-  top: 50px;
-  left: 250px;
+.footer p {
+  line-height: 1.55;
 }
-
-.footer_company{
-  position: absolute;
-  top: 50px;
-  left: 500px;
+.site_description {
+  font-size: .75em;
+  text-align: center;
+  color: #fff;
 }
-
-.footer_student p, .footer_company p{
-  color: #f0f0f0;
-  font-size: 16px;
-  line-height: 2;
-  margin-bottom: 8px;
+#footer-menu {
+  padding: 20px 10px 10px;
+  text-align: center;
+  background-color: #26a69a;
 }
-
-.footer_list a{
-  padding: 10px 15px 15px;
-  color: #949697;
-  text-decoration: none;
-  font-size: 13px;
-  line-height: 2;
-}
-.footer_list a:hover{
-  color: #f8f8f8;
-}
-
-.footer_list {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-.footer_list li{
-  padding-left: 10px;
-}
-
-.footer_logo {
-  position: absolute;
-  top: 50px;
-  left: 950px;
-  margin-top: 15px;
-  color: white;
-  font-size: 50px;
-  font-weight: bold;
-}
-.footer_logo p{
-  margin: 0;
-}
-
-.footer_copyright{
-  position: absolute;
-  top: 115px;
-  left: 950px;
-  font-size: 11px;
-  color: #545658;
+#footerlogo img {
   display: inline-block;
-  margin-top: 16px;
-  letter-spacing: 0.02em;
+  height: 62px;
+  padding: 10px 0 10px 0;
+  vertical-align: middle;
+}
+#footer-menu a {
+  color: #fff;
+  text-decoration: none;
+}
+.footer-menu__btn {
+  font-size: 20px;
+  transition: 0.3s ease-in-out;
+}
+.footer-menu__btn:hover {
+  opacity: 0.7;
+}
+#footer-menu nav,
+.footer-links {
+  display: inline-block;
+}
+#footer-menu ul {
+  margin: 0.5em;
+}
+#footer-menu li,
+.privacy-policy-link {
+  display: inline-block;
+  padding: 0 6px;
+  font-size: 14.5px;
+}
+.privacy-policy-link {
+  padding-left: 0;
+}
+#footer-menu li a:hover,
+#footer-menu .privacy-policy-link:hover {
+  text-decoration: underline;
+}
+.copyright {
+  margin: 5px 0 0;
+  font-size: 13.5px;
+  opacity: 0.7;
 }
