@@ -16,8 +16,6 @@
     padding: .6em;
     font-size: .8rem;
   }
-
-
   .detail_section_company_information_list {
     font-size: .8rem;
   }
@@ -53,9 +51,12 @@
     width: 100%;
   }
 
+
+
   /* ------------------      サポート     ---------------- */
-
-
+  .detail_section_support_list{
+margin: 0 auto;
+  } 
   .detail_section_support_list>dt,
   .detail_section_support_list>dd {
     padding: .6em;
@@ -63,7 +64,10 @@
   }
 
   .detail_section_support_list>dt {
-    padding-left: 8%;
+    width: 55%;
+  }
+  .detail_section_support_list>dd {
+    width: 45%;
   }
 
   .detail_section_company_information_list {

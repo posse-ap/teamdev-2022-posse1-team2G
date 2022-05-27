@@ -8,9 +8,9 @@ body {
 
 /* トップページ写真 */
 .detail_top_page_img {
-  width: 96%;
+  width: 80%;
   margin: 0 auto;
-  height: 100%;
+  height: 450px;
 }
 
 .detail_top_page_img img {
@@ -19,18 +19,21 @@ body {
   margin: 0 auto;
   object-fit: cover;
 }
+
 /* ページのタイトル */
-.detail_title{
-background-image: url(../img/makiko.jpg);
-width: 100%;
-height: 100px;
-display: flex;
-/* justify-content: center; */
-align-items: center;
-margin-bottom: 40px;
+.detail_title {
+  /* background: url(../img/makiko.jpg) #58b8d1 contain no-repeat; */
+  background: #a5b78b no-repeat center;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  margin-bottom: 40px;
 }
-.detail_title h1{
-  margin-left: 20%;
+
+.detail_title h1 {
+  margin-left: 24%;
   color: #fff;
   letter-spacing: .2rem;
   font-weight: normal;
@@ -42,7 +45,7 @@ margin-bottom: 40px;
 .company_detail_container {
   display: flex;
   margin: 0 auto;
-  width: 72%;
+  width: 80%;
 }
 
 
@@ -68,6 +71,7 @@ margin-bottom: 40px;
   padding-bottom: 8px;
   border-bottom: 1px rgb(166, 184, 142) solid;
   margin: 32px 0;
+  padding-left: 4%;
 }
 
 /* 
@@ -139,7 +143,7 @@ margin-bottom: 40px;
 .detail_section_support_list>dt {
   background-color: #bad4c6;
   width: 60%;
-  padding-left: 6%;
+  text-align: center;
 }
 
 .detail_section_support_list>dd {
