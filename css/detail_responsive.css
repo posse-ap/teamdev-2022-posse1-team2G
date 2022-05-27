@@ -1,0 +1,72 @@
+@media screen and (min-width: 767px) and (max-width: 1024px) {
+
+  /* （ここにタブレット用スタイルを記述） */
+  .company_detail_container {
+    width: 82%;
+  }
+
+
+
+
+
+
+  /* ------------------      サポート     ---------------- */
+  .detail_section_support_list>dt,
+  .detail_section_support_list>dd {
+    padding: .6em;
+    font-size: .8rem;
+  }
+
+
+  .detail_section_company_information_list {
+    font-size: .8rem;
+  }
+
+
+
+
+}
+
+@media screen and (max-width: 767px) {
+
+  /* （ここにモバイル用スタイルを記述） */
+  .company_detail_container {
+    display: flex;
+    width: 96%;
+  }
+
+  .company_detail_main {
+    width: 100%;
+    outline: none;
+  }
+
+  .section {
+    width: 100%;
+    margin-bottom: 72px;
+  }
+
+  .company_detail_side {
+    display: none;
+  }
+
+  .company_detail_main {
+    width: 100%;
+  }
+
+  /* ------------------      サポート     ---------------- */
+
+
+  .detail_section_support_list>dt,
+  .detail_section_support_list>dd {
+    padding: .6em;
+    font-size: .8rem;
+  }
+
+  .detail_section_support_list>dt {
+    padding-left: 8%;
+  }
+
+  .detail_section_company_information_list {
+    font-size: .8rem;
+  }
+}

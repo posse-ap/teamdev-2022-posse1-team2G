@@ -5,19 +5,22 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./detail.css">
+  <link rel="stylesheet" href="../css/detail.css">
+  <link rel="stylesheet" href="../css/detail_responsive.css">
   <title>企業詳細情報ページ</title>
 </head>
 
 <body>
   <!-- header下の全体 -->
-  <main>
+  <main class="main">
     <!-- トップページ写真 -->
     <div class="detail_top_page_img">
       <img src="../img/SHI95_sansyainsuizokukanoosuii.jpg">
     </div>
     <!-- タイトル -->
-    <h1>会社詳細情報</h1>
+    <div class="detail_title">
+      <h1>会社詳細情報</h1>
+    </div>
 
     <!-- メインコンテンツとサイドバー覆うdiv -->
     <div class="company_detail_container">
@@ -26,7 +29,9 @@
         <!-- よしたかくん -->
         <!-- 強み・特徴 -->
         <div class="company_detail">
-          <h2>強み・特徴</h2>
+          <div>
+            <h2 class="section_title">強み・特徴</h2>
+          </div>
           <p>かなり大きめなクワガタを扱っております。殺虫剤・日焼け止め社割あり！
             <br>週7休暇です。
           </p>
@@ -38,31 +43,48 @@
         <!-- りゅうじくん -->
         <!-- 先輩の就職先ロゴ -->
         <section class='detail_section_finding_employment_target section'>
-          <h2>就職例</h2>
+          <div>
+            <h2 class="section_title">就職先</h2>
+          </div>
           <div class="finding_employment_target_logo_container">
             <div>
-              <img src="../img/og_image_logo.png" width="100">
+              <img src="../img/og_image_logo.png">
             </div>
             <div>
-              <img src="../img/og_image_logo.png" width="100">
+              <img src="../img/og_image_logo.png">
             </div>
             <div>
-              <img src="../img/og_image_logo.png" width="100">
+              <img src="../img/makiko.jpg">
             </div>
             <div>
-              <img src="../img/og_image_logo.png" width="100">
+              <img src="../img/og_image_logo.png">
             </div>
             <div>
-              <img src="../img/og_image_logo.png" width="100">
+              <img src="../img/og_image_logo.png">
+            </div>
+            <div>
+              <img src="../img/makiko.jpg">
+            </div>
+            <div>
+              <img src="../img/makiko.jpg">
+            </div>
+            <div>
+              <img src="../img/makiko.jpg">
+            </div>
+            <div>
+              <img src="../img/makiko.jpg">
             </div>
           </div>
-
         </section>
         <!-- サポートテーブル -->
         <section class='detail_section_support section'>
           <div class="company_contract_information">
-            <h1>サポート</h1>
+            <div>
+              <h2 class="section_title">サポート</h2>
+            </div>
             <dl class='detail_section_support_list'>
+              <dt class="detail_section_support_list_titile_dt">サポート内容</dt>
+              <dd class="detail_section_support_list_titile_dd">有無</dd>
               <dt>EC添削</dt>
               <dd>
                 ○
@@ -107,7 +129,9 @@
         <!-- 会社情報テーブル -->
         <section class='detail_section_company_information section'>
           <div class="company_contract_information">
-            <h1>会社情報</h1>
+            <div>
+              <h2 class="section_title">会社情報</h2>
+            </div>
             <dl class='detail_section_company_information_list'>
               <dt>歴史</dt>
               <dd>
