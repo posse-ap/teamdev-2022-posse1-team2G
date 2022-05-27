@@ -129,10 +129,10 @@ $(document).ready(function () {
 
     $.ajax({
       type: "POST",
-      // url: "./crud_user.php",
+      url: "./crud_user.php",
 
       // ../から変更　動いているか確認のためviewも変更
-      url: "./boozer/crud_user.php",
+      // url: "./boozer/crud_user.php",
       data: {
         'checking_edit': true,
         'stud_id': stud_id,
@@ -167,7 +167,7 @@ $(document).ready(function () {
     // ./→../
     $.ajax({
       type: "POST",
-      url: "../../crud_user.php",
+      url: "./crud_user.php",
       data: {
         'checking_view': true,
         'stud_id': stud_id,

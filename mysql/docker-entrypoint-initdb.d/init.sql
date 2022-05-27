@@ -259,7 +259,7 @@ CREATE TABLE company_user
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   user_id INT NOT NULL,
   company_id INT NOT NULL,
-  rep VARCHAR(255) DEFAULT '未設定',
+  rep VARCHAR(255) DEFAULT '未割り当て',
   contact_datetime DATETIME NOT NULL
 );
 
