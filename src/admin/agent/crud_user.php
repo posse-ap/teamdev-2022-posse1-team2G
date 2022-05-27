@@ -1,7 +1,6 @@
 <?php
 require('../../dbconnect.php');
 session_start();
-require('../../dbconnect.php');
 // sessionに保存されたcompany_id
 $id = $_SESSION['id'];
 
@@ -69,7 +68,7 @@ if (isset($_POST['checking_update'])) {
   // $phone_number = $_POST['phone_number'];
   // $address = $_POST['address'];
 
-  $query = "UPDATE users SET rep = '$rep' WHERE id = '$stud_id'";
+  // $query = "UPDATE users SET rep = '$rep' WHERE id = '$stud_id'";
 
   $query = "UPDATE company_user SET rep = '$rep' WHERE user_id = '$stud_id' AND company_id='$id'";
   $stmt = $db->prepare($query);

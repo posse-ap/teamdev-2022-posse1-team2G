@@ -37,8 +37,10 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 10 > time()) {
         </form>
         <a href="./loglog.php">イベント一覧</a>
 
-       <?php require('logout.php') ?>
+        <?php require('logout.php') ?>
     </div>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+<script src="./graph.js"></script>
 
 </html>

@@ -123,18 +123,23 @@ $(document).ready(function () {
 
   // edit modal
   $(document).on("click", ".edit_btn", function () {
+    // userのid
     var stud_id = $(this).closest('tr').find('.stud_id').text();
     var stud_company_name = $(this).closest('tr').find('.stud_company_name').text();
-    
+
     $.ajax({
       type: "POST",
       url: "./crud_user.php",
+
+      // ../から変更　動いているか確認のためviewも変更
+      // url: "./boozer/crud_user.php",
       data: {
         'checking_edit': true,
         'stud_id': stud_id,
         'stud_company_name': stud_company_name,
       },
       success: function (response) {
+        alert(response);
         $.each(response, function (key, useredit) {
           $('#id_edit').val(useredit['id']);
           $('#name_edit').val(useredit['name']);
@@ -144,11 +149,6 @@ $(document).ready(function () {
           $('#mail_edit').val(useredit['mail']);
           $('#phone_number_edit').val(useredit['phone_number']);
           $('#address_edit').val(useredit['address']);
-          // $('#id_edit').val(useredit['id']);
-          // $('#edit_fname').val(useredit['fname']);
-          // $('#edit_lname').val(useredit['lname']);
-          // $('#edit_class').val(useredit['class']);
-          // $('#edit_section').val(useredit['section']);
         });
         $('#userEditModal').modal('show');
       }
@@ -162,7 +162,9 @@ $(document).ready(function () {
 
     var stud_id = $(this).closest('tr').find('.stud_id').text();
     var stud_company_name = $(this).closest('tr').find('.stud_company_name').text();
+    // alert(stud_id);
 
+    // ./→../
     $.ajax({
       type: "POST",
       url: "./crud_user.php",

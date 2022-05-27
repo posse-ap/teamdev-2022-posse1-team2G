@@ -1,0 +1,45 @@
+.sales_status_title {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.sales_status_title h1 {
+  font-size: 2rem;
+}
+
+.sales_status_container {
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.each_dept {
+  /* outline: 1px red solid; */
+  border: 1px solid black;
+  flex-basis: 30%;
+  text-align: center;
+}
+
+.each_dept p {
+  margin: 16px 24px;
+}
+
+.each_dept h2 {
+  margin-bottom: 16px;
+  font-size: 1.6rem;
+}
+
+.sales_status_graph {
+  position: relative;
+  margin: 80px auto;
+  text-align: center;
+  width: 60%;
+  height: 400px;
+  overflow: hidden;
+}
+
+.sales_status_graph #myBarChart{
+  margin: 0 auto;
+
+}

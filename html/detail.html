@@ -24,31 +24,142 @@
       <!-- ここからメインコンテンツ -->
       <div class="company_detail_main">
         <!-- よしたかくん -->
-            <!-- 強み・特徴 -->
-              <div class="company_detail">
-                <h2>強み・特徴</h2>
-                <p>かなり大きめなクワガタを扱っております。殺虫剤・日焼け止め社割あり！
-                  <br>週7休暇です。
-                </p>
-              </div>
-            <!-- 企業からのメッセージ -->
-            <!-- 実績テーブル -->
+        <!-- 強み・特徴 -->
+        <div class="company_detail">
+          <h2>強み・特徴</h2>
+          <p>かなり大きめなクワガタを扱っております。殺虫剤・日焼け止め社割あり！
+            <br>週7休暇です。
+          </p>
+        </div>
+        <!-- 企業からのメッセージ -->
+        <!-- 実績テーブル -->
 
 
         <!-- りゅうじくん -->
-            <!-- 先輩の就職先ロゴ -->
-              <div class="referral_case">
-                <h2>主な紹介案件</h2>
-                <p>クワガタ採取～大きさにdよってインセンティブあり！～</p>
-              </div>
-            <!-- サポートテーブル -->
-            <!-- 会社情報テーブル -->
-            <!-- 取扱テーブル -->
-       </div>
+        <!-- 先輩の就職先ロゴ -->
+        <section class='detail_section_finding_employment_target section'>
+          <h2>就職例</h2>
+          <div class="finding_employment_target_logo_container">
+            <div>
+              <img src="../img/og_image_logo.png" width="100">
+            </div>
+            <div>
+              <img src="../img/og_image_logo.png" width="100">
+            </div>
+            <div>
+              <img src="../img/og_image_logo.png" width="100">
+            </div>
+            <div>
+              <img src="../img/og_image_logo.png" width="100">
+            </div>
+            <div>
+              <img src="../img/og_image_logo.png" width="100">
+            </div>
+          </div>
+
+        </section>
+        <!-- サポートテーブル -->
+        <section class='detail_section_support section'>
+          <div class="company_contract_information">
+            <h1>サポート</h1>
+            <dl class='detail_section_support_list'>
+              <dt>EC添削</dt>
+              <dd>
+                ○
+              </dd>
+              <dt>面接対策</dt>
+              <dd>
+                ✕
+              </dd>
+              <dt>インターン</dt>
+              <dd>
+                <?= $result['mail_contact'] ?>
+              </dd>
+              <dt>セミナー</dt>
+              <dd>
+                <?= $result['mail_manager'] ?>
+              </dd>
+              <dt>研修</dt>
+              <dd>
+                <?= $result['mail_notification'] ?>
+              </dd>
+              <dt>地方学生支援</dt>
+              <dd>
+                <?= $result['representative'] ?>
+              </dd>
+              <dt>限定講座</dt>
+              <dd>
+                <?= $result['address'] ?>
+              </dd>
+              <dt>会社のURL</dt>
+              <dd>
+                <?= $result['company_url'] ?>
+              </dd>
+              <dt>特別選考</dt>
+              <dd>
+                <?= $result['company_url'] ?>
+              </dd>
+            </dl>
+          </div>
+        </section>
+
+
+        <!-- 会社情報テーブル -->
+        <section class='detail_section_company_information section'>
+          <div class="company_contract_information">
+            <h1>会社情報</h1>
+            <dl class='detail_section_company_information_list'>
+              <dt>歴史</dt>
+              <dd>
+                ○○年創立
+              </dd>
+              <dt>従業員数</dt>
+              <dd>
+                ✕
+              </dd>
+              <dt>資本金</dt>
+              <dd>
+                <?= $result['mail_contact'] ?>
+              </dd>
+              <dt>住所</dt>
+              <dd>
+                <?= $result['mail_manager'] ?>
+              </dd>
+              <dt>面接形式</dt>
+              <dd>
+                <?= $result['mail_notification'] ?>
+              </dd>
+              <dt>面接場所</dt>
+              <dd>
+                <?= $result['representative'] ?>
+              </dd>
+              <dt>取り扱い地域</dt>
+              <dd>
+                <?= $result['address'] ?>
+              </dd>
+              <dt>取り扱い業種</dt>
+              <dd>
+                IT、インターネット、メーカー、商社、コンサルティング、マスコミ、エンターテインメント、メディカル
+              </dd>
+              <dt>取り扱い職種</dt>
+              <dd>
+                経営、管理、マーケティング、営業、コンサルタント、専門職、ゲーム、電気・電子、人事、工事、土木、広告、経営、管理、マーケティング、営業、コンサルタント、専門職、ゲーム、電気・電子、人事、工事、土木、広告
+              </dd>
+          </div>
+        </section>
+
+
+        <!-- 取扱テーブル -->
+        <section>
+
+        </section>
+
+
+      </div>
 
       <!-- ここからサイドバー -->
       <div class="company_detail_side">
-         <!-- 目次 -->
+        <!-- 目次 -->
         <h3>目次</h3>
         <ul>
           <li></li>
@@ -60,4 +171,5 @@
 
   </main>
 </body>
+
 </html>

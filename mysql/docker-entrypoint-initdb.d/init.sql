@@ -68,10 +68,10 @@ CREATE TABLE company_posting_information
 );
 
 INSERT INTO company_posting_information (company_id, logo, name, img, industries, achievement, type) VALUES 
-(1, './src/admin/img/logo/', '鈴木会社', './src/admin/img/img/', 'IT', '満足度９８％', '理系'),
+(1, './src/admin/img/logo/', '鈴木会社', './src/admin/img/img/', 'IT,商社,小売り,金融', '満足度９８％', '理系'),
 (2, './src/admin/img/logo/', '佐藤会社', 'makiko.jpg', 'サービス', '内定率４０％', '文系'),
-(3, './src/admin/img/logo/', '田中会社', './src/admin/img/img/', '商社', '顧客数No.1', '理系'),
-(4, './src/admin/img/logo/', '山田会社', './src/admin/img/img/', '小売り', '顧客満足度９０%', '理系'),
+(3, './src/admin/img/logo/', '田中会社', './src/admin/img/img/', '商社,サービス', '顧客数No.1', '理系'),
+(4, './src/admin/img/logo/', '山田会社', './src/admin/img/img/', '小売り,金融', '顧客満足度９０%', '理系'),
 (5, './src/admin/img/logo/', '加藤会社', './src/admin/img/img/', '金融', '利用学生数１０万人', '文系');
 
 
@@ -259,7 +259,7 @@ CREATE TABLE company_user
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   user_id INT NOT NULL,
   company_id INT NOT NULL,
-  rep VARCHAR(255) DEFAULT '未設定',
+  rep VARCHAR(255) DEFAULT '未割り当て',
   contact_datetime DATETIME NOT NULL
 );
 

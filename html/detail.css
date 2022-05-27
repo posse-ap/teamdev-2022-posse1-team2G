@@ -1,11 +1,11 @@
 /* トップページ写真 */
-.detail_top_page_img img{
+.detail_top_page_img img {
   width: 100%;
   height: 450px;
 }
 
 /* コンテンツの親要素 */
-.company_detail_container{
+.company_detail_container {
   display: flex;
   margin: 0 auto;
   /* justify-content: space-around; */
@@ -14,14 +14,16 @@
 
 
 /* mainコンテンツ */
-.company_detail_main{
+.company_detail_main {
+  outline: 1px solid red;
   /* ↓メインとサイドを3対1の割合で表示 */
   flex: 3;
   /* ↓calc関数:メインコンテンツの幅=(100%-サイドバーのサイズ分)を指定
       ⇒サイドバーを固定したままメインコンテンツを可変 */
-  width: calc( 100% - 300px );
+  /* width: calc( 100% - 300px ); */
   /* width: 50%; 
    text-align: center; */
+
 }
 
 /* 
@@ -36,16 +38,144 @@
 /* 
 りゅうじくん担当
  */
+
+.section {
+  width: 80%;
+  margin: 0 auto 65px;
+}
+
 /* 先輩の就職先ロゴ */
+
+.finding_employment_target_logo_container{
+display: flex;
+
+}
+
+
+
 /* サポートテーブル */
+/* .detail_section_support {
+  width: 80%;
+  margin: 0 auto;
+} */
+
+.detail_section_support_list,
+.detail_section_support_list>dt,
+.detail_section_support_list>dd {
+  box-sizing: border-box;
+}
+
+.detail_section_support_list>dt,
+.detail_section_support_list>dd {
+  padding: .6em;
+  /* padding: .8rem 1.6rem; */
+  margin: 0px;
+}
+
+.detail_section_support_list>dt {
+  background-color: #bad4c6;
+}
+
+/* .detail_section_support_list > dd {
+    background-color: #fff;
+
+} */
+
+.detail_section_support_list {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #ddd;
+}
+
+.detail_section_support_list>dt,
+.detail_section_support_list>dd {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 1px solid #ddd;
+}
+
+.detail_section_support_list>dt {
+  width: 70%;
+  padding-left: 6%;
+  /* text-align: center; */
+}
+
+.detail_section_support_list>dd {
+  width: 30%;
+  border-right: 1px solid #ddd;
+  /* margin: 0 auto; */
+  text-align: center;
+}
+
+
+
+
+
 /* 会社情報テーブル */
+
+.detail_section_company_information_list,
+.detail_section_company_information_list>dt,
+.detail_section_company_information_list>dd {
+  box-sizing: border-box;
+}
+
+.detail_section_company_information_list>dt,
+.detail_section_company_information_list>dd {
+  padding: .8em;
+  /* padding: .8rem 1.6rem; */
+  margin: 0px;
+}
+
+.detail_section_company_information_list>dt {
+  background-color: #feffff;
+}
+
+/* .detail_section_company_information_list > dd {
+    background-color: #fff;
+
+} */
+
+.detail_section_company_information_list {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #ddd;
+}
+
+.detail_section_company_information_list>dt,
+.detail_section_company_information_list>dd {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 1px solid #ddd;
+}
+
+.detail_section_company_information_list>dt {
+  width: 34%;
+  padding-left: 3%;
+  /* text-align: center; */
+}
+
+.detail_section_company_information_list>dd {
+  width: 66%;
+  border-right: 1px solid #ddd;
+  /* margin: 0 auto; */
+  /* text-align: center; */
+  padding-left: 3%;
+}
+
+
+
+
+
+
 /* 取扱テーブル */
 
 
 
 
 /* sideコンテンツ（目次） */
-.company_detail_side{
+.company_detail_side {
   /* ↓メインとサイドを3対1の割合で表示 */
   flex: 1;
   /* height: auto;

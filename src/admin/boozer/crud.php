@@ -39,7 +39,6 @@ if (isset($_POST['checking_view'])) {
   $result = $stmt->fetchAll();
 
   if ($result == true) {
- 
     header('Content-type: application/json');
     echo json_encode($result);
   } else {

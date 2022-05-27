@@ -1,32 +1,6 @@
 <?php
 require('../../dbconnect.php');
 
-// 新規追加
-// if (isset($_POST['checking_add'])) {
-//   $name = $_POST['name'];
-//   $university = $_POST['university'];
-//   $department = $_POST['department'];
-//   $grad_year = $_POST['grad_year'];
-//   $mail = $_POST['mail'];
-//   $phone_number = $_POST['phone_number'];
-//   $address = $_POST['address'];
-
-//   $query = "INSERT INTO 
-//     users 
-//     (name,university,department,grad_year,mail,phone_number,address) 
-//     VALUES 
-//     ('$name','$university','$department','$grad_year','$mail','$phone_number','$address')";
-//   $stmt = $db->prepare($query);
-//   $stmt->execute();
-//   $result = $stmt->fetchAll();
-
-//   if (isset($result)) {
-//     echo $return  = "データを挿入しました";
-//   } else {
-//     echo $return  = "Something Went Wrong.!";
-//   }
-// }
-
 // view modal
 if (isset($_POST['checking_view'])) {
   $stud_id = $_POST['stud_id'];
@@ -34,7 +8,7 @@ if (isset($_POST['checking_view'])) {
   $result = [];
 
   // $query = "SELECT * FROM users WHERE id='$stud_id' ";
-  $query = "SELECT t1.contact_datetime, t2.id, t2.name, t2.university, t2.department, t2.grad_year, t2.mail, t2.phone_number, t2.address, t2.rep, t3.company_name 
+  $query = "SELECT t1.contact_datetime, t1.rep, t2.id, t2.name, t2.university, t2.department, t2.grad_year, t2.mail, t2.phone_number, t2.address, t3.company_name 
   FROM company_user as t1 
   inner join users as t2 
   on t1.user_id=t2.id 
@@ -63,7 +37,7 @@ if (isset($_POST['checking_edit'])) {
   $stud_company_name = $_POST['stud_company_name'];
 
   // $query_edit = "SELECT * FROM users WHERE id='$stud_id' ";
-  $query_edit = "SELECT t1.contact_datetime, t2.id, t2.name, t2.university, t2.department, t2.grad_year, t2.mail, t2.phone_number, t2.address, t2.rep, t3.company_name 
+  $sql = "SELECT t1.contact_datetime, t1.rep, t2.id, t2.name, t2.university, t2.department, t2.grad_year, t2.mail, t2.phone_number, t2.address, t3.company_name 
   FROM company_user as t1 
   inner join users as t2 
   on t1.user_id=t2.id 
@@ -72,9 +46,11 @@ if (isset($_POST['checking_edit'])) {
   where t2.id='$stud_id' 
   AND t3.company_name='$stud_company_name' 
   ORDER BY t1.contact_datetime DESC";
-  $stmt_edit = $db->prepare($query_edit);
+
+  $stmt_edit = $db->prepare($sql);
   $stmt_edit->execute();
   $result_edit = $stmt_edit->fetchAll();
+  // print_r($result_edit);
   if ($result_edit == true) {
     header('Content-type: application/json');
     echo json_encode($result_edit);
@@ -96,9 +72,9 @@ if (isset($_POST['checking_update'])) {
   // $company_url = $_POST['company_url'];
 
   // updateできるのはuserの内容だけ（会社情報は変更できない）
-  $query = "UPDATE users 
+  $sql = "UPDATE users 
   SET name='$name', university='$university', department='$department', grad_year='$grad_year', mail='$mail', phone_number='$phone_number', address='$address' WHERE id='$id'";
-  $stmt = $db->prepare($query);
+  $stmt = $db->prepare($sql);
   $stmt->execute();
   $result = $stmt->fetchAll();
 

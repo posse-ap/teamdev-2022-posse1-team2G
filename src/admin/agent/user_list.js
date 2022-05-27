@@ -116,11 +116,14 @@ $(document).ready(function () {
 
 
 
-  function getdata(input) {
+  function getdata(input, select) {
     $.ajax({
       type: "GET",
       url: "./fetch_user.php",
-      data: { input: input },
+      data: {
+        input: input,
+        select: select,
+      },
       success: function (response) {
         $('.studentdata').html(response);
         $.each(response, function (key, value) {
@@ -140,13 +143,11 @@ $(document).ready(function () {
       }
     });
 
-    $("#live_search").keypress(function (e) {
-      if (e.which == 13) {
-        var input = $('#live_search').val();
-        getdata(input);
-      }
+    $('#search').click(function () {
+      var input = $('#live_search').val();
+      var select = $('[name=select_name]').val();
+      getdata(input, select);
     });
-
   }
 });
 
@@ -156,4 +157,15 @@ $(document).ready(function () {
 //     // getdata(input);
 //     alert(input)
 //   }
+// });
+// $("#search").click(function (e) {
+//   var input = $('#live_search').val();
+//   // getdata(input);
+//   alert(input);
+// });
+
+// $('#search').click(function () {
+//   var input = $('#live_search').val();
+//   // var select = $('[name=select_company]').val();
+//   alert(input);
 // });
