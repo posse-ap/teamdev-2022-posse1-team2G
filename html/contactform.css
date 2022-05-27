@@ -73,18 +73,45 @@
 
 .contactform_input_textarea textarea {
   width: 87%;
+  resize: none;
+  border: 1px solid black;
 }
 
 .textarea {
   height: 140px;
 }
 
+/* ----------------  submit  ------------------- */
+.contactform_submit {
+  text-align: center;
+  margin: 40px 0 40px;
+}
+
+.contactform_submit input {
+  padding: 16px 72px;
+  background-color: rgb(224, 127, 15);
+  color: #fff;
+  border: none;
+  font-size: 1.2rem;
+}
+
+.contactform_submit input:hover {
+opacity: .7;
+}
 
 
 @media screen and (min-width: 767px) and (max-width: 1024px) {
 
+  .contactform_question p,
+  .contactform_question p {
+    font-size: .8rem;
+  }
 }
 
 @media screen and (max-width: 767px) {
 
+  .contactform_question p,
+  .contactform_question p {
+    font-size: .8rem;
+  }
 }
