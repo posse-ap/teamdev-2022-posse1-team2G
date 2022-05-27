@@ -1,120 +1,90 @@
-.contactform_body{
+.contactform_title {
   text-align: center;
-  width: 100%;
-}
-.contactform_input_screens{
-  width: 100%;
-}
-.contactform_input_screens th{
-  width:370px;
-  padding: 20px 50px;
-  box-sizing: border-box;
-  display: table-cell;
-  border-top: 1px solid #e3e9e9;
-  border-bottom: 1px solid #e3e9e9;
-  position: relative;
-  border-top: 1px solid #e3e9e9;
-  font-weight: 700;
+  margin: 64px 0 40px;
 }
 
-.contactform_input_screens span{
-  position: absolute;
-  right: 0;
-  line-height: 21px;
-  background-color: #158780;
-  color: white;
-  width: 12%;
-  font-size: 0.9rem;
-}
-.contactform_input_screens input{
-width: 670px;
-}
-.contactform_input_screens th td{
-  display: table-cell;
-}
-.contactform_input_screens textarea{
-  box-sizing: border-box;
-  width: 675px;
-  height: 204px;
-  padding: 28px;
-}
-.graduation_year{
+.contactform_each_container {
   display: flex;
-  -ms-flex-wrap: wrap;
-  width: 460px;
-  padding-top: 13px;
-  flex-wrap: wrap;
+  /* outline: 1px solid red; */
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+  border-bottom: 1px solid rgba(85, 96, 83, 0.281);
+  height: 80px;
 }
 
-.graduation_year span{
-  width: 230px;
-  margin-bottom: 10px;
+.contactform_question {
+  /* outline: 1px solid rgb(133, 157, 204); */
+  width: 25%;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* .contactform_input_screens{
-  table-layout: auto;
-    border-collapse: separate;
-    border-spacing: 0 8px;
-    margin-top: 25px;
-    margin-bottom: 40px;
-    width: 100%;
-    font-size: 13px;
-    color: #34373a;
+.contactform_question p {
+  padding-left: 20%;
 }
-.contactform_input_screens{
-  width: 370px;
-  padding: 20px 50px;
-  vertical-align: middle;
+
+.contactform_required,
+.contactform_not_required {
+  width: 15%;
 }
-.contactform_input_screens span{
-  width: 3pc;
-  height: 2pc;
-  background-color: #158780;
-  color: #fff;
+
+.contactform_required p,
+.contactform_not_required p {
+  padding: 2px 0;
+  margin-right: 30%;
   text-align: center;
-}
-.left{
-  display: flex;
+  border-radius: 4px;
 }
 
-.right{
-  width: 250px;
-  padding: 20px 30px;
-  vertical-align: middle;
+.contactform_required p {
+  background-color: rgba(81, 142, 91, 0.435);
 }
-.form div table tbody tr{
-  width: 100%;
-} */
+
+.contactform_not_required p {
+  background-color: rgba(182, 192, 184, 0.435);
+}
+
+.contactform_input {
+  width: 60%;
+  /* outline: 1px solid rgb(170, 255, 0); */
+}
+
+.contactform_input input {
+  width: 88%;
+  height: 48px;
+  border: 1px solid black;
+  margin: 0;
+  padding: 0;
+  /* margin-right: 10%; */
+}
+
+/*--------------- radioボタン ----------------*/
+.contactform_input_radio {
+  width: 60%;
+}
+
+.contactform_input_radio label {
+  margin-right: 16%;
+}
+
+/* ----------------  textarea  ------------------- */
+.contactform_input_textarea {
+  width: 60%;
+}
+
+.contactform_input_textarea textarea {
+  width: 87%;
+}
+
+.textarea {
+  height: 140px;
+}
+
+
+
+@media screen and (min-width: 767px) and (max-width: 1024px) {
+
+}
+
+@media screen and (max-width: 767px) {
+
+}
