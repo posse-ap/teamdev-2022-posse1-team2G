@@ -8,8 +8,6 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 10 > time()) {
   $_SESSION['time'] = time();
   // user_idがない、もしくは一定時間を過ぎていた場合
   $id = $_SESSION['id'];
-  // echo $id;
-  // $sql = "SELECT rep FROM company_user";
   $sql = "SELECT company_name from company where id='$id';";
   $stmt = $db->prepare($sql);
   $stmt->execute();
@@ -18,17 +16,6 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 10 > time()) {
   header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/login.php');
   exit();
 }
-// echo "<pre>";
-// print_r($company_name);
-// echo "</pre>";
-// Array
-// (
-//     [0] => Array
-//         (
-//             [company_name] => 鈴木会社
-//         )
-// )
-// echo $company_name[0]["company_name"]; //鈴木会社
 
 //NULL 合体演算子を使ってセッション変数を初期化
 $purpose = $_SESSION[ 'purpose' ] ?? NULL;
@@ -47,19 +34,6 @@ if ( !isset( $_SESSION[ 'ticket' ] ) ) {
 }
 //トークンを変数に代入（隠しフィールドに挿入する値）
 $ticket = $_SESSION[ 'ticket' ];
-
-// print_r($id);
-
-// // //company_nameのsessionを生成
-// if ( !isset( $_SESSION[ 'company_name' ] ) ) {
-//   //セッション変数に代入
-//   $_SESSION[ 'company_name' ] = [];
-//   foreach ($companies as $company){
-//     array_push($_SESSION[ 'company_name' ],$company_name[0]["company_name"]);
-//   }
-// }
-// // sessionを変数に代入
-// $company_name_sessions = $_SESSION[ 'company_name' ];
 
 ?>
 
@@ -120,11 +94,8 @@ $ticket = $_SESSION[ 'ticket' ];
 
       <!--確認ページへトークンをPOSTする、隠しフィールド「ticket」-->
       <input type="hidden" name="ticket" value="<?php echo $ticket; ?>">
-      <!-- 確認ページへトークンをPOSTする、隠しフィールド「company_id_session」-->
-      <!-- <?php foreach ($companies as $company) : ?> -->
-        <input type="hidden" name="company_id_session[]" value="<?php echo $company["id"]; ?>">
-      <!-- <?php endforeach; ?> -->
-      <button name="submitted" type="submit" class="btn btn-primary">確認画面へ</button>
+
+      <button name="submitted" type="submit" class="btn btn-primary">送信</button>
     </form>
 </div>
 

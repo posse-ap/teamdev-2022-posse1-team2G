@@ -8,8 +8,6 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 10 > time()) {
   $_SESSION['time'] = time();
   // user_idがない、もしくは一定時間を過ぎていた場合
   $id = $_SESSION['id'];
-  // echo $id;
-  // $sql = "SELECT rep FROM company_user";
   $sql = "SELECT company_name, mail_contact from company where id='$id';";
   $stmt = $db->prepare($sql);
   $stmt->execute();
@@ -18,8 +16,6 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 10 > time()) {
   header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/login.php');
   exit();
 }
-echo $company_name_arr[0]["company_name"]; //鈴木会社
-echo $company_name_arr[0]["mail_contact"]; //
 $company_name = $company_name_arr[0]["company_name"];
 $company_mail = $company_name_arr[0]["mail_contact"];
 
@@ -61,10 +57,6 @@ $_SESSION[ 'message' ] = $message;
 //変数にエスケープ処理したセッション変数の値を代入
 $purpose = h( $_SESSION[ 'purpose' ] );
 $message = h( $_SESSION[ 'message' ] );
-// $company_name_session = $_SESSION[ 'company_name' ];
-  // echo "<pre>";
-  // print_r($company_name_session);
-  // echo"</pre>";
 
 /* メールの作成 （to 小笹さん）*/
 //メール本文の組み立て
@@ -109,18 +101,8 @@ $mail_header = "from: testmail@gmail.com\r\n"
 $mailsousin  = mb_send_mail($mail_to, $mail_subject, $mail_body, $mail_header);
 $result = $mailsousin;
 
-
-
-// //メール送信の結果判定
-// if ( $result && $result_agent) {
-//   //成功した場合はセッションを破棄
-//   $_SESSION = array(); //空の配列を代入し、すべてのセッション変数を消去 
-//   session_destroy(); //セッションを破棄
-// } else {
-//   //送信失敗時（もしあれば）
-// }
 ?>
-<!-- ここまでPHP -->
+
 
 
 <!DOCTYPE html>
@@ -171,8 +153,9 @@ $result = $mailsousin;
         <p><?php echo h($email); ?></p>
         <?php else: ?>
         <p>申し訳ございませんが、送信に失敗しました。</p>
-        <p>しばらくしてもう一度お試しになるか、メールにてご連絡ください。</p>
+        <p>しばらくしてもう一度お試しになるか、下記のメールにてご連絡ください。</p>
         <p>ご迷惑をおかけして誠に申し訳ございません。</p>
+        <p><?php echo h($email); ?></p>
         <?php endif; ?>
       </div>
       
