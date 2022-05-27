@@ -111,18 +111,18 @@ td + td{
 }
 
 /* チェックボックスについて */
-.company_box_check input[type=checkbox] {
+input[type=checkbox] {
 	display: none; /* checkboxを非表示にする */
 }
-.company_box_check input[type="checkbox"]:checked + label {
+input[type="checkbox"]:checked + label {
 	background: #50b4ee;/* マウス選択時の背景色を指定する */
 	border: 0.3rem solid #50b4ee;/* ラベルの境界線を実線で指定する */
 	color: #ffffff; /* マウス選択時のフォント色を指定する */
 }
-.company_box_check label:hover {
+label:hover {
 	background-color: #E2EDF9; /* マウスオーバー時の背景色を指定する */
 }
-.company_box_check label {
+label {
 /* display: block; ブロックレベル要素化する */
 /* float: left; 要素の左寄せ・回り込を指定する */
 margin: 1rem; /* ラベル外側の余白を指定する */
