@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
-<link rel="stylesheet" href="../css/contactform.css">
+<link rel="stylesheet" href="../css/contact.css">
 
 <head>
   <meta charset="utf-8">
@@ -13,8 +13,30 @@
     <div class="contactform_title">
       <h1>お問い合わせフォーム</h1>
     </div>
+    <div class="contactform_each_container contactform_topic">
+      <p>お問い合わせする会社</p>
+    </div>
+    <div class="contactform_contact_company">
+      <div class="contactform_contact_company_img">
+        <img src="../src/img/shukatsu_logo.png" alt="">
+      </div>
+      <div class="contactform_contact_company_name">
+        <p>山本会社</p>
+      </div>
+    </div>
+    <div class="contactform_contact_company">
+      <div class="contactform_contact_company_img">
+        <img src="../src/img/shukatsu_logo.png" alt="">
+      </div>
+      <div class="contactform_contact_company_name">
+        <p>山本会社</p>
+      </div>
+    </div>
     <!-- 入力画面のフロント -->
     <form id="form" class="validationForm" action="./confirm.php" method="post" novalidate>
+      <div class="contactform_each_container contactform_topic topic_info">
+        <p>お客様情報</p>
+      </div>
       <div class="contactform_each_container top_container">
         <div class="contactform_question">
           <p>名前</p>
