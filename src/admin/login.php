@@ -73,7 +73,7 @@ if (!empty($_POST)) {
   <div>
     <div class='login_logo'>
       <img src="../../img/boozer_logo.png" alt="logo">
-      <img src="../../img/boozer_logo (1).png" alt="期待">
+      <!-- <img src="../../img/boozer_logo (1).png" alt="期待"> -->
       <!-- <img src="../boozer_logo.png" alt="logo"> -->
       <!-- <img src="..\..\img\boozer_logo.png" alt="aa"> -->
     </div>

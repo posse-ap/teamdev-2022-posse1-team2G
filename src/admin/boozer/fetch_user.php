@@ -76,13 +76,17 @@ else if (!empty($_GET['input']) && empty($_GET['select'])) {
 }
 else {
     // $sql = "SELECT * FROM users ORDER BY id DESC";
-    $sql = "SELECT t1.contact_datetime, t1.rep, t2.id, t2.name, t2.university, t2.department, t2.grad_year, t2.mail, t2.phone_number, t2.address, t3.company_name 
+    $sql = "SELECT t1.contact_datetime, t2.id, t2.name, t2.university, t2.department, t2.grad_year, t2.mail, t2.phone_number, t2.address, t3.company_name 
     FROM company_user as t1 
     inner join users as t2 
     on t1.user_id=t2.id 
     inner join company as t3 
     on t1.company_id=t3.id 
     ORDER BY t1.contact_datetime DESC";
+    //t1.repを削除した↑
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+    $result_array = $stmt->fetchAll();
 
 //     *************************** 1. row ***************************
 // contact_datetime: 2022-06-01 00:00:00
@@ -157,9 +161,7 @@ else {
 //              rep: 未設定
 //     company_name: 鈴木会社
 
-    $stmt = $db->prepare($sql);
-    $stmt->execute();
-    $result_array = $stmt->fetchAll();
+   
 }
 
 

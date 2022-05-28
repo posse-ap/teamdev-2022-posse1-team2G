@@ -43,3 +43,44 @@
   margin: 0 auto;
 
 }
+
+
+/* ここからコンタクトフォーム */
+.container{
+  margin: 7rem 0 4rem;
+  /* margin-top: 4rem; */
+  text-align: center;
+}
+.form_card{
+  background-color: #e8ecf1;
+  padding: 3rem;
+  border-radius: 1rem;
+}
+.subtitle{
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+.sub_subtitle{
+  color: #ecc45f;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.contact_wrapper h1{
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.contents{
+  background-color: #fff;
+  width: 80%;
+  margin: 1rem 6rem 1rem;
+  border-radius: 1rem;
+}
+.result {
+  font-size: large;
+  font-weight: bold;
+}
+.mail {
+  color: #4d84eb;
+  font-weight: bold;
+  font-size: 1.2rem;
+}

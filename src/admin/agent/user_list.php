@@ -29,22 +29,36 @@ where t1.id='$id';";
   header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/login.php');
   exit();
 }
+
+// ↓header関数の読み込み ↓うまくいかない、css読み取ってくれない
+//src\admin\agent\user_list.php
+// src\admin\agent\_parts_agent\_header_agent.php
+// include('./_parts_agent/_header_agent.php');
 ?>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>agent学生一覧</title>
+  <link rel="stylesheet" href="../admin_index.css">
+  <link rel="stylesheet" href="../admin_style.css">
+  <!-- ↓この_header.phpから見たparts.cssの位置ではなく、このphpファイルが読み込まれるファイルから見た位置を指定してあげる必要がある -->
+  <link rel="stylesheet" href="../parts.css">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <!-- icon用 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
-<link rel="stylesheet" href="../admin_style.css">
 
-  <title>agent学生一覧</title>
 </head>
+<!-- header関数読み込み -->
+<?php
+include('./_parts_agent/_header_agent.php');  
+?>
 
-<body>
+<div class="container">
+
   <!-- View Modal -->
   <div class="modal fade" id="userViewModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -191,6 +205,13 @@ where t1.id='$id';";
       </div>
     </div>
   </div>
+  </div>
+
+  <!-- ↓footer関数の読み込み -->
+<?php
+include('../_footer.php');  
+?>
+
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
