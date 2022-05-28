@@ -32,7 +32,6 @@ foreach ($company_ids as $company_id) {
 $company_id_Condition = implode(' OR ', $company_id_Condition);
 
 // あとはSELECT文にくっつける
-// $sql = 'SELECT * FROM company_posting_information WHERE ' . $company_id_Condition;
 $sql = 'SELECT
           company_posting_information.company_id AS company_id,
           company_posting_information.name AS name,
@@ -66,11 +65,21 @@ $companies = $stmt->fetchAll();
 // 企業数のカウント
 $cnt = count($companies);
 $row = 0;
-// echo $cnt;
+
+//企業名を入れたタイトルを表示するための準備
+// $company_names = [];
+// foreach ($companies as $company) :
+//   if(next($companies)){
+// 		echo $company['name'] . 'と'; // 最後の要素ではないとき
+// 	}else {
+//     echo $company['name'] . 'の';
+//   }
+// endforeach;
 
 // echo "<pre>";
-// print_r($companies);
+// print_r($company_names);
 // echo "</pre>";
+
 
 ?>
 
@@ -108,7 +117,13 @@ $row = 0;
     </nav>
   </header>
   <main class="compare_wrapper">
-    <h1>～比較表結果～</h1>
+    <h1>～<?php foreach ($companies as $company) :
+              if(next($companies)){
+            		echo $company['name'] . 'と'; // 最後の要素ではないとき
+            	}else {
+                echo $company['name'] . 'の';
+              }
+            endforeach; ?>比較結果～</h1>
     <section>
       <div class="twrapper">
         <table class="colap">
