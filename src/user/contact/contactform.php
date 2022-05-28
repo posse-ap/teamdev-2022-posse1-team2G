@@ -6,7 +6,7 @@ session_start();
 session_regenerate_id(TRUE);
 
 //エスケープ処理やデータチェックを行う関数のファイルの読み込み
-require '../libs/functions.php';
+require '../../libs/functions.php';
 
 //NULL 合体演算子を使ってセッション変数を初期化
 $name = $_SESSION['name'] ?? NULL;
@@ -159,7 +159,7 @@ $company_id_sessions = $_SESSION['company_id'];
   </form>
   </div>
   <!--  JavaScript の読み込み -->
-  <script src="./formValidation.js"></script>
+  <script src="../js/formValidation.js"></script>
 
 
   <!-- フッター関数↓ -->

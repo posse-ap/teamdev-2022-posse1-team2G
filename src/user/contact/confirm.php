@@ -3,7 +3,7 @@
 session_start();
 
 //エスケープ処理やデータチェックを行う関数のファイルの読み込み
-require '../libs/functions.php';
+require '../../libs/functions.php';
 
 //POSTされたデータをチェック
 $_POST = checkInput( $_POST );
@@ -31,9 +31,9 @@ $message = trim( filter_input(INPUT_POST, 'message'));
 $company_id_session = (array)$_POST['company_id_session'];
 $_SESSION[ 'company_id' ] = $company_id_session;
 
-echo "<pre>";
-print_r($company_id_session);
-echo"</pre>";
+// echo "<pre>";
+// print_r($company_id_session);
+// echo"</pre>";
 
 
 

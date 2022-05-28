@@ -4,7 +4,7 @@ require('./dbconnect.php');
 //セッションを開始
 session_start();
 //エスケープ処理やデータチェックを行う関数のファイルの読み込み
-require './libs/functions.php';
+require '../libs/functions.php';
 //POSTされたデータをチェック
 $_POST = checkInput($_POST);
 //固定トークンを確認（CSRF対策）
@@ -92,23 +92,22 @@ $row = 0;
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>比較表ページ</title>
-  <link rel="stylesheet" href="compare_table.css">
+  <link rel="stylesheet" href="../css/compare_table.css">
 </head>
 
 <body>
   <header>
     <div class="header_wrapper">
       <div class="header_logo">
-        <img src="./img/boozer_logo.png" alt="logo">
-        <!-- <p>CRAFT</p> -->
+        <img src="../img/boozer_logo.png" alt="logo">
       </div>
     </div>
     <nav class="header_nav">
       <ul>
-        <li class="nav_item"><a href="#company">企業一覧</a></li>
-        <li class="nav_item"><a href="#point">お悩みの方へ</a></li>
-        <li class="nav_item"><a href="#merit">比較のメリット</a></li>
-        <li class="nav_item"><a href="#question">よくある質問</a></li>
+        <li class="nav_item"><a href="./top.php#company">企業一覧</a></li>
+        <li class="nav_item"><a href="./top.php#point">お悩みの方へ</a></li>
+        <li class="nav_item"><a href="./top.php#merit">比較のメリット</a></li>
+        <li class="nav_item"><a href="./top.php#question">よくある質問</a></li>
         <!-- 時間あったらモーダルにしてちょっと就活エージェントのこと書いて、就活の教科書の特集に飛ばせるかも -->
         <li class="nav_item"><a href="#">就活エージェントとは</a></li>
         <!-- ここまで -->
@@ -145,6 +144,7 @@ $row = 0;
                 <td>
                   <div class="table_company_img">
                     <img src="\img\SHI95_sansyainsuizokukanoosuii.jpg" alt="企業ロゴ">
+                    <!-- <img src="../img/'<? $company["logo"];?>'" alt="企業ロゴ"> -->
                   </div>
                 </td>
               <?php endforeach; ?>
@@ -313,7 +313,7 @@ $row = 0;
     </section>
   </main>
 
-  <script src="./compare_table.js"></script>
+  <script src="../js/compare_table.js"></script>
 </body>
 
 </html>

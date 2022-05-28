@@ -31,7 +31,7 @@ session_regenerate_id( TRUE );
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>絞り込み結果ページ</title>
-     <link rel="stylesheet" href="style.css">
+     <link rel="stylesheet" href="../css/style.css">
    </head>
 
    <body>
@@ -54,15 +54,15 @@ session_regenerate_id( TRUE );
                  <div>
                    <?php echo htmlspecialchars($row['name']); ?>
                  </div>
-                 <div>
-                   <a href="./contact/contactform.php?company_id=<?= htmlspecialchars($row['company_id']); ?>">お問い合わせ</a>
+                 <div class="company_box_button">
+                   <a href="./contact/contactform.php?company_id=<?= htmlspecialchars($row['company_id']); ?>" class="inquiry">お問い合わせはこちら</a>
                  </div>
                  <div>
                    <p>比較はこちら</p>
                  </div>
                  <div class="company_box_check">
                   <!-- valueにデータを追加していくことで、一時表示ボックスに反映できる -->
-                  <label for="check"><input type="checkbox" name="select_company_checkboxes" value="<?= $row['company_id'];?>-<?= $row['name'];?>" onchange="checked_counter()">選択する</label>
+                  <label for="check"><input type="checkbox" name="select_company_checkboxes" value="<?= $row['company_id'];?>-<?= $row['name'];?>" onchange="checked_counter()">複数の会社を比較する</label>
                 </div>
                </a>
              </div>

@@ -12,7 +12,7 @@ $userData = getUserData($_GET);
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PHPの検索機能</title>
-  <link rel="stylesheet" href="./serach.css">
+  <link rel="stylesheet" href="../css/serach.css">
   <!-- Bootstrap読み込み（スタイリングのため） -->
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"> -->
 </head>

@@ -86,7 +86,9 @@ $ticket = $_SESSION[ 'ticket' ];
             <a href="./detail.php?company_id='<?= $company['company_id']; ?>'">
                <div class="company_box">
                  <div class="company_box_logo">
-                   <img src="../img/rikunabi.png" alt="">
+                   <!-- <img src="../img/'<? $company["logo"];?>'" alt=""> -->
+                   <img src="../img/boozer_logo.png" alt="">
+                   <!-- <img src="../img/rikunabi.png" alt=""> -->
                  </div>
                  <div class="company_box_name">
                    <p><?= $company['name']; ?></p>
