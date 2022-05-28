@@ -51,7 +51,7 @@ body {
 
 /* mainコンテンツ */
 .company_detail_main {
-  outline: 1px solid violet;
+  /* outline: 1px solid violet; */
   background-color: #fff;
   /* ↓メインとサイドを3対1の割合で表示 */
   /* flex: 3; */
@@ -231,97 +231,47 @@ body {
 
 /* sideコンテンツ（目次） */
 .company_detail_side {
-  /* ↓メインとサイドを3対1の割合で表示 */
-  flex: 1;
-  /* height: auto;
-  width: 307px;
-  padding: 20px;
-  margin-bottom: 230px;
-  margin-top: -91px;
-  background-color: white;
-  z-index: 2;
-  margin-right: 65px; */
-  width: 27%;
-  margin-left: 6%;
-  outline: 1px solid blue;
+  width: 33%;
+  margin-left: 8%;
+}
+
+.side_title {
+  padding-left: 8%;
+}
+
+.side_title h3 {
+  margin: 0;
+  padding: 32px 0 24px;
+}
+
+.sticky {
+  position: sticky;
+  height: 400px;
+  top: 40px;
+  width: 100%;
   background-color: #fff;
+  padding-bottom: 24px;
 }
 
-
-
-/* 
-.company_logo{
-  text-align: center;
-  vertical-align: middle;
-  margin-top: -60px;
+.company_detail_side_ul {
+  padding: 0;
 }
 
-.company_logo img{
-  width: 200px;
-}
-.company_name_position{
-  color: white;
-  background-color: black;
-  width: 100%;
-  height: 191px;
-  margin-top: -120px;
-  z-index: 1;
+.company_detail_side_ul li {
+  list-style: none;
+  padding: 0 0 24px 8%;
+  color: rgb(166, 184, 142);
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
-.company_name_position p{
-  line-height: 35px;
-  padding-top: 100px;
-  text-align: center;
+.last_li {
+  padding-bottom: 24px;
 }
 
-.company_name_position p span{
-  color: blue;
+.company_detail_side_ul a:hover{
+opacity: .6;
 }
-
-.company_detail,.referral_case{
-  border: solid 1px black;
+a {
+  text-decoration: none;
 }
-
-.go_to_application_requirements{
-  margin-top: 15px;
-  background: linear-gradient(to bottom, #FFF, #0ede1c 30%, #9beca0 60%, #cfedd4);
-  height: 54px;
-  margin-top: 25px;
-}
-.application_requirements p{
-  text-align: center;
-}
-
-.company_detail,.referral_case{
-  width: 70%;
-  margin-left: 100px;
-}
-
-.referral_case{
-  margin-top: 100px;
-}
-.inquiry_step{
-  text-align: center;
-  margin-top: 140px;
-}
-
-.application_requirements{
-  margin-left: 10px;
-  display: flex;
-  gap: 50px;
-}
-.application_requirements div{
-  display: flex;
-  gap: 50px;
-}
-.company_information_table{
-  table-layout: auto;
-  border-collapse: separate;
-  border-spacing: 0 8px;
-  margin-top: 25px;
-  margin-bottom: 40px;
-  width: 100%;
-  font-size: 13px;
-  color: #34373a;
-}
- */

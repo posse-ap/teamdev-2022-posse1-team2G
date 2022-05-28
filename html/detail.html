@@ -21,28 +21,30 @@
     <div class="detail_title">
       <h1>会社詳細情報</h1>
     </div>
-
     <!-- メインコンテンツとサイドバー覆うdiv -->
     <div class="company_detail_container">
       <!-- ここからメインコンテンツ -->
       <div class="company_detail_main">
         <!-- よしたかくん -->
         <!-- 強み・特徴 -->
-        <div class="company_detail">
+        <section class="detail_section_strength section" id="detail.strength">
           <div>
             <h2 class="section_title">強み・特徴</h2>
           </div>
-          <p>かなり大きめなクワガタを扱っております。殺虫剤・日焼け止め社割あり！
-            <br>週7休暇です。
-          </p>
-        </div>
-        <!-- 企業からのメッセージ -->
-        <!-- 実績テーブル -->
+        </section>
 
+
+        <!-- 実績テーブル -->
+        <section class="detail_section_achievement section" id="detail.achievement">
+          <div>
+            <h2 class="section_title">実績</h2>
+          </div>
+
+        </section>
 
         <!-- りゅうじくん -->
         <!-- 先輩の就職先ロゴ -->
-        <section class='detail_section_finding_employment_target section'>
+        <section class='detail_section_finding_employment_target section' id="detail.finding_employment_target">
           <div>
             <h2 class="section_title">就職先</h2>
           </div>
@@ -77,7 +79,7 @@
           </div>
         </section>
         <!-- サポートテーブル -->
-        <section class='detail_section_support section'>
+        <section class='detail_section_support section' id="detail_support">
           <div class="company_contract_information">
             <div>
               <h2 class="section_title">サポート</h2>
@@ -127,7 +129,7 @@
 
 
         <!-- 会社情報テーブル -->
-        <section class='detail_section_company_information section'>
+        <section class='detail_section_company_information section' id="detail.information">
           <div class="company_contract_information">
             <div>
               <h2 class="section_title">会社情報</h2>
@@ -171,25 +173,41 @@
               </dd>
           </div>
         </section>
-
-
-        <!-- 取扱テーブル -->
-        <section>
-
+        <!-- 企業からのメッセージ -->
+        <section class="detail_section_message section" id="detail.message">
+          <div>
+            <h2 class="section_title">メッセージ</h2>
+          </div>
         </section>
-
-
       </div>
-
       <!-- ここからサイドバー -->
       <div class="company_detail_side">
-        <!-- 目次 -->
-        <h3>目次</h3>
-        <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
+        <div class="sticky">
+          <div class="side_title">
+            <h3>目次</h3>
+          </div>
+          <ul class="company_detail_side_ul">
+            <a href="#detail.strength">
+              <li>強み・特徴</li>
+            </a>
+            <a href="#detail.finding_employment_target">
+              <li>就職先</li>
+            </a>
+            <a href="#detail.support">
+              <li>サポート</li>
+            </a>
+            <a href="#detail.achievement">
+              <li>実績</li>
+            </a>
+            <a href="#detail.information">
+              <li>会社情報</li>
+            </a>
+            <a href="#detail.message">
+              <li>企業からのメッセージ</li>
+            </a>
+          </ul>
+        </div>
+
       </div>
     </div>
 
