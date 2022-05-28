@@ -4,6 +4,34 @@
   margin: 64px 0 64px;
 }
 
+.contactform_contact_company {
+  display: flex;
+  align-items: center;
+  width: 88%;
+  margin: 10px auto 0;
+  /* border: 1px solid black; */
+  border-bottom: 1px solid rgba(85, 96, 83, 0.281);
+  height: 80px;
+}
+
+.contactform_contact_company_img {
+  /* width: 10%; */
+  width: 140px;
+  height: 80px;
+  margin-left: 4%;
+  object-fit: cover;
+}
+
+.contactform_contact_company_img img {
+  width: 80%
+}
+
+.contactform_contact_company_name {
+  width: 60%;
+  margin-left: 8%;
+  font-size: 1.6rem;
+}
+
 .contactform_each_container,
 .confirm_each_container {
   display: flex;
@@ -15,24 +43,30 @@
   height: 80px;
 }
 
-.confirm_each_container {
-  border-left: 1px solid rgba(85, 96, 83, 0.281);
-  border-right: 1px solid rgba(85, 96, 83, 0.281);
+.contactform_topic {
+  background-color: rgba(210, 147, 38, 0.459);
+  color: #fff;
+  border-bottom: none;
+  height: 64px;
+  padding-left: 8%;
+  font-size: 1.2rem;
 }
 
-.top_container {
+.topic_info {
+  margin-top: 48px;
+}
+
+/* .top_container {
   border-top: 1px solid rgba(85, 96, 83, 0.281);
   margin-top: 40px;
-}
+} */
 
-.contactform_question {
+.contactform_question,
+.confirm_question {
   width: 25%;
 
 }
 
-.confirm_question {
-  width: 50%;
-}
 
 .contactform_question p,
 .confirm_question p {
@@ -40,23 +74,29 @@
 }
 
 .contactform_required,
-.contactform_not_required {
+.contactform_not_required,
+.confirm_required,
+.confirm_not_required {
   width: 15%;
 }
 
 .contactform_required p,
-.contactform_not_required p {
+.contactform_not_required p,
+.confirm_required p,
+.confirm_not_required p {
   padding: 2px 0;
   margin-right: 30%;
   text-align: center;
   border-radius: 4px;
 }
 
-.contactform_required p {
-  background-color: rgba(81, 142, 91, 0.435);
+.contactform_required p,
+.confirm_required p {
+  background-color: rgba(3, 66, 13, 0.435);
 }
 
-.contactform_not_required p {
+.contactform_not_required p,
+.confirm_not_required p {
   background-color: rgba(182, 192, 184, 0.435);
 }
 
@@ -69,7 +109,7 @@
 
 
 .contactform_input input {
-  width: 88%;
+  width: 110%;
   height: 48px;
   border: 1px solid black;
   margin: 0;
@@ -92,7 +132,7 @@
 }
 
 .contactform_input_textarea textarea {
-  width: 87%;
+  width: 90%;
   resize: none;
   border: 1px solid black;
 }
@@ -157,12 +197,19 @@
 
 /* ----------------   タブレット     --------------------- */
 @media screen and (min-width: 767px) and (max-width: 1024px) {
-  .contactform_question p {
+  .contactform_contact_company_img {
+    width: 15%
+  }
+
+  .contactform_question p,
+  .confirm_question p {
     font-size: .9rem;
   }
 
   .contactform_not_required p,
-  .contactform_required p {
+  .contactform_required p,
+  .confirm_not_required p,
+  .confirm_required p {
     font-size: .9rem;
     padding: 4px 0;
   }
@@ -172,18 +219,18 @@
 
   .contactform_question p,
   .contactform_required p,
-  .contactform_not_required p {
+  .contactform_not_required p,
+  .confirm_question p,
+  .confirm_required p,
+  .confirm_not_required p {
     font-size: .8rem;
   }
 
   .contactform_required,
-  .contactform_not_required {
+  .contactform_not_required,
+  .confirm_required,
+  .confirm_not_required {
     width: 12%;
-  }
-
-  .confirm_question,
-  .confirm_answer {
-    font-size: .8rem;
   }
 
   .confirm_company_title {
