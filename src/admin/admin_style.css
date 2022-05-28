@@ -2,9 +2,8 @@
 .login_body {
     background-color: rgb(245, 248, 243);
 }
-.logo_logo {
-    
-}
+
+/* .logo_logo {} */
 
 .login_logo img {
     width: 30%;
@@ -290,8 +289,10 @@ input[type="search"]::-webkit-search-cancel-button {
     text-align: center;
 }
 
-
-
+.img_dd img{
+/* width: 100%; */
+object-fit: cover;
+}
 
 .company_information_list,
 .company_information_list>dt,
@@ -366,8 +367,8 @@ input[type="search"]::-webkit-search-cancel-button {
 
 
 /* ここからコンタクトフォーム */
-.container_all{
+.container_all {
     /* margin: 7rem 0 4rem; */
     margin-top: 9rem;
-    
-  }
+
+}

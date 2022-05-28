@@ -134,22 +134,13 @@ include('./_parts_agent/_header_agent.php');
       <dd><?= $result['company_url'] ?></dd>
     </dl>
   </div>
-  <img src="../../img/IMG_0082.PNG" alt="makikoさん">
-  <img src="../../img/IMG" alt="makikoさん">
-  <img src="../../../img/makiko.jpg" alt="makityann">
-  <img src="../img/makiko.jpg" alt="aa">
-  <div>
-    <? echo $result['img'] ?>
-  </div>
-
-
   <div class="company_posting_information">
     <p>掲載基本情報</p>
     <dl class='company_information_list'>
       <dt>ロゴ</dt>
       <dd><?= $result['logo'] ?></dd>
       <dt>写真</dt>
-      <dd><img src="../../img/<? $result['img'] ?>" alt="まきこさん"></dd>
+      <dd class='img_dd'><img src="../../img/<?=$result['img']?>" alt="まきこさん"></dd>
       <dt>業種</dt>
       <dd><?= $result['industries'] ?></dd>
       <dt>実績</dt>
@@ -214,7 +205,7 @@ include('./_parts_agent/_header_agent.php');
       <dt>特徴</dt>
       <dd><?= $result['feature'] ?></dd>
       <dt>メッセージ</dt>
-      <dd><?= $result['message'] ?>-22</dd>
+      <dd><?= $result['message'] ?></dd>
     </dl>
   </div>
   <div class="company_overview">
