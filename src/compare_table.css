@@ -145,18 +145,13 @@ td + td {
 .twrapper table .fixcell {
 	/* position: -webkit-sticky; */
 	position: sticky;
-	left: 60px;
-	/* width: 60px; */
 	min-width: 60px;
-	/* max-width: 60px; */
 	background-color: #fff;
   z-index: 99;
 }
 .twrapper table .fixcell:first-child {
 	left: 0;
 }
-
-
 
 
 /* チェックボックスについて */
@@ -308,6 +303,51 @@ border-radius: 5px; /* 角丸を指定する */
 	 
 /*tablet用のcssを記述*/
 @media only screen and (min-width:768px) and (max-width:1023px) {
-  
-
+  header {
+		display: block;
+		height: 11rem;
+	}
+	.header_logo img{
+		width: 40rem;
+		margin-left: 4rem;
+	}
+	.header_nav ul{
+		margin: 0.2rem;
+	}
+	.nav_item a {
+		display: inline-block;
+		font-size: 1.8rem;
+		padding: 0px;
+		margin-left: 4rem;
+	}
+	h1 {
+		height: 5rem;
+    font-size: 3rem;
+    margin: 2rem;
+    text-align: center;
+	}
+  .compare_wrapper {
+		margin-top: 16rem;
+	}
+	.twrapper{
+		margin: 7rem 2rem 5rem;
+		max-width: 100%;
+	}
+	.colap {
+    margin-bottom: 18rem;
+  }
+	.close_modal {
+    left: 92%;
+  }
+	.twrapper table td {
+    min-width: 23rem;
+  }
+	.selected_company_box .box-title {
+    font-size: 3em;
+    margin: 1rem 2rem -2rem;
+    letter-spacing: 0.15rem;
+  }
+	.contact_button{
+		padding: 1.4rem;
+	}
 }
