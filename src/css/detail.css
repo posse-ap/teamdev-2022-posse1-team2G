@@ -1,0 +1,277 @@
+body {
+  margin: 0;
+}
+
+.main {
+  background-color: rgba(38, 166, 154, 0.05);
+}
+
+/* トップページ写真 */
+.detail_top_page_img {
+  width: 80%;
+  margin: 0 auto;
+  height: 450px;
+}
+
+.detail_top_page_img img {
+  width: 100%;
+  height: 450px;
+  margin: 0 auto;
+  object-fit: cover;
+}
+
+/* ページのタイトル */
+.detail_title {
+  /* background: url(../img/makiko.jpg) #58b8d1 contain no-repeat; */
+  background: #a5b78b no-repeat center;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.detail_title h1 {
+  margin-left: 24%;
+  color: #fff;
+  letter-spacing: .2rem;
+  font-weight: normal;
+  font-size: 2.4rem;
+}
+
+
+/* コンテンツの親要素 */
+.company_detail_container {
+  display: flex;
+  margin: 0 auto;
+  width: 80%;
+}
+
+
+/* mainコンテンツ */
+.company_detail_main {
+  /* outline: 1px solid violet; */
+  background-color: #fff;
+  /* ↓メインとサイドを3対1の割合で表示 */
+  /* flex: 3; */
+  /* ↓calc関数:メインコンテンツの幅=(100%-サイドバーのサイズ分)を指定
+      ⇒サイドバーを固定したままメインコンテンツを可変 */
+  width: 67%;
+  /* margin-right: 10%; */
+
+}
+
+.section {
+  margin-bottom: 100px;
+}
+
+.section_title {
+  color: rgb(166, 184, 142);
+  padding-bottom: 8px;
+  border-bottom: 1px rgb(166, 184, 142) solid;
+  margin: 32px 0;
+  padding-left: 4%;
+}
+
+/* 
+よしたかくん担当
+ */
+/* 強み・特徴 */
+/* 企業からのメッセージ */
+/* 実績テーブル */
+
+
+
+/* 
+りゅうじくん担当
+ */
+
+
+/* 先輩の就職先ロゴ */
+.finding_employment_target_logo_container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.finding_employment_target_logo_container div {
+  margin: 0 16px 16px 0;
+  width: 20%;
+  /* height: 100px; */
+}
+
+.finding_employment_target_logo_container div img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+}
+
+
+
+
+/* サポートテーブル */
+/* .detail_section_support {
+  width: 80%;
+  margin: 0 auto;
+} */
+
+.detail_section_support_list,
+.detail_section_support_list>dt,
+.detail_section_support_list>dd {
+  box-sizing: border-box;
+  width: 80%;
+  margin: 0;
+}
+
+.detail_section_support_list {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #ddd;
+}
+
+.detail_section_support_list>dt,
+.detail_section_support_list>dd {
+  padding: 1em;
+  font-size: .9rem;
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 1px solid #ddd;
+}
+
+.detail_section_support_list>dt {
+  background-color: #bad4c6;
+  width: 60%;
+  text-align: center;
+}
+
+.detail_section_support_list>dd {
+  width: 40%;
+  border-right: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  /* margin: 0 auto; */
+  text-align: center;
+}
+
+.detail_section_support_list_titile_dt,
+.detail_section_support_list_titile_dd {
+  padding: 2em;
+  background-color: rgb(185, 186, 185) !important;
+  color: #fff;
+}
+
+
+
+
+
+/* 会社情報テーブル */
+
+.detail_section_company_information_list,
+.detail_section_company_information_list>dt,
+.detail_section_company_information_list>dd {
+  box-sizing: border-box;
+}
+
+.detail_section_company_information_list>dt,
+.detail_section_company_information_list>dd {
+  padding: .8em;
+  /* padding: .8rem 1.6rem; */
+  margin: 0px;
+}
+
+.detail_section_company_information_list>dt {
+  background-color: #feffff;
+}
+
+/* .detail_section_company_information_list > dd {
+    background-color: #fff;
+
+} */
+
+.detail_section_company_information_list {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #ddd;
+}
+
+.detail_section_company_information_list>dt,
+.detail_section_company_information_list>dd {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2px solid #ddd;
+}
+
+.detail_section_company_information_list>dt {
+  width: 34%;
+  padding-left: 3%;
+  /* text-align: center; */
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+}
+
+.detail_section_company_information_list>dd {
+  width: 66%;
+  border-right: 1px solid #ddd;
+  /* margin: 0 auto; */
+  /* text-align: center; */
+  padding-left: 3%;
+}
+
+
+
+
+
+
+/* 取扱テーブル */
+
+
+
+
+/* sideコンテンツ（目次） */
+.company_detail_side {
+  width: 33%;
+  margin-left: 8%;
+}
+
+.side_title {
+  padding-left: 8%;
+}
+
+.side_title h3 {
+  margin: 0;
+  padding: 32px 0 24px;
+}
+
+.sticky {
+  position: sticky;
+  height: 400px;
+  top: 40px;
+  width: 100%;
+  background-color: #fff;
+  padding-bottom: 24px;
+}
+
+.company_detail_side_ul {
+  padding: 0;
+}
+
+.company_detail_side_ul li {
+  list-style: none;
+  padding: 0 0 24px 8%;
+  color: rgb(166, 184, 142);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.last_li {
+  padding-bottom: 24px;
+}
+
+.company_detail_side_ul a:hover{
+opacity: .6;
+}
+a {
+  text-decoration: none;
+}
