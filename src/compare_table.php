@@ -309,7 +309,7 @@ $row = 0;
       <!-- お問い合わせチェックボタンついた会社を一時表示するボックス -->
       <div id="at_once_box" class="selected_company_box">
          <div class="outer">
-           <div class="close_modal">
+           <div id="close_box" class="close_modal">
               <span class="square_btn"></span>
            </div>
            <div class="inner">

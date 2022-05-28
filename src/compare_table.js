@@ -31,3 +31,10 @@ let compare_display_box = document.getElementById("at_once_box");
       });
       
    }
+
+  //  ↑の"display: block"が外れなくて効かない
+  // let close_btn = document.getElementById("close_box");
+  // function close_box(){
+  //   compare_display_box.style = "display: none";
+  // }
+  // close_btn.addEventListener('click', close_box());
