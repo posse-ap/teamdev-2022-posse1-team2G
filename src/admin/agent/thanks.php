@@ -125,7 +125,7 @@ $result = $mailsousin;
 include('./_parts_agent/_header_agent.php');  
 ?>
 
-  <div class="container">
+  <div class="container_contents">
     <section id="contact">
       <!-- ページメイン -->
       <div class="contact_wrapper form_card">

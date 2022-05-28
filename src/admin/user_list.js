@@ -139,7 +139,7 @@ $(document).ready(function () {
         'stud_company_name': stud_company_name,
       },
       success: function (response) {
-        alert(response);
+        // alert(response);
         $.each(response, function (key, useredit) {
           $('#id_edit').val(useredit['id']);
           $('#name_edit').val(useredit['name']);

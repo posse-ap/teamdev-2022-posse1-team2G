@@ -65,7 +65,7 @@ $price = $unit_price * (1 + $tax);
 <?php
 include('./_parts_boozer/_header_boozer.php');  
 ?>
-<div class="container">
+<div class="container_contents">
   <div class='https://blog.8bit.co.jp/?p=11410'>
     <div class='sales_status_title'>
       <h1>売り上げ状況</h1>

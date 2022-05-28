@@ -108,7 +108,7 @@ function correctness_decision($val)
 <?php
 include('./_parts_agent/_header_agent.php');
 ?>
-<div class="container">
+<div class="container_contents">
 
   <div class='company_information_titie'>
     <h1><?= $result['company_name'] ?>掲載情報</h1>

@@ -57,7 +57,7 @@ where t1.id='$id';";
 include('./_parts_agent/_header_agent.php');  
 ?>
 
-<div class="container">
+<div class="container_contents">
 
   <!-- View Modal -->
   <div class="modal fade" id="userViewModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -158,7 +158,7 @@ include('./_parts_agent/_header_agent.php');
 
 
 
-  <div class="container mt-5">
+  <div class="container mt-5 container_contents">
     <div class="row">
       <div class="col-md-12">
         <div class="card">

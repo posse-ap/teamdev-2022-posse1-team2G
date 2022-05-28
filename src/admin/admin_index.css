@@ -46,11 +46,6 @@
 
 
 /* ここからコンタクトフォーム */
-.container{
-  margin: 7rem 0 4rem;
-  /* margin-top: 4rem; */
-  text-align: center;
-}
 .form_card{
   background-color: #e8ecf1;
   padding: 3rem;

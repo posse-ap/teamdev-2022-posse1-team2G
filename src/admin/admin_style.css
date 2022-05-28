@@ -364,11 +364,3 @@ object-fit: cover;
     border-bottom: 1px solid #000;
     background-color: red;
 }
-
-
-/* ここからコンタクトフォーム */
-.container_all {
-    /* margin: 7rem 0 4rem; */
-    margin-top: 9rem;
-
-}
