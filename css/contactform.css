@@ -1,0 +1,132 @@
+.contactform_title {
+  text-align: center;
+  margin: 64px 0 40px;
+}
+
+.contactform_each_container {
+  display: flex;
+  /* outline: 1px solid red; */
+  align-items: center;
+  width: 88%;
+  margin: 0 auto;
+  border-bottom: 1px solid rgba(85, 96, 83, 0.281);
+  height: 80px;
+}
+
+.top_container {
+  border-top: 1px solid rgba(85, 96, 83, 0.281);
+}
+
+.contactform_question {
+  /* outline: 1px solid rgb(133, 157, 204); */
+  width: 25%;
+}
+
+.contactform_question p {
+  padding-left: 20%;
+}
+
+.contactform_required,
+.contactform_not_required {
+  width: 15%;
+}
+
+.contactform_required p,
+.contactform_not_required p {
+  padding: 2px 0;
+  margin-right: 30%;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.contactform_required p {
+  background-color: rgba(81, 142, 91, 0.435);
+}
+
+.contactform_not_required p {
+  background-color: rgba(182, 192, 184, 0.435);
+}
+
+.contactform_input {
+  width: 60%;
+  /* outline: 1px solid rgb(170, 255, 0); */
+}
+
+.contactform_input input {
+  width: 88%;
+  height: 48px;
+  border: 1px solid black;
+  margin: 0;
+  padding: 0;
+  /* margin-right: 10%; */
+}
+
+/*--------------- radioボタン ----------------*/
+.contactform_input_radio {
+  width: 60%;
+}
+
+.contactform_input_radio label {
+  margin-right: 16%;
+}
+
+/* ----------------  textarea  ------------------- */
+.contactform_input_textarea {
+  width: 60%;
+}
+
+.contactform_input_textarea textarea {
+  width: 87%;
+  resize: none;
+  border: 1px solid black;
+}
+
+.textarea {
+  height: 140px;
+}
+
+/* ----------------  submit  ------------------- */
+.contactform_submit {
+  text-align: center;
+  margin: 40px 0 40px;
+}
+
+.contactform_submit input {
+  padding: 16px 72px;
+  background-color: rgb(224, 127, 15);
+  color: #fff;
+  border: none;
+  font-size: 1.2rem;
+}
+
+.contactform_submit input:hover {
+  opacity: .7;
+}
+
+
+@media screen and (min-width: 767px) and (max-width: 1024px) {
+  .contactform_question p {
+    font-size: .9rem;
+  }
+
+  .contactform_not_required p,
+  .contactform_required p {
+    font-size: .9rem;
+    padding: 4px 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+
+  .contactform_question p,
+  .contactform_required p,
+  .contactform_not_required p {
+    font-size: .8rem;
+  }
+
+  .contactform_required,
+  .contactform_not_required {
+    width: 12%;
+  }
+
+}
