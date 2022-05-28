@@ -140,7 +140,7 @@ include('./_parts_agent/_header_agent.php');
       <dt>ロゴ</dt>
       <dd><?= $result['logo'] ?></dd>
       <dt>写真</dt>
-      <dd><img src="../../img/<? $result['img'] ?>" alt="まきこさん"></dd>
+      <dd class='img_dd'><img src="../../img/<?=$result['img']?>" alt="まきこさん"></dd>
       <dt>業種</dt>
       <dd><?= $result['industries'] ?></dd>
       <dt>実績</dt>
@@ -205,7 +205,7 @@ include('./_parts_agent/_header_agent.php');
       <dt>特徴</dt>
       <dd><?= $result['feature'] ?></dd>
       <dt>メッセージ</dt>
-      <dd><?= $result['message'] ?>-22</dd>
+      <dd><?= $result['message'] ?></dd>
     </dl>
   </div>
   <div class="company_overview">
