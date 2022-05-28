@@ -82,7 +82,12 @@ table {
 	/* テーブル中央ぞろえ */
 	margin-left: auto;
 	margin-right: auto;
+	max-width: 80%;
 	background-color: #fff;
+	/* 横方向の結合 */
+	border-collapse: collapse;
+	/* 改行するため */
+	table-layout: fixed;
 }
 /* 会社名 */
 .company_name{
@@ -102,18 +107,30 @@ th,td {
 th {
 	border-right: 0.2rem solid #e8ecf1;
 	font-size: 1.2rem;
-  padding: 0.6rem;
+  padding: 1.6rem 2.6rem 1.6rem;
 }
 td {
+	/* 改行するため */
+	table-layout: fixed;
+}
+td div{
+	font-size: 1.1rem;
+	width: 200px;
+	/* 改行するため */
+	overflow-wrap: break-word;
+	/* word-break: break-word; */
+	/* word-wrap: break-word; */
+}
+/* .fill以外のtd（各説明行） */
+td:not(.fill) {
 	padding: 0.5rem;
+	max-width: 20rem;
+  height: 6rem;
 }
 td + td {
 	border-left: 0.2rem solid #e8ecf1;
 }
-/* 横方向の結合 */
-.colap {
-	border-collapse: collapse;
-}
+
 /* セルの色付け */
 .fill {
 	background-color: #e8ecf1;
@@ -122,18 +139,12 @@ td + td {
 	font-size: large;
 }
 /* 左端一列の固定 */
-.twrapper{
+.twrapper {
 	overflow: auto;
 	white-space: nowrap;
-}
-.twrapper table th,
-.twrapper table td {
-	/* min-width: 60px; */
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-o-box-sizing: border-box;
-	-ms-box-sizing: border-box;
-	box-sizing: border-box;
+	max-width: 90%;
+	margin-left: auto;
+	margin-right: auto;
 }
 .twrapper table .fixcell {
 	/* position: -webkit-sticky; */
@@ -215,9 +226,9 @@ border-radius: 5px; /* 角丸を指定する */
 	letter-spacing: 0.05rem;
 }
 .contact_button{
-	font-size: 0.8rem;
+	font-size: 1rem;
 	background-color: #fff;
-	padding: 0.4rem;
+	padding: 0.8rem;
 	margin: 0.3rem 0 1rem;
 	font-weight: bold;
 	letter-spacing: 0.05rem;
@@ -251,8 +262,51 @@ border-radius: 5px; /* 角丸を指定する */
 
 /*スマホ用のcssを記述*/
 @media screen and (max-width:767px) {
+	header {
+		display: block;
+	}
+	.header_logo img{
+		width: 40rem;
+		margin-left: 4rem;
+	}
+	.header_nav ul{
+		margin: 0.2rem;
+	}
+	.nav_item a {
+		display: inline-block;
+		font-size: 0.5rem;
+		padding: 0px;
+		margin-left: 4rem;
+	}
+	h1 {
+		height: 12rem;
+    font-size: 4rem;
+    margin: 2rem;
+    text-align: center;
+	}
   .compare_wrapper {
 		margin-top: 21rem;
+	}
+	.twrapper{
+		margin: 7rem 2rem 5rem;
+		max-width: 100%;
+	}
+	.colap {
+    margin-bottom: 18rem;
+  }
+	.close_modal {
+    left: 92%;
+  }
+	.twrapper table td {
+    min-width: 23rem;
+  }
+	.selected_company_box .box-title {
+    font-size: 3em;
+    margin: 1rem 2rem -2rem;
+    letter-spacing: 0.15rem;
+  }
+	.contact_button{
+		padding: 1.4rem;
 	}
 }
 	 
