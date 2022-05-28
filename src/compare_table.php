@@ -300,22 +300,15 @@ $row = 0;
     <section>
       <!-- お問い合わせチェックボタンついた会社を一時表示するボックス -->
       <div id="at_once_box" class="selected_company_box">
-        <div class="outer">
-          <div id="close_box" class="close_modal">
-            <span class="square_btn"></span>
-          </div>
-          <div class="inner">
-            <p class="box-title">✓選択済みエージェント会社</p>
-            <form id="form" class="validationForm" action="./contact/contactform.php" method="post">
-              <!-- お問い合わせチェックボタンついた会社の表示箇所 -->
-              <div id="checked_company_box" class="self__checkbox"></div>
-              <!-- 完了ページへ渡すトークンの隠しフィールド -->
-              <input type="hidden" name="ticket" value="<?php echo h($ticket); ?>">
-              <!-- お問い合わせするボタンを押すと、一時表示された会社の情報を比較表ページにpostする -->
-              <button name="submitted" type="submit" class="contact_button">お問い合わせ画面へ</button>
-            </form>
-          </div>
-        </div>
+        <p class="box-title">✓選択済みエージェント会社</p>
+        <form id="form" class="validationForm" action="./contact/contactform.php" method="post">
+          <!-- お問い合わせチェックボタンついた会社の表示箇所 -->
+          <div id="checked_company_box" class="self__checkbox"></div>
+          <!-- 完了ページへ渡すトークンの隠しフィールド -->
+          <input type="hidden" name="ticket" value="<?php echo h($ticket); ?>">
+          <!-- お問い合わせするボタンを押すと、一時表示された会社の情報を比較表ページにpostする -->
+          <button name="submitted" type="submit" class="contact_button">お問い合わせ画面へ</button>
+        </form>
       </div>
     </section>
   </main>

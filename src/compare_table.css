@@ -188,26 +188,7 @@ border-radius: 5px; /* 角丸を指定する */
   background: #3D3D3D;
 	z-index: 100;
 }
-.outer {
-	width: auto;
-	display: flex;
-  flex-direction: column;
-}
-.close_modal {
-	position: relative; 
-	top: 0%;
-	left: 95%;
-	height: 0; 
-}
-.inner {
-	position: relative;
-	/* width: 200px; */
-	padding: 0 10px;
-	/* display: flex; */
-	align-items: center;
-	justify-content: center;
-	margin: auto; 
-}
+
 .selected_company_box .box-title {
 	font-size: 1.2em;
 	padding: 4px;
@@ -226,30 +207,6 @@ border-radius: 5px; /* 角丸を指定する */
 	border-color: #fff;
 	border-radius: 1rem;
 }
-/* ✕ボタン */
-.square_btn {
-  display: block;
-  position: relative;
-  width: 30px;
-  height: 30px;
-  background: #333; /* ボタンの背景色 */
-}
-.square_btn::before, .square_btn::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 3px;
-  height: 25px;
-  background: #fff; /* バツ印の色 */
-}
-.square_btn::before {
-  transform: translate(-50%,-50%) rotate(45deg);
-}
-.square_btn::after {
-  transform: translate(-50%,-50%) rotate(-45deg);
-}
-
 
 /*スマホ用のcssを記述*/
 @media screen and (max-width:767px) {
@@ -333,11 +290,11 @@ border-radius: 5px; /* 角丸を指定する */
 		margin: 7rem 2rem 5rem;
 		max-width: 100%;
 	}
+	th {
+		font-size: 1.5rem;
+	}
 	.colap {
     margin-bottom: 18rem;
-  }
-	.close_modal {
-    left: 92%;
   }
 	.twrapper table td {
     min-width: 23rem;
@@ -349,5 +306,8 @@ border-radius: 5px; /* 角丸を指定する */
   }
 	.contact_button{
 		padding: 1.4rem;
+	}
+	label{
+		font-size: 2rem;
 	}
 }
