@@ -1,0 +1,60 @@
+.form_body {
+  /* width: 80%; */
+  margin: 0 auto;
+  background-color: rgba(213, 237, 174, 0.171);
+}
+
+.form_title {
+  text-align: center;
+}
+
+.form_group {
+  display: flex;
+}
+
+.form_each_heading {
+  background-color: rgba(78, 130, 50, 0.397);
+
+}
+
+.form_each_heading p {
+  color: #fff;
+  padding: 8px 0 8px 6%;
+}
+
+.form_checkbox_container {
+  width: 96%;
+  background-color: #fff;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.each_industries_checkbox,
+.each_type_checkbox {
+  width: 40%;
+  /* padding-left: 10%; */
+  padding: 12px 0 12px 10%;
+}
+
+.each_industries_checkbox label,
+.each_type_checkbox label{
+font-size: 1.2rem;
+}
+
+.form_submit {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.form_submit button {
+  padding: 8px 40px;
+  border: none;
+  background-color: rgba(66, 168, 41, 0.675);
+  color: #fff;
+  font-size: 1.6rem;
+}
+
+.form_submit button:hover {
+  opacity: .8;
+}
