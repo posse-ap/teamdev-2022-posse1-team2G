@@ -76,13 +76,54 @@ body {
 
 
 /* 強み・特徴 */
-.strength_contents{
+.strength_contents {
   padding-left: 4%;
 }
-.strength_contents p{
-font-size: 1.4rem;
+
+.strength_contents p {
+  font-size: 1.4rem;
 
 }
+
+/* .strength_contents p {
+  padding-left: 24px;
+  position: relative;
+} */
+
+.strength_list {
+  position: relative;
+  padding-left: 35px;
+  margin: 0;
+  font-size: 20px;
+}
+
+.strength_list:before {
+  content: "";
+  position: absolute;
+  top: .44em;
+  left: 5px;
+  -webkit-transform: rotate(50deg);
+  -ms-transform: rotate(50deg);
+  transform: rotate(50deg);
+  width: 6px;
+  height: 8px;
+  border-right: 2px solid #e92b16;
+  border-bottom: 2px solid #e92b16;
+}
+
+.strength_list:after {
+  content: "";
+  position: absolute;
+  top: .2em;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgb(224, 140, 140);
+  border-radius: 2px;
+  /* margin-right: 200px; */
+}
+
+
 /* 企業からのメッセージ */
 
 
