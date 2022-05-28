@@ -129,7 +129,6 @@ $row = 0;
         <table>
             <!-- 基本情報 -->
             <tr>
-              <!-- <th></th> -->
               <td class="fill" colspan=<? echo $cnt + 1; ?>>基本情報</td>
             </tr>
             <!-- 企業名 -->
@@ -138,7 +137,6 @@ $row = 0;
               <?php foreach ($companies as $company) : ?>
                 <td class="company_name" style="text-align:center"><?= $company['name']; ?></td>
               <?php endforeach; ?>
-              <!-- <td class="company_name" style="text-align:center" >企業</td> -->
             </tr>
             <!-- 企業ロゴとお問い合わせチェックボックス -->
             <tr>
