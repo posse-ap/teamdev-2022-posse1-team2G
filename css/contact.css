@@ -28,7 +28,10 @@
 
 .contactform_contact_company_name {
   width: 60%;
-  margin-left: 8%;
+}
+
+.contactform_contact_company_name p{
+  margin-left: 16%;
   font-size: 1.6rem;
 }
 
@@ -62,14 +65,16 @@
 } */
 
 .contactform_question,
-.confirm_question {
+.confirm_question,
+.confirm_company_question {
   width: 25%;
 
 }
 
 
 .contactform_question p,
-.confirm_question p {
+.confirm_question p,
+.confirm_company_question p {
   padding-left: 20%;
 }
 
@@ -106,8 +111,6 @@
   /* outline: 1px solid rgb(170, 255, 0); */
 }
 
-
-
 .contactform_input input {
   width: 110%;
   height: 48px;
@@ -115,6 +118,11 @@
   margin: 0;
   padding: 0;
   /* margin-right: 10%; */
+}
+
+.contactform_contact_company_name {
+  margin: 0;
+  font-size: 1.2rem;
 }
 
 /*--------------- radioボタン ----------------*/
@@ -202,7 +210,8 @@
   }
 
   .contactform_question p,
-  .confirm_question p {
+  .confirm_question p,
+  .confirm_company_question p {
     font-size: .9rem;
   }
 
@@ -222,7 +231,8 @@
   .contactform_not_required p,
   .confirm_question p,
   .confirm_required p,
-  .confirm_not_required p {
+  .confirm_not_required p,
+  .confirm_company_question p {
     font-size: .8rem;
   }
 
