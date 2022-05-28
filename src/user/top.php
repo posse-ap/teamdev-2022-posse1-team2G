@@ -36,17 +36,16 @@ $ticket = $_SESSION[ 'ticket' ];
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>就活エージェント比較サイト</title>
   <link rel="stylesheet" href="../css/reset.css">
-
   <!-- fontawesomw追加 -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
   <header>
     <div class="header_wrapper">
       <div class="header_logo">
-        <!-- <img src="" alt="logo"> -->
-        <a href="#">CRAFT</a>
+        <img src="../img/boozer_logo.png" alt="logo">
+        <!-- <a href="#">CRAFT</a> -->
       </div>
     </div>
     <nav class="header_nav">
@@ -83,244 +82,67 @@ $ticket = $_SESSION[ 'ticket' ];
         </div>
         <div class="company_list">
           <!-- 一つの会社ボックス -->
-          <div class="company_box">
-            <div class="company_box_logo">
-              <img src="../img/rikunabi.png" alt="">
-            </div>
-            <div class="company_box_name">
-              <p>リクナビ</p>
-            </div>
-            <div class="company_box_img">
-              <img src="../img/company1.png" alt="">
-            </div>
-            <div class="company_box_info">
-              <div class="company_info_first">
-                <i class="fa-solid fa-briefcase"></i>
-                <p class="capital">業種</p>
-                <p>IT　商社</p>
-              </div>
-              <div class="company_info_second">
-                <i class="fa-solid fa-trophy"></i>
-                <p class="capital">実績</p>
-                <p>満足度97%</p>
-              </div>
-              <div class="company_info_third">
-                <i class="fa-solid fa-hand-point-up"></i>
-                <p class="capital">おすすめ</p>
-                <!-- ここら辺もしphpなら二つのp要素くっつけてもいいかもです -->
-                <p>文系　体育会系</p>
-                <!-- ここまで -->
-              </div>
-            </div>
-            <div class="company_box_exp">
-              <p>マイナビ新卒紹介はあああああああああああああああああああああああああああ</p>
-            </div>
-            <div class="company_box_button">
-              <a href="" class="inquiry">お問い合わせはこちら</a>
-            </div>
-            <div class="company_box_check">
-              <label for="check" class="check"><input type="checkbox">複数の会社を比較する</label>
-            </div>
-            <a class="page_change" href="../html/result.html"></a>
-          </div>
-          <!-- ここまで -->
-         <!-- 一つの会社ボックス -->
-         <div class="company_box">
-          <div class="company_box_logo">
-            <img src="../img/neo.png" alt="">
-          </div>
-          <div class="company_box_name">
-            <p>Agent neo</p>
-          </div>
-          <div class="company_box_img">
-            <img src="../img/company2.png" alt="">
-          </div>
-          <div class="company_box_info">
-            <div class="company_info_first">
-              <p class="capital">主な業種</p>
-              <p>IT　商社</p>
-            </div>
-            <div class="company_info_second">
-              <p class="capital">実績</p>
-              <p>満足度97%</p>
-            </div>
-            <div class="company_info_third">
-              <p class="capital">おすすめ</p>
-              <!-- ここら辺もしphpなら二つのp要素くっつけてもいいかもです -->
-              <p>文系　体育会系</p>
-              <!-- ここまで -->
+          <?php foreach ($companies as $company) : ?>
+            <a href="./detail.php?company_id='<?= $company['company_id']; ?>'">
+               <div class="company_box">
+                 <div class="company_box_logo">
+                   <img src="../img/rikunabi.png" alt="">
+                 </div>
+                 <div class="company_box_name">
+                   <p><?= $company['name']; ?></p>
+                 </div>
+                 <div class="company_box_img">
+                   <img src="../img/company1.png" alt="">
+                 </div>
+                 <div class="company_box_info">
+                   <div class="company_info_first">
+                     <i class="fa-solid fa-briefcase"></i>
+                     <p class="capital">業種</p>
+                     <p><?= $company['industries']; ?></p>
+                   </div>
+                   <div class="company_info_second">
+                     <i class="fa-solid fa-trophy"></i>
+                     <p class="capital">実績</p>
+                     <p><?= $company['achievement']; ?>%</p>
+                   </div>
+                   <div class="company_info_third">
+                     <i class="fa-solid fa-hand-point-up"></i>
+                     <p class="capital">おすすめ</p>
+                     <!-- ここら辺もしphpなら二つのp要素くっつけてもいいかもです -->
+                     <p><?= $company['type']; ?></p>
+                     <!-- ここまで -->
+                   </div>
+                 </div>
+                 <div class="company_box_exp">
+                   <p>マイナビ新卒紹介はあああああああああああああああああああああああああああ</p>
+                 </div>
+                 <div class="company_box_button">
+                   <a href="./contact/contactform.php?company_id=<?= htmlspecialchars($company['company_id']); ?>" class="inquiry">お問い合わせはこちら</a>
+                 </div>
+                 <div class="company_box_check">
+                   <label for="check"><input type="checkbox" name="select_company_checkboxes" value="<?= $company['company_id'];?>-<?= $company['name'];?>" onchange="checked_counter()">複数の会社を比較する</label>
+                 </div>
+                 <a class="page_change" href="../html/result.html"></a>
+               </div>
+            </a>
+          <?php endforeach; ?>
+          <div>
+            <!-- 比較チェックボタンついた会社を一時表示するボックス -->
+            <div class="selected_company_box">
+              <p>比較するエージェント会社</p>
+              <form id="form" class="validationForm" action="./compare_table.php" method="post">
+                <!-- 比較チェックボタンついた会社の表示箇所 -->
+                   <div id="checked_company_box"></div>
+                <!-- 完了ページへ渡すトークンの隠しフィールド -->
+                   <input type="hidden" name="ticket" value="<?php echo h($ticket); ?>">
+                <!-- 比較するボタンを押すと、一時表示された会社の情報を比較表ページにpostする -->
+                   <button name="submitted" type="submit" class="">比較する</button>
+              </form>
             </div>
           </div>
-          <div class="company_box_exp">
-            <p>マイナビ新卒紹介はあああああああああああああああああああああああああああ</p>
-          </div>
-          <div class="company_box_button">
-            <a href="" class="inquiry">お問い合わせはこちら</a>
-          </div>
-          <div class="company_box_check">
-            <label for="check" class="check"><input type="checkbox">複数の会社を比較する</label>
-          </div>
-          <a class="page_change" href="../html/result.html"></a>
+          
         </div>
-        <!-- ここまで -->
-        <!-- 一つの会社ボックス -->
-        <div class="company_box">
-          <div class="company_box_logo">
-            <img src="../img/type.png" alt="">
-          </div>
-          <div class="company_box_name">
-            <p>type</p>
-          </div>
-          <div class="company_box_img">
-            <img src="../img/company3.png" alt="">
-          </div>
-          <div class="company_box_info">
-            <div class="company_info_first">
-              <p class="capital">主な業種</p>
-              <p>IT　商社</p>
-            </div>
-            <div class="company_info_second">
-              <p class="capital">実績</p>
-              <p>満足度97%</p>
-            </div>
-            <div class="company_info_third">
-              <p class="capital">おすすめ</p>
-              <!-- ここら辺もしphpなら二つのp要素くっつけてもいいかもです -->
-              <p>文系　体育会系</p>
-              <!-- ここまで -->
-            </div>
-          </div>
-          <div class="company_box_exp">
-            <p>マイナビ新卒紹介はあああああああああああああああああああああああああああ</p>
-          </div>
-          <div class="company_box_button">
-            <a href="" class="inquiry">お問い合わせはこちら</a>
-          </div>
-          <div class="company_box_check">
-            <label for="check" class="check"><input type="checkbox">複数の会社を比較する</label>
-          </div>
-          <a class="page_change" href="../html/result.html"></a>
-        </div>
-        <!-- ここまで -->
-         <!-- 一つの会社ボックス -->
-         <div class="company_box">
-          <div class="company_box_logo">
-            <img src="../img/type.png" alt="">
-          </div>
-          <div class="company_box_name">
-            <p>type</p>
-          </div>
-          <div class="company_box_img">
-            <img src="../img/company3.png" alt="">
-          </div>
-          <div class="company_box_info">
-            <div class="company_info_first">
-              <p class="capital">主な業種</p>
-              <p>IT　商社</p>
-            </div>
-            <div class="company_info_second">
-              <p class="capital">実績</p>
-              <p>満足度97%</p>
-            </div>
-            <div class="company_info_third">
-              <p class="capital">おすすめ</p>
-              <!-- ここら辺もしphpなら二つのp要素くっつけてもいいかもです -->
-              <p>文系　体育会系</p>
-              <!-- ここまで -->
-            </div>
-          </div>
-          <div class="company_box_exp">
-            <p>マイナビ新卒紹介はあああああああああああああああああああああああああああ</p>
-          </div>
-          <div class="company_box_button">
-            <a href="" class="inquiry">お問い合わせはこちら</a>
-          </div>
-          <div class="company_box_check">
-            <label for="check" class="check"><input type="checkbox">複数の会社を比較する</label>
-          </div>
-          <a class="page_change" href="../html/result.html"></a>
-        </div>
-        <!-- ここまで -->
-         <!-- 一つの会社ボックス -->
-         <div class="company_box">
-          <div class="company_box_logo">
-            <img src="../img/neo.png" alt="">
-          </div>
-          <div class="company_box_name">
-            <p>Agent neo</p>
-          </div>
-          <div class="company_box_img">
-            <img src="../img/company2.png" alt="">
-          </div>
-          <div class="company_box_info">
-            <div class="company_info_first">
-              <p class="capital">主な業種</p>
-              <p>IT　商社</p>
-            </div>
-            <div class="company_info_second">
-              <p class="capital">実績</p>
-              <p>満足度97%</p>
-            </div>
-            <div class="company_info_third">
-              <p class="capital">おすすめ</p>
-              <!-- ここら辺もしphpなら二つのp要素くっつけてもいいかもです -->
-              <p>文系　体育会系</p>
-              <!-- ここまで -->
-            </div>
-          </div>
-          <div class="company_box_exp">
-            <p>マイナビ新卒紹介はあああああああああああああああああああああああああああ</p>
-          </div>
-          <div class="company_box_button">
-            <a href="" class="inquiry">お問い合わせはこちら</a>
-          </div>
-          <div class="company_box_check">
-            <label for="check" class="check"><input type="checkbox">複数の会社を比較する</label>
-          </div>
-          <a class="page_change" href="../html/result.html"></a>
-        </div>
-        <!-- ここまで -->
-        <!-- 一つの会社ボックス -->
-        <div class="company_box">
-          <div class="company_box_logo">
-            <img src="../img/rikunabi.png" alt="">
-          </div>
-          <div class="company_box_name">
-            <p>リクナビ</p>
-          </div>
-          <div class="company_box_img">
-            <img src="../img/company1.png" alt="">
-          </div>
-          <div class="company_box_info">
-            <div class="company_info_first">
-              <p class="capital">主な業種</p>
-              <p>IT　商社</p>
-            </div>
-            <div class="company_info_second">
-              <p class="capital">実績</p>
-              <p>満足度97%</p>
-            </div>
-            <div class="company_info_third">
-              <p class="capital">おすすめ</p>
-              <!-- ここら辺もしphpなら二つのp要素くっつけてもいいかもです -->
-              <p>文系　体育会系</p>
-              <!-- ここまで -->
-            </div>
-          </div>
-          <div class="company_box_exp">
-            <p>マイナビ新卒紹介はあああああああああああああああああああああああああああ</p>
-          </div>
-          <div class="company_box_button">
-            <a href="" class="inquiry">お問い合わせはこちら</a>
-          </div>
-          <div class="company_box_check">
-            <label for="check" class="check"><input type="checkbox">複数の会社を比較する</label>
-          </div>
-          <a class="page_change" href="../html/result.html"></a>
-        </div>
-        <!-- ここまで -->
-        </div>
-      </div>
+      </div> 
     </section>
     <section id="problem">
       <div class="title_box">
@@ -469,94 +291,8 @@ $ticket = $_SESSION[ 'ticket' ];
   </footer>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="../js/script.js"></script>
-</body>
-</html>
-
-<!-- 
-<!DOCTYPE html>
-<html lang="ja">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="style.css">
-</head> -->
-
-<body>
-  <main>
-    <section id="company">
-      <div class="company_wrapper">
-        <h2>企業一覧</h2>
-        <div class="company_list">
-          <!-- 一つの会社ボックス -->
-          <?php foreach ($companies as $company) : ?>
-            <div class="company_box outline">
-              <a href="./detail.php?company_id='<?= $company['company_id']; ?>'">
-                <div class="company_box_logo">
-                  <img src="" alt="">
-                </div>
-                <div class="company_box_img">
-                  <img src="" alt="">
-                </div>
-                <div class="company_box_info">
-                  <div class="company_info_first">
-                    <img src="" alt="">
-                    <!-- <p>IT</p> -->
-                    <p><?= $company['industries']; ?></p>
-                  </div>
-                  <div class="company_info_second">
-                    <img src="" alt="">
-                    <p><?= $company['achievement']; ?>%</p>
-                  </div>
-                  <div class="company_info_third">
-                    <img src="" alt="">
-                    <!-- ここら辺もしphpなら二つのp要素くっつけてもいいかもです -->
-                    <!-- <p>文系</p> -->
-                    <p><?= $company['type']; ?></p>
-                    <!-- ここまで -->
-                  </div>
-                </div>
-                <div class="company_box_exp">
-                  <p>マイナビ新卒紹介は…</p>
-                </div>
-                <div class="company_box_button">
-                  <!-- <a href="" class="inquiry">お問い合わせはこちら</a> -->
-                  <!-- <input type="text" name="hidden" value='<?php echo htmlspecialchars($company['company_id']); ?>'> -->
-                  <a href="./contact/contactform.php?company_id=<?= htmlspecialchars($company['company_id']); ?>">お問い合わせ</a>
-
-                  <a href="" class="comparison">複数の会社を比較する</a>
-                </div>
-                <div class="company_box_check">
-                  <!-- valueにデータを追加していくことで、一時表示ボックスに反映できる -->
-                  <label for="check"><input type="checkbox" name="select_company_checkboxes" value="<?= $company['company_id'];?>-<?= $company['name'];?>" onchange="checked_counter()">選択する</label>
-                </div>
-              </a>
-            </div>
-          <?php endforeach; ?>
-          <!-- ここまで -->
-        </div>
-        <div>
-          <!-- 比較チェックボタンついた会社を一時表示するボックス -->
-          <div class="selected_company_box">
-            <p>比較するエージェント会社</p>
-            <form id="form" class="validationForm" action="./compare_table.php" method="post">
-              <!-- 比較チェックボタンついた会社の表示箇所 -->
-                 <div id="checked_company_box"></div>
-              <!-- 完了ページへ渡すトークンの隠しフィールド -->
-                 <input type="hidden" name="ticket" value="<?php echo h($ticket); ?>">
-              <!-- 比較するボタンを押すと、一時表示された会社の情報を比較表ページにpostする -->
-                 <button name="submitted" type="submit" class="">比較する</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
   <!-- 比較ボタンの挙動（company_idの受け渡し）を記述したファイルの読み込み -->
-  <script src="./to_compare_table.js"></script>
+  <script src="../js/to_compare_table.js"></script>
 </body>
-
 </html>
+
