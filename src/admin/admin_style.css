@@ -2,9 +2,6 @@
 .login_body {
     background-color: rgb(245, 248, 243);
 }
-.logo_logo {
-    
-}
 
 .login_logo img {
     width: 30%;
@@ -363,11 +360,3 @@ input[type="search"]::-webkit-search-cancel-button {
     border-bottom: 1px solid #000;
     background-color: red;
 }
-
-
-/* ここからコンタクトフォーム */
-.container_all{
-    /* margin: 7rem 0 4rem; */
-    margin-top: 9rem;
-    
-  }

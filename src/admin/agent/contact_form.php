@@ -53,7 +53,7 @@ include('./_parts_agent/_header_agent.php');
 ?>
 
 
-<div class="container">
+<div class="container_contents">
 
   <!-- フォーム -->
   <h1>ー申請フォームー</h1>

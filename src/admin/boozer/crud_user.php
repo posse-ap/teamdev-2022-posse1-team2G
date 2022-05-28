@@ -8,7 +8,7 @@ if (isset($_POST['checking_view'])) {
   $result = [];
 
   // $query = "SELECT * FROM users WHERE id='$stud_id' ";
-  $query = "SELECT t1.contact_datetime, t1.rep, t2.id, t2.name, t2.university, t2.department, t2.grad_year, t2.mail, t2.phone_number, t2.address, t3.company_name 
+  $query = "SELECT t1.contact_datetime, t2.id, t2.name, t2.university, t2.department, t2.grad_year, t2.mail, t2.phone_number, t2.address, t3.company_name 
   FROM company_user as t1 
   inner join users as t2 
   on t1.user_id=t2.id 
@@ -37,7 +37,7 @@ if (isset($_POST['checking_edit'])) {
   $stud_company_name = $_POST['stud_company_name'];
 
   // $query_edit = "SELECT * FROM users WHERE id='$stud_id' ";
-  $sql = "SELECT t1.contact_datetime, t1.rep, t2.id, t2.name, t2.university, t2.department, t2.grad_year, t2.mail, t2.phone_number, t2.address, t3.company_name 
+  $sql = "SELECT t1.contact_datetime, t2.id, t2.name, t2.university, t2.department, t2.grad_year, t2.mail, t2.phone_number, t2.address, t3.company_name 
   FROM company_user as t1 
   inner join users as t2 
   on t1.user_id=t2.id 
