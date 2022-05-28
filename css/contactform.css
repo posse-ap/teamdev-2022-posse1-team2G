@@ -1,9 +1,11 @@
-.contactform_title {
+.contactform_title,
+.confirm_title {
   text-align: center;
-  margin: 64px 0 40px;
+  margin: 64px 0 64px;
 }
 
-.contactform_each_container {
+.contactform_each_container,
+.confirm_each_container {
   display: flex;
   /* outline: 1px solid red; */
   align-items: center;
@@ -13,16 +15,27 @@
   height: 80px;
 }
 
+.confirm_each_container {
+  border-left: 1px solid rgba(85, 96, 83, 0.281);
+  border-right: 1px solid rgba(85, 96, 83, 0.281);
+}
+
 .top_container {
   border-top: 1px solid rgba(85, 96, 83, 0.281);
+  margin-top: 40px;
 }
 
 .contactform_question {
-  /* outline: 1px solid rgb(133, 157, 204); */
   width: 25%;
+
 }
 
-.contactform_question p {
+.confirm_question {
+  width: 50%;
+}
+
+.contactform_question p,
+.confirm_question p {
   padding-left: 20%;
 }
 
@@ -47,10 +60,13 @@
   background-color: rgba(182, 192, 184, 0.435);
 }
 
-.contactform_input {
-  width: 60%;
+.contactform_input,
+.confirm_answer {
+  width: 50%;
   /* outline: 1px solid rgb(170, 255, 0); */
 }
+
+
 
 .contactform_input input {
   width: 88%;
@@ -104,6 +120,42 @@
 }
 
 
+
+/* ----------------   confirmのみ     --------------------- */
+.confirm_company_container {
+  text-align: center;
+}
+
+.confirm_company_title {
+  margin-bottom: 40px;
+}
+
+.confirm_comapny_list {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.confirm_comapny_img_container img {
+  width: 300px;
+  height: 200px;
+  object-fit: contain;
+}
+
+.confirm_chunk_title {
+  text-align: center;
+  margin: 80px 0 64px;
+}
+
+.confirm_chunk_title p {
+  font-size: 1.6rem;
+}
+
+/* ----------------   タブレット     --------------------- */
 @media screen and (min-width: 767px) and (max-width: 1024px) {
   .contactform_question p {
     font-size: .9rem;
@@ -129,4 +181,12 @@
     width: 12%;
   }
 
+  .confirm_question,
+  .confirm_answer {
+    font-size: .8rem;
+  }
+
+  .confirm_company_title {
+    margin-bottom: 16px;
+  }
 }

@@ -181,6 +181,7 @@ header{
   width: 100%;
   height: 140px;
   z-index: 10;
+  object-fit: cover;
 }
 
 .company_box_name{
@@ -198,16 +199,29 @@ header{
 
 .company_box_info{
   position: absolute;
-  width: 90%;
+  width: 80%;
   top: 230px;
   left: 50%;
   transform: translate(-50%, 0);
   display: block;
 }
+.company_box_info i{
+  width: 20px;
+}
 
 .company_info_first, .company_info_second, .company_info_third{
   display: flex;
+  align-items: center;
+  margin: 1% 0;
+  /* border-bottom: 1px solid #000; */
 }
+.company_info_first .capital, 
+.company_info_second .capital, 
+.company_info_third .capital{
+  width: 30%;
+  padding-left: 2%;
+}
+
 .company_info_first p, .company_info_second p, .company_info_third p{
   margin: 5px 0;
   font-size: 14px;
@@ -215,7 +229,7 @@ header{
 
 .company_box_exp{
   position: absolute;
-  top: 305px;
+  top: 310px;
   width: 90%;
   left: 50%;
   transform: translate(-50%, 0);

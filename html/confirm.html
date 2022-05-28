@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 
+<link rel="stylesheet" href="../css/contactform.css">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,70 +13,85 @@
 <body>
   <!-- ↑ヘッダー関数 -->
 
-  <div class="container">
-    <h1>お問い合わせ確認画面</h1>
-    <p>以下の内容でよろしければ「送信」をクリックしてください。<br>
-      内容を変更する場合は「戻る」をクリックして入力画面にお戻りください。</p>
-    <div class="table-responsive confirm_table">
-      <!-- 会社情報 -->
-      <h2>お問い合わせ会社</h2>
-      <!-- <?php foreach ($companies as $company) : ?>
-      <?= h($company['name']) ?>
-      <?php endforeach; ?> -->
-
-      <!-- フォーム内容 -->
-      <table class="table table-bordered">
-        <caption>ご入力内容</caption>
-        <tr>
-          <th>お名前</th>
-          <td>
-            <?php echo h($name); ?>
-          </td>
-        </tr>
-        <tr>
-          <th>大学</th>
-          <td>
-            <?php echo h($university); ?>
-          </td>
-        </tr>
-        <tr>
-          <th>学部学科</th>
-          <td>
-            <?php echo h($department); ?>
-          </td>
-        </tr>
-        <tr>
-          <th>卒業年</th>
-          <td>
-            <?php echo h($grad_year); ?>
-          </td>
-        </tr>
-        <tr>
-          <th>メールアドレス</th>
-          <td>
-            <?php echo h($email); ?>
-          </td>
-        </tr>
-        <tr>
-          <th>お電話番号</th>
-          <td>
-            <?php echo h($phone_number); ?>
-          </td>
-        </tr>
-        <tr>
-          <th>住所</th>
-          <td>
-            <?php echo h($address); ?>
-          </td>
-        </tr>
-        <tr>
-          <th>その他</th>
-          <td>
-            <?php echo nl2br(h($message)); ?>
-          </td>
-        </tr>
-      </table>
+  <div class="confirm_container">
+    <div class="confirm_title">
+      <h1>お問い合わせ確認画面</h1>
     </div>
+    <div class="confirm_company_container">
+      <div class="confirm_company_title">
+        <h2>お問い合わせ会社</h2>
+      </div>
+      <div class="confirm_comapny_list">
+        <div class="confirm_comapny_img_container">
+          <img src="../src/img/boozer_logo.png" alt="">
+        </div>
+        <div>
+          <img src="../src/img/shukatsu_logo.png" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="confirm_chunk">
+      <div class="confirm_chunk_title">
+        <p>お問い合わせ内容</p>
+      </div>
+      <div class="confirm_each_container top_container">
+        <div class="confirm_question">
+          <p>お名前</p>
+        </div>
+        <div class="confirm_answer">
+          <p>山田哲人</p>
+        </div>
+      </div>
+      <div class="confirm_each_container">
+        <div class="confirm_question">
+          <p>学部学科</p>
+        </div>
+        <div class="confirm_answer">
+          <p>経営学部システムエンジニア</p>
+        </div>
+      </div>
+      <div class="confirm_each_container">
+        <div class="confirm_question">
+          <p>卒業年</p>
+        </div>
+        <div class="confirm_answer">
+          <p>24年春</p>
+        </div>
+      </div>
+      <div class="confirm_each_container">
+        <div class="confirm_question">
+          <p>メールアドレス</p>
+        </div>
+        <div class="confirm_answer">
+          <p>vfanvia@clff.com</p>
+        </div>
+      </div>
+      <div class="confirm_each_container">
+        <div class="confirm_question">
+          <p>お電話番号</p>
+        </div>
+        <div class="confirm_answer">
+          <p>090-222-3231</p>
+        </div>
+      </div>
+      <div class="confirm_each_container">
+        <div class="confirm_question">
+          <p>住所</p>
+        </div>
+        <div class="confirm_answer">
+          <p>東京都世田谷区成城2-3-12</p>
+        </div>
+      </div>
+      <div class="confirm_each_container">
+        <div class="confirm_question">
+          <p>その他</p>
+        </div>
+        <div class="confirm_answer">
+          <p>なし</p>
+        </div>
+      </div>
+    </div>
+
     <form action="./contactform.php?company_id=<?= h($company_id);?>" method="post" class="confirm">
       <button type="submit" class="btn btn-secondary">戻る</button>
     </form>
