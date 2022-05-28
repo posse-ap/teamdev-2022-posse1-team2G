@@ -134,15 +134,6 @@ include('./_parts_agent/_header_agent.php');
       <dd><?= $result['company_url'] ?></dd>
     </dl>
   </div>
-  <img src="../../img/IMG_0082.PNG" alt="makikoさん">
-  <img src="../../img/IMG" alt="makikoさん">
-  <img src="../../../img/makiko.jpg" alt="makityann">
-  <img src="../img/makiko.jpg" alt="aa">
-  <div>
-    <? echo $result['img'] ?>
-  </div>
-
-
   <div class="company_posting_information">
     <p>掲載基本情報</p>
     <dl class='company_information_list'>
