@@ -99,8 +99,8 @@ $row = 0;
   <header>
     <div class="header_wrapper">
       <div class="header_logo">
-        <!-- <img src="" alt="logo"> -->
-        <p>CRAFT</p>
+        <img src="./img/boozer_logo.png" alt="logo">
+        <!-- <p>CRAFT</p> -->
       </div>
     </div>
     <nav class="header_nav">
@@ -136,7 +136,7 @@ $row = 0;
             </tr>
             <!-- 企業名 -->
             <tr class="">
-              <th>企業名</th>
+              <th class="fixcell">企業名</th>
               <?php foreach ($companies as $company) : ?>
                 <td class="company_name" style="text-align:center"><?= $company['name']; ?></td>
               <?php endforeach; ?>
@@ -144,7 +144,7 @@ $row = 0;
             </tr>
             <!-- 企業ロゴとお問い合わせチェックボックス -->
             <tr>
-              <th class="text_center">企業ロゴ</th>
+              <th class="fixcell">企業ロゴ</th>
               <?php foreach ($companies as $company) : ?>
                 <td class="">
                   <div class="table_company_img">
@@ -155,7 +155,7 @@ $row = 0;
             </tr>
             <!-- お問い合わせ -->
             <tr>
-              <th class="text_center">お問い合わせ</th>
+              <th class="fixcell">お問い合わせ</th>
               <?php foreach ($companies as $company) : ?>
                 <td class="">
                   <div class="company_box_check">
@@ -169,14 +169,14 @@ $row = 0;
             </tr>
             <!-- 業界 -->
             <tr>
-              <th>業界</th>
+              <th class="fixcell">業界</th>
               <?php foreach ($companies as $company) : ?>
                 <td class=""><?= $company['industries']; ?></td>
               <?php endforeach; ?>
             </tr>
             <!-- おすすめの人 -->
             <tr>
-              <th>おすすめの人</th>
+              <th class="fixcell">おすすめの人</th>
               <?php foreach ($companies as $company) : ?>
                 <td class=""><?= $company['type']; ?></td>
               <?php endforeach; ?>
@@ -187,25 +187,25 @@ $row = 0;
               <td class="fill" colspan=<? echo $cnt + 1; ?>>実績</td>
             </tr>
             <tr>
-              <th>求人数</th>
+              <th class="fixcell">求人数</th>
               <?php foreach ($companies as $company) : ?>
                 <td class=""><?= $company['job_offer_number']; ?></td>
               <?php endforeach; ?>
             </tr>
             <tr>
-              <th>学生利用者数</th>
+              <th class="fixcell">学生利用者数</th>
               <?php foreach ($companies as $company) : ?>
                 <td class=""><?= $company['user_count']; ?></td>
               <?php endforeach; ?>
             </tr>
             <tr>
-              <th>内定率</th>
+              <th class="fixcell">内定率</th>
               <?php foreach ($companies as $company) : ?>
                 <td class=""><?= $company['informal_job_offer_rate']; ?></td>
               <?php endforeach; ?>
             </tr>
             <tr>
-              <th>満足度</th>
+              <th class="fixcell">満足度</th>
               <?php foreach ($companies as $company) : ?>
                 <td class=""><?= $company['satisfaction_degrees']; ?></td>
               <?php endforeach; ?>
@@ -216,7 +216,7 @@ $row = 0;
               <td class="fill" colspan=<? echo $cnt + 1; ?>>サポート</td>
             </tr>
             <tr>
-              <th>ES対策</th>
+              <th class="fixcell">ES対策</th>
               <?php foreach ($companies as $company) : ?>
                 <td class="">
                   <? if ($company['ES_correction'] = 1) : ?>
@@ -228,7 +228,7 @@ $row = 0;
               <?php endforeach; ?>
             </tr>
             <tr>
-              <th>面接対策</th>
+              <th class="fixcell">面接対策</th>
               <?php foreach ($companies as $company) : ?>
                 <td class="">
                   <? if ($company['interview'] = 1) : ?>
@@ -240,7 +240,7 @@ $row = 0;
               <?php endforeach; ?>
             </tr>
             <tr>
-              <th>限定講座</th>
+              <th class="fixcell">限定講座</th>
               <?php foreach ($companies as $company) : ?>
                 <td class="">
                   <? if ($company['limited_course'] = 1) : ?>
@@ -252,7 +252,7 @@ $row = 0;
               <?php endforeach; ?>
             </tr>
             <tr>
-              <th>適正診断</th>
+              <th class="fixcell">適正診断</th>
               <?php foreach ($companies as $company) : ?>
                 <td class="">
                   <? if ($company['competence_diagnosis'] = 1) : ?>
@@ -264,7 +264,7 @@ $row = 0;
               <?php endforeach; ?>
             </tr>
             <tr>
-              <th>特別選考</th>
+              <th class="fixcell">特別選考</th>
               <?php foreach ($companies as $company) : ?>
                 <td class="">
                   <? if ($company['special_selection'] = 1) : ?>
@@ -276,7 +276,7 @@ $row = 0;
               <?php endforeach; ?>
             </tr>
             <tr>
-              <th>インターン紹介</th>
+              <th class="fixcell">インターン紹介</th>
               <?php foreach ($companies as $company) : ?>
                 <td class=""><?= $company['internship']; ?></td>
               <?php endforeach; ?>
@@ -287,13 +287,13 @@ $row = 0;
               <td class="fill" colspan=<? echo $cnt + 1; ?>>その他</td>
             </tr>
             <tr>
-              <th>面談形態</th>
+              <th class="fixcell">面談形態</th>
               <?php foreach ($companies as $company) : ?>
                 <td class=""><?= $company['interview_format']; ?></td>
               <?php endforeach; ?>
             </tr>
             <tr class="">
-              <th>拠点</th>
+              <th class="fixcell">拠点</th>
               <?php foreach ($companies as $company) : ?>
                 <td class=""><?= $company['interview_location']; ?></td>
               <?php endforeach; ?>

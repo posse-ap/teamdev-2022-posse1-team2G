@@ -1,4 +1,7 @@
 /* 全体について */
+html{
+  font-size: 1vw;
+}
 body{
 	/* background-color: #e5e5e5; */
 	background-color: rgba(38, 166, 154, 0.05);
@@ -17,7 +20,6 @@ header{
   width: 100%;
   margin: 0 auto;
 }
-
 .header_logo a{
   padding: 10px 20px;
   color: white;
@@ -25,7 +27,6 @@ header{
   font-weight: bold;
   text-decoration: none;
 }
-
 .header_nav{
   margin: 0 20px 0 auto;
 }
@@ -58,14 +59,29 @@ header{
 	/* outline: red; */
 }
 
+/* タイトルについて */
+h1 {
+  position: relative;
+	/* width: 20rem; */
+  padding: 0.5em;
+  background: #a6d3c8;
+  color: white;
+}
+h1::before {
+  position: absolute;
+  content: '';
+  top: 100%;
+  left: 0;
+  border: none;
+  border-bottom: solid 15px transparent;
+  border-right: solid 20px rgb(149, 158, 155);
+}
 
 /* 比較表について */
 table {
 	/* テーブル中央ぞろえ */
 	margin-left: auto;
 	margin-right: auto;
-	/* 枠線 */
-	/* border: 2px solid #01bfbd; */
 	background-color: #fff;
 }
 /* 会社名 */
@@ -79,25 +95,15 @@ table {
 }
 
 /* 説明行の枠線 */
-/* .tr_first{
-	border-top: 0.4rem solid #e8ecf1;
-}
-.tr_last{
-	border-bottom: 0.4rem solid #e8ecf1;
-} */
 th,td {
 	border-top: 0.2rem solid #e8ecf1;
 	border-bottom: 0.2rem solid #e8ecf1;
-	/* border-top: 0.2rem solid #92c1c0;
-	border-bottom: 0.2rem solid #92c1c0; */
 }
 th{
 	border-right: 0.2rem solid #e8ecf1;
-	/* border-right: 0.2rem solid #92c1c0; */
 }
 td + td{
 	border-left: 0.2rem solid #e8ecf1;
-	/* border-left: 0.2rem solid #92c1c0; */
 }
 /* 横方向の結合 */
 .colap {
@@ -105,10 +111,48 @@ td + td{
 }
 /* セルの色付け */
 .fill {
-	/* background-color: #aec4e2; */
 	background-color: #e8ecf1;
 	font-weight: bold;
 }
+/* 左端一列の固定 */
+.twrapper{
+	overflow: auto;
+	white-space: nowrap;
+}
+/* .twrapper table{
+	width: auto;
+} */
+.twrapper table th,
+.twrapper table td {
+	/* min-width: 60px; */
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.twrapper table .fixcell {
+	/* position: -webkit-sticky; */
+	position: sticky;
+	left: 60px;
+	/* width: 60px; */
+	min-width: 60px;
+	/* max-width: 60px; */
+	background-color: #fff;
+  z-index: 99;
+}
+.twrapper table .fixcell:first-child {
+	left: 0;
+}
+.twrapper table .fixcell[colspan="2"] {
+	/* width: 120px; */
+	/* min-width: 120px; */
+	/* max-width: 120px; */
+	/* left: 0; */
+}
+
+
+
 
 /* チェックボックスについて */
 input[type=checkbox] {
@@ -123,41 +167,31 @@ label:hover {
 	background-color: #E2EDF9; /* マウスオーバー時の背景色を指定する */
 }
 label {
-/* display: block; ブロックレベル要素化する */
-/* float: left; 要素の左寄せ・回り込を指定する */
 margin: 1rem; /* ラベル外側の余白を指定する */
-/* margin-left: 0 auto; */
 width: 9rem; /* ラベルの横幅を指定する */
 height: 45px; /* ラベルの高さを指定する */
 text-align: center; /* テキストのセンタリングを指定する */
 line-height: 45px; /* 行の高さを指定する */
 padding: 0.25rem 1rem 0.25rem; /* ラベル内の余白を指定する */
 cursor: pointer; /* マウスカーソルの形（リンクカーソル）を指定する */
-/* color: #2c1d1d; フォントの色を指定 */
 font-weight: bold;
-/* justify-content: center; */
 border: 0.3rem solid #31A9EE;/* ラベルの境界線を実線で指定する */
 border-radius: 5px; /* 角丸を指定する */
 }
 
 /* 選択済みボックスについて */
 .selected_company_box{
-	/* display: none; */
+	display: none;
 	position: fixed;
   bottom: 0;
   width: 100%;
-	/* background-color: #92c1c0; */
-	/* margin: 2em 0; */
-  /* background: #f1f1f1; */
   background: #3D3D3D;
-  /* box-shadow: 0 0.2rem 4px rgba(0, 0, 0, 0.22); */
+	z-index: 100;
 }
 .selected_company_box .box-title {
 	font-size: 1.2em;
-	/* background: #57b6e2; */
 	padding: 4px;
 	margin: 0 auto;
-	/* text-align: center; */
 	color: #FFF;
 	font-weight: bold;
 	letter-spacing: 0.05rem;
@@ -179,36 +213,3 @@ border-radius: 5px; /* 角丸を指定する */
 	border-radius: 1rem;
 }
 
-/* .twrapper{
-	overflow: auto;
-	white-space: nowrap;
-}
-.twrapper table{
-	width: auto;
-}
-.twrapper table th,
-.twrapper table td {
-	min-width: 60px;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-o-box-sizing: border-box;
-	-ms-box-sizing: border-box;
-	box-sizing: border-box;
-}
-.twrapper table .fixcell {
-	position: -webkit-sticky;
-	position: sticky;
-	left: 60px;
-	width: 60px;
-	min-width: 60px;
-	max-width: 60px;
-}
-.twrapper table .fixcell:first-child {
-	left: 0;
-}
-.twrapper table .fixcell[colspan="2"] {
-	width: 120px;
-	min-width: 120px;
-	max-width: 120px;
-	left: 0;
-} */
