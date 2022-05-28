@@ -99,10 +99,15 @@ th,td {
 	border-top: 0.2rem solid #e8ecf1;
 	border-bottom: 0.2rem solid #e8ecf1;
 }
-th{
+th {
 	border-right: 0.2rem solid #e8ecf1;
+	font-size: 1.2rem;
+  padding: 0.6rem;
 }
-td + td{
+td {
+	padding: 0.5rem;
+}
+td + td {
 	border-left: 0.2rem solid #e8ecf1;
 }
 /* 横方向の結合 */
@@ -113,15 +118,14 @@ td + td{
 .fill {
 	background-color: #e8ecf1;
 	font-weight: bold;
+	padding: 0.7rem;
+	font-size: large;
 }
 /* 左端一列の固定 */
 .twrapper{
 	overflow: auto;
 	white-space: nowrap;
 }
-/* .twrapper table{
-	width: auto;
-} */
 .twrapper table th,
 .twrapper table td {
 	/* min-width: 60px; */
@@ -143,12 +147,6 @@ td + td{
 }
 .twrapper table .fixcell:first-child {
 	left: 0;
-}
-.twrapper table .fixcell[colspan="2"] {
-	/* width: 120px; */
-	/* min-width: 120px; */
-	/* max-width: 120px; */
-	/* left: 0; */
 }
 
 
@@ -188,6 +186,26 @@ border-radius: 5px; /* 角丸を指定する */
   background: #3D3D3D;
 	z-index: 100;
 }
+.outer {
+	width: auto;
+	display: flex;
+  flex-direction: column;
+}
+.close_modal {
+	position: relative; 
+	top: 0%;
+	left: 95%;
+	height: 0; 
+}
+.inner {
+	position: relative;
+	/* width: 200px; */
+	padding: 0 10px;
+	/* display: flex; */
+	align-items: center;
+	justify-content: center;
+	margin: auto; 
+}
 .selected_company_box .box-title {
 	font-size: 1.2em;
 	padding: 4px;
@@ -198,18 +216,48 @@ border-radius: 5px; /* 角丸を指定する */
 }
 .contact_button{
 	font-size: 0.8rem;
-	/* background-color: #aec4e2; */
-	/* background-color: #66b6e5; */
 	background-color: #fff;
 	padding: 0.4rem;
 	margin: 0.3rem 0 1rem;
-	/* text-align: center; */
-	/* color: #232424; */
-	/* color: #66b6e5; */
 	font-weight: bold;
 	letter-spacing: 0.05rem;
-	/* border-color: #66b6e5; */
 	border-color: #fff;
 	border-radius: 1rem;
 }
+/* ✕ボタン */
+.square_btn {
+  display: block;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  background: #333; /* ボタンの背景色 */
+}
+.square_btn::before, .square_btn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 3px;
+  height: 25px;
+  background: #fff; /* バツ印の色 */
+}
+.square_btn::before {
+  transform: translate(-50%,-50%) rotate(45deg);
+}
+.square_btn::after {
+  transform: translate(-50%,-50%) rotate(-45deg);
+}
 
+
+/*スマホ用のcssを記述*/
+@media screen and (max-width:767px) {
+  .compare_wrapper {
+		margin-top: 21rem;
+	}
+}
+	 
+/*tablet用のcssを記述*/
+@media only screen and (min-width:768px) and (max-width:1023px) {
+  
+
+}

@@ -31,9 +31,3 @@ let compare_display_box = document.getElementById("at_once_box");
       });
       
    }
-
-  
-    // for(let i = 0; i < compare_checked_buttons.length; i++){
-    //   var checked_companies = document.getElementById(`checked_box_${i}`);
-    //   }
-    //   checked_companies.addEventListener(checked_counter);
