@@ -1,9 +1,11 @@
-.contactform_title {
+.contactform_title,
+.confirm_title {
   text-align: center;
   margin: 64px 0 40px;
 }
 
-.contactform_each_container {
+.contactform_each_container,
+.confirm_each_container {
   display: flex;
   /* outline: 1px solid red; */
   align-items: center;
@@ -18,11 +20,15 @@
 }
 
 .contactform_question {
-  /* outline: 1px solid rgb(133, 157, 204); */
   width: 25%;
 }
 
-.contactform_question p {
+.confirm_question {
+  width: 40%;
+}
+
+.contactform_question p,
+.confirm_question p {
   padding-left: 20%;
 }
 
@@ -47,7 +53,8 @@
   background-color: rgba(182, 192, 184, 0.435);
 }
 
-.contactform_input {
+.contactform_input,
+.confirm_answer {
   width: 60%;
   /* outline: 1px solid rgb(170, 255, 0); */
 }
