@@ -83,9 +83,7 @@ function correctness_decision($val)
 }
 
 ?>
-<!-- <pre>
-  <?php print_r($result); ?>
-</pre> -->
+
 <!DOCTYPE html>
 <html lang="ja">
 

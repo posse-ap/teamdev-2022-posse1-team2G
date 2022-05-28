@@ -15,7 +15,7 @@
   <main class="main">
     <!-- トップページ写真 -->
     <div class="detail_top_page_img">
-      <img src="../img/SHI95_sansyainsuizokukanoosuii.jpg">
+      <img src="../img/company3.png">
     </div>
     <!-- タイトル -->
     <div class="detail_title">
@@ -31,53 +31,57 @@
           <div>
             <h2 class="section_title">強み・特徴</h2>
           </div>
+          <div class="strength_contents">
+            <div class="strength_each_content">
+              <p class="strength_list">nva</p>
+              <p>koa</p>
+            </div>
+            <div class="strength_each_content">
+              <p class="strength_list">nva</p>
+              <p>koa</p>
+            </div>
+            <div class="strength_each_content">
+              <p class="strength_list">nva</p>
+              <p>koa</p>
+            </div>
+          </div>
         </section>
-
-
         <!-- 実績テーブル -->
         <section class="detail_section_achievement section" id="detail.achievement">
           <div>
             <h2 class="section_title">実績</h2>
           </div>
-
+          <dl class='detail_section_support_list'>
+            <dt class="detail_section_support_list_titile_dt">実績内容</dt>
+            <dd class="detail_section_support_list_titile_dd">数字</dd>
+            <dt>求人数</dt>
+            <dd>
+              1万人
+            </dd>
+            <dt>紹介企業数</dt>
+            <dd>
+              1000人
+            </dd>
+            <dt>利用学生数</dt>
+            <dd>
+              <?= $result['mail_contact'] ?>
+            </dd>
+            <dt>昨年の利用学生数</dt>
+            <dd>
+              <?= $result['mail_manager'] ?>
+            </dd>
+            <dt>内定率</dt>
+            <dd>
+              <?= $result['mail_notification'] ?>
+            </dd>
+            <dt>満足度</dt>
+            <dd>
+              <?= $result['representative'] ?>
+            </dd>
+          </dl>
         </section>
 
-        <!-- りゅうじくん -->
-        <!-- 先輩の就職先ロゴ -->
-        <section class='detail_section_finding_employment_target section' id="detail.finding_employment_target">
-          <div>
-            <h2 class="section_title">就職先</h2>
-          </div>
-          <div class="finding_employment_target_logo_container">
-            <div>
-              <img src="../img/og_image_logo.png">
-            </div>
-            <div>
-              <img src="../img/og_image_logo.png">
-            </div>
-            <div>
-              <img src="../img/makiko.jpg">
-            </div>
-            <div>
-              <img src="../img/og_image_logo.png">
-            </div>
-            <div>
-              <img src="../img/og_image_logo.png">
-            </div>
-            <div>
-              <img src="../img/makiko.jpg">
-            </div>
-            <div>
-              <img src="../img/makiko.jpg">
-            </div>
-            <div>
-              <img src="../img/makiko.jpg">
-            </div>
-            <div>
-              <img src="../img/makiko.jpg">
-            </div>
-          </div>
-        </section>
+
         <!-- サポートテーブル -->
         <section class='detail_section_support section' id="detail_support">
           <div class="company_contract_information">
@@ -127,7 +131,47 @@
           </div>
         </section>
 
-
+        <!-- 先輩の就職先ロゴ -->
+        <section class='detail_section_finding_employment_target section' id="detail.finding_employment_target">
+          <div>
+            <h2 class="section_title">就職先</h2>
+          </div>
+          <div class="finding_employment_target_logo_container">
+            <div>
+              <img src="../img/og_image_logo.png">
+            </div>
+            <div>
+              <img src="../img/og_image_logo.png">
+            </div>
+            <div>
+              <img src="../img/makiko.jpg">
+            </div>
+            <div>
+              <img src="../img/og_image_logo.png">
+            </div>
+            <div>
+              <img src="../img/og_image_logo.png">
+            </div>
+            <div>
+              <img src="../img/makiko.jpg">
+            </div>
+            <div>
+              <img src="../img/makiko.jpg">
+            </div>
+            <div>
+              <img src="../img/makiko.jpg">
+            </div>
+            <div>
+              <img src="../img/makiko.jpg">
+            </div>
+          </div>
+        </section>
+        <!-- 企業からのメッセージ -->
+        <section class="detail_section_message section" id="detail.message">
+          <div>
+            <h2 class="section_title">企業からのメッセージ</h2>
+          </div>
+        </section>
         <!-- 会社情報テーブル -->
         <section class='detail_section_company_information section' id="detail.information">
           <div class="company_contract_information">
@@ -171,12 +215,6 @@
               <dd>
                 経営、管理、マーケティング、営業、コンサルタント、専門職、ゲーム、電気・電子、人事、工事、土木、広告、経営、管理、マーケティング、営業、コンサルタント、専門職、ゲーム、電気・電子、人事、工事、土木、広告
               </dd>
-          </div>
-        </section>
-        <!-- 企業からのメッセージ -->
-        <section class="detail_section_message section" id="detail.message">
-          <div>
-            <h2 class="section_title">メッセージ</h2>
           </div>
         </section>
       </div>

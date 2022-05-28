@@ -70,28 +70,69 @@ body {
   color: rgb(166, 184, 142);
   padding-bottom: 8px;
   border-bottom: 1px rgb(166, 184, 142) solid;
-  margin: 32px 0;
+  margin: 64px 0;
   padding-left: 4%;
 }
 
-/* 
-よしたかくん担当
- */
+
 /* 強み・特徴 */
+.strength_contents {
+  padding-left: 4%;
+}
+
+.strength_contents p {
+  font-size: 1.4rem;
+
+}
+
+/* .strength_contents p {
+  padding-left: 24px;
+  position: relative;
+} */
+
+.strength_list {
+  position: relative;
+  padding-left: 35px;
+  margin: 0;
+  font-size: 20px;
+}
+
+.strength_list:before {
+  content: "";
+  position: absolute;
+  top: .44em;
+  left: 5px;
+  -webkit-transform: rotate(50deg);
+  -ms-transform: rotate(50deg);
+  transform: rotate(50deg);
+  width: 6px;
+  height: 8px;
+  border-right: 2px solid #e92b16;
+  border-bottom: 2px solid #e92b16;
+}
+
+.strength_list:after {
+  content: "";
+  position: absolute;
+  top: .2em;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgb(224, 140, 140);
+  border-radius: 2px;
+  /* margin-right: 200px; */
+}
+
+
 /* 企業からのメッセージ */
-/* 実績テーブル */
-
-
-
-/* 
-りゅうじくん担当
- */
 
 
 /* 先輩の就職先ロゴ */
 .finding_employment_target_logo_container {
   display: flex;
   flex-wrap: wrap;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .finding_employment_target_logo_container div {
@@ -120,7 +161,7 @@ body {
 .detail_section_support_list>dd {
   box-sizing: border-box;
   width: 80%;
-  margin: 0;
+  margin: 0 auto;
 }
 
 .detail_section_support_list {
@@ -142,12 +183,12 @@ body {
 
 .detail_section_support_list>dt {
   background-color: #bad4c6;
-  width: 60%;
+  width: 50%;
   text-align: center;
 }
 
 .detail_section_support_list>dd {
-  width: 40%;
+  width: 50%;
   border-right: 1px solid #ddd;
   border-left: 1px solid #ddd;
   /* margin: 0 auto; */
@@ -269,9 +310,10 @@ body {
   padding-bottom: 24px;
 }
 
-.company_detail_side_ul a:hover{
-opacity: .6;
+.company_detail_side_ul a:hover {
+  opacity: .6;
 }
+
 a {
   text-decoration: none;
 }

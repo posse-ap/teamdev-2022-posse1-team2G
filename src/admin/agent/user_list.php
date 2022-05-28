@@ -13,7 +13,7 @@ require('../../dbconnect.php');
 // | 島     |
 // +--------+
 
-if (isset($_SESSION['id']) && $_SESSION['time'] + 10 > time()) {
+if (isset($_SESSION['id']) && $_SESSION['time'] + 1000000 > time()) {
   $_SESSION['time'] = time();
   // user_idがない、もしくは一定時間を過ぎていた場合
   $id = $_SESSION['id'];
@@ -37,24 +37,29 @@ where t1.id='$id';";
 ?>
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>agent学生一覧</title>
-  <link rel="stylesheet" href="../admin_index.css">
-  <link rel="stylesheet" href="../admin_style.css">
-  <!-- ↓この_header.phpから見たparts.cssの位置ではなく、このphpファイルが読み込まれるファイルから見た位置を指定してあげる必要がある -->
-  <link rel="stylesheet" href="../parts.css">
+
+  <link rel="stylesheet" href="../../normalize.css">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <!-- icon用 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 
+  <link rel="stylesheet" href="../parts.css">
+  <!-- <link rel="stylesheet" href="../admin_index.css"> -->
+  <!-- <link rel="stylesheet" href="../admin_style.css"> -->
+  <link rel="stylesheet" href="../boozer/boozer_user.css">
+
+
 </head>
 <!-- header関数読み込み -->
 <?php
-include('./_parts_agent/_header_agent.php');  
+include('./_parts_agent/_header_agent.php');
 ?>
 
 <div class="container_contents">
@@ -70,7 +75,7 @@ include('./_parts_agent/_header_agent.php');
           </button>
         </div>
         <div class="modal-body">
-          <div>
+          <div class='modal_edit_body'>
             <div class="col-md-6 pb-2">
               <h5>ID</h5>
               <p class="id_view"></p>
@@ -163,7 +168,7 @@ include('./_parts_agent/_header_agent.php');
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
-            <h4>
+            <h4 class='ss'>
               学生一覧
             </h4>
           </div>
@@ -205,16 +210,17 @@ include('./_parts_agent/_header_agent.php');
       </div>
     </div>
   </div>
-  </div>
+</div>
 
-  <!-- ↓footer関数の読み込み -->
+<!-- ↓footer関数の読み込み -->
 <?php
-include('../_footer.php');  
+include('../_footer.php');
 ?>
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-  <script src="./user_list.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script src="./user_list.js"></script>
 </body>
+
 </html>
