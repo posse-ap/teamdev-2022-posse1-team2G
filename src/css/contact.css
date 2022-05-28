@@ -110,7 +110,11 @@
   /* outline: 1px solid rgb(170, 255, 0); */
 }
 
-.contactform_input input {
+a {
+  text-decoration: none;
+}
+
+.contactform_input input:not(.required) {
   width: 110%;
   height: 48px;
   border: 1px solid black;

@@ -92,7 +92,7 @@ $company_id_sessions = $_SESSION['company_id'];
 
 <!DOCTYPE html>
 <html lang="ja">
-<link rel="stylesheet" href="../css/contact.css">
+<link rel="stylesheet" href="../../css/contact.css">
 
 <head>
   <meta charset="utf-8">
@@ -243,11 +243,14 @@ $company_id_sessions = $_SESSION['company_id'];
             name="message" rows="3"><?php echo $message; ?></textarea>
         </div>
       </div>
-      <div>
-        <div>
-          <a href="https://reashu.com/privacy/">プライバシーポリシー</a>をご確認の上、「同意する」にチェックしてください。
+      <div class="contactform_each_container">
+        <div class="contactform_question">
+          <p><a href="https://reashu.com/privacy/">プライバシーポリシー</a></p>
         </div>
-        <div>
+        <div class="contactform_required">
+          <p>必須</p>
+        </div>
+        <div class="contactform_input">
           <input type="checkbox" name="privacy" class="required" value="同意する">同意する
         </div>
       </div>
@@ -272,7 +275,7 @@ $company_id_sessions = $_SESSION['company_id'];
   </form>
   </div>
   <!--  JavaScript の読み込み -->
-  <script src="../js/formValidation.js"></script>
+  <script src="../../js/formValidation.js"></script>
 
 
 
