@@ -6,12 +6,12 @@ body {
 }
 
 section {
-  padding: 15px 0 40px 0;
+  padding: 15px 0 30px 0;
 }
 
 .title_box h2 {
   text-align: center;
-  font-size: 20px;
+  font-size: 30px;
 }
 
 .title_box {
@@ -90,11 +90,11 @@ section {
   /* width: 680px;
   height: 510px; */
   width: 30%;
-  height: 50vh;
+  height: 56vh;
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);
-  /* background-color: red; */
+
 }
 
 
@@ -243,8 +243,11 @@ a {
 }
 
 .company_box_check {
+  display: flex;
+  align-items: center;
   left: 10px;
   background-color: red;
+  color: white;
 }
 
 .company_box_button {
@@ -408,22 +411,26 @@ a {
 
 /* お悩みについて */
 .problem_catch {
-  margin-bottom: 10%;
+  margin: 10% 0;
   color: #34373a;
   font-size: 4rem;
   text-align: center;
   font-weight: bold;
 }
+
 .impact {
   color: #1e6c84;
   font-size: 5rem;
 }
+
 .problem_case {
   display: flex;
   -webkit-box-pack: justify;
   justify-content: space-around;
   flex-wrap: wrap;
+  padding: 0;
 }
+
 .problem_case li {
   list-style: none;
   position: relative;
@@ -432,6 +439,7 @@ a {
   margin: 2rem 0 8rem;
   text-shadow: 0 0 1rem white;
 }
+
 .problem_case li:before {
   content: "";
   position: absolute;
@@ -442,11 +450,12 @@ a {
   top: 50%;
   border: dashed 1px white;
   left: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   z-index: -1;
   box-shadow: 0px 0px 0px 5px #a9e1ff;
 }
+
 .problem_case li p {
   font-size: 2rem;
   width: 20rem;
@@ -455,26 +464,30 @@ a {
 }
 
 /* 比較のメリットについて */
-.merit_catch, .merit_catch p{
+.merit_catch, .merit_catch p {
   margin-bottom: 4%;
   color: #1e6c84;
   font-size: 4rem;
   text-align: center;
   font-weight: bold;
 }
+
 .merit_impact {
   color: #F12B75;
   font-size: 5rem;
 }
+
 .sub {
   margin-top: 2rem;
 }
+
 .merit_cases {
   display: flex;
   -webkit-box-pack: justify;
   justify-content: space-around;
   flex-wrap: wrap;
 }
+
 .merit_case {
   position: relative;
   margin: 1.8rem;
@@ -483,6 +496,7 @@ a {
   background: #f1f1f1;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.22);
 }
+
 .merit_case .box-title {
   font-size: 1.2em;
   background: #5fc2f5;
@@ -492,6 +506,7 @@ a {
   font-weight: bold;
   letter-spacing: 0.05em;
 }
+
 .merit_case p {
   padding: 2rem 3rem;
   margin: 0;
@@ -615,7 +630,7 @@ a {
     position: absolute;
     top: 80px;
     right: 6%;
-    height: 50vh;
+    height: 56vh;
   }
 
   .form_title h1 {
@@ -643,7 +658,6 @@ a {
     padding: 0 30px 0 40px;
     font-size: 40px;
     color: white;
-    background-color: rgba(0, 0, 0, 0.3);
     z-index: 10;
   }
 
@@ -692,7 +706,8 @@ a {
     margin-top: 40px;
     display: block;
   }
-/* 
+
+  /* 
   .top {
     height: 400px;
   } */
@@ -726,4 +741,27 @@ a {
     height: 300px;
     margin-top: 40px;
   }
+
+  .merit_case {
+    margin: 1.8rem;
+    width: 26rem;
+    height: 14rem;
+  }
+
+  .merit_case p {
+    padding: 1.6rem 2rem;
+    margin: 0;
+    font-size: .9rem;
+  }
+
+  .answer_box_txt p {
+    position: absolute;
+    top: 30%;
+    left: 60px;
+    transform: translate(0, -50%);
+    margin: 0;
+    line-height: .9;
+    font-size: 6px;
+  }
+
 }
