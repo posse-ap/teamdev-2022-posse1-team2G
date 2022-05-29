@@ -1,46 +1,79 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
   <link rel="stylesheet" href="../css/result.css">
 </head>
+
 <body>
   <main>
     <div class="result_list">
       <!-- 絞り込みページでの検索結果カード -->
-    <div class="result_box">
-      <div class="result_box_logo">
-        <img src="../img/rikunabi.png" alt="">
-      </div>
-      <div class="result_box_name">
-        <p>リクナビ</p>
-      </div>
-      <p class="result_box_line"></p>
-      <div class="result_box_info">
-        <div class="company_info_first">
-          <p class="capital">主な業種</p>
-          <p>IT　商社</p>
+      <div class="result_box">
+        <div class="result_left">
+          <div class="result_box_logo">
+            <img src="../img/rikunabi.png" alt="">
+          </div>
         </div>
-        <div class="result_info_second">
-          <p class="capital">実績</p>
-          <p>満足度97%</p>
-        </div>
-        <div class="result_info_third">
-          <p class="capital">おすすめ</p>
-          <!-- ここら辺もしphpなら二つのp要素くっつけてもいいかもです -->
-          <p>文系　体育会系</p>
-          <!-- ここまで -->
+        <div class="result_right">
+          <div class="result_top_flex">
+            <div class="result_box_name">
+              <p>リクナビ</p>
+            </div>
+            <div>
+              会社を比較する
+            </div>
+          </div>
+          <div class="result_box_line"></div>
+          <div class="result_box_info">
+            <div class="company_info_first">
+              <div class="company_info_title">
+                <i class="fa-solid fa-briefcase"></i>
+                <p class="capital">業種</p>
+              </div>
+              <div class="company_info_result">
+                <p>IT　商社</p>
+              </div>
+            </div>
+            <div class="result_info_second">
+              <div class="company_info_title">
+                <i class="fa-solid fa-trophy"></i>
+                <p class="capital">実績</p>
+              </div>
+              <div class="company_info_result">
+                <p>満足度97%</p>
+              </div>
+            </div>
+            <div class="result_info_third">
+              <div class="company_info_title">
+                <i class="fa-solid fa-hand-point-up"></i>
+                <p class="capital">おすすめ</p>
+              </div>
+              <div class="company_info_result">
+                <p>文系　体育会系</p>
+              </div>
+              <!-- ここまで -->
+            </div>
+          </div>
+          <div class="result_box_line"></div>
+          <div class="result_bottom">
+            <div class="result_box_exp">
+              <p class="capital">企業について</p>
+              <p>マイナビ新卒紹介はあああああああああああああああああああああああああああ</p>
+            </div>
+            <div class="result_box_button_second">
+              <a href="" class="inquiry">お問い合わせ</a>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="result_box_exp">
-        <p class="capital">企業について</p>
-        <p>マイナビ新卒紹介はあああああああああああああああああああああああああああ</p>
-      </div>
-      <div class="result_box_support">
+      <!-- <div class="result_box_support">
         <p class="capital">サポート</p>
         <div class="result_box_support_list">
           <p>ES対策</p>
@@ -48,108 +81,106 @@
           <p>特別選考 </p>
           <p>限定講座</p>
         </div>
-      </div>
-      <div class="result_box_button_first">
+      </div> -->
+      <!-- <div class="result_box_button_first">
         <a href="" class="info">企業詳細を見る</a>
-      </div>
-      <div class="result_box_button_second">
-        <a href="" class="inquiry">お問い合わせはこちら</a>
-      </div>
-    </div>
-    <!-- ここまで -->
-    <!-- 絞り込みページでの検索結果カード -->
-    <div class="result_box">
-      <div class="result_box_logo">
-        <img src="../img/neo.png" alt="">
-      </div>
-      <div class="result_box_name">
-        <p>neo</p>
-      </div>
-      <p class="result_box_line"></p>
-      <div class="result_box_info">
-        <div class="company_info_first">
-          <p class="capital">主な業種</p>
-          <p>IT　商社</p>
+      </div> -->
+
+      <!-- ここまで -->
+      <!-- 絞り込みページでの検索結果カード -->
+      <!-- <div class="result_box">
+        <div class="result_box_logo">
+          <img src="../img/neo.png" alt="">
         </div>
-        <div class="result_info_second">
-          <p class="capital">実績</p>
-          <p>満足度97%</p>
+        <div class="result_box_name">
+          <p>neo</p>
         </div>
-        <div class="result_info_third">
-          <p class="capital">おすすめ</p>
-          <!-- ここら辺もしphpなら二つのp要素くっつけてもいいかもです -->
-          <p>文系　体育会系</p>
-          <!-- ここまで -->
+        <p class="result_box_line"></p>
+        <div class="result_box_info">
+          <div class="company_info_first">
+            <p class="capital">主な業種</p>
+            <p>IT　商社</p>
+          </div>
+          <div class="result_info_second">
+            <p class="capital">実績</p>
+            <p>満足度97%</p>
+          </div>
+          <div class="result_info_third">
+            <p class="capital">おすすめ</p>
+            ここら辺もしphpなら二つのp要素くっつけてもいいかもです
+            <p>文系　体育会系</p>
+            ここまで
+          </div>
         </div>
-      </div>
-      <div class="result_box_exp">
-        <p class="capital">企業について</p>
-        <p>マイナビ新卒紹介はあああああああああああああああああああああああああああ</p>
-      </div>
-      <div class="result_box_support">
-        <p class="capital">サポート</p>
-        <div class="result_box_support_list">
-          <p>ES対策</p>
-          <p>適正診断</p>
-          <p>特別選考 </p>
-          <p>限定講座</p>
+        <div class="result_box_exp">
+          <p class="capital">企業について</p>
+          <p>マイナビ新卒紹介はあああああああああああああああああああああああああああ</p>
         </div>
-      </div>
-      <div class="result_box_button_first">
-        <a href="" class="info">企業詳細を見る</a>
-      </div>
-      <div class="result_box_button_second">
-        <a href="" class="inquiry">お問い合わせはこちら</a>
-      </div>
-    </div>
-    <!-- ここまで -->
-    <!-- 絞り込みページでの検索結果カード -->
-    <div class="result_box">
-      <div class="result_box_logo">
-        <img src="../img/type.png" alt="">
-      </div>
-      <div class="result_box_name">
-        <p>type</p>
-      </div>
-      <p class="result_box_line"></p>
-      <div class="result_box_info">
-        <div class="company_info_first">
-          <p class="capital">主な業種</p>
-          <p>IT　商社</p>
+        <div class="result_box_support">
+          <p class="capital">サポート</p>
+          <div class="result_box_support_list">
+            <p>ES対策</p>
+            <p>適正診断</p>
+            <p>特別選考 </p>
+            <p>限定講座</p>
+          </div>
         </div>
-        <div class="result_info_second">
-          <p class="capital">実績</p>
-          <p>満足度97%</p>
+        <div class="result_box_button_first">
+          <a href="" class="info">企業詳細を見る</a>
         </div>
-        <div class="result_info_third">
-          <p class="capital">おすすめ</p>
-          <!-- ここら辺もしphpなら二つのp要素くっつけてもいいかもです -->
-          <p>文系　体育会系</p>
-          <!-- ここまで -->
+        <div class="result_box_button_second">
+          <a href="" class="inquiry">お問い合わせはこちら</a>
         </div>
-      </div>
-      <div class="result_box_support">
-        <p class="capital">サポート</p>
-        <div class="result_box_support_list">
-          <p>ES対策</p>
-          <p>適正診断</p>
-          <p>特別選考 </p>
-          <p>限定講座</p>
+      </div> -->
+      <!-- ここまで -->
+      <!-- 絞り込みページでの検索結果カード -->
+      <!-- <div class="result_box">
+        <div class="result_box_logo">
+          <img src="../img/type.png" alt="">
         </div>
-      </div>
-      <div class="result_box_exp">
-        <p class="capital">企業について</p>
-        <p>マイナビ新卒紹介はあああああああああああああああああああああああああああ</p>
-      </div>
-      <div class="result_box_button_first">
-        <a href="" class="info">企業詳細を見る</a>
-      </div>
-      <div class="result_box_button_second">
-        <a href="" class="inquiry">お問い合わせはこちら</a>
-      </div>
-    </div>
-    <!-- ここまで -->
+        <div class="result_box_name">
+          <p>type</p>
+        </div>
+        <p class="result_box_line"></p>
+        <div class="result_box_info">
+          <div class="company_info_first">
+            <p class="capital">主な業種</p>
+            <p>IT　商社</p>
+          </div>
+          <div class="result_info_second">
+            <p class="capital">実績</p>
+            <p>満足度97%</p>
+          </div>
+          <div class="result_info_third">
+            <p class="capital">おすすめ</p>
+            ここら辺もしphpなら二つのp要素くっつけてもいいかもです
+            <p>文系　体育会系</p>
+            ここまで
+          </div>
+        </div>
+        <div class="result_box_support">
+          <p class="capital">サポート</p>
+          <div class="result_box_support_list">
+            <p>ES対策</p>
+            <p>適正診断</p>
+            <p>特別選考 </p>
+            <p>限定講座</p>
+          </div>
+        </div>
+        <div class="result_box_exp">
+          <p class="capital">企業について</p>
+          <p>マイナビ新卒紹介はあああああああああああああああああああああああああああ</p>
+        </div>
+        <div class="result_box_button_first">
+          <a href="" class="info">企業詳細を見る</a>
+        </div>
+        <div class="result_box_button_second">
+          <a href="" class="inquiry">お問い合わせはこちら</a>
+        </div>
+      </div> -->
+      <!-- ここまで -->
     </div>
   </main>
 </body>
+
 </html>
