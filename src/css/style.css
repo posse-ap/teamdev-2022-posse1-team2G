@@ -90,11 +90,12 @@ section {
   /* width: 680px;
   height: 510px; */
   width: 30%;
-  height: 50vh;
+  height: 56vh;
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);
-  /* background-color: red; */
+  /* background-color: rgba(213, 237, 174, 0.171); */
+
 }
 
 
@@ -414,16 +415,19 @@ a {
   text-align: center;
   font-weight: bold;
 }
+
 .impact {
   color: #1e6c84;
   font-size: 5rem;
 }
+
 .problem_case {
   display: flex;
   -webkit-box-pack: justify;
   justify-content: space-around;
   flex-wrap: wrap;
 }
+
 .problem_case li {
   list-style: none;
   position: relative;
@@ -432,6 +436,7 @@ a {
   margin: 2rem 0 8rem;
   text-shadow: 0 0 1rem white;
 }
+
 .problem_case li:before {
   content: "";
   position: absolute;
@@ -442,11 +447,12 @@ a {
   top: 50%;
   border: dashed 1px white;
   left: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   z-index: -1;
   box-shadow: 0px 0px 0px 5px #a9e1ff;
 }
+
 .problem_case li p {
   font-size: 2rem;
   width: 20rem;
@@ -455,26 +461,30 @@ a {
 }
 
 /* 比較のメリットについて */
-.merit_catch, .merit_catch p{
+.merit_catch, .merit_catch p {
   margin-bottom: 4%;
   color: #1e6c84;
   font-size: 4rem;
   text-align: center;
   font-weight: bold;
 }
+
 .merit_impact {
   color: #F12B75;
   font-size: 5rem;
 }
+
 .sub {
   margin-top: 2rem;
 }
+
 .merit_cases {
   display: flex;
   -webkit-box-pack: justify;
   justify-content: space-around;
   flex-wrap: wrap;
 }
+
 .merit_case {
   position: relative;
   margin: 1.8rem;
@@ -483,6 +493,7 @@ a {
   background: #f1f1f1;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.22);
 }
+
 .merit_case .box-title {
   font-size: 1.2em;
   background: #5fc2f5;
@@ -492,6 +503,7 @@ a {
   font-weight: bold;
   letter-spacing: 0.05em;
 }
+
 .merit_case p {
   padding: 2rem 3rem;
   margin: 0;
@@ -615,7 +627,7 @@ a {
     position: absolute;
     top: 80px;
     right: 6%;
-    height: 50vh;
+    height: 56vh;
   }
 
   .form_title h1 {
@@ -692,7 +704,8 @@ a {
     margin-top: 40px;
     display: block;
   }
-/* 
+
+  /* 
   .top {
     height: 400px;
   } */
