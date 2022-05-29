@@ -112,6 +112,7 @@
 
 a {
   text-decoration: none;
+  color: rgb(12, 11, 11);
 }
 
 .contactform_input input:not(.required) {
@@ -206,6 +207,23 @@ a {
   font-size: 1.6rem;
 }
 
+/* 
+.btn_position {
+  display: inline-flex;
+} */
+
+.return_position{
+  text-align: center;
+}
+
+.return {
+  padding: 16px 72px;
+  background-color: rgb(225, 180, 127);
+  color: #fff;
+  border: none;
+  font-size: 1.2rem;
+}
+
 /* ----------------   タブレット     --------------------- */
 @media screen and (min-width: 767px) and (max-width: 1024px) {
   .contactform_contact_company_img {
@@ -224,6 +242,21 @@ a {
   .confirm_required p {
     font-size: .9rem;
     padding: 4px 0;
+  }
+
+  .main_wrapper {
+    margin-top: 22rem;
+  }
+
+  .contactform_title, .confirm_title {
+    text-align: center;
+    margin: 25px 0 25px;
+    font-size: 2rem;
+  }
+
+  .return_position {
+    text-align: center;
+    margin-top: 2rem;
   }
 }
 
@@ -248,5 +281,15 @@ a {
 
   .confirm_company_title {
     margin-bottom: 16px;
+  }
+
+  .main_wrapper {
+    margin-top: 16rem;
+  }
+
+  .contactform_title, .confirm_title {
+    text-align: center;
+    margin: 25px 0 25px;
+    font-size: 2rem;
   }
 }

@@ -134,66 +134,195 @@ $companies = $stmt->fetchAll();
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>お問い合わせフォーム（確認）</title>
+  <link rel="stylesheet" href="../../css/parts.css">
+  <link rel="stylesheet" href="../../css/contact.css">
 </head>
 <body>
+  <header>
+    <div class="header_wrapper">
+      <div class="header_logo">
+        <img src="../../img/boozer_logo.png" alt="logo">
+      </div>
+    </div>
+    <nav class="header_nav">
+      <ul>
+      <li class="nav_item"><a href="../top.php#company">企業一覧</a></li>
+        <li class="nav_item"><a href="../top.php#point">お悩みの方へ</a></li>
+        <li class="nav_item"><a href="../top.php#merit">比較のメリット</a></li>
+        <li class="nav_item"><a href="../top.php#question">よくある質問</a></li>
+        <!-- 時間あったらモーダルにしてちょっと就活エージェントのこと書いて、就活の教科書の特集に飛ばせるかも -->
+        <li class="nav_item"><a href="#">就活エージェントとは</a></li>
+        <!-- ここまで -->
+        <li class="nav_item"><a href="#">企業の方へ</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="main_wrapper">
   <!-- ↑ヘッダー関数 -->
 
-<div class="container">
-  <h1>お問い合わせ確認画面</h1>
-  <p>以下の内容でよろしければ「送信」をクリックしてください。<br>
-    内容を変更する場合は「戻る」をクリックして入力画面にお戻りください。</p>
-  <div class="table-responsive confirm_table">
-    <!-- 会社情報 -->
-    <h2>お問い合わせ会社</h2>
-    <?php foreach ($companies as $company) : ?>
-       <?= h($company['name']) ?>
-    <?php endforeach; ?>
+  <div class="confirm_container">
+    <div class="confirm_title">
+      <h1>お問い合わせ確認画面</h1>
+    </div>
+    
+    <div class="contactform_each_container contactform_topic">
+      <p>お問い合わせする会社</p>
+    </div>
+    <div class="contactform_contact_company">
+      <div class="confirm_company_question">
+        <p>会社名</p>
+      </div>
+      <div class="contactform_contact_company_name">
+        <p>
+          <?php foreach ($companies as $company) : ?>
+             <?= h($company['name']) ?>
+          <?php endforeach; ?>
+        </p>
+      </div>
+    </div>
+    <div class="confirm_chunk">
+      <!-- <div class="confirm_chunk_title">
+        <p>お問い合わせ内容</p>
+      </div> -->
+      <div class="contactform_each_container contactform_topic topic_info">
+        <p>お客様情報</p>
+      </div>
+      <div class="confirm_each_container top_container">
+        <div class="confirm_question">
+          <p>お名前</p>
+        </div>
+        <div class="confirm_required">
+          <p>必須</p>
+        </div>
+        <div class="confirm_answer">
+          <p><?php echo h($name); ?></p>
+        </div>
+      </div>
+      <div class="confirm_each_container">
+        <div class="confirm_question">
+          <p>大学</p>
+        </div>
+        <div class="confirm_required">
+          <p>必須</p>
+        </div>
+        <div class="confirm_answer">
+          <p><?php echo h($university); ?></p>
+        </div>
+      </div>
+      <div class="confirm_each_container">
+        <div class="confirm_question">
+          <p>学部学科</p>
+        </div>
+        <div class="confirm_required">
+          <p>必須</p>
+        </div>
+        <div class="confirm_answer">
+          <p><?php echo h($department); ?></p>
+        </div>
+      </div>
+      <div class="confirm_each_container">
+        <div class="confirm_question">
+          <p>卒業年</p>
+        </div>
+        <div class="confirm_required">
+          <p>必須</p>
+        </div>
+        <div class="confirm_answer">
+          <p><?php echo h($grad_year); ?></p>
+        </div>
+      </div>
+      <div class="confirm_each_container">
+        <div class="confirm_question">
+          <p>メールアドレス</p>
+        </div>
+        <div class="confirm_required">
+          <p>必須</p>
+        </div>
+        <div class="confirm_answer">
+          <p><?php echo h($email); ?></p>
+        </div>
+      </div>
+      <div class="confirm_each_container">
+        <div class="confirm_question">
+          <p>お電話番号</p>
+        </div>
+        <div class="confirm_required">
+          <p>必須</p>
+        </div>
+        <div class="confirm_answer">
+          <p><?php echo h($phone_number); ?></p>
+        </div>
+      </div>
+      <div class="confirm_each_container">
+        <div class="confirm_question">
+          <p>住所</p>
+        </div>
+        <div class="confirm_required">
+          <p>必須</p>
+        </div>
+        <div class="confirm_answer">
+          <p><?php echo h($address); ?></p>
+        </div>
+      </div>
+      <div class="confirm_each_container">
+        <div class="confirm_question">
+          <p>その他</p>
+        </div>
+        <div class="confirm_not_required">
+          <p>任意</p>
+        </div>
+        <div class="confirm_answer">
+          <p><?php echo nl2br(h($message)); ?></p>
+        </div>
+      </div>
+    </div>
 
-    <!-- フォーム内容 -->
-    <table class="table table-bordered">
-      <caption>ご入力内容</caption>
-      <tr>
-        <th>お名前</th>
-        <td><?php echo h($name); ?></td>
-      </tr>
-      <tr>
-        <th>大学</th>
-        <td><?php echo h($university); ?></td>
-      </tr>
-      <tr>
-        <th>学部学科</th>
-        <td><?php echo h($department); ?></td>
-      </tr>
-      <tr>
-        <th>卒業年</th>
-        <td><?php echo h($grad_year); ?></td>
-      </tr>
-      <tr>
-        <th>メールアドレス</th>
-        <td><?php echo h($email); ?></td>
-      </tr>
-      <tr>
-        <th>お電話番号</th>
-        <td><?php echo h($phone_number); ?></td>
-      </tr>
-      <tr>
-        <th>住所</th>
-        <td><?php echo h($address); ?></td>
-      </tr>
-      <tr>
-        <th>その他</th>
-        <td><?php echo nl2br(h($message)); ?></td>
-      </tr>
-    </table>
+    <section class="btn_position">
+       <form action="./contactform.php?company_id=<?= h($company_id);?>" method="post" class="confirm">
+         <div class="return_position">
+           <button type="submit" class="return">戻る</button>
+         </div>
+       </form>
+       <form action="./thanks.php?company_id=<?= h($company_id);?>" method="post" class="confirm">
+         <!-- 完了ページへ渡すトークンの隠しフィールド -->
+         <input type="hidden" name="ticket" value="<?php echo h($ticket); ?>">
+         <div class="contactform_submit">
+           <input name="submitted" type="submit" value="送信">
+         </div>
+         <!-- <button type="submit" class="btn btn-success">送信</button> -->
+       </form>
+    </section>
   </div>
-  <form action="./contactform.php?company_id=<?= h($company_id);?>" method="post" class="confirm">
-    <button type="submit" class="btn btn-secondary">戻る</button>
-  </form>
-  <form action="./thanks.php?company_id=<?= h($company_id);?>" method="post" class="confirm">
-    <!-- 完了ページへ渡すトークンの隠しフィールド -->
-    <input type="hidden" name="ticket" value="<?php echo h($ticket); ?>">
-    <button type="submit" class="btn btn-success">送信</button>
-  </form>
-</div>
+  </main>
+  <footer>
+    <div class="footer_wrapper">
+      <div class="footer_student">
+        <p>学生の方へ</p>
+        <ul class="footer_list">
+          <li><a href="#company">企業一覧</a></li>
+          <li><a href="#problem">お悩みの方へ</a></li>
+          <li><a href="#merit">比較のメリット</a></li>
+          <li><a href="#question">よくある質問</a></li>
+          <li><a href="#">就活エージェントとは</a></li>
+        </ul>
+      </div>
+      <div class="footer_company">
+        <p>企業の方へ</p>
+        <ul class="footer_list">
+          <li><a href="#">CRAFTについて</a></li>
+          <li><a href="#">サイト掲載について</a></li>
+        </ul>
+      </div>
+      <div class="footer_logo">
+        <!-- <img src="" alt="logo"> -->
+        <p>CRAFT</p>
+      </div>
+      <span class="footer_copyright">
+        ©︎ 2022 CRAFT. All rights reserved.
+      </span>
+    </div>
+  </footer>
 </body>
+
 </html>
+

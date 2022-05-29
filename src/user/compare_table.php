@@ -93,6 +93,7 @@ $row = 0;
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>比較表ページ</title>
   <link rel="stylesheet" href="../css/compare_table.css">
+  <link rel="stylesheet" href="../css/parts.css">
 </head>
 
 <body>
@@ -311,7 +312,35 @@ $row = 0;
         </form>
       </div>
     </section>
-  </main>
+    </main>
+  <footer>
+    <div class="footer_wrapper">
+      <div class="footer_student">
+        <p>学生の方へ</p>
+        <ul class="footer_list">
+          <li><a href="#company">企業一覧</a></li>
+          <li><a href="#problem">お悩みの方へ</a></li>
+          <li><a href="#merit">比較のメリット</a></li>
+          <li><a href="#question">よくある質問</a></li>
+          <li><a href="#">就活エージェントとは</a></li>
+        </ul>
+      </div>
+      <div class="footer_company">
+        <p>企業の方へ</p>
+        <ul class="footer_list">
+          <li><a href="#">CRAFTについて</a></li>
+          <li><a href="#">サイト掲載について</a></li>
+        </ul>
+      </div>
+      <div class="footer_logo">
+        <!-- <img src="" alt="logo"> -->
+        <p>CRAFT</p>
+      </div>
+      <span class="footer_copyright">
+        ©︎ 2022 CRAFT. All rights reserved.
+      </span>
+    </div>
+  </footer>
 
   <script src="../js/compare_table.js"></script>
 </body>
