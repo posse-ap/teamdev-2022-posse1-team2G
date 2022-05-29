@@ -224,44 +224,45 @@ if ( $result_user && $result_agent) {
 <!-- ここまでPHP -->
 
 
+
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>お問い合わせ完了ページ</title>
+  <link rel="stylesheet" href="../../css/thanks.css">
+  <title>お問い合わせいただきありがとうございます</title>
 </head>
+
 <body>
-  <main>
-    <section id="contact">
-      <!-- ページメイン -->
-      <div class="contact_wrapper">
-        <p>contact</p>
-        <h2>お問い合わせフォーム</h2>
-        <?php if ( $result_user && $result_agent ): ?>
-        <h1>お問い合わせ完了</h1>
-        <p>お問い合わせいただきありがとうございます。</p>
-        <p>確認のため、自動送信メールをお送りいたします。</p>
-        <p>お問い合わせフォームに入力されたメールの受信ボックスをご確認ください。</p>
-        <?php else: ?>
+  <!-- 一番でかいdiv -->
+  <div class="thanks">
+    <?php if ( $result_user && $result_agent ): ?>
+      <div class="thanks_complete">
+        <h1>お申込み完了</h1>
+      </div>
+      <div class="thanks_body">
+        <p>ご登録いただいたきありがとうございました。</p>
+        <p>ご登録いただいたメールアドレスに自動メールを送信しました。</p>
+      </div>
+      <div class="thnaks_phone">
+        <p>数日の内に担当者様より返信がなかった場合、お手数ですが以下にご連絡ください。</p>
+        <p>03-3836-5388 又は</p>
+        <p>ozasasann@gmail.com8</p>
+      </div>
+    <?php else: ?>
         <p>申し訳ございませんが、送信に失敗しました。</p>
-        <p>しばらくしてもう一度お試しになるか、メールにてご連絡ください。</p>
+        <p>しばらくしてもう一度お試しになるか、以下のメールにご連絡ください。</p>
+        <p>ozasasann@gmail.com</p>
         <p>ご迷惑をおかけして誠に申し訳ございません。</p>
-        <?php endif; ?>
-      </div>
-      <!-- シェアボタン -->
-        <!-- 参考サイト→ https://webdesign-trends.net/entry/3632 -->
-        <!-- 形だけ、URLをあとで入れる -->
-      <div class="contact_share_wrapper">
-        <p>シェアはこちら</p>
-        <a href="http://www.facebook.com/share.php?u={URL}" rel="nofollow" target="_blank">facebook</a>
-        <a href="https://twiter.com/share?url=https://webdesign-trends.net/entry/3632">twiter</a>
-        <a href="https://social-plugins.line.me/lineit/share?url={{URL}}">LINEで送る</a>
-      </div>
-      <!-- 戻るボタン -->
+    <?php endif; ?>
+    
+    <div class="back_to_top">
       <a href="../top.php">TOPページはこちら</a>
-    </section>
-  </main>
+    </div>
+  </div>
 </body>
+
 </html>
