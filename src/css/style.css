@@ -1,31 +1,32 @@
 /* 全体の要素について */
-body{
+body {
   padding: 0;
   font-family: "Noto Sans JP", sans-serif;
   letter-spacing: 0.08em;
 }
 
-section{
+section {
   padding: 15px 0 40px 0;
 }
 
-.title_box{
+.title_box {
   text-align: center;
 }
-.title_box p{
+
+.title_box p {
   color: #949697;
   letter-spacing: 0.1em;
 }
 
-.back_color{
+.back_color {
   background-color: rgba(38, 166, 154, 0.05);
 }
 
-.title_box{
+.title_box {
   padding-bottom: 20px;
 }
 
-.capital{
+.capital {
   font-size: 16px;
   font-weight: bold;
   padding-right: 15px;
@@ -34,16 +35,18 @@ section{
 
 
 /* トップについて */
-.top{
+.top {
   height: 630px;
 }
-.top_wrapper{
+
+.top_wrapper {
   position: relative;
   height: 100%;
   background-image: url(../img/syuukatu.webp);
   background-size: cover;
 }
-.top_sentence{
+
+.top_sentence {
   position: absolute;
   top: 480px;
   left: 20px;
@@ -57,7 +60,8 @@ section{
   transform: skew(-15deg); */
   z-index: 10;
 }
-.top_sentence::before{
+
+.top_sentence::before {
   content: "Recruit";
   position: absolute;
   top: -40px;
@@ -70,7 +74,7 @@ section{
   z-index: -1;
 }
 
-.top_search{
+.top_search {
   position: absolute;
   top: 90px;
   left: 720px;
@@ -82,11 +86,7 @@ section{
 }
 
 /* 企業一覧について */
-a {
-  color:#1E2022;
-  text-decoration:none;
-}
-.company_list{
+.company_list {
   max-width: 1100px;
   margin: 0 auto;
   display: flex;
@@ -94,7 +94,7 @@ a {
   justify-content: space-between;
 }
 
-.company_box{
+.company_box {
   position: relative;
   background-color: white;
   top: 0;
@@ -105,12 +105,13 @@ a {
   border-radius: 4px;
   margin-bottom: 30px;
 }
-.company_box:hover{
+
+.company_box:hover {
   top: -3px;
   box-shadow: 0 13px 13px rgba(0, 0, 0, 0.2);
 }
 
-.company_box_logo{
+.company_box_logo {
   position: absolute;
   top: 65px;
   left: 50%;
@@ -124,15 +125,17 @@ a {
   display: flex;
   align-items: center;
 }
-.company_box_logo img{
+
+.company_box_logo img {
   width: 100%;
 }
 
-.company_box_img{
+.company_box_img {
   position: relative;
   width: 100%;
 }
-.company_box_img img{
+
+.company_box_img img {
   position: absolute;
   top: 0;
   left: 0;
@@ -142,7 +145,7 @@ a {
   object-fit: cover;
 }
 
-.company_box_name{
+.company_box_name {
   position: absolute;
   top: 170px;
   left: 50%;
@@ -155,7 +158,7 @@ a {
   height: 46px;
 }
 
-.company_box_info{
+.company_box_info {
   position: absolute;
   width: 80%;
   top: 230px;
@@ -163,29 +166,31 @@ a {
   transform: translate(-50%, 0);
   display: block;
 }
-.company_box_info i{
+
+.company_box_info i {
   width: 20px;
 }
 
-.company_info_first, .company_info_second, .company_info_third{
+.company_info_first, .company_info_second, .company_info_third {
   display: flex;
   align-items: center;
   margin: 1% 0;
   /* border-bottom: 1px solid #000; */
 }
-.company_info_first .capital, 
-.company_info_second .capital, 
-.company_info_third .capital{
+
+.company_info_first .capital,
+.company_info_second .capital,
+.company_info_third .capital {
   width: 30%;
   padding-left: 2%;
 }
 
-.company_info_first p, .company_info_second p, .company_info_third p{
+.company_info_first p, .company_info_second p, .company_info_third p {
   margin: 5px 0;
   font-size: 14px;
 }
 
-.company_box_exp{
+.company_box_exp {
   position: absolute;
   top: 310px;
   width: 90%;
@@ -193,11 +198,12 @@ a {
   transform: translate(-50%, 0);
   font-size: 14px;
 }
-.company_box_exp p{
+
+.company_box_exp p {
   width: 100%;
 }
 
-.company_box_button{
+.company_box_button {
   text-align: center;
   position: absolute;
   top: 375px;
@@ -207,10 +213,12 @@ a {
   margin: 0 auto;
   z-index: 10;
 }
-.company_box_button .inquiry{
+
+.company_box_button .inquiry {
   position: relative;
   color: #fff;
-  background-color: #FF6E40;
+  background: linear-gradient(135deg, #ff8533 0%, #ffb533 100%);
+  transition: all 400ms;
   cursor: pointer;
   font-weight: 550;
   font-size: 14px;
@@ -218,10 +226,14 @@ a {
   text-decoration: none;
   border-radius: 4px;
 }
-.company_box_button .inquiry:hover{
-  background: #fa5a29;
+
+.company_box_button .inquiry:hover {
+  background: #fff;
+  border: 2px solid #ff8533;
+  color: #ff8533;
 }
-.company_box_button .inquiry::after{
+
+.company_box_button .inquiry::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -238,43 +250,46 @@ a {
   transform: translateY(-50%) rotate(45deg);
 }
 
-.company_box_check{
+.company_box_check {
   position: absolute;
   bottom: 13px;
   font-size: 14px;
   margin-left: 18px;
   z-index: 10;
 }
-.company_box_check .check:hover{
+
+.company_box_check .check:hover {
   opacity: 0.5;
 }
-.company_box_check input{
+
+.company_box_check input {
   margin-right: 5px;
 }
 
-.company_box .page_change{
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
+.company_box .page_change {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   z-index: 1;
 }
 
 
 /* Q&Aについて */
-.question_wrapper{
+.question_wrapper {
   max-width: 1100px;
   padding: 0 32px;
   margin: 0 auto;
 }
 
-.question_list{
+.question_list {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-.question_list li{
+
+.question_list li {
   border-radius: 8px;
   background: #fff;
   -webkit-box-shadow: 6px 10px 12px 0px rgb(40 47 60 / 5%);
@@ -285,13 +300,14 @@ a {
   margin-bottom: 22px;
 }
 
-.question_box{
+.question_box {
   display: flex;
   cursor: pointer;
   position: relative;
   padding: 20px 40px 20px 24px;
 }
-.question_box:before{
+
+.question_box:before {
   position: absolute;
   content: '';
   display: block;
@@ -304,7 +320,8 @@ a {
   -webkit-transition: .4s ease;
   transition: .4s ease;
 }
-.question_box:after{
+
+.question_box:after {
   position: absolute;
   content: '';
   display: block;
@@ -316,10 +333,12 @@ a {
   -webkit-transition: .4s ease;
   transition: .4s ease;
 }
-.question_box.open:before{
+
+.question_box.open:before {
   transform: rotate(180deg);
 }
-.question_box.open:after{
+
+.question_box.open:after {
   opacity: 0;
 }
 
@@ -327,11 +346,12 @@ a {
   margin: 0;
   display: flex;
 }
-.question_box_txt h3{
+
+.question_box_txt h3 {
   margin: auto 0;
 }
 
-.question_capital{
+.question_capital {
   padding-right: 50px;
   color: rgba(1, 191, 189, 1);
   font-size: 28px;
@@ -339,15 +359,17 @@ a {
 }
 
 
-.answer_box{
+.answer_box {
   display: none;
   padding: 20px 40px 20px 24px;
 }
-.answer_box_txt{
+
+.answer_box_txt {
   display: flex;
   position: relative;
 }
-.answer_box_txt p{
+
+.answer_box_txt p {
   position: absolute;
   top: 50%;
   left: 60px;
@@ -357,7 +379,7 @@ a {
   font-size: 14px;
 }
 
-.answer_capital{
+.answer_capital {
   padding-right: 50px;
   color: #ff8484;
   font-size: 28px;
