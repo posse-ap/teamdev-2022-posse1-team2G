@@ -2,7 +2,7 @@
 //セッションを開始
 session_start(); 
 
-require('../dbconnect.php');
+require('../../dbconnect.php');
 //エスケープ処理やデータをチェックする関数を記述したファイルの読み込み
 require '../../libs/functions.php'; 
  

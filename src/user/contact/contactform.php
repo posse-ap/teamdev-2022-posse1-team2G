@@ -42,7 +42,7 @@ $ticket = $_SESSION['ticket'];
 
 
 // 問い合わせ会社を表示させるためのSQL用意
-require('../dbconnect.php');
+require('../../dbconnect.php');
 
 
 if (isset($_GET['company_id'])) {

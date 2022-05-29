@@ -1,5 +1,5 @@
 <?php
-require('./dbconnect.php');
+require('../dbconnect.php');
 
 $sql = 'SELECT * FROM company_posting_information';
 $stmt = $db->query($sql);
