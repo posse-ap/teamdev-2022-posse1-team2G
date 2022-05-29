@@ -1,10 +1,19 @@
 <?php
 require('../../dbconnect.php');
+if (isset($_SESSION['id']) && $_SESSION['time'] + 60 * 60 > time()) {
+  $_SESSION['time'] = time();
+
+  $id = $_SESSION['id'];
+
 
 $sql = "SELECT company_name FROM company";
 $stmt = $db->prepare($sql);
 $stmt->execute();
 $names = $stmt->fetchAll();
+} else {
+  header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/login.php');
+  exit();
+}
 ?>
 <!-- <?php foreach ($names as $name) : ?>
 <?php print_r($name); ?>
@@ -13,6 +22,7 @@ $names = $stmt->fetchAll();
 
 <!doctype html>
 <html lang="ja">
+
 
 <head>
   <!-- Required meta tags -->

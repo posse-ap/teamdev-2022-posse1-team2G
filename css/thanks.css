@@ -15,12 +15,12 @@
   text-align: center;
 }
 
-.thnaks_phone {
+.thanks_phone {
   text-align: center;
   padding: 12px 0;
 }
 
-.thnaks_phone p:last-child {
+.thanks_phone p:last-child {
   text-decoration: underline;
   font-size: 1.2rem;
 }

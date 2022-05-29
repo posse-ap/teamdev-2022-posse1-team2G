@@ -119,7 +119,7 @@ if ($result_array == true) {
   echo json_encode($result_array);
 } else {
   echo $return =
-    "<h4> $input $select</h4><p>に一致するデータはありませんでした</p> ";
+    "<h4> $input $select</h4>に一致するデータはありませんでした";
 }
 
 

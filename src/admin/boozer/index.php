@@ -23,7 +23,7 @@ $result_yesterday  = $stmt_yesterday->fetchAll();
 $yesterday = array_reduce($result_yesterday, 'array_merge', array());
 
 // chart.js用
-$sss=[];
+$sss = [];
 for ($i = 1; $i <= 31; $i++) {
   $padding[$i] = (str_pad(date("$i"), 2, 0, STR_PAD_LEFT));
   $sql_graph = "SELECT count(*) as count from company_user where DATE_FORMAT(contact_datetime, '%Y%m%d') = '202205$padding[$i]' group by '202205$padding[$i]';";
@@ -58,7 +58,7 @@ $price = $unit_price * (1 + $tax);
 </head>
 <!-- header関数読み込み -->
 <?php
-include('./_parts_boozer/_header_boozer.php');  
+include('./_parts_boozer/_header_boozer.php');
 ?>
 <div class="container_contents">
   <div class='https://blog.8bit.co.jp/?p=11410'>
@@ -82,7 +82,7 @@ include('./_parts_boozer/_header_boozer.php');
   </div>
   <div>
     <div class='graph_title_month'>
-      月間
+      <p>月間</p>
     </div>
   </div>
   <div class='sales_status_graph'>
@@ -93,64 +93,64 @@ include('./_parts_boozer/_header_boozer.php');
 
 <!-- ↓footer関数の読み込み -->
 <?php
-include('../_footer.php');  
+include('../_footer.php');
 ?>
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
 
 
 
-  <script>
-    var ctx = document.getElementById("myBarChart");
-    var myBarChart = new Chart(ctx, {
-          type: 'bar',
-          data: {
-            labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
-            datasets: [{
-                label: '勉強時間',
-                data: [
-                  <?php
-                      for ($i = 0; $i < count($sss); $i++) {
-                        echo $sss[$i] . ',';
-                      }     
-                      ?>
-                  ],
-                  backgroundColor: "#76cff3"
-                }]
-            },
-            options: {
-              legend: {
-                display: false
-              },
-              scales: {
-                xAxes: [{
-                  gridLines: {
-                    display: false
-                  },
-                  ticks: {
-                    maxRotation: 0,
-                    minRotation: 0,
-                  }
-                }],
-                yAxes: [{
-                  gridLines: {
-                    display: false
-                  },
-                  ticks: {
-                    suggestedMax: 6,
-                    suggestedMin: 0,
-                    stepSize: 1,
-                  }
-                }]
-              },
-              maintainAspectRatio: false,
-            }
-          });
-  </script>
-  <script src="../graph.js"></script>
+<script>
+  var ctx = document.getElementById("myBarChart");
+  var myBarChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+      datasets: [{
+        label: '勉強時間',
+        data: [
+          <?php
+          for ($i = 0; $i < count($sss); $i++) {
+            echo $sss[$i] . ',';
+          }
+          ?>
+        ],
+        backgroundColor: "#76cff3"
+      }]
+    },
+    options: {
+      legend: {
+        display: false
+      },
+      scales: {
+        xAxes: [{
+          gridLines: {
+            display: false
+          },
+          ticks: {
+            maxRotation: 0,
+            minRotation: 0,
+          }
+        }],
+        yAxes: [{
+          gridLines: {
+            display: false
+          },
+          ticks: {
+            suggestedMax: 6,
+            suggestedMin: 0,
+            stepSize: 1,
+          }
+        }]
+      },
+      maintainAspectRatio: false,
+    }
+  });
+</script>
+<script src="../graph.js"></script>
 
 </body>
 

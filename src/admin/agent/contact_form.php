@@ -4,7 +4,7 @@ require('../../dbconnect.php');
 //エスケープ処理やデータチェックを行う関数のファイルの読み込み
 require '../../libs/functions.php';
 
-if (isset($_SESSION['id']) && $_SESSION['time'] + 10 > time()) {
+if (isset($_SESSION['id']) && $_SESSION['time'] + 60 * 60 > time()) {
   $_SESSION['time'] = time();
   // user_idがない、もしくは一定時間を過ぎていた場合
   $id = $_SESSION['id'];
