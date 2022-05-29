@@ -147,10 +147,20 @@ $ticket = $_SESSION[ 'ticket' ];
         </div>
       </div> 
     </section>
+    <!-- お悩みのコーナー -->
     <section id="problem">
       <div class="title_box">
         <h2>お悩みの方へ</h2>
         <p>WHAT IS PROBLEM</p>
+        <div class="problem_box">
+          <h3 class="problem_catch">こんな<span class="impact">お悩み</span>ありませんか？</h3>
+          <ul class="problem_case">
+            <li><p>エージェント企業がいまいちわからない</p></li>
+            <li><p>企業数が多くてどれを選べばいいかわからない</p></li>
+            <li><p>自分に合った業界・業種ってなんだろう…</p></li>
+            <li><p>気軽にES・面接対策を頼める人が周りにいない</p></li>
+          </ul>
+        </div>
       </div>
     </section>
     <!-- 比較のメリットのコーナー -->
@@ -161,8 +171,35 @@ $ticket = $_SESSION[ 'ticket' ];
       </div>
       <div class="merit_list">
         <div class="merit_box">
-          <h3></h3>
-          <p></p>
+          <h3 class="merit_catch">
+              <span class="merit_impact">実績・経験豊富</span>な
+              <br>エージェントにお任せを！
+              <p>
+                あなたの悩みを<span class="merit_impact">解決</span>します。
+              </p>
+          </h3>
+          <div class="merit_cases">
+            <div class="merit_case">
+                <span class="box-title">Point1.</span>
+                <p>各企業の強みが分かる！</p>
+            </div>
+            <div class="merit_case">
+                <span class="box-title">Point2.</span>
+                <p>短時間で自分に合った企業を見つけられる!</p>
+            </div>
+            <div class="merit_case">
+                <span class="box-title">Point3.</span>
+                <p>自分の経験や強みを活かせる！</p>
+            </div>
+            <div class="merit_case">
+                <span class="box-title">Point4.</span>
+                <p>たくさんの企業を調べる必要がない！</p>
+            </div>
+            <div class="merit_case">
+                <span class="box-title">Point5.</span>
+                <p>気になる企業をピックアップして比較できる！</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

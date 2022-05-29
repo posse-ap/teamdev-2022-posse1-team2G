@@ -276,6 +276,107 @@ section {
 }
 
 
+/* お悩みについて */
+.problem_catch {
+  margin-bottom: 10%;
+  color: #34373a;
+  font-size: 4rem;
+  text-align: center;
+  font-weight: bold;
+}
+.impact {
+  color: #1e6c84;
+  font-size: 5rem;
+}
+.problem_case {
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.problem_case li {
+  list-style: none;
+  position: relative;
+  color: #333;
+  display: inline-block;
+  margin: 2rem 0 8rem;
+  text-shadow: 0 0 1rem white;
+}
+.problem_case li:before {
+  content: "";
+  position: absolute;
+  background: #a9e1ff;
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+  top: 50%;
+  border: dashed 1px white;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  z-index: -1;
+  box-shadow: 0px 0px 0px 5px #a9e1ff;
+}
+.problem_case li p {
+  font-size: 2rem;
+  width: 20rem;
+  color: #333;
+  font-weight: bold;
+}
+
+/* 比較のメリットについて */
+.merit_catch, .merit_catch p{
+  margin-bottom: 10%;
+  color: #1e6c84;
+  font-size: 4rem;
+  text-align: center;
+  font-weight: bold;
+}
+.merit_impact {
+  color: #F12B75;
+  font-size: 5rem;
+}
+.sub {
+  margin-top: 2rem;
+}
+.merit_cases {
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.merit_case {
+  position: relative;
+  margin: 2em 0;
+  padding: 0.5em 1em;
+  width: 16rem;
+  height: 12rem;
+  border: solid 3px #62c1ce;
+}
+.merit_case .box-title {
+  position: absolute;
+  display: inline-block;
+  top: -27px;
+  left: -3px;
+  padding: 0 9px;
+  height: 25px;
+  line-height: 25px;
+  font-size: 17px;
+  background: #62c1ce;
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 5px 5px 0 0;
+}
+.merit_case p {
+  margin: 0;
+  padding: 3rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  /* text-align: center; */
+  /* vertical-align: middle;*/
+}
+
+
 /* Q&Aについて */
 .question_wrapper {
   max-width: 1100px;
