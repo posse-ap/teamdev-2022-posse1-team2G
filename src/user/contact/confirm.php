@@ -107,7 +107,7 @@ if ( count( $error ) > 0 ) {
 
 
 // 問い合わせ会社を表示させるためのSQL用意
-require('../dbconnect.php');
+require('../../dbconnect.php');
 
 // キーワードの数だけループして、LIKE句の配列を作る
 $company_id_Condition = [];

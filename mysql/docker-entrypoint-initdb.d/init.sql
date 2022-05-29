@@ -44,11 +44,11 @@ CREATE TABLE company
 );
 
 INSERT INTO company (company_name, phone_number, mail_contact, mail_manager, mail_notification, representative, address, company_url) VALUES 
-('鈴木会社', '0120-3456-1987', 'aaaaiiiiuuuu@gmail.com', 'ssssmmmmllll@gmail.com', 'suzuki@gmail.com', '赤井', '〇県△市','marumaruurl.com'),
-('佐藤会社', '0120-3456-1988', 'aaaauuuuiiii@gmail.com', 'mmmmssssllll@gmail.com', 'satouu@gmail.com', '世良', '△県〇市','marumaruurl.com'),
-('田中会社', '0120-3456-1989', 'iiiiaaaauuuu@gmail.com', 'ssssllllmmmm@gmail.com', 'tanaka@gmail.com', '毛利', '△県〇市','marumaruurl.com'),
-('山田会社', '0120-3456-1990', 'iiiiuuuuaaaa@gmail.com', 'mmssssmmllll@gmail.com', 'yamada@gmail.com', '安室', '△県△市', 'marumruurl.com'),
-('加藤会社', '0120-3456-1991', 'aaaauuuuuduu@gmail.com', 'llllssssmmmm@gmail.com', 'katouu@gmail.com', '諸星', '〇県〇市','marumaruurl.com');
+('キャリタス', '0120-845-188', 'aaaaiiiiuuuu@gmail.com', 'ssssmmmmllll@gmail.com', 'suzuki@gmail.com', '赤い', '東京都文京区後楽2-5-1 飯田橋ファーストビル9階','https://www.disc.co.jp/'),
+('株式会社サポーターズ', '03-4577-1466', 'aaaauuuuiiii@gmail.com', 'mmmmssssllll@gmail.com', 'satouu@gmail.com', '世良', '△県〇市','東京都渋谷区道玄坂１丁目２１−１ 渋谷ソラスタ15F'),
+('就活エージェント　neo', '03-5908-8058', 'iiiiaaaauuuu@gmail.com', 'ssssllllmmmm@gmail.com', 'tanaka@gmail.com', '毛利', '東京都新宿区西新宿1-22-2 新宿サンエービル 2階','https://careerstart.co.jp/company'),
+('キャリアスタート', '03-6271-8585', 'iiiiuuuuaaaa@gmail.com', 'mmssssmmllll@gmail.com', 'yamada@gmail.com', '安室', '東京都港区新橋2丁目6-2 アイマークビル8階', 'marumruurl.com'),
+(' DiG UP CAREER', '080-4618-2189', 'aaaauuuuuduu@gmail.com', 'llllssssmmmm@gmail.com', 'katouu@gmail.com', '諸星', '東京都渋谷区東3-14-15','https://nas-inc.co.jp/');
 
 
 
@@ -68,11 +68,11 @@ CREATE TABLE company_posting_information
 );
 
 INSERT INTO company_posting_information (company_id, logo, name, img, industries, achievement, type) VALUES 
-(1,'boozer_logo.png', '鈴木会社', 'boozer_logo.png', 'IT,商社,小売り,金融', '満足度９８％', '理系'),
-(2, 'shukatsu_logo.png', '佐藤会社', 'makiko.jpg', 'サービス', '内定率４０％', '文系'),
-(3, './src/admin/img/logo/', '田中会社', './src/admin/img/img/', '商社,サービス', '顧客数No.1', '理系'),
-(4, './src/admin/img/logo/', '山田会社', './src/admin/img/img/', '小売り,金融', '顧客満足度９０%', '理系'),
-(5, './src/admin/img/logo/', '加藤会社', './src/admin/img/img/', '金融', '利用学生数１０万人', '文系');
+(1,'boozer_logo.png', '株式会社　ディスコ', 'boozer_logo.png', 'IT,商社,小売り,金融', '年間500以上のツール制作', '文系'),
+(2, 'shukatsu_logo.png', '株式会社サポーターズ', 'makiko.jpg', 'サービス,IT,商社', '全職種対象マッチングメディアサービス', '文系'),
+(3, './src/admin/img/logo/', '株式会社ネオキャリア', './src/admin/img/img/', '商社,サービス', '顧客数No.1', '理系'),
+(4, './src/admin/img/logo/', '山田会社', './src/admin/img/img/', '小売り,金融,通信', '顧客満足度９０%', '体育会'),
+(5, './src/admin/img/logo/', '加藤会社', './src/admin/img/img/', '金融,通信,マスコミ', '利用学生数１０万人', '文系');
 
 
 
@@ -97,11 +97,11 @@ CREATE TABLE company_achievement
 );
 
 INSERT INTO company_achievement (company_id, job_offer_number, company_number, user_count, user_count_last_year,  informal_job_offer_rate, satisfaction_degrees) VALUES 
-(1, '100万人', '120社', '10万人', '1819人', '30%', '89%'),
-(2, '1000人', '20社', '1万人', '819人', '50%', '89%'),
-(3, '34445人', '220社', '50万人', '3181人', '30%', '88%'),
-(4, '10030人', '40社', '1万人', '319人', '40%', '60%'),
-(5, '1060人', '10社', '30万人', '1819人', '29%', '89%');
+(1, '12000件', '7000社', '1万人', '1819人', '30%', '89%'),
+(2, '1000件', '500社', '年間7000人以上', '819人', '5.4倍', '89%'),
+(3, '34000件程度', '10000社以上', '年間18万人', '3181人', '30%', '88%'),
+(4, '1000件以上', '40社', '1万人', '400人', '40%', '80%'),
+(5, '1060人', '300社', '6500人', '1819人', '29%', '89%');
 
 
 
@@ -132,11 +132,11 @@ CREATE TABLE company_service
 );
 
 INSERT INTO company_service (company_id, ES_correction, interview, internship, seminar, training, regional_student_support, limited_course, competence_diagnosis, special_selection) VALUES 
-(1, true, true, true, true, true, true, true, true, true),
-(2, true, false, true, true, true, false, true, true, true),
-(3, true, true, true, true, false, true, true, true, false),
-(4, false, true, true, true, true, true, false, true, true),
-(5, true, false, true, false, true, false, true, true, false);
+(1, true, true, true, true, true, false, true, true, false),
+(2, true, false, true, true, false, true, true, false, false),
+(3, true, true, false, true, true, false, false, true, false),
+(4, true, true, false, true, false, true, true, false, false),
+(5, true, true, false, false, false, false, true, false, false);
 
 -- 企業説明
 DROP TABLE IF EXISTS company_feature;
@@ -154,11 +154,11 @@ CREATE TABLE company_feature
 );
 
 INSERT INTO company_feature (company_id, feature_first, feature_second, feature_third, feature_sub_first,feature_sub_second,feature_sub_third,message) VALUES 
-(1, 'ああああああああああああ', 'いいいいいいいいいいいいい', 'うううううううううううう', 'aaaaaaaaaaaaaaa', 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii', 'uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu','messageeeeeeeee'),
-(2, 'ああああああああああああ', 'いいいいいいいいいいいいい', 'うううううううううううう', 'aaaaaaaaaaaaaaa', 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii', 'uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu','messageeeeeeeee'),
-(3, 'ああああああああああああ', 'いいいいいいいいいいいいい', 'うううううううううううう', 'aaaaaaaaaaaaaaa', 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii', 'uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu','messageeeeeeeee'),
-(4, 'ああああああああああああ', 'いいいいいいいいいいいいい', 'うううううううううううう', 'aaaaaaaaaaaaaaa', 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii', 'uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu','messageeeeeeeee'),
-(5, 'ああああああああああああ', 'いいいいいいいいいいいいい', 'うううううううううううう', 'aaaaaaaaaaaaaaa', 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii', 'uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu','messageeeeeeeee');
+(1, 'マッチング度が高い', 'いいいいいいいいい', 'VISITS OBとの併用', '学生・企業が相互に「きになる」を送れる', 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii', '業界の最先端で私語をする人とマッチングができる','messageeeeeeeee'),
+(2, '幅広い業界を紹介', '支援金支給が業界トップクラス', 'オリジナルイベント開催', '学生・企業が相互に「きになる」を送れる', '最大３万円の交通費支給！', 'イベントを通して様々な情報を知ることができる！','messageeeeeeeee'),
+(3, '掲載数が多い', '紹介企業の採用ニーズが知れる', 'サービス全面無料', 'ナビサイトにない非公開求人の取り扱い多数', '初めての方でも、コンサルタントと一緒にES対策を有利に進められる。', '種類豊富な支給金制度でお金の心配がなくなる！','messageeeeeeeee'),
+(4, '徹底したマンツーマンフルサポート', '敏腕キャリアコンサルタント', '未経験OK求人多数', 'ESの対策からフルサポート。未経験者でも安心です。', '内定率80%越えを実現する経験豊富なコンサル短tpが成功に導きます。', '未経験OK求人1000件以上、仕事内容・条件などあなたに合った求人に出合えます。','messageeeeeeeee'),
+(5, '手厚いサポート', '理解が深まる', '寄り添ったサービス', '就活のプロ（元人事・人材会社出身）がLINEも使って親身', '企業選び・自己理解のプロによる就活セミナーが受けられる', '就活生に無理強いしない寄り添ったサービスで、友人紹介も60%超！','messageeeeeeeee');
 
 
 
@@ -196,66 +196,6 @@ INSERT INTO company_overview (company_id, history, employee_number, capital, han
 (4, '1970年創業', '100人', '1000万円', '日本（主に関東）、海外', 'IT、インターネット、メーカー、商社、コンサルティング、マスコミ、エンターテインメント、メディカル', '経営、管理、マーケティング、営業、コンサルタント、専門職、ゲーム、電気・電子、人事、工事、土木、広告', "'dnvsd.png','vsuus.png','vfdnv.png'", 'オンライン', 'オンライン'),
 (5, '1970年創業', '100人', '1000万円', '日本（主に関東）、海外', 'IT、インターネット、メーカー、商社、コンサルティング、マスコミ、エンターテインメント、メディカル', '経営、管理、マーケティング、営業、コンサルタント、専門職、ゲーム、電気・電子、人事、工事、土木、広告', "'dnvsd.png','vsuus.png','vfdnv.png'", 'オンライン', 'オンライン');
 
-
-
-
--- -- エージェント掲載情報テーブル
--- DROP TABLE IF EXISTS company_posting_information;
--- CREATE TABLE company_posting_information
--- (
---   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
---   company_id INT NOT NULL,
---   logo VARCHAR(255) NOT NULL,
---   name VARCHAR(255) NOT NULL,
---   img VARCHAR(255) NOT NULL,
---   industries VARCHAR(255) NOT NULL,
---   achievement VARCHAR(255) NOT NULL,
---   type VARCHAR(255) NOT NULL,
---   catch_copy VARCHAR(255) NOT NULL,
---   information VARCHAR(255) NOT NULL,
---   strength VARCHAR(255) NOT NULL,
---   job_offer_number VARCHAR(255) NOT NULL,
---   user_count VARCHAR(255) NOT NULL,
---   informal_job_offer_rate VARCHAR(255) NOT NULL,
---   satisfaction_degrees VARCHAR(255) NOT NULL,
---   finding_employment_target VARCHAR(255) NOT NULL,
---   ES boolean NOT NULL,
---   interview boolean NOT NULL,
---   limited_course boolean NOT NULL,
---   competence_diagnosis boolean NOT NULL,
---   special_selection boolean NOT NULL,
---   interview_style VARCHAR(255) NOT NULL,
---   location VARCHAR(255) NOT NULL,
---   delete_flg INT NOT NULL
--- );
-
--- INSERT INTO company_posting_information (company_id, logo, name, img, industries, achievement, type, catch_copy, information, strength, job_offer_number, user_count, informal_job_offer_rate, satisfaction_degrees, finding_employment_target, ES, interview, limited_course, competence_diagnosis, special_selection, interview_style, location, delete_flg) VALUES 
--- (1, './src/admin/img/logo/', '鈴木会社', './src/admin/img/img/', 'IT', '満足度９８％', '理系', 'dream', '鈴木会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, true, true, true, 'オンライン', 'オンライン', 0),
--- (2, './src/admin/img/logo/', '佐藤会社', './src/admin/img/img/', 'サービス', '内定率４０％', '文系', 'dream', '佐藤会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, false, true, true, true, 'オンライン', 'オンライン', 0),
--- (3, './src/admin/img/logo/', '田中会社', './src/admin/img/img/', '商社', '顧客数No.1', '理系', 'dream', '田中会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, false, false, true, 'オンライン', 'オンライン', 0),
--- (4, './src/admin/img/logo/', '山田会社', './src/admin/img/img/', '小売り', '顧客満足度９０%', '理系', 'dream', '山田会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, true, false, true, '対面', '都心', 0),
--- (5, './src/admin/img/logo/', '加藤会社', './src/admin/img/img/', '金融', '利用学生数１０万人', '文系', 'dream', '加藤会社は～で、実績が～で、…', '強み', '1千万人', '2千万人', '90%', '89%', 'IT企業', true, true, true, true, false, 'オンライン', 'オンライン', 0);
-
-
--- -- 管理者画面ログインテーブル
--- DROP TABLE IF EXISTS admin;
--- CREATE TABLE admin
--- (
---   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
---   company_id INT NOT NULL,
---   password VARCHAR(255) NOT NULL,
---   mail_admin VARCHAR(255) NOT NULL,
---   delete_flg INT NOT NULL
--- );
-
--- INSERT INTO admin (password, company_id, mail_admin, delete_flg) VALUES 
--- ('aaaaaa', 1, 'ssssmmmmllll@gmail.com', 0),
--- ('bbbbbb', 2, 'mmmmssssllll@gmail.com', 0),
--- ('cccccc', 3, 'ssssllllmmmm@gmail.com', 0),
--- ('dddddd', 4, 'mmssssmmllll@gmail.com', 0),
--- ('eeeeee', 5, 'llllssssmmmm@gmail.com', 0);
-
-
 -- 学生・エージェント中間テーブル
 DROP TABLE IF EXISTS company_user;
 
@@ -277,41 +217,6 @@ INSERT INTO company_user (user_id, company_id, contact_datetime) VALUES
 (5, 5, '2022-06-01');
 
 
-
--- DROP TABLE IF EXISTS userss;
--- CREATE TABLE userss
--- (
---   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
---   `name` VARCHAR(45) NOT NULL COMMENT '名前',
---   `sex` INT UNSIGNED NOT NULL COMMENT '性別\n1:男\n2:女',
---   `age` INT UNSIGNED NOT NULL COMMENT '年齢',
---   `valid` INT UNSIGNED NOT NULL,
---   PRIMARY KEY (`id`)
---   );
-
--- INSERT INTO userss (name, sex, age, valid) VALUES
--- ('田中太郎', '1', '26', '1'),
--- ('山田花子', '2', '16', '1'),
--- ('高橋正樹', '1', '18', '1'),
--- ('金子優子', '2', '31', '1'),
--- ('吉井佳子', '2', '21', '1'),
--- ('橘勇気', '1', '13', '1'),
--- ('小林隆', '1', '39', '1'),
--- ('影山夏生', '1', '11', '0'),
--- ('加藤裕太', '1', '23', '1'),
--- ('後藤由美', '2', '20', '1');
-
-
-
-
-
-
--- 以下サンプルデータ
--- DROP SCHEMA IF EXISTS craft;
-
--- CREATE SCHEMA craft;
-
--- USE craft;
 
 DROP TABLE IF EXISTS admin;
 
@@ -338,30 +243,6 @@ INSERT INTO admin (email, name, password, flag, company_id) VALUES
 ('d@d.com', '佐', sha1('d'), 2, 4),
 ('e@d.com', '島', sha1('e'), 2, 5);
 
--- INSERT INTO
---   admin
--- SET
---   email = 'test@posse-ap.com',
---   password = sha1('password');
-
--- DROP TABLE IF EXISTS events;
-
--- CREATE TABLE events (
---   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
---   title VARCHAR(255) NOT NULL,
---   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
---   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
--- );
-
--- INSERT INTO
---   events
--- SET
---   title = 'イベント1';
-
--- INSERT INTO
---   events
--- SET
---   title = 'イベント2';
 
 DROP TABLE IF EXISTS students;
 CREATE TABLE students (

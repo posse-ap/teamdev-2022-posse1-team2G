@@ -1,5 +1,5 @@
 <?php
-require('./dbconnect.php');
+require('../dbconnect.php');
 $sql = 'SELECT
           company_posting_information.company_id AS company_id,
           company_posting_information.name AS name,
