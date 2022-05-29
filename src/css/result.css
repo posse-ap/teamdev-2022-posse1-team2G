@@ -170,11 +170,12 @@ a {
 /* タイトルについて */
 h1 {
   position: relative;
-	/* width: 20rem; */
+  /* width: 20rem; */
   padding: 0.5em;
   background: #a6d3c8;
   color: white;
 }
+
 h1::before {
   position: absolute;
   content: '';
@@ -224,33 +225,59 @@ h1::before {
 .company_box_check {
   display: block;
 }
+
 input[type=checkbox] {
-	display: none; /* checkboxを非表示にする */
+  display: none;
+  /* checkboxを非表示にする */
 }
-input[type="checkbox"]:checked + label {
-	background: #50b4ee;/* マウス選択時の背景色を指定する */
-	border: 0.3rem solid #50b4ee;/* ラベルの境界線を実線で指定する */
-	color: #ffffff; /* マウス選択時のフォント色を指定する */
+
+input[type="checkbox"]:checked+label {
+  background: #50b4ee;
+  /* マウス選択時の背景色を指定する */
+  border: 0.3rem solid #50b4ee;
+  /* ラベルの境界線を実線で指定する */
+  color: #ffffff;
+  /* マウス選択時のフォント色を指定する */
 }
+
 label:hover {
-	background-color: #E2EDF9; /* マウスオーバー時の背景色を指定する */
+  background-color: #E2EDF9;
+  /* マウスオーバー時の背景色を指定する */
 }
+
 label {
-margin: 1rem; /* ラベル外側の余白を指定する */
-width: 9rem; /* ラベルの横幅を指定する */
-height: 45px; /* ラベルの高さを指定する */
-text-align: center; /* テキストのセンタリングを指定する */
-line-height: 45px; /* 行の高さを指定する */
-padding: 0.25rem 1rem 0.25rem; /* ラベル内の余白を指定する */
-cursor: pointer; /* マウスカーソルの形（リンクカーソル）を指定する */
-font-weight: bold;
-border: 0.3rem solid #31A9EE;/* ラベルの境界線を実線で指定する */
-border-radius: 5px; /* 角丸を指定する */
+  margin: 1rem;
+  /* ラベル外側の余白を指定する */
+  width: 9rem;
+  /* ラベルの横幅を指定する */
+  height: 45px;
+  /* ラベルの高さを指定する */
+  text-align: center;
+  /* テキストのセンタリングを指定する */
+  line-height: 45px;
+  /* 行の高さを指定する */
+  padding: 0.25rem 1rem 0.25rem;
+  /* ラベル内の余白を指定する */
+  cursor: pointer;
+  /* マウスカーソルの形（リンクカーソル）を指定する */
+  font-weight: bold;
+  border: 0.3rem solid #31A9EE;
+  /* ラベルの境界線を実線で指定する */
+  border-radius: 5px;
+  /* 角丸を指定する */
 }
 
+.not_found {
+  font-size: 24px;
+  margin-top: 100px;
+}
 
-
-
+.not_found_back {
+  width: 200px;
+  height: 60px;
+  font-size: 20px;
+  color: #000;
+}
 
 
 @media screen and (min-width: 767px) and (max-width: 1024px) {
@@ -356,9 +383,10 @@ border-radius: 5px; /* 角丸を指定する */
 
   }
 
-  .box_exp_sentence{
-font-size: 8px;
-  } 
+  .box_exp_sentence {
+    font-size: 8px;
+  }
+
   .result_bottom {
     display: flex;
     align-items: center;

@@ -29,7 +29,7 @@
   width: 60%;
 }
 
-.contactform_contact_company_name p{
+.contactform_contact_company_name p {
   margin-left: 16%;
   font-size: 1.6rem;
 }
@@ -46,7 +46,7 @@
 }
 
 .contactform_topic {
-  background-color: rgba(210, 147, 38, 0.459);
+  background-color: rgb(40 29 9 / 46%);
   color: #fff;
   border-bottom: none;
   height: 64px;
@@ -212,7 +212,7 @@ a {
   display: inline-flex;
 } */
 
-.return_position{
+.return_position {
   text-align: center;
 }
 

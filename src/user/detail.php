@@ -97,7 +97,7 @@ $company = array_reduce($companies, 'array_merge', array());
     </div>
     <!-- タイトル -->
     <div class="detail_title">
-      <h1><?=$company['name'] ?> 詳細情報</h1>
+      <h1><?= $company['name'] ?> 詳細情報</h1>
     </div>
     <!-- メインコンテンツとサイドバー覆うdiv -->
     <div class="company_detail_container">
@@ -169,53 +169,53 @@ $company = array_reduce($companies, 'array_merge', array());
               <dt class="detail_section_support_list_titile_dt">サポート内容</dt>
               <dd class="detail_section_support_list_titile_dd">有無</dd>
               <dt>ES添削</dt>
-                <? if ($company['ES_correction'] = 1) : ?>
-                  <dd>〇</dd>
-                <? else : ?>
-                  <dd>✕</dd>
-                <? endif; ?>
+              <? if ($company['ES_correction'] = 1) : ?>
+                <dd>〇</dd>
+              <? else : ?>
+                <dd>✕</dd>
+              <? endif; ?>
               <dt>面接対策</dt>
-                 <? if ($company['interview'] = 1) : ?>
-                   <dd>〇</dd>
-                 <? else : ?>
-                   <dd>✕</dd>
-                 <? endif; ?>
+              <? if ($company['interview'] = 1) : ?>
+                <dd>〇</dd>
+              <? else : ?>
+                <dd>✕</dd>
+              <? endif; ?>
               <dt>インターン</dt>
-                 <? if ($company['internship'] = 1) : ?>
-                   <dd>〇</dd>
-                 <? else : ?>
-                   <dd>✕</dd>
-                 <? endif; ?>
+              <? if ($company['internship'] = 1) : ?>
+                <dd>〇</dd>
+              <? else : ?>
+                <dd>✕</dd>
+              <? endif; ?>
               <dt>セミナー</dt>
-                 <? if ($company['seminar'] = 1) : ?>
-                   <dd>〇</dd>
-                 <? else : ?>
-                   <dd>✕</dd>
-                 <? endif; ?>
+              <? if ($company['seminar'] = 1) : ?>
+                <dd>〇</dd>
+              <? else : ?>
+                <dd>✕</dd>
+              <? endif; ?>
               <dt>研修</dt>
-                 <? if ($company['training'] = 1) : ?>
-                   <dd>〇</dd>
-                 <? else : ?>
-                   <dd>✕</dd>
-                 <? endif; ?>
+              <? if ($company['training'] = 1) : ?>
+                <dd>〇</dd>
+              <? else : ?>
+                <dd>✕</dd>
+              <? endif; ?>
               <dt>地方学生支援</dt>
-                 <? if ($company['regional_student_support'] = 1) : ?>
-                   <dd>〇</dd>
-                 <? else : ?>
-                   <dd>✕</dd>
-                 <? endif; ?>
+              <? if ($company['regional_student_support'] = 1) : ?>
+                <dd>〇</dd>
+              <? else : ?>
+                <dd>✕</dd>
+              <? endif; ?>
               <dt>限定講座</dt>
-                 <? if ($company['limited_course'] = 1) : ?>
-                   <dd>〇</dd>
-                 <? else : ?>
-                   <dd>✕</dd>
-                 <? endif; ?>
+              <? if ($company['limited_course'] = 1) : ?>
+                <dd>〇</dd>
+              <? else : ?>
+                <dd>✕</dd>
+              <? endif; ?>
               <dt>特別選考</dt>
-                 <? if ($company['special_selection'] = 1) : ?>
-                   <dd>〇</dd>
-                 <? else : ?>
-                   <dd>✕</dd>
-                 <? endif; ?>
+              <? if ($company['special_selection'] = 1) : ?>
+                <dd>〇</dd>
+              <? else : ?>
+                <dd>✕</dd>
+              <? endif; ?>
             </dl>
           </div>
         </section>
@@ -226,33 +226,7 @@ $company = array_reduce($companies, 'array_merge', array());
             <h2 class="section_title">就職先</h2>
           </div>
           <div class="finding_employment_target_logo_container">
-            <div>
-              <img src="../img/og_image_logo.png">
-            </div>
-            <div>
-              <img src="../img/og_image_logo.png">
-            </div>
-            <div>
-              <img src="../img/makiko.jpg">
-            </div>
-            <div>
-              <img src="../img/og_image_logo.png">
-            </div>
-            <div>
-              <img src="../img/og_image_logo.png">
-            </div>
-            <div>
-              <img src="../img/makiko.jpg">
-            </div>
-            <div>
-              <img src="../img/makiko.jpg">
-            </div>
-            <div>
-              <img src="../img/makiko.jpg">
-            </div>
-            <div>
-              <img src="../img/makiko.jpg">
-            </div>
+            <p><?= $company['main_finding_employment_target'] ?></p>
           </div>
         </section>
         <!-- 企業からのメッセージ -->
