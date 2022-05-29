@@ -97,7 +97,7 @@ $company = array_reduce($companies, 'array_merge', array());
     </div>
     <!-- タイトル -->
     <div class="detail_title">
-      <h1>会社詳細情報</h1>
+      <h1><?=$company['name'] ?> 詳細情報</h1>
     </div>
     <!-- メインコンテンツとサイドバー覆うdiv -->
     <div class="company_detail_container">
@@ -329,19 +329,16 @@ $company = array_reduce($companies, 'array_merge', array());
             <a href="#detail.achievement">
               <li>実績</li>
             </a>
-            <a href="#detail.information">
-              <li>会社情報</li>
-            </a>
             <a href="#detail.message">
               <li>企業からのメッセージ</li>
+            </a>
+            <a href="#detail.information">
+              <li>会社情報</li>
             </a>
           </ul>
         </div>
       </div>
     </div>
-
-
-
     <!-- ボタン追加 -->
     <div class="float_button">
       <div class="company_box_button">
