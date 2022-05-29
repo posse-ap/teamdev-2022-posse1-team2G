@@ -1,20 +1,10 @@
 <?php
 require('./dbconnect.php');
-
-// $sql = 'SELECT * FROM company_posting_information where company_id = ' . $_REQUEST["company_id"];
-// // print_r($sql);
-// $stmt = $db->query($sql);
-// $stmt->execute();
-// $companies = $stmt->fetchAll();
-
-// $_REQUEST["company_id"]
-
 $sql = 'SELECT
           company_posting_information.company_id AS company_id,
           company_posting_information.name AS name,
           company_posting_information.industries AS industries,
           company_posting_information.type AS type,
-          company.company_url AS company_url,
           company.address AS address,
           company_achievement.job_offer_number AS job_offer_number,
           company_achievement.company_number AS company_number,
@@ -37,6 +27,7 @@ $sql = 'SELECT
           company_feature.feature_sub_first AS feature_sub_first,
           company_feature.feature_sub_second AS feature_sub_second,
           company_feature.feature_sub_third AS feature_sub_third,
+          company_feature.message AS message,
           company_overview.history AS history,
           company_overview.employee_number AS employee_number,
           company_overview.capital AS capital,
@@ -64,9 +55,7 @@ $companies = $stmt->fetchAll();
 $company = array_reduce($companies, 'array_merge', array());
 
 ?>
-<pre>
-  <? print_r($company); ?>
-</pre>
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -74,14 +63,34 @@ $company = array_reduce($companies, 'array_merge', array());
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/parts.css">
   <link rel="stylesheet" href="../css/detail.css">
   <link rel="stylesheet" href="../css/detail_responsive.css">
   <title>企業詳細情報ページ</title>
 </head>
 
 <body>
+  <header>
+    <div class="header_wrapper">
+      <div class="header_logo">
+        <img src="../img/boozer_logo.png" alt="logo">
+      </div>
+    </div>
+    <nav class="header_nav">
+      <ul>
+        <li class="nav_item"><a href="./top.php#company">企業一覧</a></li>
+        <li class="nav_item"><a href="./top.php#point">お悩みの方へ</a></li>
+        <li class="nav_item"><a href="./top.php#merit">比較のメリット</a></li>
+        <li class="nav_item"><a href="./top.php#question">よくある質問</a></li>
+        <!-- 時間あったらモーダルにしてちょっと就活エージェントのこと書いて、就活の教科書の特集に飛ばせるかも -->
+        <li class="nav_item"><a href="#">就活エージェントとは</a></li>
+        <!-- ここまで -->
+        <li class="nav_item"><a href="#">企業の方へ</a></li>
+      </ul>
+    </nav>
+  </header>
   <!-- header下の全体 -->
-  <main class="main">
+  <main class="main main_wrapper">
     <!-- トップページ写真 -->
     <div class="detail_top_page_img">
       <img src="../img/company3.png">
@@ -160,45 +169,53 @@ $company = array_reduce($companies, 'array_merge', array());
               <dt class="detail_section_support_list_titile_dt">サポート内容</dt>
               <dd class="detail_section_support_list_titile_dd">有無</dd>
               <dt>ES添削</dt>
-              <? if ($company['ES_correction'] = 1) : ?>
-                <dd>〇</dd>
-              <? else : ?>
-                <dd>✕</dd>
-              <? endif; ?>
+                <? if ($company['ES_correction'] = 1) : ?>
+                  <dd>〇</dd>
+                <? else : ?>
+                  <dd>✕</dd>
+                <? endif; ?>
               <dt>面接対策</dt>
-              <? if ($company['ES_correction'] = 1) : ?>
-                <dd>〇</dd>
-              <? else : ?>
-                <dd>✕</dd>
-              <? endif; ?>
+                 <? if ($company['interview'] = 1) : ?>
+                   <dd>〇</dd>
+                 <? else : ?>
+                   <dd>✕</dd>
+                 <? endif; ?>
               <dt>インターン</dt>
-              <dd>
-                <?= $company['internship'] ?>
-              </dd>
+                 <? if ($company['internship'] = 1) : ?>
+                   <dd>〇</dd>
+                 <? else : ?>
+                   <dd>✕</dd>
+                 <? endif; ?>
               <dt>セミナー</dt>
-              <dd>
-                <?= $company['seminar'] ?>
-              </dd>
+                 <? if ($company['seminar'] = 1) : ?>
+                   <dd>〇</dd>
+                 <? else : ?>
+                   <dd>✕</dd>
+                 <? endif; ?>
               <dt>研修</dt>
-              <dd>
-                <?= $company['training'] ?>
-              </dd>
+                 <? if ($company['training'] = 1) : ?>
+                   <dd>〇</dd>
+                 <? else : ?>
+                   <dd>✕</dd>
+                 <? endif; ?>
               <dt>地方学生支援</dt>
-              <dd>
-                <?= $company['regional_student_support'] ?>
-              </dd>
+                 <? if ($company['regional_student_support'] = 1) : ?>
+                   <dd>〇</dd>
+                 <? else : ?>
+                   <dd>✕</dd>
+                 <? endif; ?>
               <dt>限定講座</dt>
-              <dd>
-                <?= $company['limited_course'] ?>
-              </dd>
-              <dt>会社のURL</dt>
-              <dd>
-                <?= $company['company_url'] ?>
-              </dd>
+                 <? if ($company['limited_course'] = 1) : ?>
+                   <dd>〇</dd>
+                 <? else : ?>
+                   <dd>✕</dd>
+                 <? endif; ?>
               <dt>特別選考</dt>
-              <dd>
-                <?= $company['special_selection'] ?>
-              </dd>
+                 <? if ($company['special_selection'] = 1) : ?>
+                   <dd>〇</dd>
+                 <? else : ?>
+                   <dd>✕</dd>
+                 <? endif; ?>
             </dl>
           </div>
         </section>
@@ -244,7 +261,7 @@ $company = array_reduce($companies, 'array_merge', array());
             <h2 class="section_title">企業からのメッセージ</h2>
           </div>
           <div class="detail_section_message_content">
-            <p>あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ</p>
+            <p><?= $company['message'] ?></p>
           </div>
         </section>
         <!-- 会社情報テーブル -->
@@ -256,11 +273,11 @@ $company = array_reduce($companies, 'array_merge', array());
             <dl class='detail_section_company_information_list'>
               <dt>歴史</dt>
               <dd>
-                ○○年創立
+                <?= $company['history'] ?>
               </dd>
               <dt>従業員数</dt>
               <dd>
-                ✕
+                <?= $company['employee_number'] ?>
               </dd>
               <dt>資本金</dt>
               <dd>
@@ -284,11 +301,11 @@ $company = array_reduce($companies, 'array_merge', array());
               </dd>
               <dt>取り扱い業種</dt>
               <dd>
-                IT、インターネット、メーカー、商社、コンサルティング、マスコミ、エンターテインメント、メディカル
+                <?= $company['handling_industries'] ?>
               </dd>
               <dt>取り扱い職種</dt>
               <dd>
-                経営、管理、マーケティング、営業、コンサルタント、専門職、ゲーム、電気・電子、人事、工事、土木、広告、経営、管理、マーケティング、営業、コンサルタント、専門職、ゲーム、電気・電子、人事、工事、土木、広告
+                <?= $company['handling_job_category'] ?>
               </dd>
           </div>
         </section>
@@ -336,6 +353,34 @@ $company = array_reduce($companies, 'array_merge', array());
     </div>
 
   </main>
+  <footer>
+    <div class="footer_wrapper">
+      <div class="footer_student">
+        <p>学生の方へ</p>
+        <ul class="footer_list">
+          <li><a href="#company">企業一覧</a></li>
+          <li><a href="#problem">お悩みの方へ</a></li>
+          <li><a href="#merit">比較のメリット</a></li>
+          <li><a href="#question">よくある質問</a></li>
+          <li><a href="#">就活エージェントとは</a></li>
+        </ul>
+      </div>
+      <div class="footer_company">
+        <p>企業の方へ</p>
+        <ul class="footer_list">
+          <li><a href="#">CRAFTについて</a></li>
+          <li><a href="#">サイト掲載について</a></li>
+        </ul>
+      </div>
+      <div class="footer_logo">
+        <!-- <img src="" alt="logo"> -->
+        <p>CRAFT</p>
+      </div>
+      <span class="footer_copyright">
+        ©︎ 2022 CRAFT. All rights reserved.
+      </span>
+    </div>
+  </footer>
 </body>
 
 </html>

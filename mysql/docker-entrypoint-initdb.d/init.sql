@@ -84,7 +84,7 @@ CREATE TABLE company_achievement
   company_id INT NOT NULL,
   -- 求人数
   job_offer_number VARCHAR(255) NOT NULL,
--- 紹介企業数
+  -- 紹介企業数
   company_number VARCHAR(255) NOT NULL,
   -- 利用学生数
   user_count VARCHAR(255) NOT NULL,
