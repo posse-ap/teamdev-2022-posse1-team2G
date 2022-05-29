@@ -71,14 +71,18 @@ $ticket = $_SESSION['ticket'];
         </div>
         <!-- PHP側で作って貰った検索機能 -->
         <div class='search_empty'></div>
-        <div class="top_search">
-          <?php require('./search.php') ?>
-        </div>
+
         <!-- ここまで -->
       </div>
     </div>
+    <div class="top_search">
+      <?php require('./search.php') ?>
+    </div>
     <section id="company" class="back_color">
-      <div class="company_wrapper">
+      <di
+      
+      
+      v class="company_wrapper">
         <div class="title_box">
           <h2>企業一覧</h2>
           <p>COMPANY LIST</p>
@@ -122,10 +126,10 @@ $ticket = $_SESSION['ticket'];
                   <p>マイナビ新卒紹介はあああああああああああああああああああああああああああ</p>
                 </div>
                 <div class="company_box_button">
-                  <a href="./contact/contactform.php?company_id=<?= h($company['company_id']); ?>" class="inquiry">お問い合わせはこちら</a>
+                  <a href="./contact/contactform.php?company_id=<?= h($company['company_id']); ?>" class="inquiry">お問い合わせ</a>
                 </div>
                 <div class="company_box_check">
-                  <label for="check"><input type="checkbox" name="select_company_checkboxes" value="<?= $company['company_id']; ?>-<?= $company['name']; ?>" onchange="checked_counter()">複数の会社を比較する</label>
+                  <label for="check"><input type="checkbox" id='check' name="select_company_checkboxes" value="<?= $company['company_id']; ?>-<?= $company['name']; ?>" onchange="checked_counter()">比較する</label>
                 </div>
                 <a class="page_change" href="../html/result.html"></a>
               </div>
@@ -147,7 +151,7 @@ $ticket = $_SESSION['ticket'];
           </div>
 
         </div>
-      </div>
+      </di>
     </section>
     <section id="problem">
       <div class="title_box">

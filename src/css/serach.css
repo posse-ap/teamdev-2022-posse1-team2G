@@ -66,7 +66,59 @@
 }
 
 @media screen and (min-width: 767px) and (max-width: 1024px) {
-  
+
+
+  .top_search {
+    position: absolute;
+    top: 80px;
+    right: 6%;
+    height: 50vh;
+  }
+
+  .form_title h1 {
+    padding-bottom: 8px;
+  }
+
+  .form_each_heading p {
+    margin: 0;
+  }
+
 }
 
-@media screen and (max-width: 767px) {}
+@media screen and (max-width: 767px) {
+  .form_title h1 {
+    font-size: 1.2rem;
+    padding: 10px 0 8px 0;
+    /* color: red; */
+  }
+
+  .form_each_heading p {
+    margin: 0;
+    font-size: .8rem;
+  }
+
+  .form_body {
+    margin-top: 24px;
+  }
+
+  .each_industries_checkbox,
+  .each_type_checkbox {
+    padding: 5px 0 5px 10%;
+    width: 40%;
+  }
+
+  .each_industries_checkbox label,
+  .each_type_checkbox label {
+    font-size: .6rem;
+  }
+
+  .form_submit {
+    text-align: center;
+    padding: 6px 0 6px 0;
+  }
+
+  .form_submit button {
+    padding: 6px 18px;
+    font-size: 1rem;
+  }
+}
