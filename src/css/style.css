@@ -24,7 +24,7 @@ section {
 }
 
 .back_color {
-  background-color: rgba(38, 166, 154, 0.05);
+  background-color: rgba(8, 18, 17, 0.05);
 }
 
 .title_box {
@@ -47,7 +47,7 @@ section {
 .top_wrapper {
   position: relative;
   height: 100%;
-  background-image: url(../img/syuukatu.webp);
+  background-image: url(../img/集合写真.jpg);
   background-size: cover;
 }
 
@@ -169,6 +169,8 @@ a {
 
 .company_box_name {
   position: absolute;
+  text-align: center;
+  width: 80%;
   top: 145px;
   left: 50%;
   transform: translate(-50%, 0);

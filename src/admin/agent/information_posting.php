@@ -1,7 +1,7 @@
 <?php
 session_start();
 require('../../dbconnect.php');
-if (isset($_SESSION['id']) && $_SESSION['time'] + 1000000 > time()) {
+if (isset($_SESSION['id']) && $_SESSION['time'] + 60 * 60 > time()) {
   $_SESSION['time'] = time();
 
   $id = $_SESSION['id'];
@@ -22,42 +22,6 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 1000000 > time()) {
     as t6 on t1.id=t6.company_id 
   where t1.id='$id' order by t1.id";
 
-  // 以下のSELECT分の結果
-  // select * from company as t1 inner join company_posting_information as t2 on t1.id = t2.company_id  where t1.id=1 order by t1.id desc\G 
-  //   id: 1
-  //              company_name: 鈴木会社
-  //              phone_number: 0120-3456-1987
-  //              mail_contact: aaaaiiiiuuuu@gmail.com
-  //              mail_manager: ssssmmmmllll@gmail.com
-  //         mail_notification: maruaaaamaruaaaa@gmail.com
-  //            representative: 赤井
-  //                   address: 〇県△市
-  //               company_url: marumaruurl.com
-  //                delete_flg: 0
-  //                        id: 1
-  //                company_id: 1
-  //                      logo: ./src/admin/img/logo/
-  //                      name: 鈴木会社
-  //                       img: ./src/admin/img/img/
-  //                industries: IT
-  //               achievement: 満足度９８％
-  //                      type: 理系
-  //                catch_copy: dream
-  //               information: 鈴木会社は～で、実績が～で、…
-  //                  strength: 強み
-  //          job_offer_number: 1千万人
-  //                user_count: 2千万人
-  //   informal_job_offer_rate: 90%
-  //      satisfaction_degrees: 89%
-  // finding_employment_target: IT企業
-  //                        ES: 1
-  //                 interview: 1
-  //            limited_course: 1
-  //      competence_diagnosis: 1
-  //         special_selection: 1
-  //           interview_style: オンライン
-  //                  location: オンライン
-  //                delete_flg: 0
   $stmt = $db->prepare($sql);
   $stmt->execute();
   $result_array = $stmt->fetchAll();
@@ -164,20 +128,11 @@ include('./_parts_agent/_header_agent.php');
       <dd><?= $result['satisfaction_degrees'] ?></dd>
     </dl>
   </div>
-  <div>
-    <img src="../../img/makiko.jpg" alt="">
-  </div>
   <div class="company_service">
     <p>掲載基本情報（サービス）</p>
     <dl class='company_information_list'>
       <dt>ES添削</dt>
-      <dd><?php
-          // if ($result['ES_correction'] == true) {
-          //   echo '〇';
-          // } else {
-          //   echo '✕';
-          // }
-          correctness_decision($result['ES_correction']);
+      <dd><?php correctness_decision($result['ES_correction']);
           ?></dd>
       <dt>面談</dt>
       <dd><?php correctness_decision($result['interview']); ?></dd>
@@ -200,8 +155,18 @@ include('./_parts_agent/_header_agent.php');
   <div class="company_feature">
     <p>掲載説明</p>
     <dl class='company_information_list'>
-      <dt>特徴</dt>
-      <dd><?= $result['feature'] ?></dd>
+      <dt>特徴➀</dt>
+      <dd><?= $result['feature_first'] ?></dd>
+      <dt>特徴➀補足</dt>
+      <dd><?= $result['feature_second'] ?></dd>
+      <dt>特徴➁</dt>
+      <dd><?= $result['feature_third'] ?></dd>
+      <dt>特徴➁補足</dt>
+      <dd><?= $result['feature_sub_first'] ?></dd>
+      <dt>特徴➂</dt>
+      <dd><?= $result['feature_sub_second'] ?></dd>
+      <dt>特徴➂補足</dt>
+      <dd><?= $result['feature_sub_third'] ?></dd>
       <dt>メッセージ</dt>
       <dd><?= $result['message'] ?></dd>
     </dl>

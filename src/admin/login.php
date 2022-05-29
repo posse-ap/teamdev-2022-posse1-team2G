@@ -41,7 +41,7 @@ if (!empty($_POST)) {
     $_SESSION['id'] = $boozer['id'];
     $_SESSION['time'] = time();
     // $_SERVER['HTTP_HOST']=  localhost:8080
-    header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/boozer/company_list.php');
+    header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/boozer/index.php');
     // exit();
   } else {
     // if (!$_POST["email"]) {
