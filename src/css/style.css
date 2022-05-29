@@ -6,7 +6,7 @@ body {
 }
 
 section {
-  padding: 15px 0 40px 0;
+  padding: 15px 0 30px 0;
 }
 
 .title_box h2 {
@@ -94,7 +94,6 @@ section {
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);
-  /* background-color: rgba(213, 237, 174, 0.171); */
 
 }
 
@@ -244,8 +243,11 @@ a {
 }
 
 .company_box_check {
+  display: flex;
+  align-items: center;
   left: 10px;
   background-color: red;
+  color: white;
 }
 
 .company_box_button {
@@ -409,7 +411,7 @@ a {
 
 /* お悩みについて */
 .problem_catch {
-  margin-bottom: 10%;
+  margin: 10% 0;
   color: #34373a;
   font-size: 4rem;
   text-align: center;
@@ -426,6 +428,7 @@ a {
   -webkit-box-pack: justify;
   justify-content: space-around;
   flex-wrap: wrap;
+  padding: 0;
 }
 
 .problem_case li {
@@ -655,7 +658,6 @@ a {
     padding: 0 30px 0 40px;
     font-size: 40px;
     color: white;
-    background-color: rgba(0, 0, 0, 0.3);
     z-index: 10;
   }
 
@@ -739,4 +741,27 @@ a {
     height: 300px;
     margin-top: 40px;
   }
+
+  .merit_case {
+    margin: 1.8rem;
+    width: 26rem;
+    height: 14rem;
+  }
+
+  .merit_case p {
+    padding: 1.6rem 2rem;
+    margin: 0;
+    font-size: .9rem;
+  }
+
+  .answer_box_txt p {
+    position: absolute;
+    top: 30%;
+    left: 60px;
+    transform: translate(0, -50%);
+    margin: 0;
+    line-height: .9;
+    font-size: 6px;
+  }
+
 }
