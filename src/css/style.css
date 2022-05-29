@@ -86,6 +86,9 @@ section {
 }
 
 /* 企業一覧について */
+a {
+  color: #000;
+}
 .company_list {
   max-width: 1100px;
   margin: 0 auto;
@@ -274,6 +277,42 @@ section {
   height: 100%;
   z-index: 1;
 }
+
+/* チェックボックスについて */
+
+/* 選択済みボックスについて */
+.selected_company_box {
+  display: none;
+  padding-top: 2rem;
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  background: #3D3D3D;
+  left: 0rem;
+  height: 9rem;
+  z-index: 100;
+}
+
+.selected_company_box .box-title {
+	font-size: 1.2em;
+	padding: 4px;
+	margin: 0 auto;
+	color: #FFF;
+	font-weight: bold;
+	letter-spacing: 0.05rem;
+}
+.contact_button{
+	font-size: 1rem;
+	background-color: #fff;
+	padding: 0.8rem;
+	margin: 0.3rem 0 1rem;
+	font-weight: bold;
+	letter-spacing: 0.05rem;
+	border-color: #fff;
+	border-radius: 1rem;
+}
+
 
 
 /* Q&Aについて */
