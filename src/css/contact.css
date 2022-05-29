@@ -207,6 +207,23 @@ a {
   font-size: 1.6rem;
 }
 
+/* 
+.btn_position {
+  display: inline-flex;
+} */
+
+.return_position{
+  text-align: center;
+}
+
+.return {
+  padding: 16px 72px;
+  background-color: rgb(225, 180, 127);
+  color: #fff;
+  border: none;
+  font-size: 1.2rem;
+}
+
 /* ----------------   タブレット     --------------------- */
 @media screen and (min-width: 767px) and (max-width: 1024px) {
   .contactform_contact_company_img {

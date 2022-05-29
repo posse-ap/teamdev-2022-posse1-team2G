@@ -256,14 +256,21 @@ $companies = $stmt->fetchAll();
       </div>
     </div>
 
-    <form action="./contactform.php?company_id=<?= h($company_id);?>" method="post" class="confirm">
-      <button type="submit" class="btn btn-secondary">戻る</button>
-    </form>
-    <form action="./thanks.php?company_id=<?= h($company_id);?>" method="post" class="confirm">
-      <!-- 完了ページへ渡すトークンの隠しフィールド -->
-      <input type="hidden" name="ticket" value="<?php echo h($ticket); ?>">
-      <button type="submit" class="btn btn-success">送信</button>
-    </form>
+    <section class="btn_position">
+       <form action="./contactform.php?company_id=<?= h($company_id);?>" method="post" class="confirm">
+         <div class="return_position">
+           <button type="submit" class="return">戻る</button>
+         </div>
+       </form>
+       <form action="./thanks.php?company_id=<?= h($company_id);?>" method="post" class="confirm">
+         <!-- 完了ページへ渡すトークンの隠しフィールド -->
+         <input type="hidden" name="ticket" value="<?php echo h($ticket); ?>">
+         <div class="contactform_submit">
+           <input name="submitted" type="submit" value="送信">
+         </div>
+         <!-- <button type="submit" class="btn btn-success">送信</button> -->
+       </form>
+    </section>
   </div>
 </body>
 
