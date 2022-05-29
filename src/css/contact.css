@@ -224,6 +224,16 @@ a {
   font-size: 1.2rem;
 }
 
+/* 入力エラーのスタイル */
+input[type=text]:required,
+input[type=email]:required,
+input[type=email]:invalid,
+textarea:required {
+	color: #630015;
+	border-color: #c20c33;
+	background-color: #ffd9e1;
+}
+
 /* ----------------   タブレット     --------------------- */
 @media screen and (min-width: 767px) and (max-width: 1024px) {
   .contactform_contact_company_img {
