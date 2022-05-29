@@ -1,5 +1,13 @@
+/* メイン全体について */
+.main_wrapper {
+  margin-top: 8rem;
+  margin-bottom: 4.5rem;
+  text-align: center;
+}
+
+
 .thanks {
-  background-color: rgba(38, 166, 154, 0.05);
+  background-color: rgba(38, 166, 154, 0.15);
   border-radius: 10%;
   width: 80%;
   margin: 0 auto;
@@ -30,7 +38,9 @@
   padding-bottom: 24px;
 }
 
-.back_to_top button {
+.back_to_top a {
+  text-decoration: none;
+  color: #000;
   background-color: rgba(7, 101, 7, 0.363);
   padding: 16px 24px;
   border: none;

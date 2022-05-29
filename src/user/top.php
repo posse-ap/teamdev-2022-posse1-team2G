@@ -26,6 +26,9 @@ if (!isset($_SESSION['ticket'])) {
 //トークンを変数に代入（隠しフィールドに挿入する値）
 $ticket = $_SESSION['ticket'];
 
+// 企業数のカウント
+$cnt = count($companies);
+$row = 0;
 ?>
 
 <!DOCTYPE html>
@@ -40,6 +43,7 @@ $ticket = $_SESSION['ticket'];
   <!-- fontawesomw追加 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/parts.css">
 </head>
 
 <body>
@@ -88,7 +92,7 @@ $ticket = $_SESSION['ticket'];
           <!-- 一つの会社ボックス -->
           <?php foreach ($companies as $company) : ?>
             <a href="./detail.php?company_id='<?= $company['company_id']; ?>'">
-              <div class="company_box">
+               <div class="company_box">
                 <div class="company_box_logo">
                   <!-- <img src="../img/'<? $company["logo"]; ?>'" alt=""> -->
                   <img src="../img/boozer_logo.png" alt="">
@@ -123,33 +127,37 @@ $ticket = $_SESSION['ticket'];
                   <p>マイナビ新卒紹介はあああああああああああああああああああ</p>
                 </div>
                 <div class='button_container'>
-                  <div class="company_box_check">
-                    <label for="check"><input type="checkbox" id='check' name="select_company_checkboxes" value="<?= $company['company_id']; ?>-<?= $company['name']; ?>" onchange="checked_counter()">比較する</label>
-                  </div>
                   <div class="company_box_button">
                     <a href="./contact/contactform.php?company_id=<?= h($company['company_id']); ?>" class="inquiry">お問い合わせ</a>
                   </div>
+                  <div class="company_box_check">
+                    <input type="checkbox" name="select_company_checkboxes" value="<?= $company['company_id']; ?><?= $company['name']; ?>" id="checked_box_<? echo $row; ?>" onchange="checked_counter()">
+                    <label for="checked_box_<? echo $row; ?>">会社を比較する</label>
+                    <? $row += 1; ?>
+                    <!-- <label for="check"><input type="checkbox" name="select_company_checkboxes" value="<?= $company['company_id']; ?>-<?= $company['name']; ?>" onchange="checked_counter()">複数の会社を比較する</label> -->
+                  </div>
                   <a class="page_change" href="../html/result.html"></a>
                 </div>
-              </div>
-            </a>
-          <?php endforeach; ?>
-          <div>
-            <!-- 比較チェックボタンついた会社を一時表示するボックス -->
-            <div class="selected_company_box">
-              <p>比較するエージェント会社</p>
-              <form id="form" class="validationForm" action="./compare_table.php" method="post">
-                <!-- 比較チェックボタンついた会社の表示箇所 -->
-                <div id="checked_company_box"></div>
-                <!-- 完了ページへ渡すトークンの隠しフィールド -->
-                <input type="hidden" name="ticket" value="<?php echo h($ticket); ?>">
-                <!-- 比較するボタンを押すと、一時表示された会社の情報を比較表ページにpostする -->
-                <button name="submitted" type="submit" class="">比較する</button>
-              </form>
-            </div>
-          </div>
-
         </div>
+      
+        </a>
+      <?php endforeach; ?>
+      <div>
+        <!-- 比較チェックボタンついた会社を一時表示するボックス -->
+        <div id="at_once_box" class="selected_company_box">
+          <p class="box-title">比較するエージェント会社</p>
+          <form id="form" class="validationForm" action="./compare_table.php" method="post">
+            <!-- 比較チェックボタンついた会社の表示箇所 -->
+            <div id="checked_company_box"></div>
+            <!-- 完了ページへ渡すトークンの隠しフィールド -->
+            <input type="hidden" name="ticket" value="<?php echo h($ticket); ?>">
+            <!-- 比較するボタンを押すと、一時表示された会社の情報を比較表ページにpostする -->
+            <button name="submitted" type="submit" class="contact_button">比較する</button>
+          </form>
+        </div>
+      </div>
+
+      </div>
       </div>
     </section>
     <section id="problem">
@@ -299,7 +307,7 @@ $ticket = $_SESSION['ticket'];
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="../js/script.js"></script>
   <!-- 比較ボタンの挙動（company_idの受け渡し）を記述したファイルの読み込み -->
-  <script src="../js/to_compare_table.js"></script>
+  <script src="../js/compare_table.js"></script>
 </body>
 
 </html>
