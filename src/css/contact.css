@@ -1,0 +1,252 @@
+.contactform_title,
+.confirm_title {
+  text-align: center;
+  margin: 64px 0 64px;
+}
+
+.contactform_contact_company {
+  display: flex;
+  align-items: center;
+  width: 88%;
+  margin: 10px auto 0;
+  /* border: 1px solid black; */
+  border-bottom: 1px solid rgba(85, 96, 83, 0.281);
+  height: 80px;
+}
+
+.contactform_contact_company_img {
+  width: 140px;
+  height: 80px;
+  margin-left: 4%;
+  object-fit: cover;
+}
+
+.contactform_contact_company_img img {
+  width: 80%
+}
+
+.contactform_contact_company_name {
+  width: 60%;
+}
+
+.contactform_contact_company_name p{
+  margin-left: 16%;
+  font-size: 1.6rem;
+}
+
+.contactform_each_container,
+.confirm_each_container {
+  display: flex;
+  /* outline: 1px solid red; */
+  align-items: center;
+  width: 88%;
+  margin: 0 auto;
+  border-bottom: 1px solid rgba(85, 96, 83, 0.281);
+  height: 80px;
+}
+
+.contactform_topic {
+  background-color: rgba(210, 147, 38, 0.459);
+  color: #fff;
+  border-bottom: none;
+  height: 64px;
+  padding-left: 8%;
+  font-size: 1.2rem;
+}
+
+.topic_info {
+  margin-top: 48px;
+}
+
+/* .top_container {
+  border-top: 1px solid rgba(85, 96, 83, 0.281);
+  margin-top: 40px;
+} */
+
+.contactform_question,
+.confirm_question,
+.confirm_company_question {
+  width: 25%;
+
+}
+
+
+.contactform_question p,
+.confirm_question p,
+.confirm_company_question p {
+  padding-left: 20%;
+}
+
+.contactform_required,
+.contactform_not_required,
+.confirm_required,
+.confirm_not_required {
+  width: 15%;
+}
+
+.contactform_required p,
+.contactform_not_required p,
+.confirm_required p,
+.confirm_not_required p {
+  padding: 2px 0;
+  margin-right: 30%;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.contactform_required p,
+.confirm_required p {
+  background-color: rgba(3, 66, 13, 0.435);
+}
+
+.contactform_not_required p,
+.confirm_not_required p {
+  background-color: rgba(182, 192, 184, 0.435);
+}
+
+.contactform_input,
+.confirm_answer {
+  width: 50%;
+  /* outline: 1px solid rgb(170, 255, 0); */
+}
+
+a {
+  text-decoration: none;
+}
+
+.contactform_input input:not(.required) {
+  width: 110%;
+  height: 48px;
+  border: 1px solid black;
+  margin: 0;
+  padding: 0;
+  /* margin-right: 10%; */
+}
+
+.contactform_contact_company_name {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+/*--------------- radioボタン ----------------*/
+.contactform_input_radio {
+  width: 60%;
+}
+
+.contactform_input_radio label {
+  margin-right: 16%;
+}
+
+/* ----------------  textarea  ------------------- */
+.contactform_input_textarea {
+  width: 60%;
+}
+
+.contactform_input_textarea textarea {
+  width: 90%;
+  resize: none;
+  border: 1px solid black;
+}
+
+.textarea {
+  height: 140px;
+}
+
+/* ----------------  submit  ------------------- */
+.contactform_submit {
+  text-align: center;
+  margin: 40px 0 40px;
+}
+
+.contactform_submit input {
+  padding: 16px 72px;
+  background-color: rgb(224, 127, 15);
+  color: #fff;
+  border: none;
+  font-size: 1.2rem;
+}
+
+.contactform_submit input:hover {
+  opacity: .7;
+}
+
+
+
+/* ----------------   confirmのみ     --------------------- */
+.confirm_company_container {
+  text-align: center;
+}
+
+.confirm_company_title {
+  margin-bottom: 40px;
+}
+
+.confirm_comapny_list {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.confirm_comapny_img_container img {
+  width: 300px;
+  height: 200px;
+  object-fit: contain;
+}
+
+.confirm_chunk_title {
+  text-align: center;
+  margin: 80px 0 64px;
+}
+
+.confirm_chunk_title p {
+  font-size: 1.6rem;
+}
+
+/* ----------------   タブレット     --------------------- */
+@media screen and (min-width: 767px) and (max-width: 1024px) {
+  .contactform_contact_company_img {
+    width: 15%
+  }
+
+  .contactform_question p,
+  .confirm_question p,
+  .confirm_company_question p {
+    font-size: .9rem;
+  }
+
+  .contactform_not_required p,
+  .contactform_required p,
+  .confirm_not_required p,
+  .confirm_required p {
+    font-size: .9rem;
+    padding: 4px 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+
+  .contactform_question p,
+  .contactform_required p,
+  .contactform_not_required p,
+  .confirm_question p,
+  .confirm_required p,
+  .confirm_not_required p,
+  .confirm_company_question p {
+    font-size: .8rem;
+  }
+
+  .contactform_required,
+  .contactform_not_required,
+  .confirm_required,
+  .confirm_not_required {
+    width: 12%;
+  }
+
+  .confirm_company_title {
+    margin-bottom: 16px;
+  }
+}

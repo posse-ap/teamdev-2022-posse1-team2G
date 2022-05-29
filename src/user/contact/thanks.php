@@ -2,8 +2,9 @@
 //セッションを開始
 session_start(); 
 
+require('../dbconnect.php');
 //エスケープ処理やデータをチェックする関数を記述したファイルの読み込み
-require '../libs/functions.php'; 
+require '../../libs/functions.php'; 
  
 //お問い合わせ日時を日本時間に
 date_default_timezone_set('Asia/Tokyo'); 
@@ -98,11 +99,10 @@ $result_user = $mailsousin;
 
 /* メールの作成 （to エージェント）*/
 // SELECT文を変数に格納
-  require('../dbconnect.php');
   $company_id_session = $_SESSION[ 'company_id' ];
-  echo "<pre>";
-  print_r($company_id_session);
-  echo"</pre>";
+  // echo "<pre>";
+  // print_r($company_id_session);
+  // echo"</pre>";
 
   // キーワードの数だけループして、LIKE句の配列を作る
   $company_id_Condition = [];
@@ -121,9 +121,9 @@ $result_user = $mailsousin;
     $stmt->execute();
     $contact_mail_info = $stmt->fetch();
       
-    echo "<pre>";
-    print_r($contact_mail_info);
-    echo"</pre>";
+    // echo "<pre>";
+    // print_r($contact_mail_info);
+    // echo"</pre>";
   
   //メール本文の用意
   $honbun_agent = '';
@@ -171,7 +171,6 @@ $result_user = $mailsousin;
   
   //データ追加
   try {
-    require('../dbconnect.php');
     //usersテーブルへ
     //データ登録
     $sql_users = "INSERT INTO 

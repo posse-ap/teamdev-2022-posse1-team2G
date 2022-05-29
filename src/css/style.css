@@ -1,0 +1,511 @@
+/* 全体の要素について */
+body{
+  padding: 0;
+  font-family: "Noto Sans JP", sans-serif;
+  letter-spacing: 0.08em;
+}
+
+section{
+  padding: 15px 0 40px 0;
+}
+
+.title_box{
+  text-align: center;
+}
+.title_box p{
+  color: #949697;
+  letter-spacing: 0.1em;
+}
+
+.back_color{
+  background-color: rgba(38, 166, 154, 0.05);
+}
+
+.title_box{
+  padding-bottom: 20px;
+}
+
+.capital{
+  font-size: 16px;
+  font-weight: bold;
+  padding-right: 15px;
+  color: #34373a;
+}
+
+/* ヘッダーについて */
+header{
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  height: 65px;
+  background-color: rgba(38, 166, 154, 0.85);
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.header_logo a{
+  padding: 10px 20px;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+}
+/* .header_logo img{
+  width: 100px;
+  height: 60px;
+} */
+
+.header_nav{
+  margin: 0 20px 0 auto;
+}
+.header_nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.header_nav a{
+  padding: 10px 15px 15px;
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.header_nav a:hover{
+  opacity: 0.7;
+}
+
+/* トップについて */
+.top{
+  height: 630px;
+}
+.top_wrapper{
+  position: relative;
+  height: 100%;
+  background-image: url(../img/syuukatu.webp);
+  background-size: cover;
+}
+.top_sentence{
+  position: absolute;
+  top: 480px;
+  left: 20px;
+  padding: 0 30px 0 40px;
+  font-size: 20px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+  /* border-bottom: solid 10px rgb(122,220,180); */
+  /* background: linear-gradient(transparent 60%, #01bebd 60%); */
+  /* -webkit-transform: skew(-15deg);
+  transform: skew(-15deg); */
+  z-index: 10;
+}
+.top_sentence::before{
+  content: "Recruit";
+  position: absolute;
+  top: -40px;
+  left: 15px;
+  transform: rotate(-8deg);
+  color: rgb(53, 223, 206);
+  font-size: 80px;
+  font-family: luxus-brut, cursive;
+  font-style: italic;
+  z-index: -1;
+}
+
+.top_search{
+  position: absolute;
+  top: 90px;
+  left: 720px;
+  width: 680px;
+  height: 510px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);
+}
+
+/* 企業一覧について */
+a {
+  color:#1E2022;
+  text-decoration:none;
+}
+.company_list{
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.company_box{
+  position: relative;
+  background-color: white;
+  top: 0;
+  width: 350px;
+  height: 450px;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+  transition: all .3s;
+  border-radius: 4px;
+  margin-bottom: 30px;
+}
+.company_box:hover{
+  top: -3px;
+  box-shadow: 0 13px 13px rgba(0, 0, 0, 0.2);
+}
+
+.company_box_logo{
+  position: absolute;
+  top: 65px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 110px;
+  height: 110px;
+  background-color: white;
+  z-index: 100;
+  border: 1px solid;
+  border-color: rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+}
+.company_box_logo img{
+  width: 100%;
+}
+
+.company_box_img{
+  position: relative;
+  width: 100%;
+}
+.company_box_img img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 140px;
+  z-index: 10;
+  object-fit: cover;
+}
+
+.company_box_name{
+  position: absolute;
+  top: 170px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 600;
+  color: #34373a;
+  font-size: 20px;
+  background: linear-gradient(transparent 85%, #cccccc 83%);
+  height: 46px;
+}
+
+.company_box_info{
+  position: absolute;
+  width: 80%;
+  top: 230px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  display: block;
+}
+.company_box_info i{
+  width: 20px;
+}
+
+.company_info_first, .company_info_second, .company_info_third{
+  display: flex;
+  align-items: center;
+  margin: 1% 0;
+  /* border-bottom: 1px solid #000; */
+}
+.company_info_first .capital, 
+.company_info_second .capital, 
+.company_info_third .capital{
+  width: 30%;
+  padding-left: 2%;
+}
+
+.company_info_first p, .company_info_second p, .company_info_third p{
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.company_box_exp{
+  position: absolute;
+  top: 310px;
+  width: 90%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-size: 14px;
+}
+.company_box_exp p{
+  width: 100%;
+}
+
+.company_box_button{
+  text-align: center;
+  position: absolute;
+  top: 375px;
+  width: 95%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  margin: 0 auto;
+  z-index: 10;
+}
+.company_box_button .inquiry{
+  position: relative;
+  color: #fff;
+  background-color: #FF6E40;
+  cursor: pointer;
+  font-weight: 550;
+  font-size: 14px;
+  padding: 12px 20px 12px 10px;
+  text-decoration: none;
+  border-radius: 4px;
+}
+.company_box_button .inquiry:hover{
+  background: #fa5a29;
+}
+.company_box_button .inquiry::after{
+  content: "";
+  position: absolute;
+  top: 50%;
+  bottom: 0;
+  right: 10px;
+  font-size: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 6px;
+  height: 6px;
+  border-top: solid 2px white;
+  border-right: solid 2px white;
+  transform: translateY(-50%) rotate(45deg);
+}
+/* .company_box_button .comparison{
+  color: #fff;
+  background-color: #02a348;
+  cursor: pointer;
+  font-weight: 550;
+  font-size: 12px;
+  padding: 12px 20px 12px 10px;
+  text-decoration: none;
+  border-radius: 4px;
+}
+.company_box_button .comparison:hover{
+  background: #01ad4c;
+}
+.company_box_button .comparison::after{
+  content: "";
+  position: absolute;
+  top: 50%;
+  bottom: 0;
+  right: 10px;
+  font-size: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 6px;
+  height: 6px;
+  border-top: solid 2px white;
+  border-right: solid 2px white;
+  transform: translateY(-50%) rotate(45deg);
+} */
+
+.company_box_check{
+  position: absolute;
+  bottom: 13px;
+  font-size: 14px;
+  margin-left: 18px;
+  z-index: 10;
+}
+.company_box_check .check:hover{
+  opacity: 0.5;
+}
+.company_box_check input{
+  margin-right: 5px;
+}
+
+.company_box .page_change{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index: 1;
+}
+
+
+/* Q&Aについて */
+.question_wrapper{
+  max-width: 1100px;
+  padding: 0 32px;
+  margin: 0 auto;
+}
+
+.question_list{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.question_list li{
+  border-radius: 8px;
+  background: #fff;
+  -webkit-box-shadow: 6px 10px 12px 0px rgb(40 47 60 / 5%);
+  box-shadow: 6px 10px 12px 0px rgb(40 47 60 / 5%);
+  cursor: pointer;
+  -webkit-transition: .4s ease;
+  transition: .4s ease;
+  margin-bottom: 22px;
+}
+
+.question_box{
+  display: flex;
+  cursor: pointer;
+  position: relative;
+  padding: 20px 40px 20px 24px;
+}
+.question_box:before{
+  position: absolute;
+  content: '';
+  display: block;
+  top: 50%;
+  right: 25px;
+  width: 16px;
+  height: 2px;
+  background: rgba(38, 166, 154, 1);
+  transform: rotate(90deg);
+  -webkit-transition: .4s ease;
+  transition: .4s ease;
+}
+.question_box:after{
+  position: absolute;
+  content: '';
+  display: block;
+  top: 50%;
+  right: 25px;
+  width: 16px;
+  height: 2px;
+  background: rgba(38, 166, 154, 1);
+  -webkit-transition: .4s ease;
+  transition: .4s ease;
+}
+.question_box.open:before{
+  transform: rotate(180deg);
+}
+.question_box.open:after{
+  opacity: 0;
+}
+
+.question_box_txt {
+  margin: 0;
+  display: flex;
+}
+.question_box_txt h3{
+  margin: auto 0;
+}
+
+.question_capital{
+  padding-right: 50px;
+  color: rgba(1, 191, 189, 1);
+  font-size: 28px;
+  font-weight: bold;
+}
+
+
+.answer_box{
+  display: none;
+  padding: 20px 40px 20px 24px;
+}
+.answer_box_txt{
+  display: flex;
+  position: relative;
+}
+.answer_box_txt p{
+  position: absolute;
+  top: 50%;
+  left: 60px;
+  transform: translate(0, -50%);
+  margin: 0;
+  line-height: 1.2;
+  font-size: 14px;
+}
+
+.answer_capital{
+  padding-right: 50px;
+  color: #ff8484;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* フッダーについて */
+footer{
+  position: relative;
+  width: 100%;
+  height: 300px;
+  background-color: #1E2022;
+}
+
+.footer_student{
+  position: absolute;
+  top: 50px;
+  left: 250px;
+}
+
+.footer_company{
+  position: absolute;
+  top: 50px;
+  left: 500px;
+}
+
+.footer_student p, .footer_company p{
+  color: #f0f0f0;
+  font-size: 16px;
+  line-height: 2;
+  margin-bottom: 8px;
+}
+
+.footer_list a{
+  padding: 10px 15px 15px;
+  color: #949697;
+  text-decoration: none;
+  font-size: 13px;
+  line-height: 2;
+}
+.footer_list a:hover{
+  color: #f8f8f8;
+}
+
+.footer_list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.footer_list li{
+  padding-left: 10px;
+}
+
+.footer_logo {
+  position: absolute;
+  top: 50px;
+  left: 950px;
+  margin-top: 15px;
+  color: white;
+  font-size: 50px;
+  font-weight: bold;
+}
+.footer_logo p{
+  margin: 0;
+}
+
+.footer_copyright{
+  position: absolute;
+  top: 115px;
+  left: 950px;
+  font-size: 11px;
+  color: #545658;
+  display: inline-block;
+  margin-top: 16px;
+  letter-spacing: 0.02em;
+}
