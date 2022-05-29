@@ -303,7 +303,7 @@ $row = 0;
         <p class="box-title">✓選択済みエージェント会社</p>
         <form id="form" class="validationForm" action="./contact/contactform.php" method="post">
           <!-- お問い合わせチェックボタンついた会社の表示箇所 -->
-          <div id="checked_company_box" class="self__checkbox"></div>
+          <div id="checked_company_box"></div>
           <!-- 完了ページへ渡すトークンの隠しフィールド -->
           <input type="hidden" name="ticket" value="<?php echo h($ticket); ?>">
           <!-- お問い合わせするボタンを押すと、一時表示された会社の情報を比較表ページにpostする -->

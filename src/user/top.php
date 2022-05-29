@@ -134,7 +134,6 @@ $row = 0;
                     <input type="checkbox" name="select_company_checkboxes" value="<?= $company['company_id']; ?><?= $company['name']; ?>" id="checked_box_<? echo $row; ?>" onchange="checked_counter()">
                     <label for="checked_box_<? echo $row; ?>">会社を比較する</label>
                     <? $row += 1; ?>
-                    <!-- <label for="check"><input type="checkbox" name="select_company_checkboxes" value="<?= $company['company_id']; ?>-<?= $company['name']; ?>" onchange="checked_counter()">複数の会社を比較する</label> -->
                   </div>
                   <a class="page_change" href="../html/result.html"></a>
                 </div>
