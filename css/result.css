@@ -31,7 +31,7 @@ body {
 .result_right {
   width: 70%;
   margin-left: 4%;
-  outline: 1px solid blue;
+  /* outline: 1px solid blue; */
 }
 
 .result_box_logo img {
@@ -49,10 +49,12 @@ body {
   color: #34373a;
   font-size: 36px;
   margin-top: 10px;
+  padding-left: 4%;
 }
 
 .result_box_name p {
   margin: 0;
+  padding: 16px 0;
 }
 
 .result_box_line {
@@ -75,23 +77,34 @@ body {
 
 .company_info_first,
 .company_info_second,
-.company_info_third{
-display: flex;
-flex-direction: column;
+.company_info_third {
+  display: flex;
+  flex-direction: column;
 }
-.company_info_result p{
-margin: 8px 0;
-font-size: 20px;
-}
-.result_box_exp {
 
+.company_info_result p {
+  margin: 8px 0;
+  font-size: 18px;
 }
+
 
 .result_box_info {
 
   display: flex;
-  width: 50%;
+  /* width: 50%; */
   justify-content: space-between;
+  padding: 16px 4%;
+  /* padding: 0 4%; */
+}
+
+.result_box_exp {
+  padding-left: 4%;
+width: 50%;
+}
+
+.result_box_exp .capital {
+  font-size: 18px;
+
 }
 
 .result_box_support {
