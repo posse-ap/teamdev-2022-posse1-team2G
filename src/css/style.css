@@ -576,6 +576,9 @@ a {
   .form_each_heading p {
     margin: 0;
   }
+  .selected_company_box {
+    height: 14rem;
+  }
 
 }
 
@@ -614,9 +617,9 @@ a {
     z-index: -1;
   }
 
-  /* .top_wrapper{
-    position: static;
-  } */
+  .selected_company_box {
+    height: 24rem;
+  }
 
 
   .top_search {
