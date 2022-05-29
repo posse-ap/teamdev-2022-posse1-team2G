@@ -9,22 +9,22 @@ $companies = $stmt->fetchAll();
 
 //セッションを開始
 session_start();
- 
+
 //セッションIDを更新して変更（セッションハイジャック対策）
-session_regenerate_id( TRUE );
+session_regenerate_id(TRUE);
 //エスケープ処理やデータをチェックする関数を記述したファイルの読み込み
-require '../libs/functions.php'; 
+require '../libs/functions.php';
 
 //NULL 合体演算子を使ってセッション変数を初期化（PHP7.0以降）
-$id = $_SESSION[ 'id' ] ?? NULL;
+$id = $_SESSION['id'] ?? NULL;
 
 //CSRF対策のトークンを生成
-if ( !isset( $_SESSION[ 'ticket' ] ) ) {
+if (!isset($_SESSION['ticket'])) {
   //セッション変数にトークンを代入
-  $_SESSION[ 'ticket' ] = bin2hex(random_bytes(32));
+  $_SESSION['ticket'] = bin2hex(random_bytes(32));
 }
 //トークンを変数に代入（隠しフィールドに挿入する値）
-$ticket = $_SESSION[ 'ticket' ];
+$ticket = $_SESSION['ticket'];
 
 // 企業数のカウント
 $cnt = count($companies);
@@ -33,6 +33,7 @@ $row = 0;
 
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,6 +45,7 @@ $row = 0;
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/parts.css">
 </head>
+
 <body>
   <header>
     <div class="header_wrapper">
@@ -72,11 +74,13 @@ $row = 0;
           <h1>自分に合った企業が見つかる</h1>
         </div>
         <!-- PHP側で作って貰った検索機能 -->
-        <div class="top_search">
+        <div class='search_empty'></div>
 
-        </div>
         <!-- ここまで -->
       </div>
+    </div>
+    <div class="top_search">
+      <?php require('./search.php') ?>
     </div>
     <section id="company" class="back_color">
       <div class="company_wrapper">
@@ -89,69 +93,72 @@ $row = 0;
           <?php foreach ($companies as $company) : ?>
             <a href="./detail.php?company_id='<?= $company['company_id']; ?>'">
                <div class="company_box">
-                 <div class="company_box_logo">
-                   <!-- <img src="../img/'<? $company["logo"];?>'" alt=""> -->
-                   <img src="../img/boozer_logo.png" alt="">
-                   <!-- <img src="../img/rikunabi.png" alt=""> -->
-                 </div>
-                 <div class="company_box_name">
-                   <p><?= $company['name']; ?></p>
-                 </div>
-                 <div class="company_box_img">
-                   <img src="../img/company1.png" alt="">
-                 </div>
-                 <div class="company_box_info">
-                   <div class="company_info_first">
-                     <i class="fa-solid fa-briefcase"></i>
-                     <p class="capital">業種</p>
-                     <p><?= $company['industries']; ?></p>
-                   </div>
-                   <div class="company_info_second">
-                     <i class="fa-solid fa-trophy"></i>
-                     <p class="capital">実績</p>
-                     <p><?= $company['achievement']; ?>%</p>
-                   </div>
-                   <div class="company_info_third">
-                     <i class="fa-solid fa-hand-point-up"></i>
-                     <p class="capital">おすすめ</p>
-                     <!-- ここら辺もしphpなら二つのp要素くっつけてもいいかもです -->
-                     <p><?= $company['type']; ?></p>
-                     <!-- ここまで -->
-                   </div>
-                 </div>
-                 <div class="company_box_exp">
-                   <p>マイナビ新卒紹介はあああああああああああああああああああああああああああ</p>
-                 </div>
-                 <div class="company_box_button">
-                   <a href="./contact/contactform.php?company_id=<?= h($company['company_id']); ?>" class="inquiry">お問い合わせはこちら</a>
-                 </div>
-                 <div class="company_box_check">
-                   <input type="checkbox" name="select_company_checkboxes" value="<?= $company['company_id']; ?><?= $company['name']; ?>" id="checked_box_<? echo $row; ?>" onchange="checked_counter()">
-                   <label for="checked_box_<? echo $row; ?>">複数の会社を比較する</label>
-                   <? $row += 1; ?>
-                   <!-- <label for="check"><input type="checkbox" name="select_company_checkboxes" value="<?= $company['company_id'];?>-<?= $company['name'];?>" onchange="checked_counter()">複数の会社を比較する</label> -->
-                 </div>
-                 <a class="page_change" href="../html/result.html"></a>
-               </div>
-            </a>
-          <?php endforeach; ?>
-          <div>
-            <!-- 比較チェックボタンついた会社を一時表示するボックス -->
-            <div id="at_once_box" class="selected_company_box">
-              <p class="box-title">比較するエージェント会社</p>
-              <form id="form" class="validationForm" action="./compare_table.php" method="post">
-                <!-- 比較チェックボタンついた会社の表示箇所 -->
-                   <div id="checked_company_box"></div>
-                <!-- 完了ページへ渡すトークンの隠しフィールド -->
-                   <input type="hidden" name="ticket" value="<?php echo h($ticket); ?>">
-                <!-- 比較するボタンを押すと、一時表示された会社の情報を比較表ページにpostする -->
-                   <button name="submitted" type="submit" class="contact_button">比較する</button>
-              </form>
-            </div>
-          </div>
-          
+                <div class="company_box_logo">
+                  <!-- <img src="../img/'<? $company["logo"]; ?>'" alt=""> -->
+                  <img src="../img/boozer_logo.png" alt="">
+                  <!-- <img src="../img/rikunabi.png" alt=""> -->
+                </div>
+                <div class="company_box_name">
+                  <p><?= $company['name']; ?></p>
+                </div>
+                <div class="company_box_img">
+                  <img src="../img/company1.png" alt="">
+                </div>
+                <div class="company_box_info">
+                  <div class="company_info_first">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <p class="capital">業種</p>
+                    <p><?= $company['industries']; ?></p>
+                  </div>
+                  <div class="company_info_second">
+                    <i class="fa-solid fa-trophy"></i>
+                    <p class="capital">実績</p>
+                    <p><?= $company['achievement']; ?>%</p>
+                  </div>
+                  <div class="company_info_third">
+                    <i class="fa-solid fa-hand-point-up"></i>
+                    <p class="capital">おすすめ</p>
+                    <!-- ここら辺もしphpなら二つのp要素くっつけてもいいかもです -->
+                    <p><?= $company['type']; ?></p>
+                    <!-- ここまで -->
+                  </div>
+                </div>
+                <div class="company_box_exp">
+                  <p>マイナビ新卒紹介はあああああああああああああああああああ</p>
+                </div>
+                <div class='button_container'>
+                  <div class="company_box_button">
+                    <a href="./contact/contactform.php?company_id=<?= h($company['company_id']); ?>" class="inquiry">お問い合わせ</a>
+                  </div>
+                  <div class="company_box_check">
+                    <input type="checkbox" name="select_company_checkboxes" value="<?= $company['company_id']; ?><?= $company['name']; ?>" id="checked_box_<? echo $row; ?>" onchange="checked_counter()">
+                    <label for="checked_box_<? echo $row; ?>">会社を比較する</label>
+                    <? $row += 1; ?>
+                    <!-- <label for="check"><input type="checkbox" name="select_company_checkboxes" value="<?= $company['company_id']; ?>-<?= $company['name']; ?>" onchange="checked_counter()">複数の会社を比較する</label> -->
+                  </div>
+                  <a class="page_change" href="../html/result.html"></a>
+                </div>
         </div>
-      </div> 
+      
+        </a>
+      <?php endforeach; ?>
+      <div>
+        <!-- 比較チェックボタンついた会社を一時表示するボックス -->
+        <div id="at_once_box" class="selected_company_box">
+          <p class="box-title">比較するエージェント会社</p>
+          <form id="form" class="validationForm" action="./compare_table.php" method="post">
+            <!-- 比較チェックボタンついた会社の表示箇所 -->
+            <div id="checked_company_box"></div>
+            <!-- 完了ページへ渡すトークンの隠しフィールド -->
+            <input type="hidden" name="ticket" value="<?php echo h($ticket); ?>">
+            <!-- 比較するボタンを押すと、一時表示された会社の情報を比較表ページにpostする -->
+            <button name="submitted" type="submit" class="contact_button">比較する</button>
+          </form>
+        </div>
+      </div>
+
+      </div>
+      </div>
     </section>
     <section id="problem">
       <div class="title_box">
@@ -182,18 +189,18 @@ $row = 0;
       <div class="question_wrapper">
         <ul class="question_list">
           <li>
-              <div class="question_box">
-                <div class="question_box_txt">
-                  <span class="question_capital">Q.</span>
-                  <h3>本当に無料で利用できますか？</h3>
-                </div>
+            <div class="question_box">
+              <div class="question_box_txt">
+                <span class="question_capital">Q.</span>
+                <h3>本当に無料で利用できますか？</h3>
               </div>
-              <div class="answer_box">
-                <div class="answer_box_txt">
-                  <span class="answer_capital">A.</span>
-                  <p>当サイトは掲載を依頼して下さる企業様からいただく、紹介手数料により事業が成り立っています。そのため、当サイトのご利用者様からは一切料金をいただいておりませんので、安心してご利用ください。</p>
-                </div>
+            </div>
+            <div class="answer_box">
+              <div class="answer_box_txt">
+                <span class="answer_capital">A.</span>
+                <p>当サイトは掲載を依頼して下さる企業様からいただく、紹介手数料により事業が成り立っています。そのため、当サイトのご利用者様からは一切料金をいただいておりませんので、安心してご利用ください。</p>
               </div>
+            </div>
           </li>
           <li>
             <div class="question_box">
@@ -282,7 +289,7 @@ $row = 0;
           <li><a href="#">就活エージェントとは</a></li>
         </ul>
       </div>
-      <div class="footer_company">
+      <!-- <div class="footer_company">
         <p>企業の方へ</p>
         <ul class="footer_list">
           <li><a href="#">CRAFTについて</a></li>
@@ -290,12 +297,11 @@ $row = 0;
         </ul>
       </div>
       <div class="footer_logo">
-        <!-- <img src="" alt="logo"> -->
         <p>CRAFT</p>
       </div>
       <span class="footer_copyright">
         ©︎ 2022 CRAFT. All rights reserved.
-      </span>
+      </span> -->
     </div>
   </footer>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -303,5 +309,5 @@ $row = 0;
   <!-- 比較ボタンの挙動（company_idの受け渡し）を記述したファイルの読み込み -->
   <script src="../js/compare_table.js"></script>
 </body>
-</html>
 
+</html>

@@ -8,6 +8,12 @@
   text-align: center;
 }
 
+.form_title h1 {
+  margin: 0;
+  padding-top: 12px;
+  font-size: 1.2rem;
+}
+
 .form_group {
   display: flex;
 }
@@ -19,7 +25,7 @@
 
 .form_each_heading p {
   color: #fff;
-  padding: 8px 0 8px 6%;
+  padding: 4px 0 4px 6%;
 }
 
 .form_checkbox_container {
@@ -34,27 +40,85 @@
 .each_type_checkbox {
   width: 40%;
   /* padding-left: 10%; */
-  padding: 12px 0 12px 10%;
+  padding: 8px 0 8px 6%;
 }
 
 .each_industries_checkbox label,
-.each_type_checkbox label{
-font-size: 1.2rem;
+.each_type_checkbox label {
+  font-size: .8rem;
 }
 
 .form_submit {
   text-align: center;
-  margin-top: 40px;
+  padding: 8px 0 6px 0;
 }
 
 .form_submit button {
-  padding: 8px 40px;
+  padding: 8px 24px;
   border: none;
   background-color: rgba(66, 168, 41, 0.675);
   color: #fff;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
 }
 
 .form_submit button:hover {
   opacity: .8;
+}
+
+@media screen and (min-width: 767px) and (max-width: 1024px) {
+
+
+  .top_search {
+    position: absolute;
+    top: 80px;
+    right: 6%;
+    height: 50vh;
+  }
+
+  .form_title h1 {
+    padding-bottom: 8px;
+  }
+
+  .form_each_heading p {
+    margin: 0;
+  }
+
+}
+
+@media screen and (max-width: 767px) {
+  .form_title h1 {
+    font-size: 1.2rem;
+    padding: 10px 0 8px 0;
+    /* color: red; */
+  }
+
+  .form_each_heading p {
+    margin: 0;
+    font-size: .8rem;
+  }
+
+  .form_body {
+    margin: 24px 0;
+  }
+
+  .each_industries_checkbox,
+  .each_type_checkbox {
+    padding: 5px 0 5px 10%;
+    width: 40%;
+  }
+
+  .each_industries_checkbox label,
+  .each_type_checkbox label {
+    font-size: .6rem;
+  }
+
+  .form_submit {
+    text-align: center;
+    padding: 6px 0 6px 0;
+  }
+
+  .form_submit button {
+    padding: 6px 18px;
+    font-size: 1rem;
+  }
 }
