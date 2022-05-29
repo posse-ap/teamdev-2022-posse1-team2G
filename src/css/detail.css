@@ -24,7 +24,7 @@ body {
   color: #333;
   padding: 20px 0;
   left: calc(50% - 15%);
-  bottom: 100px;
+  bottom: 50px;
   box-shadow: 1px 1px 5px #aaa;
   color: #fff;
   background-color: #FF6E40;
@@ -52,7 +52,7 @@ body {
 /* ページのタイトル */
 .detail_title {
   /* background: url(../img/makiko.jpg) #58b8d1 contain no-repeat; */
-  background: #a5b78b no-repeat center;
+  background: rgba(38, 166, 154, 0.9) no-repeat center;
   width: 100%;
   height: 100px;
   display: flex;
@@ -62,7 +62,7 @@ body {
 }
 
 .detail_title h1 {
-  margin-left: 24%;
+  margin-left: 10%;
   color: #fff;
   letter-spacing: .2rem;
   font-weight: normal;
@@ -96,9 +96,9 @@ body {
 }
 
 .section_title {
-  color: rgb(166, 184, 142);
+  color: rgba(38, 166, 154, 0.9);
   padding-bottom: 8px;
-  border-bottom: 1px rgb(166, 184, 142) solid;
+  border-bottom: 1px rgba(38, 166, 154, 0.9) solid;
   margin: 64px 0;
   padding-left: 4%;
 }
@@ -155,7 +155,7 @@ body {
 
 
 /* 企業からのメッセージ */
-.detail_section_message {
+.detail_section_message_content {
   padding: 0 4%;
 }
 
@@ -214,7 +214,7 @@ body {
 }
 
 .detail_section_support_list>dt {
-  background-color: #bad4c6;
+  background-color: rgba(38, 166, 154, 0.3);
   width: 50%;
   text-align: center;
 }
@@ -262,6 +262,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   border-bottom: 1px solid #ddd;
+  margin: 0 4%;
 }
 
 .detail_section_company_information_list>dt,
@@ -323,7 +324,7 @@ body {
 .company_detail_side_ul li {
   list-style: none;
   padding: 0 0 24px 8%;
-  color: rgb(166, 184, 142);
+  color: rgba(38, 166, 154, 0.9);
   font-weight: bold;
   font-size: 1.2rem;
 }
