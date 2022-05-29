@@ -1,7 +1,10 @@
 <?php
 require('../dbconnect.php');
 
-$sql = 'SELECT * FROM company_posting_information';
+$sql = 'SELECT * 
+         FROM company_posting_information
+         INNER JOIN company_feature
+         ON  company_posting_information.company_id = company_feature.company_id';
 $stmt = $db->query($sql);
 $stmt->execute();
 $companies = $stmt->fetchAll();
@@ -124,7 +127,7 @@ $row = 0;
                   </div>
                 </div>
                 <div class="company_box_exp">
-                  <p>マイナビ新卒紹介はあああああああああああああああああああ</p>
+                  <p class="type"><?= $company['feature_first']; ?></p>
                 </div>
                 <div class='button_container'>
                   <div class="company_box_button">

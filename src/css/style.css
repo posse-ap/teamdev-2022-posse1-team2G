@@ -343,7 +343,10 @@ a {
   border-radius: 1rem;
 }
 
-
+.type {
+  font-weight: bold;
+  text-align: center;
+}
 
 /* お悩みについて */
 .problem_catch {
