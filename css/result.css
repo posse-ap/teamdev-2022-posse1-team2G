@@ -16,7 +16,7 @@ body {
   display: flex;
   outline: 1px solid red;
   width: 90%;
-  margin: 0 auto;
+  margin: 10px auto;
 }
 
 .result_left {
@@ -29,9 +29,10 @@ body {
   /* outline: 1px solid blue; */
 }
 
+/* 
 .result_box_logo img {
   object-fit: cover;
-}
+} */
 
 .result_box_logo img {
   width: 300px;
@@ -152,9 +153,10 @@ a {
   z-index: 10;
 }
 
-.result_top_flex{
+.result_top_flex {
   display: flex;
 }
+
 /* .result_box_button_second .inquiry:hover {
   background: #fa5a29;
 }
@@ -209,3 +211,132 @@ a {
   border-right: solid 2px white;
   transform: translateY(-50%) rotate(45deg);
 } */
+
+
+
+
+
+
+@media screen and (min-width: 767px) and (max-width: 1024px) {
+  .result_box {
+    width: 96%;
+  }
+
+  .result_right {
+    width: 80%;
+  }
+
+  .result_left {
+    width: 20%;
+  }
+
+  .result_box_logo img {
+    width: 200px;
+  }
+
+  .result_box_info {
+    width: 90%;
+  }
+
+  .result_box_exp {
+    width: 70%;
+  }
+}
+
+
+@media screen and (max-width: 767px) {
+  .result_box {
+    width: 96%;
+    height: 35vh;
+  }
+
+  .result_top_flex {
+    align-items: center;
+  }
+
+  .result_right,
+  .result_left {
+    width: 100%;
+  }
+
+  .result_box_logo {
+    width: 100%;
+    margin: 8px auto 0;
+    text-align: center;
+  }
+
+  .result_box_logo img {
+    width: 60%;
+
+    object-fit: cover;
+    height: 60px;
+  }
+
+  .result_box {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .result_box_name {
+    width: 40%;
+  }
+
+  .result_box_name p {
+    font-size: 16px;
+    padding: 6px 0;
+  }
+
+  .result_box_line {
+    width: 90vw;
+  }
+
+  .result_box_info {
+    width: 92%;
+    padding: 8px 3px;
+  }
+
+  .company_info_result p {
+    font-size: 8px;
+  }
+
+  .company_info_title .capital {
+    font-size: 14px;
+    margin: 0 0 0 4px;
+  }
+
+  .company_info_result p {
+    margin: 8px 0 0 0;
+  }
+
+
+  .result_box_exp {
+    padding: 0;
+    width: 50%;
+  }
+
+  .result_box_exp .capital {
+    font-size: 14px;
+    margin: 8px 0 4px 8px;
+
+  }
+
+  .box_exp_sentence{
+font-size: 8px;
+  } 
+  .result_bottom {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  .result_box_button_second {
+    width: 30%;
+    font-size: 12px;
+    text-decoration: none;
+    border-radius: 4px;
+    padding: 12px 6px;
+
+  }
+
+
+}
