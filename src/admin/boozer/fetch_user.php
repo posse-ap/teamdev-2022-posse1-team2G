@@ -170,7 +170,7 @@ if ($result_array == true) {
     echo json_encode($result_array);
 } else {
     echo $return =
-        "<h4> 検索条件:$input  $select </h4><p>に一致するデータはありませんでした</p> ";
+        "<h4> 検索条件:$input  $select </h4>に一致するデータはありませんでした";
 }
 
 // SQL文の作成

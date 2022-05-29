@@ -49,6 +49,9 @@
   height: 40px;
   margin: 40px auto;
 }
+.graph_title_month p{
+margin: 0;
+}
 
 /* ここからコンタクトフォーム */
 .form_card {

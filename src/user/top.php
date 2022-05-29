@@ -71,7 +71,7 @@ $row = 0;
     <div class="top">
       <div class="top_wrapper top_trapezoid_right">
         <div class="top_sentence">
-          <h1>自分に合った企業が見つかる</h1>
+          <h1>あなたの就活の第一歩</h1>
         </div>
         <!-- PHP側で作って貰った検索機能 -->
         <div class='search_empty'></div>
