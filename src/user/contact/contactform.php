@@ -105,7 +105,7 @@ $company_id_sessions = $_SESSION['company_id'];
 </head>
 
 <body>
-<header>
+  <header>
     <div class="header_wrapper">
       <div class="header_logo">
         <img src="../../img/boozer_logo.png" alt="logo">

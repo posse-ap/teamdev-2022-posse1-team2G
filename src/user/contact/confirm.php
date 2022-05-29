@@ -138,6 +138,26 @@ $companies = $stmt->fetchAll();
   <link rel="stylesheet" href="../../css/contact.css">
 </head>
 <body>
+  <header>
+    <div class="header_wrapper">
+      <div class="header_logo">
+        <img src="../../img/boozer_logo.png" alt="logo">
+      </div>
+    </div>
+    <nav class="header_nav">
+      <ul>
+        <li class="nav_item"><a href="./top.php#company">企業一覧</a></li>
+        <li class="nav_item"><a href="./top.php#point">お悩みの方へ</a></li>
+        <li class="nav_item"><a href="./top.php#merit">比較のメリット</a></li>
+        <li class="nav_item"><a href="./top.php#question">よくある質問</a></li>
+        <!-- 時間あったらモーダルにしてちょっと就活エージェントのこと書いて、就活の教科書の特集に飛ばせるかも -->
+        <li class="nav_item"><a href="#">就活エージェントとは</a></li>
+        <!-- ここまで -->
+        <li class="nav_item"><a href="#">企業の方へ</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="main_wrapper">
   <!-- ↑ヘッダー関数 -->
 
   <div class="confirm_container">
@@ -273,6 +293,35 @@ $companies = $stmt->fetchAll();
        </form>
     </section>
   </div>
+  </main>
+  <footer>
+    <div class="footer_wrapper">
+      <div class="footer_student">
+        <p>学生の方へ</p>
+        <ul class="footer_list">
+          <li><a href="#company">企業一覧</a></li>
+          <li><a href="#problem">お悩みの方へ</a></li>
+          <li><a href="#merit">比較のメリット</a></li>
+          <li><a href="#question">よくある質問</a></li>
+          <li><a href="#">就活エージェントとは</a></li>
+        </ul>
+      </div>
+      <div class="footer_company">
+        <p>企業の方へ</p>
+        <ul class="footer_list">
+          <li><a href="#">CRAFTについて</a></li>
+          <li><a href="#">サイト掲載について</a></li>
+        </ul>
+      </div>
+      <div class="footer_logo">
+        <!-- <img src="" alt="logo"> -->
+        <p>CRAFT</p>
+      </div>
+      <span class="footer_copyright">
+        ©︎ 2022 CRAFT. All rights reserved.
+      </span>
+    </div>
+  </footer>
 </body>
 
 </html>
