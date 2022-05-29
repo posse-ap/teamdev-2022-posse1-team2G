@@ -296,10 +296,10 @@ $company_id_sessions = $_SESSION['company_id'];
       <div class="footer_student">
         <p>学生の方へ</p>
         <ul class="footer_list">
-          <li><a href="#company">企業一覧</a></li>
-          <li><a href="#problem">お悩みの方へ</a></li>
-          <li><a href="#merit">比較のメリット</a></li>
-          <li><a href="#question">よくある質問</a></li>
+        <li class="nav_item"><a href="../top.php#company">企業一覧</a></li>
+        <li class="nav_item"><a href="../top.php#point">お悩みの方へ</a></li>
+        <li class="nav_item"><a href="../top.php#merit">比較のメリット</a></li>
+        <li class="nav_item"><a href="../top.php#question">よくある質問</a></li>
           <li><a href="#">就活エージェントとは</a></li>
         </ul>
       </div>
