@@ -144,16 +144,21 @@ CREATE TABLE company_feature
 (
   feature_id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   company_id INT NOT NULL,
-  feature VARCHAR(255) NOT NULL,
+  feature_one VARCHAR(255) NOT NULL,
+  feature_second VARCHAR(255) NOT NULL,
+  feature_third VARCHAR(255) NOT NULL,
+  feature_sub_first VARCHAR(255) NOT NULL,
+  feature_sub_second VARCHAR(255) NOT NULL,
+  feature_sub_third VARCHAR(255) NOT NULL,
   message VARCHAR(255) NOT NULL
 );
 
-INSERT INTO company_feature (company_id, feature, message) VALUES 
-(1, '➀すごい➁やばい➂ｖｂｋｆｖばえうヴぁえいうヴぇらいうあえいうｒヴあｆｄヴあｄｊ', 'ｆヴあヴあヴぁｓｄヴぁｓｊｋｄｖｊｋｓｄヴぁｓｊｄヴぁｊｓｋ'),
-(2, '➀すごい➁やばい➂ｖｂｋｆｖばえうヴぁえいうヴぇらいうあえいうｒヴあｆｄヴあｄｊ', 'ｆヴあヴあヴぁｓｄヴぁｓｊｋｄｖｊｋｓｄヴぁｓｊｄヴぁｊｓｋ'),
-(3, '➀すごい➁やばい➂ｖｂｋｆｖばえうヴぁえいうヴぇらいうあえいうｒヴあｆｄヴあｄｊ', 'ｆヴあヴあヴぁｓｄヴぁｓｊｋｄｖｊｋｓｄヴぁｓｊｄヴぁｊｓｋ'),
-(4, '➀すごい➁やばい➂ｖｂｋｆｖばえうヴぁえいうヴぇらいうあえいうｒヴあｆｄヴあｄｊ', 'ｆヴあヴあヴぁｓｄヴぁｓｊｋｄｖｊｋｓｄヴぁｓｊｄヴぁｊｓｋ'),
-(5, '➀すごい➁やばい➂ｖｂｋｆｖばえうヴぁえいうヴぇらいうあえいうｒヴあｆｄヴあｄｊ', 'ｆヴあヴあヴぁｓｄヴぁｓｊｋｄｖｊｋｓｄヴぁｓｊｄヴぁｊｓｋ');
+INSERT INTO company_feature (company_id, feature_first, feature_second, feature_third, feature_sub_first,feature_sub_second,feature_sub_third,message) VALUES 
+(1, 'ああああああああああああ', 'いいいいいいいいいいいいい', 'うううううううううううう', 'aaaaaaaaaaaaaaa', 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii', 'uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu'),
+(2, 'ああああああああああああ', 'いいいいいいいいいいいいい', 'うううううううううううう', 'aaaaaaaaaaaaaaa', 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii', 'uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu'),
+(3, 'ああああああああああああ', 'いいいいいいいいいいいいい', 'うううううううううううう', 'aaaaaaaaaaaaaaa', 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii', 'uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu'),
+(4, 'ああああああああああああ', 'いいいいいいいいいいいいい', 'うううううううううううう', 'aaaaaaaaaaaaaaa', 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii', 'uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu'),
+(5, 'ああああああああああああ', 'いいいいいいいいいいいいい', 'うううううううううううう', 'aaaaaaaaaaaaaaa', 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii', 'uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu');
 
 
 

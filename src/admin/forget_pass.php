@@ -37,36 +37,50 @@ if (!empty($_POST)) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./normalize.css">
+  <link rel="stylesheet" href="./parts.css">
   <link rel="stylesheet" href="../admin/admin_style.css">
   <title>パスワードお忘れページ</title>
 </head>
 
-<body>
-  <?php if ($errormessage) { ?>
-    <ul class='login_error'>
-      <!-- $errorは連想配列なのでforeachで分解していく -->
-      <?php foreach ($errormessage as $value) { ?>
-        <li><?php echo $value; ?></li>
-      <?php } ?>
-      <!-- 分解したエラー文をlistの中に表示していく -->
-    </ul>
-  <?php } ?>
+<body class='login_body'>
+  <header>
+    <div class="header_wrapper">
+      <div class="header_logo">
+        <img src="../../img/boozer_logo.png" alt="logo">
+      </div>
+    </div>
+  </header>
+  <div class=' empty'>
+  </div>
+  <div class='login_container'>
+    <div class='login_title'>
+      <h1>パスワードお忘れの方</h1>
+    </div>
+    <?php if ($errormessage) { ?>
+      <ul class='login_error'>
+        <!-- $errorは連想配列なのでforeachで分解していく -->
+        <?php foreach ($errormessage as $value) { ?>
+          <li><?php echo $value; ?></li>
+        <?php } ?>
+        <!-- 分解したエラー文をlistの中に表示していく -->
+      </ul>
+    <?php } ?>
 
-  <form action="/admin/forget_pass.php" method="POST">
-    <div class='login_form'>
-      <div class='login_forget_mail'>
+    <form action="/admin/forget_pass.php" method="POST" class='login_form'>
+      <div class='login_mail'>
         <div>
           <p>メールアドレス</p>
         </div>
-        <div class='forget_mail_container'>
+        <div class='mail_container'>
           <input type="email" name="email">
         </div>
       </div>
-      <div class='login_forget_submit'>
-        <input type="submit" value="送信">
+      <div class='login_submit'>
+        <input type="submit" value="ログイン">
       </div>
-    </div>
-  </form>
+    </form>
+  </div>
 </body>
 
 </html>
