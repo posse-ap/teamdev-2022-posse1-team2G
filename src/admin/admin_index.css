@@ -39,41 +39,52 @@
   overflow: hidden;
 }
 
-.sales_status_graph #myBarChart{
+.sales_status_graph #myBarChart {
   margin: 0 auto;
-
 }
 
+.graph_title_month{
+  border: 1px solid black;
+  width: 10%;
+  height: 40px;
+  margin: 40px auto;
+}
 
 /* ここからコンタクトフォーム */
-.form_card{
+.form_card {
   background-color: #e8ecf1;
   padding: 3rem;
   border-radius: 1rem;
 }
-.subtitle{
+
+.subtitle {
   font-size: 1.3rem;
   font-weight: bold;
 }
-.sub_subtitle{
+
+.sub_subtitle {
   color: #ecc45f;
   font-weight: bold;
   font-size: 1.2rem;
 }
-.contact_wrapper h1{
+
+.contact_wrapper h1 {
   font-size: 1.5rem;
   font-weight: bold;
 }
-.contents{
+
+.contents {
   background-color: #fff;
   width: 80%;
   margin: 1rem 6rem 1rem;
   border-radius: 1rem;
 }
+
 .result {
   font-size: large;
   font-weight: bold;
 }
+
 .mail {
   color: #4d84eb;
   font-weight: bold;

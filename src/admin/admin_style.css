@@ -81,9 +81,11 @@
     color: red;
     font-weight: bold;
 }
-.empty{
-height: 200px;
+
+.empty {
+    height: 200px;
 }
+
 /* ----------    boozer/index.php      ------------ */
 /* .sales_status_title{
    text-align: center;
@@ -94,15 +96,17 @@ height: 200px;
     margin: 0 auto;
     border: 1px solid red;
 } */
+.login_phone {
+    text-align: center;
+}
 
-
-
-
-
-
-
-
-
+.login_phone_back{
+text-align: center;
+margin-top: 40px;
+}
+a{
+    text-decoration: none;
+}
 
 /* ----------    information_posting.php      ------------ */
 .company_information_titie {
@@ -133,9 +137,9 @@ height: 200px;
     text-align: center;
 }
 
-.img_dd img{
-/* width: 100%; */
-object-fit: cover;
+.img_dd img {
+    /* width: 100%; */
+    object-fit: cover;
 }
 
 .company_information_list,

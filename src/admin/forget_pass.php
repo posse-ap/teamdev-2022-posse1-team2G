@@ -80,8 +80,6 @@ if (!empty($_POST)) {
         <input type="submit" value="ログイン">
       </div>
     </form>
-
-    <!-- <a href="/index.php">イベント一覧</a> -->
   </div>
 </body>
 
