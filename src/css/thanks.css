@@ -1,0 +1,59 @@
+/* メイン全体について */
+.main_wrapper {
+  margin-top: 8rem;
+  margin-bottom: 4.5rem;
+  text-align: center;
+}
+
+
+.thanks {
+  background-color: rgba(38, 166, 154, 0.15);
+  border-radius: 10%;
+  width: 80%;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.thanks_complete {
+  padding: 24px 0;
+  text-align: center;
+}
+
+.thanks_body {
+  text-align: center;
+}
+
+.thnaks_phone {
+  text-align: center;
+  padding: 12px 0;
+}
+
+.thnaks_phone p:last-child {
+  text-decoration: underline;
+  font-size: 1.2rem;
+}
+
+.back_to_top {
+  text-align: center;
+  padding-bottom: 24px;
+}
+
+.back_to_top a {
+  text-decoration: none;
+  color: #000;
+  background-color: rgba(7, 101, 7, 0.363);
+  padding: 16px 24px;
+  border: none;
+  border-radius: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+  /* padding: 24px; */
+}
+
+.back_to_top button:hover {
+  opacity: .8;
+  color: rgb(99, 97, 97);
+}

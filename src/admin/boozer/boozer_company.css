@@ -1,0 +1,29 @@
+/* ----------   boozer/company_list.php      ------------ */
+
+/* ✕ボタンが自動で生成される */
+input[type="search"] {
+  -webkit-appearance: searchfield;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: searchfield-cancel-button;
+}
+
+.company_list_search_input_container {
+  width: 60%;
+  margin: 0 auto 40px;
+  /* position: relative; */
+}
+
+.company_list_search_i_container i{
+  margin: 0 auto;
+  position: absolute;
+  top: 88px;
+left: 72%;
+}
+
+@media (min-width: 768px) {
+  .col-md-6 {
+    max-width: 100%;
+  }
+}

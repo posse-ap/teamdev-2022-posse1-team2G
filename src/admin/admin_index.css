@@ -1,0 +1,95 @@
+.sales_status_title {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.sales_status_title h1 {
+  font-size: 2rem;
+}
+
+.sales_status_container {
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.each_dept {
+  /* outline: 1px red solid; */
+  border: 1px solid black;
+  flex-basis: 30%;
+  text-align: center;
+}
+
+.each_dept p {
+  margin: 16px 24px;
+}
+
+.each_dept h2 {
+  margin-bottom: 16px;
+  font-size: 1.6rem;
+}
+
+.sales_status_graph {
+  position: relative;
+  margin: 80px auto;
+  text-align: center;
+  width: 60%;
+  height: 400px;
+  overflow: hidden;
+}
+
+.sales_status_graph #myBarChart {
+  margin: 0 auto;
+}
+
+.graph_title_month{
+  border: 1px solid black;
+  width: 10%;
+  height: 40px;
+  margin: 40px auto;
+}
+.graph_title_month p{
+margin: 0;
+}
+
+/* ここからコンタクトフォーム */
+.form_card {
+  background-color: #e8ecf1;
+  padding: 3rem;
+  border-radius: 1rem;
+}
+
+.subtitle {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.sub_subtitle {
+  color: #ecc45f;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.contact_wrapper h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.contents {
+  background-color: #fff;
+  width: 80%;
+  margin: 1rem 6rem 1rem;
+  border-radius: 1rem;
+}
+
+.result {
+  font-size: large;
+  font-weight: bold;
+}
+
+.mail {
+  color: #4d84eb;
+  font-weight: bold;
+  font-size: 1.2rem;
+}

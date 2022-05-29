@@ -1,0 +1,272 @@
+/* 全体について */
+html{
+  font-size: 1vw;
+}
+body{
+	/* background-color: #e5e5e5; */
+	background-color: rgba(38, 166, 154, 0.05);
+	margin: 0 auto;
+}
+
+
+/* メイン全体について */
+.compare_wrapper{
+	margin-top: 6rem;
+	margin-bottom: 10.5rem;
+	text-align: center;
+	/* background-color: #e5e5e5; */
+	/* outline: red; */
+}
+
+/* タイトルについて */
+h1 {
+  position: relative;
+	/* width: 20rem; */
+  padding: 0.5em;
+  background: #a6d3c8;
+  color: white;
+}
+h1::before {
+  position: absolute;
+  content: '';
+  top: 100%;
+  left: 0;
+  border: none;
+  border-bottom: solid 15px transparent;
+  border-right: solid 20px rgb(149, 158, 155);
+}
+
+/* 比較表について */
+table {
+	/* テーブル中央ぞろえ */
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 80%;
+	background-color: #fff;
+	/* 横方向の結合 */
+	border-collapse: collapse;
+	/* 改行するため */
+	table-layout: fixed;
+}
+/* 会社名 */
+.company_name{
+	font-weight: bold;
+}
+
+/* ロゴ写真 */
+.table_company_img img{
+	width: 17rem;
+}
+
+/* 説明行の枠線 */
+th,td {
+	border-top: 0.2rem solid #e8ecf1;
+	border-bottom: 0.2rem solid #e8ecf1;
+}
+th {
+	border-right: 0.2rem solid #e8ecf1;
+	font-size: 1.2rem;
+  padding: 1.6rem 2.6rem 1.6rem;
+}
+td{
+	font-size: 1.1rem;
+	width: 200px;
+	/* 改行するため */
+	overflow-wrap: break-word;
+	/* word-break: break-word; */
+	/* word-wrap: break-word; */
+}
+/* .fill以外のtd（各説明行） */
+td:not(.fill) {
+	padding: 0.5rem;
+	max-width: 20rem;
+  height: 6rem;
+}
+td + td {
+	border-left: 0.2rem solid #e8ecf1;
+}
+
+/* セルの色付け */
+.fill {
+	background-color: #e8ecf1;
+	font-weight: bold;
+	padding: 0.7rem;
+	font-size: large;
+}
+/* 左端一列の固定 */
+.twrapper {
+	overflow: auto;
+	white-space: nowrap;
+	max-width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+}
+.twrapper table .fixcell {
+	/* position: -webkit-sticky; */
+	position: sticky;
+	min-width: 60px;
+	background-color: #fff;
+  z-index: 99;
+}
+.twrapper table .fixcell:first-child {
+	left: 0;
+}
+
+
+/* チェックボックスについて */
+input[type=checkbox] {
+	display: none; /* checkboxを非表示にする */
+}
+input[type="checkbox"]:checked + label {
+	background: #50b4ee;/* マウス選択時の背景色を指定する */
+	border: 0.3rem solid #50b4ee;/* ラベルの境界線を実線で指定する */
+	color: #ffffff; /* マウス選択時のフォント色を指定する */
+}
+label:hover {
+	background-color: #E2EDF9; /* マウスオーバー時の背景色を指定する */
+}
+label {
+margin: 1rem; /* ラベル外側の余白を指定する */
+width: 9rem; /* ラベルの横幅を指定する */
+height: 45px; /* ラベルの高さを指定する */
+text-align: center; /* テキストのセンタリングを指定する */
+line-height: 45px; /* 行の高さを指定する */
+padding: 0.25rem 1rem 0.25rem; /* ラベル内の余白を指定する */
+cursor: pointer; /* マウスカーソルの形（リンクカーソル）を指定する */
+font-weight: bold;
+border: 0.3rem solid #31A9EE;/* ラベルの境界線を実線で指定する */
+border-radius: 5px; /* 角丸を指定する */
+}
+
+/* 選択済みボックスについて */
+.selected_company_box{
+	display: none;
+	position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #3D3D3D;
+	z-index: 100;
+}
+
+.selected_company_box .box-title {
+	font-size: 1.2em;
+	padding: 4px;
+	margin: 0 auto;
+	color: #FFF;
+	font-weight: bold;
+	letter-spacing: 0.05rem;
+}
+.contact_button{
+	font-size: 1rem;
+	background-color: #fff;
+	padding: 0.8rem;
+	margin: 0.3rem 0 1rem;
+	font-weight: bold;
+	letter-spacing: 0.05rem;
+	border-color: #fff;
+	border-radius: 1rem;
+}
+
+/*スマホ用のcssを記述*/
+@media screen and (max-width:767px) {
+	header {
+		display: block;
+	}
+	.header_logo img{
+		width: 40rem;
+		margin-left: 4rem;
+	}
+	.header_nav ul{
+		margin: 0.2rem;
+	}
+	.nav_item a {
+		display: inline-block;
+		font-size: 0.5rem;
+		padding: 0px;
+		margin-left: 4rem;
+	}
+	h1 {
+		height: 12rem;
+    font-size: 4rem;
+    margin: 2rem;
+    text-align: center;
+	}
+  .compare_wrapper {
+		margin-top: 21rem;
+	}
+	.twrapper{
+		margin: 7rem 2rem 5rem;
+		max-width: 100%;
+	}
+	.colap {
+    margin-bottom: 18rem;
+  }
+	.close_modal {
+    left: 92%;
+  }
+	.twrapper table td {
+    min-width: 23rem;
+  }
+	.selected_company_box .box-title {
+    font-size: 3em;
+    margin: 1rem 2rem -2rem;
+    letter-spacing: 0.15rem;
+  }
+	.contact_button{
+		padding: 1.4rem;
+	}
+}
+	 
+/*tablet用のcssを記述*/
+@media only screen and (min-width:768px) and (max-width:1023px) {
+  header {
+		display: block;
+		height: 11rem;
+	}
+	.header_logo img{
+		width: 40rem;
+		margin-left: 4rem;
+	}
+	.header_nav ul{
+		margin: 0.2rem;
+	}
+	.nav_item a {
+		display: inline-block;
+		font-size: 1.8rem;
+		padding: 0px;
+		margin-left: 4rem;
+	}
+	h1 {
+		height: 5rem;
+    font-size: 3rem;
+    margin: 2rem;
+    text-align: center;
+	}
+  .compare_wrapper {
+		margin-top: 16rem;
+	}
+	.twrapper{
+		margin: 7rem 2rem 5rem;
+		max-width: 100%;
+	}
+	th {
+		font-size: 1.5rem;
+	}
+	.colap {
+    margin-bottom: 18rem;
+  }
+	.twrapper table td {
+    min-width: 23rem;
+  }
+	.selected_company_box .box-title {
+    font-size: 3em;
+    margin: 1rem 2rem -2rem;
+    letter-spacing: 0.15rem;
+  }
+	.contact_button{
+		padding: 1.4rem;
+	}
+	label{
+		font-size: 2rem;
+	}
+}

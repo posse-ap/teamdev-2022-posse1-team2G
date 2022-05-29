@@ -1,0 +1,214 @@
+/* ----------    login.php      ------------ */
+.login_body {
+    background-color: rgb(245, 248, 243);
+}
+
+/* .logo_logo {} */
+
+.login_logo img {
+    width: 30%;
+    height: auto;
+}
+
+.login_title,
+.login_pass_forget {
+    text-align: center;
+}
+
+.login_title h1 {
+    color: rgb(129, 188, 138);
+}
+
+.login_container {
+    width: 64vw;
+    margin: 0 auto;
+    background-color: rgb(233, 246, 232);
+    padding: 40px 0;
+    box-shadow: 0 0 16px rgb(194, 201, 194);
+    border-radius: 2%;
+}
+
+.login_mail,
+.login_pass {
+    width: 64%;
+    margin: 0 auto;
+}
+
+.login_mail {
+    margin-bottom: 24px;
+}
+
+.login_container input,
+.login_pass input {
+    width: 100%;
+    padding: 8px 0;
+}
+
+.login_submit {
+    width: 32%;
+    margin: 24px auto;
+}
+
+.login_submit input {
+    background-color: rgb(129, 188, 138);
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    box-shadow: 0 0 8px 2px rgb(167, 201, 149);
+}
+
+.login_submit input:hover {
+    opacity: 0.8;
+}
+
+.login_container p {
+    margin: 8px 0;
+}
+
+.login_error {
+    list-style: none;
+    padding: 0;
+    width: 72%;
+    margin: 0 auto;
+    background-color: rgb(232, 209, 209);
+}
+
+.login_error li {
+    font-size: .8rem;
+    padding: 16px;
+    border: 1px solid red;
+    text-align: center;
+    color: red;
+    font-weight: bold;
+}
+
+.empty {
+    height: 200px;
+}
+
+/* ----------    boozer/index.php      ------------ */
+/* .sales_status_title{
+   text-align: center;
+   border: 1px solid red;
+}
+.sales_status{
+    width: 80vw;
+    margin: 0 auto;
+    border: 1px solid red;
+} */
+.login_phone {
+    text-align: center;
+}
+
+.login_phone_back{
+text-align: center;
+margin-top: 40px;
+}
+a{
+    text-decoration: none;
+}
+
+/* ----------    information_posting.php      ------------ */
+.company_information_titie {
+    text-align: center;
+}
+
+.company_information_titie h1 {
+    font-size: 2rem;
+}
+
+.company_contract_information,
+.company_posting_information,
+.company_achievement,
+.company_service,
+.company_feature,
+.company_overview {
+    width: 64vw;
+    margin: 40px auto 0;
+}
+
+.company_contract_information p,
+.company_posting_information p,
+.company_achievement p,
+.company_service p,
+.company_feature p,
+.company_overview p {
+    font-size: 1.6rem;
+    text-align: center;
+}
+
+.img_dd img {
+    /* width: 100%; */
+    object-fit: cover;
+}
+
+.company_information_list,
+.company_information_list>dt,
+.company_information_list>dd {
+    box-sizing: border-box;
+}
+
+.company_information_list>dt,
+.company_information_list>dd {
+    padding: 1em;
+    /* padding: .8rem 1.6rem; */
+    margin: 0px;
+}
+
+.company_information_list>dt {
+    background-color: #9ea9a3;
+}
+
+.company_information_list>dd {
+    background-color: #fff;
+
+}
+
+@media screen and (max-width: 767px) {
+    .company_information_list>dd {
+        border: 1px solid #ddd;
+        border-top: none;
+    }
+
+    .company_information_list>dt,
+    .company_information_list>dd {
+        text-align: center;
+    }
+
+    .company_information_list>dd>ul {
+        text-align: left;
+    }
+}
+
+@media print, (min-width: 768px) {
+    .company_information_list {
+        display: flex;
+        flex-wrap: wrap;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .company_information_list>dt,
+    .company_information_list>dd {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-top: 1px solid #ddd;
+    }
+
+    .company_information_list>dt {
+        width: 20%;
+    }
+
+    .company_information_list>dd {
+        width: 80%;
+        border-right: 1px solid #ddd;
+        margin: 0 auto;
+    }
+}
+
+
+/* 管理画面　詳細modal */
+.view_container {
+    border-bottom: 1px solid #000;
+    background-color: red;
+}

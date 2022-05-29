@@ -1,0 +1,406 @@
+body {
+  padding: 0;
+  background-color: rgba(38, 166, 154, 0.05);
+}
+
+
+
+.result_list {
+  /* max-width: 1100px; */
+  /* margin: 0 auto; */
+  display: flex;
+  flex-direction: column;
+}
+
+.result_box {
+  display: flex;
+  /* outline: 1px solid red; */
+  background-color: #e8ecf1;
+  width: 90%;
+  margin: 10px auto;
+  box-shadow: 10px 10px 15px -10px;
+}
+
+.result_left {
+  width: 30%;
+}
+
+.result_right {
+  width: 70%;
+  margin-left: 4%;
+  /* outline: 1px solid blue; */
+}
+
+/* 
+.result_box_logo img {
+  object-fit: cover;
+} */
+
+.result_box_logo img {
+  width: 300px;
+  object-fit: cover;
+}
+
+.result_box_name {
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 600;
+  color: #34373a;
+  font-size: 36px;
+  margin-top: 10px;
+  padding-left: 4%;
+}
+
+.result_box_name p {
+  margin: 0;
+  padding: 16px 0;
+}
+
+.result_box_line {
+  /* position: absolute; */
+  top: 30px;
+  /* left: 20%; */
+  border-bottom: solid 1px rgba(156, 156, 156, 0.411);
+  /* width: 60%; */
+}
+
+.company_info_title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.company_info_title .capital {
+  margin: 0 0 0 12px;
+  font-size: 20px;
+}
+
+.company_info_first,
+.company_info_second,
+.company_info_third {
+  display: flex;
+  flex-direction: column;
+}
+
+.company_info_result p {
+  margin: 8px 0;
+  font-size: 18px;
+}
+
+
+.result_box_info {
+
+  display: flex;
+  width: 70%;
+  justify-content: space-between;
+  padding: 16px 4%;
+  /* padding: 0 4%; */
+}
+
+.result_box_exp {
+  padding-left: 4%;
+  width: 50%;
+}
+
+.result_box_exp .capital {
+  font-size: 18px;
+  margin-left: 8px;
+}
+
+.result_bottom {
+  display: flex;
+  align-items: center;
+}
+
+.result_box_button_second {
+  width: 20%;
+  color: #fff;
+  background-color: #FF6E40;
+  cursor: pointer;
+  font-weight: 550;
+  font-size: 18px;
+  text-decoration: none;
+  border-radius: 4px;
+  padding: 16px 6px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.result_box_support {
+  position: absolute;
+  top: 90px;
+  left: 780px;
+}
+
+.result_box_support_list {
+  display: flex;
+  width: 270px;
+  flex-wrap: wrap;
+}
+
+.result_box_support_list p {
+  margin: 0 0 16px 0;
+  padding-right: 20px;
+}
+
+.result_box_button_first {
+  position: absolute;
+  top: 294px;
+  left: 550px;
+  margin: 0 auto;
+  z-index: 10;
+}
+
+.result_top_flex {
+  display: flex;
+  justify-content: space-around;
+  padding: 2rem;
+}
+
+
+/* ヘッダー */
+.main_wrapper {
+  margin-top: 7rem;
+}
+
+/* タイトルについて */
+h1 {
+  position: relative;
+  /* width: 20rem; */
+  padding: 0.5em;
+  background: #a6d3c8;
+  color: white;
+}
+
+h1::before {
+  position: absolute;
+  content: '';
+  top: 100%;
+  left: 0;
+  border: none;
+  border-bottom: solid 15px transparent;
+  border-right: solid 20px rgb(149, 158, 155);
+}
+
+
+/* 選択済みボックスについて */
+.selected_company_box {
+  display: none;
+  padding-top: 2rem;
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  background: #3D3D3D;
+  left: 0rem;
+  height: 9rem;
+  z-index: 100;
+}
+
+.selected_company_box .box-title {
+  font-size: 1.2em;
+  padding: 4px;
+  margin: 0 auto;
+  color: #FFF;
+  font-weight: bold;
+  letter-spacing: 0.05rem;
+}
+
+.contact_button {
+  font-size: 1rem;
+  background-color: #fff;
+  padding: 0.8rem;
+  margin: 0.3rem 0 1rem;
+  font-weight: bold;
+  letter-spacing: 0.05rem;
+  border-color: #fff;
+  border-radius: 1rem;
+}
+
+/* チェックボックスについて */
+.company_box_check {
+  display: block;
+}
+
+input[type=checkbox] {
+  display: none;
+  /* checkboxを非表示にする */
+}
+
+input[type="checkbox"]:checked+label {
+  background: #50b4ee;
+  /* マウス選択時の背景色を指定する */
+  border: 0.3rem solid #50b4ee;
+  /* ラベルの境界線を実線で指定する */
+  color: #ffffff;
+  /* マウス選択時のフォント色を指定する */
+}
+
+label:hover {
+  background-color: #E2EDF9;
+  /* マウスオーバー時の背景色を指定する */
+}
+
+label {
+  margin: 1rem;
+  /* ラベル外側の余白を指定する */
+  width: 9rem;
+  /* ラベルの横幅を指定する */
+  height: 45px;
+  /* ラベルの高さを指定する */
+  text-align: center;
+  /* テキストのセンタリングを指定する */
+  line-height: 45px;
+  /* 行の高さを指定する */
+  padding: 0.25rem 1rem 0.25rem;
+  /* ラベル内の余白を指定する */
+  cursor: pointer;
+  /* マウスカーソルの形（リンクカーソル）を指定する */
+  font-weight: bold;
+  border: 0.3rem solid #31A9EE;
+  /* ラベルの境界線を実線で指定する */
+  border-radius: 5px;
+  /* 角丸を指定する */
+}
+
+.not_found {
+  font-size: 24px;
+  margin-top: 100px;
+}
+
+.not_found_back {
+  width: 200px;
+  height: 60px;
+  font-size: 20px;
+  color: #000;
+}
+
+
+@media screen and (min-width: 767px) and (max-width: 1024px) {
+  .result_box {
+    width: 96%;
+  }
+
+  .result_right {
+    width: 80%;
+  }
+
+  .result_left {
+    width: 20%;
+  }
+
+  .result_box_logo img {
+    width: 200px;
+  }
+
+  .result_box_info {
+    width: 90%;
+  }
+
+  .result_box_exp {
+    width: 70%;
+  }
+}
+
+
+@media screen and (max-width: 767px) {
+  .result_box {
+    width: 96%;
+    height: 35vh;
+  }
+
+  .result_top_flex {
+    align-items: center;
+  }
+
+  .result_right,
+  .result_left {
+    width: 100%;
+  }
+
+  .result_box_logo {
+    width: 100%;
+    margin: 8px auto 0;
+    text-align: center;
+  }
+
+  .result_box_logo img {
+    width: 60%;
+
+    object-fit: cover;
+    height: 60px;
+  }
+
+  .result_box {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .result_box_name {
+    width: 40%;
+  }
+
+  .result_box_name p {
+    font-size: 16px;
+    padding: 6px 0;
+  }
+
+  .result_box_line {
+    width: 90vw;
+  }
+
+  .result_box_info {
+    width: 92%;
+    padding: 8px 3px;
+  }
+
+  .company_info_result p {
+    font-size: 8px;
+  }
+
+  .company_info_title .capital {
+    font-size: 14px;
+    margin: 0 0 0 4px;
+  }
+
+  .company_info_result p {
+    margin: 8px 0 0 0;
+  }
+
+
+  .result_box_exp {
+    padding: 0;
+    width: 50%;
+  }
+
+  .result_box_exp .capital {
+    font-size: 14px;
+    margin: 8px 0 4px 8px;
+
+  }
+
+  .box_exp_sentence {
+    font-size: 8px;
+  }
+
+  .result_bottom {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  .result_box_button_second {
+    width: 30%;
+    font-size: 12px;
+    text-decoration: none;
+    border-radius: 4px;
+    padding: 12px 6px;
+
+  }
+
+
+}

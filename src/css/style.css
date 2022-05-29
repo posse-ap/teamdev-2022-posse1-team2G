@@ -1,0 +1,709 @@
+/* 全体の要素について */
+body {
+  padding: 0;
+  font-family: "Noto Sans JP", sans-serif;
+  letter-spacing: 0.08em;
+}
+
+section {
+  padding: 15px 0 30px 0;
+}
+
+.title_box h2 {
+  text-align: center;
+  font-size: 30px;
+}
+
+.title_box {
+  text-align: center;
+}
+
+.title_box p {
+  color: #949697;
+  letter-spacing: 0.1em;
+}
+
+.back_color {
+  background-color: rgba(8, 18, 17, 0.05);
+}
+
+.title_box {
+  padding-bottom: 20px;
+}
+
+.capital {
+  font-size: 16px;
+  font-weight: bold;
+  padding-right: 15px;
+  color: #34373a;
+}
+
+
+/* トップについて */
+.top {
+  height: 630px;
+}
+
+.top_wrapper {
+  position: relative;
+  height: 100%;
+  background-image: url(../img/集合写真.jpg);
+  background-size: cover;
+}
+
+.search_empty {
+  display: none;
+}
+
+.top_sentence {
+  position: absolute;
+  top: 480px;
+  left: 20px;
+  padding: 0 30px 0 40px;
+  font-size: 20px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+  /* border-bottom: solid 10px rgb(122,220,180); */
+  /* background: linear-gradient(transparent 60%, #01bebd 60%); */
+  /* -webkit-transform: skew(-15deg);
+  transform: skew(-15deg); */
+  z-index: 10;
+}
+
+.top_sentence::before {
+  content: "Recruit";
+  position: absolute;
+  top: -40px;
+  left: 15px;
+  transform: rotate(-8deg);
+  color: rgb(53, 223, 206);
+  font-size: 80px;
+  font-family: luxus-brut, cursive;
+  font-style: italic;
+  z-index: -1;
+}
+
+.top_search {
+  position: absolute;
+  top: 100px;
+  right: 8%;
+  /* width: 680px;
+  height: 510px; */
+  width: 30%;
+  height: 56vh;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);
+
+}
+
+
+
+/* 企業一覧について */
+a {
+  color: #1E2022;
+  text-decoration: none;
+}
+
+.company_list {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.company_box {
+  position: relative;
+  background-color: white;
+  top: 0;
+  width: 300px;
+  height: 350px;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+  transition: all .3s;
+  border-radius: 4px;
+  margin-bottom: 30px;
+  margin-left: 1%;
+}
+
+.company_box:hover {
+  top: -3px;
+  box-shadow: 0 13px 13px rgba(0, 0, 0, 0.2);
+}
+
+.company_box_logo {
+  position: absolute;
+  top: calc(120px - 40px);
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 80px;
+  height: 80px;
+  background-color: white;
+  z-index: 100;
+  border: 1px solid;
+  border-color: rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  object-fit: cover;
+}
+
+.company_box_logo img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.company_box_img {
+  position: relative;
+  width: 100%;
+}
+
+.company_box_img img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  z-index: 10;
+  object-fit: cover;
+}
+
+.company_box_name {
+  position: absolute;
+  text-align: center;
+  width: 80%;
+  top: 145px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 600;
+  color: #34373a;
+  font-size: 20px;
+  background: linear-gradient(transparent 85%, #cccccc 83%);
+  height: 46px;
+}
+
+.company_box_info {
+  position: absolute;
+  width: 90%;
+  top: 195px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  display: block;
+}
+
+.company_box_info i {
+  width: 10px;
+}
+
+.company_info_first, .company_info_second, .company_info_third {
+  display: flex;
+  align-items: center;
+  margin: 1% 0;
+  /* border-bottom: 1px solid #000; */
+}
+
+.company_info_first .capital,
+.company_info_second .capital,
+.company_info_third .capital {
+  width: 20%;
+  padding-left: 2%;
+}
+
+.company_info_first p, .company_info_second p, .company_info_third p {
+  margin: 5px 0;
+  font-size: .6rem;
+}
+
+.company_box_exp {
+  position: absolute;
+  top: 270px;
+  width: 90%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-size: .7rem;
+}
+
+.company_box_exp p {
+  width: 100%;
+}
+
+.button_container {
+  display: flex;
+  align-items: center;
+}
+
+.company_box_check,
+.company_box_button {
+  position: absolute;
+  bottom: 10px;
+  padding: 8px 16px;
+  border-radius: 4%;
+  font-size: .6rem;
+  width: 100px;
+  height: 16px;
+  text-align: center;
+}
+
+.company_box_check {
+  display: flex;
+  align-items: center;
+  left: 10px;
+  background-color: #E2EDF9;
+  color: #3D3D3D;
+}
+/* チェックボックスについて*/
+#checked_company_box input[type=checkbox] {
+	display: none; 
+}
+#checked_company_box input[type="checkbox"]:checked + label {
+	background: #50b4ee;
+	border: 0.3rem solid #50b4ee;
+	color: #ffffff;
+}
+#checked_company_box label:hover {
+	background-color: #E2EDF9; 
+}
+#checked_company_box label {
+  margin: 0 auto;
+  width: 8rem;
+  height: 2rem;
+  line-height: 43px;
+  padding: 0.25rem 1rem 0.25rem;
+  cursor: pointer;
+  font-weight: bold;
+  border: 0.3rem solid #31A9EE;
+  border-radius: 5px;
+  margin: 0 1rem;
+} 
+
+.company_box_button {
+  right: 10px;
+  background: linear-gradient(135deg, #ff8533 0%, #ffb533 100%);
+  color: white;
+}
+
+.company_box_button:hover,
+.company_box_check:hover {
+  opacity: .7;
+}
+
+.company_box_check label {
+  font-size: .5rem;
+}
+
+.company_box_button a {
+  color: white;
+  font-size: .6rem;
+  vertical-align: middle;
+}
+
+
+
+
+.company_box_check .check:hover {
+  opacity: 0.5;
+}
+
+.company_box_check input {
+  margin-right: 5px;
+}
+
+
+/* 選択済みボックスについて */
+.selected_company_box {
+  display: none;
+  padding-top: 2rem;
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  background: #3D3D3D;
+  left: 0rem;
+  height: 11rem;
+  z-index: 100;
+}
+
+.selected_company_box .box-title {
+  font-size: 1.2em;
+  padding: 4px;
+  margin: 0 auto;
+  color: #FFF;
+  font-weight: bold;
+  letter-spacing: 0.05rem;
+}
+
+.contact_button {
+  font-size: 1rem;
+  background-color: #fff;
+  padding: 0.8rem;
+  margin: 0.3rem 0 1rem;
+  font-weight: bold;
+  letter-spacing: 0.05rem;
+  border-color: #fff;
+  border-radius: 1rem;
+}
+
+.type {
+  font-weight: bold;
+  text-align: center;
+}
+
+/* お悩みについて */
+.problem_catch {
+  margin: 10% 0;
+  color: #34373a;
+  font-size: 4rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.impact {
+  color: #1e6c84;
+  font-size: 5rem;
+}
+
+.problem_case {
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+.problem_case li {
+  list-style: none;
+  position: relative;
+  color: #333;
+  display: inline-block;
+  margin: 2rem 0 8rem;
+  text-shadow: 0 0 1rem white;
+}
+
+.problem_case li:before {
+  content: "";
+  position: absolute;
+  background: #a9e1ff;
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+  top: 50%;
+  border: dashed 1px white;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  box-shadow: 0px 0px 0px 5px #a9e1ff;
+}
+
+.problem_case li p {
+  font-size: 2rem;
+  width: 20rem;
+  color: #333;
+  font-weight: bold;
+}
+
+/* 比較のメリットについて */
+.merit_catch, .merit_catch p {
+  margin-bottom: 4%;
+  color: #1e6c84;
+  font-size: 4rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.merit_impact {
+  color: #F12B75;
+  font-size: 5rem;
+}
+
+.sub {
+  margin-top: 2rem;
+}
+
+.merit_cases {
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.merit_case {
+  position: relative;
+  margin: 1.8rem;
+  width: 22rem;
+  height: 10rem;
+  background: #f1f1f1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.22);
+}
+
+.merit_case .box-title {
+  font-size: 1.2em;
+  background: #5fc2f5;
+  padding: 0.5rem;
+  text-align: center;
+  color: #FFF;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+}
+
+.merit_case p {
+  padding: 2rem 3rem;
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+
+/* Q&Aについて */
+.question_wrapper {
+  max-width: 1100px;
+  padding: 0 32px;
+  margin: 0 auto;
+}
+
+.question_list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.question_list li {
+  border-radius: 8px;
+  background: #fff;
+  -webkit-box-shadow: 6px 10px 12px 0px rgb(40 47 60 / 5%);
+  box-shadow: 6px 10px 12px 0px rgb(40 47 60 / 5%);
+  cursor: pointer;
+  -webkit-transition: .4s ease;
+  transition: .4s ease;
+  margin-bottom: 22px;
+}
+
+.question_box {
+  display: flex;
+  cursor: pointer;
+  position: relative;
+  padding: 20px 40px 20px 24px;
+}
+
+.question_box:before {
+  position: absolute;
+  content: '';
+  display: block;
+  top: 50%;
+  right: 25px;
+  width: 16px;
+  height: 2px;
+  background: rgba(38, 166, 154, 1);
+  transform: rotate(90deg);
+  -webkit-transition: .4s ease;
+  transition: .4s ease;
+}
+
+.question_box:after {
+  position: absolute;
+  content: '';
+  display: block;
+  top: 50%;
+  right: 25px;
+  width: 16px;
+  height: 2px;
+  background: rgba(38, 166, 154, 1);
+  -webkit-transition: .4s ease;
+  transition: .4s ease;
+}
+
+.question_box.open:before {
+  transform: rotate(180deg);
+}
+
+.question_box.open:after {
+  opacity: 0;
+}
+
+.question_box_txt {
+  margin: 0;
+  display: flex;
+}
+
+.question_box_txt h3 {
+  margin: auto 0;
+}
+
+.question_capital {
+  padding-right: 50px;
+  color: rgba(1, 191, 189, 1);
+  font-size: 28px;
+  font-weight: bold;
+}
+
+
+.answer_box {
+  display: none;
+  padding: 20px 40px 20px 24px;
+}
+
+.answer_box_txt {
+  display: flex;
+  position: relative;
+}
+
+.answer_box_txt p {
+  position: absolute;
+  top: 50%;
+  left: 60px;
+  transform: translate(0, -50%);
+  margin: 0;
+  line-height: 1.2;
+  font-size: 14px;
+}
+
+.answer_capital {
+  padding-right: 50px;
+  color: #ff8484;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+@media screen and (min-width: 767px) and (max-width: 1024px) {
+  .top_search {
+    position: absolute;
+    top: 80px;
+    right: 6%;
+    height: 56vh;
+  }
+
+  .form_title h1 {
+    padding-bottom: 8px;
+  }
+
+  .form_each_heading p {
+    margin: 0;
+  }
+  .selected_company_box {
+    height: 14rem;
+  }
+
+}
+
+
+
+@media screen and (max-width: 767px) {
+  .top {
+    height: 50vh;
+    margin-top: 73px;
+  }
+
+  .top_sentence {
+    position: absolute;
+    top: 36vh;
+    left: 20px;
+    padding: 0 30px 0 40px;
+    font-size: 40px;
+    color: white;
+    z-index: 10;
+  }
+
+  .top_sentence h1 {
+    font-size: 4.4rem;
+  }
+
+  .top_sentence::before {
+    content: "Recruit";
+    position: absolute;
+    top: -30px;
+    left: 15px;
+    transform: rotate(-8deg);
+    color: rgb(53, 223, 206);
+    font-size: 48px;
+    font-family: luxus-brut, cursive;
+    font-style: italic;
+    z-index: -1;
+  }
+
+  .selected_company_box {
+    height: 24rem;
+  }
+
+
+  .top_search {
+    /* position: absolute; */
+    position: static;
+    display: block;
+    margin: 0 auto;
+    width: 60%;
+    height: 300px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);
+    /* background-color:red; */
+  }
+
+  /* imgと同じ大きさ */
+  /* .search_empty {
+    display: block;
+    height: 50vh;
+  } */
+  .form_body {
+    height: 300px;
+    margin-top: 40px;
+    display: block;
+  }
+
+  /* 
+  .top {
+    height: 400px;
+  } */
+
+
+  .top_search {
+    /* position: absolute; */
+    position: static;
+    display: block;
+    width: 30%;
+    height: 60vh;
+    margin: 0 auto;
+    width: 70%;
+    height: 300px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);
+
+    /* background-color:red; */
+  }
+
+
+  /* imgと同じ大きさ */
+  /* .search_empty { */
+  /*  */
+  /* .search_empty {
+    display: block;
+    height: 50vh;
+  } */
+  .form_body {
+    height: 300px;
+    margin-top: 40px;
+  }
+
+  .merit_case {
+    margin: 1.8rem;
+    width: 26rem;
+    height: 14rem;
+  }
+
+  .merit_case p {
+    padding: 1.6rem 2rem;
+    margin: 0;
+    font-size: .9rem;
+  }
+
+  .answer_box_txt p {
+    position: absolute;
+    top: 30%;
+    left: 60px;
+    transform: translate(0, -50%);
+    margin: 0;
+    line-height: .9;
+    font-size: 6px;
+  }
+
+}
