@@ -87,8 +87,8 @@
 
 @media screen and (max-width: 767px) {
   .form_title h1 {
-    font-size: 1.2rem;
-    padding: 10px 0 8px 0;
+    font-size: 3rem;
+    padding: 16px 0;
     /* color: red; */
   }
 
@@ -114,11 +114,15 @@
 
   .form_submit {
     text-align: center;
-    padding: 6px 0 6px 0;
+    padding: 10px 0;
   }
 
   .form_submit button {
     padding: 6px 18px;
-    font-size: 1rem;
+    font-size: 1.2rem;
+  }
+
+  .form_each_heading{
+    margin: 4px 0;
   }
 }
