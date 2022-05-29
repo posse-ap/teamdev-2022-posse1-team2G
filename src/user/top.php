@@ -79,10 +79,7 @@ $ticket = $_SESSION['ticket'];
       <?php require('./search.php') ?>
     </div>
     <section id="company" class="back_color">
-      <di
-      
-      
-      v class="company_wrapper">
+      <div class="company_wrapper">
         <div class="title_box">
           <h2>企業一覧</h2>
           <p>COMPANY LIST</p>
@@ -123,15 +120,17 @@ $ticket = $_SESSION['ticket'];
                   </div>
                 </div>
                 <div class="company_box_exp">
-                  <p>マイナビ新卒紹介はあああああああああああああああああああああああああああ</p>
+                  <p>マイナビ新卒紹介はあああああああああああああああああああ</p>
                 </div>
-                <div class="company_box_button">
-                  <a href="./contact/contactform.php?company_id=<?= h($company['company_id']); ?>" class="inquiry">お問い合わせ</a>
+                <div class='button_container'>
+                  <div class="company_box_check">
+                    <label for="check"><input type="checkbox" id='check' name="select_company_checkboxes" value="<?= $company['company_id']; ?>-<?= $company['name']; ?>" onchange="checked_counter()">比較する</label>
+                  </div>
+                  <div class="company_box_button">
+                    <a href="./contact/contactform.php?company_id=<?= h($company['company_id']); ?>" class="inquiry">お問い合わせ</a>
+                  </div>
+                  <a class="page_change" href="../html/result.html"></a>
                 </div>
-                <div class="company_box_check">
-                  <label for="check"><input type="checkbox" id='check' name="select_company_checkboxes" value="<?= $company['company_id']; ?>-<?= $company['name']; ?>" onchange="checked_counter()">比較する</label>
-                </div>
-                <a class="page_change" href="../html/result.html"></a>
               </div>
             </a>
           <?php endforeach; ?>
@@ -151,7 +150,7 @@ $ticket = $_SESSION['ticket'];
           </div>
 
         </div>
-      </di>
+      </div>
     </section>
     <section id="problem">
       <div class="title_box">
