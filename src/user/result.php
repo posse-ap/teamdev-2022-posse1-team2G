@@ -49,10 +49,10 @@ $cnt_row = 0;
     </div>
     <nav class="header_nav">
       <ul>
-        <li class="nav_item"><a href="#company">企業一覧</a></li>
-        <li class="nav_item"><a href="#problem">お悩みの方へ</a></li>
-        <li class="nav_item"><a href="#merit">比較のメリット</a></li>
-        <li class="nav_item"><a href="#question">よくある質問</a></li>
+        <li class="nav_item"><a href="./top.php#company">企業一覧</a></li>
+        <li class="nav_item"><a href="./top.php#problem">お悩みの方へ</a></li>
+        <li class="nav_item"><a href="./top.php#merit">比較のメリット</a></li>
+        <li class="nav_item"><a href="./top.php#question">よくある質問</a></li>
         <!-- 時間あったらモーダルにしてちょっと就活エージェントのこと書いて、就活の教科書の特集に飛ばせるかも -->
         <li class="nav_item"><a href="#">就活エージェントとは</a></li>
         <!-- ここまで -->
@@ -123,7 +123,7 @@ $cnt_row = 0;
                  <p class="box_exp_sentence">マイナビ新卒紹介はあああああああああああああああああああああああああああ</p>
                </div>
                <div class="result_box_button_second">
-                 <a href="" class="inquiry">お問い合わせ</a>
+               <a href="./contact/contactform.php?company_id=<?= h($row['company_id']); ?>" class="inquiry">お問い合わせ</a>
                </div>
              </div>
            </div>
