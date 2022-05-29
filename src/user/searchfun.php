@@ -3,7 +3,7 @@
 function getUserData($params)
 {
 
-  require('dbconnect.php');
+  require('../dbconnect.php');
   
   // 選択肢が複数になり、$paramsが複数必要なので使わない
   // $params = filter_input(INPUT_GET, 'industries', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);

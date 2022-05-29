@@ -1,5 +1,5 @@
 <?php
-require('./dbconnect.php');
+require('../dbconnect.php');
 
 $sql = 'SELECT * FROM company_posting_information where company_id = ' . $_REQUEST["company_id"];
 // print_r($sql);

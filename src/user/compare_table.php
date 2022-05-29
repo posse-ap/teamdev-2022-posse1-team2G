@@ -1,6 +1,5 @@
 <?php
-require('./dbconnect.php');
-
+require('../dbconnect.php');
 //セッションを開始
 session_start();
 //エスケープ処理やデータチェックを行う関数のファイルの読み込み

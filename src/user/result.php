@@ -2,7 +2,7 @@
 session_start();
 session_regenerate_id( TRUE );
    //エスケープ処理やデータをチェックする関数を記述したファイルの読み込み
-   require './libs/functions.php'; 
+   require '../libs/functions.php'; 
    
    //NULL 合体演算子を使ってセッション変数を初期化（PHP7.0以降）
    $id = $_SESSION[ 'id' ] ?? NULL;
@@ -16,7 +16,7 @@ session_regenerate_id( TRUE );
    $ticket = $_SESSION[ 'ticket' ];
 // ここまで比較表ページへの挙動に必要なphp
 
-    require('./dbconnect.php');
+    require('../dbconnect.php');
     require('searchfun.php');
     $userData = getUserData($_GET);
 
