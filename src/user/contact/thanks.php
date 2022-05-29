@@ -233,36 +233,85 @@ if ( $result_user && $result_agent) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../css/thanks.css">
+  <link rel="stylesheet" href="../../css/parts.css">
   <title>お問い合わせいただきありがとうございます</title>
 </head>
 
 <body>
-  <!-- 一番でかいdiv -->
-  <div class="thanks">
-    <?php if ( $result_user && $result_agent ): ?>
-      <div class="thanks_complete">
-        <h1>お申込み完了</h1>
+<header>
+    <div class="header_wrapper">
+      <div class="header_logo">
+        <img src="../../img/boozer_logo.png" alt="logo">
       </div>
-      <div class="thanks_body">
-        <p>ご登録いただいたきありがとうございました。</p>
-        <p>ご登録いただいたメールアドレスに自動メールを送信しました。</p>
-      </div>
-      <div class="thnaks_phone">
-        <p>数日の内に担当者様より返信がなかった場合、お手数ですが以下にご連絡ください。</p>
-        <p>03-3836-5388 又は</p>
-        <p>ozasasann@gmail.com8</p>
-      </div>
-    <?php else: ?>
-        <p>申し訳ございませんが、送信に失敗しました。</p>
-        <p>しばらくしてもう一度お試しになるか、以下のメールにご連絡ください。</p>
-        <p>ozasasann@gmail.com</p>
-        <p>ご迷惑をおかけして誠に申し訳ございません。</p>
-    <?php endif; ?>
-    
-    <div class="back_to_top">
-      <a href="../top.php">TOPページはこちら</a>
     </div>
-  </div>
+    <nav class="header_nav">
+      <ul>
+        <li class="nav_item"><a href="./top.php#company">企業一覧</a></li>
+        <li class="nav_item"><a href="./top.php#point">お悩みの方へ</a></li>
+        <li class="nav_item"><a href="./top.php#merit">比較のメリット</a></li>
+        <li class="nav_item"><a href="./top.php#question">よくある質問</a></li>
+        <!-- 時間あったらモーダルにしてちょっと就活エージェントのこと書いて、就活の教科書の特集に飛ばせるかも -->
+        <li class="nav_item"><a href="#">就活エージェントとは</a></li>
+        <!-- ここまで -->
+        <li class="nav_item"><a href="#">企業の方へ</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="main_wrapper">
+    <div class="thanks">
+      <?php if ( $result_user && $result_agent ): ?>
+        <div class="thanks_complete">
+          <h1>お申込み完了</h1>
+        </div>
+        <div class="thanks_body">
+          <p>ご登録いただいたきありがとうございました。</p>
+          <p>ご登録いただいたメールアドレスに自動メールを送信しました。</p>
+        </div>
+        <div class="thnaks_phone">
+          <p>数日の内に担当者様より返信がなかった場合、お手数ですが以下にご連絡ください。</p>
+          <p>03-3836-5388 又は</p>
+          <p>ozasasann@gmail.com8</p>
+        </div>
+      <?php else: ?>
+          <p>申し訳ございませんが、送信に失敗しました。</p>
+          <p>しばらくしてもう一度お試しになるか、以下のメールにご連絡ください。</p>
+          <p>ozasasann@gmail.com</p>
+          <p>ご迷惑をおかけして誠に申し訳ございません。</p>
+      <?php endif; ?>
+      
+      <div class="back_to_top">
+        <a href="../top.php">TOPページはこちら</a>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="footer_wrapper">
+      <div class="footer_student">
+        <p>学生の方へ</p>
+        <ul class="footer_list">
+          <li><a href="#company">企業一覧</a></li>
+          <li><a href="#problem">お悩みの方へ</a></li>
+          <li><a href="#merit">比較のメリット</a></li>
+          <li><a href="#question">よくある質問</a></li>
+          <li><a href="#">就活エージェントとは</a></li>
+        </ul>
+      </div>
+      <div class="footer_company">
+        <p>企業の方へ</p>
+        <ul class="footer_list">
+          <li><a href="#">CRAFTについて</a></li>
+          <li><a href="#">サイト掲載について</a></li>
+        </ul>
+      </div>
+      <div class="footer_logo">
+        <!-- <img src="" alt="logo"> -->
+        <p>CRAFT</p>
+      </div>
+      <span class="footer_copyright">
+        ©︎ 2022 CRAFT. All rights reserved.
+      </span>
+    </div>
+  </footer>
 </body>
 
 </html>

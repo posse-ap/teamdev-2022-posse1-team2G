@@ -48,41 +48,41 @@ require('../dbconnect.php');
 if (isset($_GET['company_id'])) {
   // 一社だけの場合（TOPページからの挙動）
   //company_idを取得
-    $stmt = $db->prepare("SELECT * FROM company_posting_information WHERE id = :id");
-    $company_id = $_GET['company_id'];
-    $stmt->bindValue(':id', $company_id, PDO::PARAM_STR);
-    $stmt->execute();
-    $company = $stmt->fetch();
+  $stmt = $db->prepare("SELECT * FROM company_posting_information WHERE id = :id");
+  $company_id = $_GET['company_id'];
+  $stmt->bindValue(':id', $company_id, PDO::PARAM_STR);
+  $stmt->execute();
+  $company = $stmt->fetch();
   // //Company_idのsessionを生成
-    if (!isset($_SESSION['company_id'])) {
-      //セッション変数に代入
-      $_SESSION['company_id'] = [];
-      array_push($_SESSION['company_id'], $company["id"]);
-    }
-}else {
+  if (!isset($_SESSION['company_id'])) {
+    //セッション変数に代入
+    $_SESSION['company_id'] = [];
+    array_push($_SESSION['company_id'], $company["id"]);
+  }
+} else {
   // 複数の会社の場合 (比較表ページからの挙動)
   //company_idを取得
-    $company_ids =  $_POST['id'];
-    // キーワードの数だけループして、LIKE句の配列を作る
-      $company_id_Condition = [];
-      foreach ($company_ids as $company_id) {
-        $company_id_Condition[] = 'company_id = ' . $company_id;
-      }
-    // これをORでつなげて、文字列にする
-      $company_id_Condition = implode(' OR ', $company_id_Condition);
-    // あとはSELECT文にくっつける
-      $sql = 'SELECT * FROM company_posting_information WHERE ' . $company_id_Condition;
-      $stmt = $db->query($sql);
-      $stmt->execute();
-      $companies = $stmt->fetchAll();
+  $company_ids =  $_POST['id'];
+  // キーワードの数だけループして、LIKE句の配列を作る
+  $company_id_Condition = [];
+  foreach ($company_ids as $company_id) {
+    $company_id_Condition[] = 'company_id = ' . $company_id;
+  }
+  // これをORでつなげて、文字列にする
+  $company_id_Condition = implode(' OR ', $company_id_Condition);
+  // あとはSELECT文にくっつける
+  $sql = 'SELECT * FROM company_posting_information WHERE ' . $company_id_Condition;
+  $stmt = $db->query($sql);
+  $stmt->execute();
+  $companies = $stmt->fetchAll();
   // //Company_idのsessionを生成
-    if (!isset($_SESSION['company_id'])) {
-      //セッション変数に代入
-      $_SESSION['company_id'] = [];
-      foreach ($companies as $company) {
-        array_push($_SESSION['company_id'], $company["id"]);
-      }
+  if (!isset($_SESSION['company_id'])) {
+    //セッション変数に代入
+    $_SESSION['company_id'] = [];
+    foreach ($companies as $company) {
+      array_push($_SESSION['company_id'], $company["id"]);
     }
+  }
 }
 
 // sessionを変数に代入
@@ -104,7 +104,7 @@ $company_id_sessions = $_SESSION['company_id'];
 
 <body>
   <!-- ↑ヘッダー関数 -->
-  
+
   <div class="contactform_container">
     <!-- 入力画面 -->
     <div class="contactform_title">
@@ -114,7 +114,7 @@ $company_id_sessions = $_SESSION['company_id'];
       <p>お問い合わせする会社</p>
     </div>
 
-    <?php if (isset($_GET['company_id'])) :?>
+    <?php if (isset($_GET['company_id'])) : ?>
       <div class="contactform_contact_company">
         <div class="contactform_contact_company_img">
           <img src="../src/img/<?= h($company['logo']) ?>" alt="">
@@ -124,20 +124,20 @@ $company_id_sessions = $_SESSION['company_id'];
           <p><?= h($company['name']) ?></p>
         </div>
       </div>
-    <?php else :?>
-       <?php foreach ($companies as $company) : ?>
-          <div class="contactform_contact_company">
-            <div class="contactform_contact_company_img">
-              <img src="../src/img/<?= h($company['logo']) ?>" alt="">
-              <!-- <img src="../src/img/shukatsu_logo.png" alt=""> -->
-            </div>
-            <div class="contactform_contact_company_name">
-              <p><?= h($company['name']) ?></p>
-            </div>
+    <?php else : ?>
+      <?php foreach ($companies as $company) : ?>
+        <div class="contactform_contact_company">
+          <div class="contactform_contact_company_img">
+            <img src="../src/img/<?= h($company['logo']) ?>" alt="">
+            <!-- <img src="../src/img/shukatsu_logo.png" alt=""> -->
           </div>
-       <?php endforeach; ?>
+          <div class="contactform_contact_company_name">
+            <p><?= h($company['name']) ?></p>
+          </div>
+        </div>
+      <?php endforeach; ?>
     <?php endif; ?>
-    
+
     <!-- 入力画面のフロント -->
     <form id="form" class="validationForm" action="./confirm.php" method="post" novalidate>
       <div class="contactform_each_container contactform_topic topic_info">
@@ -151,8 +151,7 @@ $company_id_sessions = $_SESSION['company_id'];
           <p>必須</p>
         </div>
         <div class="contactform_input">
-          <input type="text" class="required maxlength" data-maxlength="30" id="name" name="name"
-            data-error-required="お名前は必須です。" value="<?php echo $name; ?>">
+          <input type="text" class="required maxlength" data-maxlength="30" id="name" name="name" data-error-required="お名前は必須です。" value="<?php echo $name; ?>">
         </div>
       </div>
       <div class="contactform_each_container">
@@ -163,8 +162,7 @@ $company_id_sessions = $_SESSION['company_id'];
           <p>必須</p>
         </div>
         <div class="contactform_input">
-          <input type="text" class="required maxlength" data-maxlength="30" id="university" name="university"
-            data-error-required="大学名は必須です。" value="<?php echo $university; ?>">
+          <input type="text" class="required maxlength" data-maxlength="30" id="university" name="university" data-error-required="大学名は必須です。" value="<?php echo $university; ?>">
         </div>
       </div>
       <div class="contactform_each_container">
@@ -175,8 +173,7 @@ $company_id_sessions = $_SESSION['company_id'];
           <p>必須</p>
         </div>
         <div class="contactform_input">
-          <input type="text" class="required maxlength" data-maxlength="30" id="department" name="department"
-            data-error-required="学部学科は必須です。" value="<?php echo $department; ?>">
+          <input type="text" class="required maxlength" data-maxlength="30" id="department" name="department" data-error-required="学部学科は必須です。" value="<?php echo $department; ?>">
         </div>
       </div>
       <div class="contactform_each_container">
@@ -205,9 +202,7 @@ $company_id_sessions = $_SESSION['company_id'];
           <p>必須</p>
         </div>
         <div class="contactform_input">
-          <input type="email" class="required pattern" data-pattern="email" id="email" name="email"
-            data-error-required="Email アドレスは必須です。" data-error-pattern="Email の形式が正しくないようですのでご確認ください"
-            value="<?php echo $email; ?>">
+          <input type="email" class="required pattern" data-pattern="email" id="email" name="email" data-error-required="Email アドレスは必須です。" data-error-pattern="Email の形式が正しくないようですのでご確認ください" value="<?php echo $email; ?>">
         </div>
       </div>
       <div class="contactform_each_container">
@@ -218,8 +213,7 @@ $company_id_sessions = $_SESSION['company_id'];
           <p>必須</p>
         </div>
         <div class="contactform_input">
-          <input type="phone_number" class="required pattern" data-pattern="phone_number" id="phone_number"
-            name="phone_number" data-error-pattern="電話番号の形式が正しくないようですのでご確認ください" value="<?php echo $phone_number; ?>">
+          <input type="phone_number" class="required pattern" data-pattern="phone_number" id="phone_number" name="phone_number" data-error-pattern="電話番号の形式が正しくないようですのでご確認ください" value="<?php echo $phone_number; ?>">
         </div>
       </div>
       <div class="contactform_each_container">
@@ -230,8 +224,7 @@ $company_id_sessions = $_SESSION['company_id'];
           <p>必須</p>
         </div>
         <div class="contactform_input">
-          <input type="text" class="required maxlength" data-maxlength="100" id="address" name="address"
-            data-error-required="住所は必須です。" value="<?php echo $address; ?>">
+          <input type="text" class="required maxlength" data-maxlength="100" id="address" name="address" data-error-required="住所は必須です。" value="<?php echo $address; ?>">
         </div>
       </div>
       <div class="contactform_each_container textarea">
@@ -242,8 +235,7 @@ $company_id_sessions = $_SESSION['company_id'];
           <p>任意</p>
         </div>
         <div class="contactform_input_textarea">
-          <textarea cols="40" rows="8" class="maxlength" placeholder="自由記述欄" data-maxlength="1000" id="message"
-            name="message" rows="3"><?php echo $message; ?></textarea>
+          <textarea cols="40" rows="8" class="maxlength" placeholder="自由記述欄" data-maxlength="1000" id="message" name="message" rows="3"><?php echo $message; ?></textarea>
         </div>
       </div>
       <div class="contactform_each_container">
@@ -262,9 +254,9 @@ $company_id_sessions = $_SESSION['company_id'];
   <!--確認ページへトークンをPOSTする、隠しフィールド「ticket」-->
   <input type="hidden" name="ticket" value="<?php echo $ticket; ?>">
   <!-- 確認ページへトークンをPOSTする、隠しフィールド「company_id_session」-->
-  <?php if (isset($_GET['company_id'])) :?>
-      <input type="hidden" name="company_id_session[]" value="<?php echo $company["id"]; ?>">
-  <?php else :?>
+  <?php if (isset($_GET['company_id'])) : ?>
+    <input type="hidden" name="company_id_session[]" value="<?php echo $company["id"]; ?>">
+  <?php else : ?>
     <?php foreach ($companies as $company) : ?>
       <input type="hidden" name="company_id_session[]" value="<?php echo $company["id"]; ?>">
     <?php endforeach; ?>
@@ -273,8 +265,7 @@ $company_id_sessions = $_SESSION['company_id'];
   <div class="contactform_submit">
     <input name="submitted" type="submit" name="confirm" value="内容を確認">
   </div>
-  
-  <!-- <button  type="submit" class="btn btn-primary">確認画面へ</button> -->
+
   </form>
   </div>
   <!--  JavaScript の読み込み -->

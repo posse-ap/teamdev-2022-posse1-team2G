@@ -1,8 +1,8 @@
 HELO:<localhost>
 FROM:<nobody@24fd20fd08bf>
-TO:<a@a.com>
+TO:<test@posse-ap.com>
 
-To: a@a.com
+To: test@posse-ap.com
 Subject: =?UTF-8?B?Y3JhZnTjga7jgZTliKnnlKg=?=
 from: ayaka1712pome@gmail.com
 Return-Path: ayaka1712pome@gmail.com
@@ -12,7 +12,7 @@ Content-Type: text/plain; charset=UTF-8
 
 44Oh44O844Or44OV44Kp44O844Og44KI44KK44GK5ZWP44GE5ZCI44KP44Gb44GM44GC44KK44G+
 44GX44Gf44CCCgrjgJDjgYrlkI3liY3jgJEK5oW25oeJ6Iqx5a2QCgrjgJDjg6Hjg7zjg6vjgqLj
-g4njg6zjgrnjgJEKYUBhLmNvbQoK44CQ44GK5ZWP44GE5ZCI44KP44Gb5YaF5a6544CRCueUs+OB
-l+i+vOOBv+OBhOOBn+OBoOOBjeOBguOCiuOBjOOBqOOBhuOBlOOBluOBhOOBvuOBmeOAggrmi4Xl
-vZPjga7ogIXjgYvjgonpgKPntaHoh7TjgZfjgb7jgZnjga7jgaflsJHjgIXjgYrlvoXjgaHjgY/j
-gaDjgZXjgYTjgIIKCgoK
+g4njg6zjgrnjgJEKdGVzdEBwb3NzZS1hcC5jb20KCuOAkOOBiuWVj+OBhOWQiOOCj+OBm+WGheWu
+ueOAkQrnlLPjgZfovrzjgb/jgYTjgZ/jgaDjgY3jgYLjgorjgYzjgajjgYbjgZTjgZbjgYTjgb7j
+gZnjgIIK5ouF5b2T44Gu6ICF44GL44KJ6YCj57Wh6Ie044GX44G+44GZ44Gu44Gn5bCR44CF44GK
+5b6F44Gh44GP44Gg44GV44GE44CCCgoKCg==
