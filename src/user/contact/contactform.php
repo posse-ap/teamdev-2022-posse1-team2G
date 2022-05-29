@@ -44,44 +44,47 @@ $ticket = $_SESSION['ticket'];
 // 問い合わせ会社を表示させるためのSQL用意
 require('../dbconnect.php');
 
-//company_idを取得
+
 if (isset($_GET['company_id'])) {
   // 一社だけの場合（TOPページからの挙動）
-  $stmt = $db->prepare("SELECT * FROM company_posting_information WHERE id = :id");
-  $company_id = $_GET['company_id'];
-  $stmt->bindValue(':id', $company_id, PDO::PARAM_STR);
-  $stmt->execute();
-  $company = $stmt->fetch();
-  // print_r($company);
+  //company_idを取得
+    $stmt = $db->prepare("SELECT * FROM company_posting_information WHERE id = :id");
+    $company_id = $_GET['company_id'];
+    $stmt->bindValue(':id', $company_id, PDO::PARAM_STR);
+    $stmt->execute();
+    $company = $stmt->fetch();
+  // //Company_idのsessionを生成
+    if (!isset($_SESSION['company_id'])) {
+      //セッション変数に代入
+      $_SESSION['company_id'] = [];
+      array_push($_SESSION['company_id'], $company["id"]);
+    }
 }else {
   // 複数の会社の場合 (比較表ページからの挙動)
-  $company_ids =  $_POST['id'];
-  // キーワードの数だけループして、LIKE句の配列を作る
-  $company_id_Condition = [];
-  foreach ($company_ids as $company_id) {
-    $company_id_Condition[] = 'company_id = ' . $company_id;
-  }
-  // これをORでつなげて、文字列にする
-  $company_id_Condition = implode(' OR ', $company_id_Condition);
-  // あとはSELECT文にくっつける
-  $sql = 'SELECT * FROM company_posting_information WHERE ' . $company_id_Condition;
-  $stmt = $db->query($sql);
-  $stmt->execute();
-  $companies = $stmt->fetchAll();
-  // print_r($companies);
+  //company_idを取得
+    $company_ids =  $_POST['id'];
+    // キーワードの数だけループして、LIKE句の配列を作る
+      $company_id_Condition = [];
+      foreach ($company_ids as $company_id) {
+        $company_id_Condition[] = 'company_id = ' . $company_id;
+      }
+    // これをORでつなげて、文字列にする
+      $company_id_Condition = implode(' OR ', $company_id_Condition);
+    // あとはSELECT文にくっつける
+      $sql = 'SELECT * FROM company_posting_information WHERE ' . $company_id_Condition;
+      $stmt = $db->query($sql);
+      $stmt->execute();
+      $companies = $stmt->fetchAll();
+  // //Company_idのsessionを生成
+    if (!isset($_SESSION['company_id'])) {
+      //セッション変数に代入
+      $_SESSION['company_id'] = [];
+      foreach ($companies as $company) {
+        array_push($_SESSION['company_id'], $company["id"]);
+      }
+    }
 }
 
-
-
-
-// //Company_idのsessionを生成
-if (!isset($_SESSION['company_id'])) {
-  //セッション変数に代入
-  $_SESSION['company_id'] = [];
-  foreach ($companies as $company) {
-    array_push($_SESSION['company_id'], $company["id"]);
-  }
-}
 // sessionを変数に代入
 $company_id_sessions = $_SESSION['company_id'];
 // print_r($company_id_session);
