@@ -144,7 +144,7 @@ CREATE TABLE company_feature
 (
   feature_id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   company_id INT NOT NULL,
-  feature_one VARCHAR(255) NOT NULL,
+  feature_first VARCHAR(255) NOT NULL,
   feature_second VARCHAR(255) NOT NULL,
   feature_third VARCHAR(255) NOT NULL,
   feature_sub_first VARCHAR(255) NOT NULL,
@@ -154,11 +154,11 @@ CREATE TABLE company_feature
 );
 
 INSERT INTO company_feature (company_id, feature_first, feature_second, feature_third, feature_sub_first,feature_sub_second,feature_sub_third,message) VALUES 
-(1, 'ああああああああああああ', 'いいいいいいいいいいいいい', 'うううううううううううう', 'aaaaaaaaaaaaaaa', 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii', 'uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu'),
-(2, 'ああああああああああああ', 'いいいいいいいいいいいいい', 'うううううううううううう', 'aaaaaaaaaaaaaaa', 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii', 'uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu'),
-(3, 'ああああああああああああ', 'いいいいいいいいいいいいい', 'うううううううううううう', 'aaaaaaaaaaaaaaa', 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii', 'uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu'),
-(4, 'ああああああああああああ', 'いいいいいいいいいいいいい', 'うううううううううううう', 'aaaaaaaaaaaaaaa', 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii', 'uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu'),
-(5, 'ああああああああああああ', 'いいいいいいいいいいいいい', 'うううううううううううう', 'aaaaaaaaaaaaaaa', 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii', 'uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu');
+(1, 'ああああああああああああ', 'いいいいいいいいいいいいい', 'うううううううううううう', 'aaaaaaaaaaaaaaa', 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii', 'uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu','messageeeeeeeee'),
+(2, 'ああああああああああああ', 'いいいいいいいいいいいいい', 'うううううううううううう', 'aaaaaaaaaaaaaaa', 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii', 'uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu','messageeeeeeeee'),
+(3, 'ああああああああああああ', 'いいいいいいいいいいいいい', 'うううううううううううう', 'aaaaaaaaaaaaaaa', 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii', 'uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu','messageeeeeeeee'),
+(4, 'ああああああああああああ', 'いいいいいいいいいいいいい', 'うううううううううううう', 'aaaaaaaaaaaaaaa', 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii', 'uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu','messageeeeeeeee'),
+(5, 'ああああああああああああ', 'いいいいいいいいいいいいい', 'うううううううううううう', 'aaaaaaaaaaaaaaa', 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii', 'uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu','messageeeeeeeee');
 
 
 
