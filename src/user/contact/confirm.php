@@ -134,6 +134,7 @@ $companies = $stmt->fetchAll();
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>お問い合わせフォーム（確認）</title>
+  <link rel="stylesheet" href="../../css/parts.css">
   <link rel="stylesheet" href="../../css/contact.css">
 </head>
 <body>

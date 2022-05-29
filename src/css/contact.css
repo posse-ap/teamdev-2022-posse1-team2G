@@ -243,6 +243,16 @@ a {
     font-size: .9rem;
     padding: 4px 0;
   }
+
+  .main_wrapper {
+    margin-top: 16rem;
+  }
+
+  .contactform_title, .confirm_title {
+    text-align: center;
+    margin: 25px 0 25px;
+    font-size: 2rem;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -266,5 +276,15 @@ a {
 
   .confirm_company_title {
     margin-bottom: 16px;
+  }
+
+  .main_wrapper {
+    margin-top: 16rem;
+  }
+  
+  .contactform_title, .confirm_title {
+    text-align: center;
+    margin: 25px 0 25px;
+    font-size: 2rem;
   }
 }
