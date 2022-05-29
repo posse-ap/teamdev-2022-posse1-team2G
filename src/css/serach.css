@@ -10,7 +10,7 @@
 
 .form_title h1 {
   margin: 0;
-  padding-top: 12px;
+  padding-top: 22px;
   font-size: 1.2rem;
 }
 
@@ -50,7 +50,7 @@
 
 .form_submit {
   text-align: center;
-  padding: 8px 0 6px 0;
+  padding: 8px 0;
 }
 
 .form_submit button {
@@ -70,9 +70,9 @@
 
   .top_search {
     position: absolute;
-    top: 80px;
+    top: 120px;
     right: 6%;
-    height: 50vh;
+    height: 45vh;
   }
 
   .form_title h1 {

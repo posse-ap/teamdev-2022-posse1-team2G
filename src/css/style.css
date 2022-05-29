@@ -90,7 +90,7 @@ section {
   /* width: 680px;
   height: 510px; */
   width: 30%;
-  height: 60vh;
+  height: 50vh;
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);
@@ -580,7 +580,7 @@ a {
     position: static;
     display: block;
     margin: 0 auto;
-    width: 70%;
+    width: 60%;
     height: 300px;
     background-color: white;
     border-radius: 8px;
